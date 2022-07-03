@@ -29,7 +29,7 @@ export const Post = defineDocumentType(() => ({
     feature: {
       type: "boolean",
       required: false,
-    }
+    },
   },
   computedFields: {
     slug: {
@@ -39,7 +39,6 @@ export const Post = defineDocumentType(() => ({
     },
   },
 }));
-
 
 export const Work = defineDocumentType(() => ({
   name: "Work",
@@ -65,6 +64,10 @@ export const Work = defineDocumentType(() => ({
     tags: {
       type: "list",
       of: { type: "string" },
+    },
+    feature: {
+      type: "boolean",
+      required: false,
     },
   },
   computedFields: {
