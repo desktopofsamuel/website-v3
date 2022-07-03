@@ -34,7 +34,7 @@ export default function PostListPage({
         </div>
       ))}
        <h2>Blog List</h2>
-      {works.sort(sortByDate).map((post) => (
+      {works.filter(post => post.feature !== true).sort(sortByDate).map((post) => (
         <div key={post.slug}>
           <p>
             <Link href={`/work/${post.slug}/`}>{post.title}</Link>
