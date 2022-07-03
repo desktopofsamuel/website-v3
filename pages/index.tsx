@@ -1,34 +1,47 @@
-import Layout from 'components/Layout'
-import { allPosts, Post } from "contentlayer/generated"
-import type { GetStaticProps, InferGetStaticPropsType } from "next"
-import Link from "next/link"
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Layout from "components/Layout";
+import { allPosts, allWorks, Post, Work } from "contentlayer/generated";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import Link from "next/link";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export const getStaticProps: GetStaticProps<{
-  posts: Post[]
+  posts: Post[];
+  works: Work[];
 }> = () => {
-  return { props: { posts: allPosts } }
-}
+  return {
+    props: {
+      posts: allPosts,
+      works: allWorks,
+    },
+  };
+};
 
 export default function PostListPage({
   posts,
+  works,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <h1>Blog</h1>
- 
+      <h1>Desktop of Samuel</h1>
+      <h2>Blog List</h2>
       {posts.map((post) => (
         <div key={post.slug}>
-          <h2>
-            <Link href={`/${post.slug}/`}>
-              <a>{post.title}</a>
-            </Link>
-          </h2>
+          <p>
+            <Link href={`/${post.slug}/`}>{post.title}</Link>
+          </p>
+        </div>
+      ))}
+      <h2>Work List</h2>
+      {works.map((post) => (
+        <div key={post.slug}>
+          <p>
+            <Link href={`/work/${post.slug}/`}>{post.title}</Link>
+          </p>
         </div>
       ))}
     </Layout>
-  )
+  );
 }

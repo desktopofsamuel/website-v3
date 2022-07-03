@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type LayoutProps = {
   title?: string;
   description?: string;
@@ -5,12 +7,25 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-
-export default function Layout({ title, description, keywords, children }: LayoutProps) {
+export default function Layout({
+  title,
+  description,
+  keywords,
+  children,
+}: LayoutProps) {
   return (
     <>
-      <h1>Welcome</h1>
-      {children}
+      <nav>
+        <p>Desktop of Samuel</p>
+        <ul>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>Blog</li>
+          <li>Work</li>
+        </ul>
+      </nav>
+      <main>{children}</main>
     </>
   );
 }
