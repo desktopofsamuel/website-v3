@@ -21,8 +21,12 @@ export default function Layout({
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>Blog</li>
-          <li>Work</li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link href="/work">Work</Link>
+          </li>
         </ul>
       </nav>
       <main>{children}</main>

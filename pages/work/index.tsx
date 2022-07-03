@@ -26,15 +26,7 @@ export default function PostListPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <h1>Desktop of Samuel</h1>
-      <h2>Blog List</h2>
-      {posts.sort(sortByDate).map((post) => (
-        <div key={post.slug}>
-          <p>
-            <Link href={`/${post.slug}/`}>{post.title}</Link>
-          </p>
-        </div>
-      ))}
+      <h1>My Work</h1>
       <h2>Work List</h2>
       {works.sort(sortByDate).map((post) => (
         <div key={post.slug}>
