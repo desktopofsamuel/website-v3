@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-export default function PostListPage({
+export default function IndexPage({
   posts,
   works,
 }: InferGetStaticPropsType<typeof getStaticProps>) {

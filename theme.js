@@ -225,6 +225,7 @@ const customTheme = extendTheme({
     Heading: {
       baseStyle: {
         fontSize: "2xl",
+        fontStyle: "medium",
       },
       variants: {
         pagetitle: {

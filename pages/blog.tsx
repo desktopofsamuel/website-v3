@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-export default function PostListPage({
+export default function BlogListPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
