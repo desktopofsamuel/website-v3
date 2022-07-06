@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import Link from "next/link";
 
 type LayoutProps = {
@@ -32,7 +33,7 @@ export default function Layout({
           </li>
         </ul>
       </nav>
-      <main>{children}</main>
+      <Container as="main" maxW="800px">{children}</Container>
     </>
   );
 }

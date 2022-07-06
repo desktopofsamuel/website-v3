@@ -1,4 +1,9 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypeSlug from "rehype-slug";
+import rehypePrism from "rehype-prism-plus";
+import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
 
 export const Post = defineDocumentType(() => ({
@@ -83,4 +88,15 @@ export default makeSource({
   // Location of source files for all defined documentTypes
   contentDirPath: "content",
   documentTypes: [Post, Work],
+  mdx: {
+    remarkPlugins: [
+      [remarkUnwrapImages],
+    ],
+    rehypePlugins: [
+      [rehypePrism],
+      [rehypeSlug],
+      [rehypeAutolinkHeadings],
+      [rehypeAccessibleEmojis],
+    ],
+  },
 });
