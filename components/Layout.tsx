@@ -1,5 +1,6 @@
 import { Container } from "@chakra-ui/react";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 type LayoutProps = {
   title?: string;
@@ -16,6 +17,7 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <>
+      <NextSeo title={title} description={description} />
       <nav>
         <p>Desktop of Samuel</p>
         <ul>
@@ -33,7 +35,9 @@ export default function Layout({
           </li>
         </ul>
       </nav>
-      <Container as="main" maxW="800px">{children}</Container>
+      <Container as="main" maxW="800px">
+        {children}
+      </Container>
     </>
   );
 }

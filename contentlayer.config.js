@@ -5,6 +5,7 @@ import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
+import { parseMarkdown } from "./utils";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -41,6 +42,10 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       resolve: (post) =>
         post.path ? `${post.path}` : `${kebabCase(post.title)}`,
+    },
+    excerpt: {
+      type: "string",
+      resolve: (post) => parseMarkdown(post.body.raw, 155),
     },
   },
 }));
@@ -81,6 +86,10 @@ export const Work = defineDocumentType(() => ({
       resolve: (post) =>
         post.path ? `${post.path}` : `${kebabCase(post.title)}`,
     },
+    excerpt: {
+      type: "string",
+      resolve: (post) => parseMarkdown(post.body.raw, 200),
+    },
   },
 }));
 
@@ -89,9 +98,7 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Work],
   mdx: {
-    remarkPlugins: [
-      [remarkUnwrapImages],
-    ],
+    remarkPlugins: [[remarkUnwrapImages]],
     rehypePlugins: [
       [rehypePrism],
       [rehypeSlug],

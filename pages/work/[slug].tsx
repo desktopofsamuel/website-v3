@@ -2,7 +2,9 @@ import { allWorks, Work } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Layout from "@/components/Layout";
+import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
+import CONFIG from "../../config";
 
 export const getStaticPaths = () => {
   return {
@@ -28,7 +30,25 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Layout>
+    <Layout title={post.title} description={post.excerpt}>
+        <NextSeo
+        openGraph={{
+          url: CONFIG.URL + `/work/` + post.slug,
+          type: "article",
+          article: {
+            publishedTime: post.date,
+            tags: post.tags,
+            authors: [CONFIG.URL],
+          },
+          // images: [
+          //   {
+          //     url: frontmatter.socialImage
+          //       ? CONFIG.URL + frontmatter.socialImage
+          //       : CONFIG.URL + CONFIG.OG_IMAGE,
+          //   },
+          // ],
+        }}
+      />
       <p>Portfolio!</p>
       <h1>{post.title}</h1>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>

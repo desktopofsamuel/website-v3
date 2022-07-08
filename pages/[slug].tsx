@@ -5,7 +5,10 @@ import Layout from "../components/Layout";
 import Markdown from "markdown-to-jsx";
 import dayjs from "dayjs";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
+import CONFIG from "../config";
 import { useState, useEffect } from "react";
+import { Heading } from "@chakra-ui/react";
 
 // const NextImage = (props: any) => {
 //   return (
@@ -68,8 +71,26 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Layout>
-      <h1>{post.title}</h1>
+    <Layout title={post.title} description={post.excerpt}>
+       <NextSeo
+        openGraph={{
+          url: CONFIG.URL + `/` + post.slug,
+          type: "article",
+          article: {
+            publishedTime: post.date,
+            tags: post.tags,
+            authors: [CONFIG.URL],
+          },
+          // images: [
+          //   {
+          //     url: frontmatter.socialImage
+          //       ? CONFIG.URL + frontmatter.socialImage
+          //       : CONFIG.URL + CONFIG.OG_IMAGE,
+          //   },
+          // ],
+        }}
+      />
+      <Heading>{post.title}</Heading>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
       <article style={containerStyle}>
         <MDXContent components={{ Img }} />
