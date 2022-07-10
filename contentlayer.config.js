@@ -6,6 +6,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
 import { parseMarkdown } from "./utils";
+import toc from "@jsdevtools/rehype-toc"
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -162,6 +163,7 @@ export default makeSource({
       [rehypeSlug],
       [rehypeAutolinkHeadings],
       [rehypeAccessibleEmojis],
+      [toc],
     ],
   },
 });

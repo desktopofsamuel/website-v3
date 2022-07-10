@@ -23,13 +23,14 @@ Primary font is [Gibson](https://fonts.adobe.com/fonts/gibson), secondary font i
 
 ## Todo
 
-- [] Blog Post Type
-- [] Portfolio Post Type
+- [x] Blog Post Type
+- [x] Portfolio Post Type
+- [x] Animation Page Transition
+- [x] Sitemap plugin
+- [] Table of Content
 - [] Resources Page
 - [] Changelog 
 - [] About Page
-- [] Animation Page Transition
-- [] Sitemap plugin
 - [] SEO Optimization
 - [] Photo Post Type
 - [] Content Migration

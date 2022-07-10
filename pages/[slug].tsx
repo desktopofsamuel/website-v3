@@ -9,6 +9,7 @@ import { NextSeo } from "next-seo";
 import CONFIG from "../config";
 import { useState, useEffect } from "react";
 import {
+  chakra,
   Heading,
   Alert,
   AlertIcon,
@@ -51,6 +52,10 @@ const Img = (props: any) => {
   );
 };
 
+const Article = chakra("article", {
+  baseStyle: {},
+});
+
 export const getStaticPaths = () => {
   return {
     paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
@@ -76,8 +81,15 @@ const containerStyle = {
     display: "inline-block",
   },
   display: "block",
+  position: "relative",
   maxWidth: "800px",
   overflow: "hidden",
+
+  "* > nav": {
+    position: "absolute",
+    top: "0",
+    right: "0",
+  },
 };
 
 export default function SinglePostPage({
@@ -106,7 +118,21 @@ export default function SinglePostPage({
       />
       <Heading>{post.title}</Heading>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
-      <article style={containerStyle}>
+      <Article
+        sx={{
+          display: "block",
+          position: "relative",
+          maxWidth: "800px",
+          overflow: "hidden",
+
+          "nav": {
+          position: 'sticky',
+          top: '0',
+          right: '0',
+          height: '200px',
+          },
+        }}
+      >
         <MDXContent
           components={{
             NextImage,
@@ -116,7 +142,7 @@ export default function SinglePostPage({
             AlertDescription,
           }}
         />
-      </article>
+      </Article>
       {/* <Markdown
         options={{
           wrapper: "article",
