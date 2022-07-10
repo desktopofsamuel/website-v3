@@ -6,6 +6,7 @@ import { sortByDate } from "@/utils";
 import ListBlog from "@/components/ListBlog";
 import { Grid } from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
+import Fade from "react-reveal/Fade";
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
@@ -29,20 +30,24 @@ export default function BlogListPage({
       </p>
       <h2>Featured posts</h2>
       <Grid gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr"}} gap="4">
+        <Fade bottom>
         {posts
           .filter((post) => post.feature === true)
           .sort(sortByDate)
           .map((post) => (
             <ListBlog key={post.slug} data={post} />
           ))}
+          </Fade>
       </Grid>
       <h2>All posts</h2>
+      <Fade bottom>
       {posts
         .filter((post) => post.feature !== true)
         .sort(sortByDate)
         .map((post) => (
           <ListBlogDetail key={post.slug} data={post} />
         ))}
+        </Fade>
     </Layout>
   );
 }

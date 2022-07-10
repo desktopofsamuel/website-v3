@@ -9,7 +9,7 @@ export default function ListBlogDetail({ data }: any) {
 
   return (
     <Link href={`/${post.slug}/`}>
-      <Grid gridTemplateColumns={{sm: "1fr", md: "1fr 1fr"}}  gap="4" marginY="10" alignItems="center">
+      <Grid gridTemplateColumns={{sm: "1fr", md: "1fr 1fr"}}  gap="4" marginY="10" alignItems="center" cursor="pointer">
         <Box position="relative" width="fit-content">
           <NextImage src={post.cover} alt={post.title} />
         </Box>

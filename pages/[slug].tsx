@@ -8,7 +8,13 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import CONFIG from "../config";
 import { useState, useEffect } from "react";
-import { Heading } from "@chakra-ui/react";
+import {
+  Heading,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 
 // const NextImage = (props: any) => {
@@ -27,7 +33,14 @@ import NextImage from "@/components/NextImage";
 
 const Img = (props: any) => {
   return (
-    <div style={{ width: "100%", objectFit: "contain", display: "block", position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        objectFit: "contain",
+        display: "block",
+        position: "relative",
+      }}
+    >
       <Image
         src={props.src}
         alt={props.alt}
@@ -58,7 +71,7 @@ export const getStaticProps: GetStaticProps<{
 };
 
 const containerStyle = {
-  '* > img': {
+  "* > img": {
     width: "100%",
     display: "inline-block",
   },
@@ -73,7 +86,7 @@ export default function SinglePostPage({
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <Layout title={post.title} description={post.excerpt}>
-       <NextSeo
+      <NextSeo
         openGraph={{
           url: CONFIG.URL + `/` + post.slug,
           type: "article",
@@ -94,7 +107,15 @@ export default function SinglePostPage({
       <Heading>{post.title}</Heading>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
       <article style={containerStyle}>
-        <MDXContent components={{ NextImage }} />
+        <MDXContent
+          components={{
+            NextImage,
+            Alert,
+            AlertIcon,
+            AlertTitle,
+            AlertDescription,
+          }}
+        />
       </article>
       {/* <Markdown
         options={{

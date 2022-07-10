@@ -1,6 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 type LayoutProps = {
   title?: string;
@@ -22,6 +23,7 @@ export default function Layout({
       <Container as="main" maxW="1080px">
         {children}
       </Container>
+      <Footer/>
     </>
   );
 }

@@ -24,13 +24,14 @@ export default function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
-      <Container maxW="1080px">
+      <Container as="header" maxW="1080px">
         <Flex as="nav" alignItems="center">
           <Link href="/">
             <p>Desktop of Samuel</p>
           </Link>
           <Spacer />
           <List
+            as="nav"
             display={{ sm: "none", md: "flex" }}
             listStyleType="none"
             flexDir="row"

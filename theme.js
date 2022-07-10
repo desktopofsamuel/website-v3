@@ -25,6 +25,9 @@ const customTheme = extendTheme({
       100: "orange",
       400: "red",
     },
+    yellow: {
+      100: '#FFF9EF',
+    },
     primary: {
       300: "#33aaff",
       400: "#78c7ff",
@@ -53,7 +56,7 @@ const customTheme = extendTheme({
         _dark: "indigo.300",
       },
       background: {
-        default: "white",
+        default: "yellow.100",
         _dark: "indigo.900",
       },
       border: {
@@ -171,7 +174,7 @@ const customTheme = extendTheme({
         // color: mode('red.900', 'whiteAlpha.100')(props),
       }),
       variants: {
-        small: (props) => ({
+        caption: (props) => ({
           margin: "0",
           marginBottom: "2",
           fontSize: "sm",
@@ -226,6 +229,7 @@ const customTheme = extendTheme({
       baseStyle: {
         fontSize: "2xl",
         fontWeight: '600',
+        letterSpacing: 'tight',
       },
       variants: {
         pagetitle: {
@@ -241,6 +245,11 @@ const customTheme = extendTheme({
         heading: {
           fontSize: "3xl",
         },
+        small: {
+          fontSize: 'sm',
+          letterSpacing: 'loose',
+          textTransform: "uppercase",
+        }
       },
       defaultProps: {
         variant: "pagetitle",
