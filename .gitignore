@@ -34,6 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-
 # Contentlayer
 .contentlayer
+
+# sitemap
+sitemap-0.xml
+sitemap.xml
