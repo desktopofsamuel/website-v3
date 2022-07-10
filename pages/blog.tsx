@@ -6,7 +6,8 @@ import { sortByDate } from "@/utils";
 import ListBlog from "@/components/ListBlog";
 import { Grid } from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
-import Fade from "react-reveal/Fade";
+
+const Fade = require('react-reveal/Fade')
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];

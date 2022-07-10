@@ -8,7 +8,8 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListPortfolio from "@/components/ListPortfolio";
-import Fade from "react-reveal/Fade";
+
+const Fade = require('react-reveal/Fade')
 
 export const getStaticProps: GetStaticProps<{
   works: Work[];

@@ -15,21 +15,17 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/roboto-serif": "^4.5.6",
-    "add": "^2.0.6",
     "contentlayer": "^0.2.5",
     "framer-motion": "^6",
-    "lodash.kebabcase": "^4.1.1",
     "next": "12.2.0",
     "next-contentlayer": "^0.2.5",
     "next-seo": "^5.4.0",
-    "next-sitemap": "^3.1.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-reveal": "^1.2.2",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-prism-plus": "^1.4.1",
-    "remark-unwrap-images": "^3.0.1",
-    "yarn": "^1.22.19"
+    "remark-unwrap-images": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
@@ -38,7 +34,9 @@
     "dayjs": "^1.11.3",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
+    "lodash.kebabcase": "^4.1.1",
     "markdown-to-jsx": "^7.1.7",
+    "next-sitemap": "^3.1.10",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "typescript": "4.7.4"

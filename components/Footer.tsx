@@ -13,15 +13,15 @@ export default function Footer() {
     <Container as="footer" maxW="1080px" my="8">
       <Grid gridTemplateColumns="1fr 1fr 1fr" gap="8">
         <GridItem>
-            <Heading variant="small">Let's Chat</Heading>
+            <Heading variant="small">Let&apos;s Chat</Heading>
             <Text variant="caption">
-              I am excited for new opportunities, let's talk about working
+              I am excited for new opportunities, let&apos;s talk about working
               together.
             </Text>
         </GridItem>
         <GridItem>
             <Heading variant="small">Keep In Touch</Heading>
-            <Text variant="caption">Follow my social media and see what I'm up to.</Text>
+            <Text variant="caption">Follow my social media and see what I&apos;m up to.</Text>
         </GridItem>
         <GridItem>
             <Heading variant="small">Subscribe</Heading>
