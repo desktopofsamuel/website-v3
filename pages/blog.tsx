@@ -1,12 +1,11 @@
 import Layout from "components/Layout";
 import { allPosts, Post } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import Link from "next/link";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { sortByDate } from "@/utils"
+import { sortByDate } from "@/utils";
+import ListBlog from "@/components/ListBlog";
+import { Grid } from "@chakra-ui/react";
+import ListBlogDetail from "@/components/ListBlogDetail";
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
@@ -24,22 +23,26 @@ export default function BlogListPage({
   return (
     <Layout>
       <h1>Blog</h1>
-      <h2>Featured List</h2>
-      {posts.filter(post => post.feature === true).sort(sortByDate).map((post) => (
-        <div key={post.slug}>
-          <p>
-            <Link href={`/${post.slug}/`}>{post.title}</Link>
-          </p>
-        </div>
-      ))}
-       <h2>Blog List</h2>
-      {posts.filter(post => post.feature !== true).sort(sortByDate).map((post) => (
-        <div key={post.slug}>
-          <p>
-            <Link href={`/${post.slug}/`}>{post.title}</Link>
-          </p>
-        </div>
-      ))}
+      <p>
+        A collection of posts I wrote about design process, technology and
+        productivity.
+      </p>
+      <h2>Featured posts</h2>
+      <Grid gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr"}} gap="4">
+        {posts
+          .filter((post) => post.feature === true)
+          .sort(sortByDate)
+          .map((post) => (
+            <ListBlog key={post.slug} data={post} />
+          ))}
+      </Grid>
+      <h2>All posts</h2>
+      {posts
+        .filter((post) => post.feature !== true)
+        .sort(sortByDate)
+        .map((post) => (
+          <ListBlogDetail key={post.slug} data={post} />
+        ))}
     </Layout>
   );
 }

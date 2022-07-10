@@ -7,6 +7,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import ListPortfolio from "@/components/ListPortfolio";
 
 export const getStaticProps: GetStaticProps<{
   works: Work[];
@@ -22,17 +23,15 @@ export default function WorkListPage({
   works,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout>
-      <h1>My Work</h1>
+    <Layout title="Portfolio" description="Websites & apps portfolio with UI/UX design showcase">
+      <h1>Portfolio</h1>
+      <p>Selected websites and apps showcase since 2015.</p>
       <h2>Featured List</h2>
       {works.filter(post => post.feature === true).sort(sortByDate).map((post) => (
-        <div key={post.slug}>
-          <p>
-            <Link href={`/work/${post.slug}/`}>{post.title}</Link>
-          </p>
-        </div>
+       <ListPortfolio key={post.slug} data={post}/>
       ))}
-       <h2>Blog List</h2>
+       <h2>More Work</h2>
+       <p>Check out some of my personal work & design projects.</p>
       {works.filter(post => post.feature !== true).sort(sortByDate).map((post) => (
         <div key={post.slug}>
           <p>

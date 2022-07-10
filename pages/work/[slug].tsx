@@ -30,7 +30,7 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Layout title={post.title} description={post.excerpt}>
+    <Layout title={`${post.title} for ${post.subtitle}`} description={post.excerpt}>
         <NextSeo
         openGraph={{
           url: CONFIG.URL + `/work/` + post.slug,
@@ -49,7 +49,6 @@ export default function SinglePostPage({
           // ],
         }}
       />
-      <p>Portfolio!</p>
       <h1>{post.title}</h1>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
       <MDXContent />

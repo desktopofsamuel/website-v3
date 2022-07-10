@@ -225,7 +225,7 @@ const customTheme = extendTheme({
     Heading: {
       baseStyle: {
         fontSize: "2xl",
-        fontStyle: "medium",
+        fontWeight: '600',
       },
       variants: {
         pagetitle: {
@@ -257,6 +257,7 @@ const customTheme = extendTheme({
       p: {
         color: "text",
         my: "4",
+        fontWeight: '500',
         a: {
           color: mode("primary.500", "primary.400")(props),
           borderBottomWidth: "1px",

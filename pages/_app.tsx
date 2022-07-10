@@ -5,7 +5,7 @@ import "@fontsource/roboto-serif/variable.css"
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo-config";
 import customTheme from "../theme.js";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/provider";
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {

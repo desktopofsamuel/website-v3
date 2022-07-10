@@ -9,6 +9,7 @@ import { NextSeo } from "next-seo";
 import CONFIG from "../config";
 import { useState, useEffect } from "react";
 import { Heading } from "@chakra-ui/react";
+import NextImage from "@/components/NextImage";
 
 // const NextImage = (props: any) => {
 //   return (
@@ -93,7 +94,7 @@ export default function SinglePostPage({
       <Heading>{post.title}</Heading>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
       <article style={containerStyle}>
-        <MDXContent components={{ Img }} />
+        <MDXContent components={{ NextImage }} />
       </article>
       {/* <Markdown
         options={{

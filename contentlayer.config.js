@@ -36,6 +36,23 @@ export const Post = defineDocumentType(() => ({
       type: "boolean",
       required: false,
     },
+    cover: {
+      type: "string",
+      required: false,
+    },
+    category: {
+      type: "enum",
+      options: ['Ctrl Alt Setup', 'Design Journal'],
+      default: "Design Journal",
+    },
+    draft: {
+      type: 'boolean',
+      required: false,
+    },
+    tldr: {
+      type: "string",
+      required: false,
+    },
   },
   computedFields: {
     slug: {
@@ -44,6 +61,10 @@ export const Post = defineDocumentType(() => ({
         post.path ? `${post.path}` : `${kebabCase(post.title)}`,
     },
     excerpt: {
+      type: "string",
+      resolve: (post) => post.tldr ? post.tldr : parseMarkdown(post.body.raw, 155),
+    },
+    description: {
       type: "string",
       resolve: (post) => parseMarkdown(post.body.raw, 155),
     },
@@ -63,6 +84,18 @@ export const Work = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    subtitle: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    year: {
+      type: "string",
+      required: true,
+    },
     date: {
       type: "date",
       required: true,
@@ -79,6 +112,31 @@ export const Work = defineDocumentType(() => ({
       type: "boolean",
       required: false,
     },
+    cover: {
+      type: "string",
+      required: false,
+    },
+    photo: {
+      type: "string",
+      required: false,
+    },
+    color: {
+      type: "string",
+      required: false,
+    },
+    url: {
+      type: "string",
+      required: false,
+    },
+    category: {
+      type: "enum",
+      options: ['UI/UX Design', 'Web Design', 'Brand Design'],
+      default: "UI/UX Design",
+    },
+    draft: {
+      type: 'boolean',
+      required: false,
+    }
   },
   computedFields: {
     slug: {
