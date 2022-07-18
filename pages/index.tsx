@@ -22,6 +22,7 @@ import NextImage from "@/components/NextImage";
 import CardBook from "@/components/CardBook";
 import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
 import CardMusic from "@/components/CardMusic";
+import CardFilms from "@/components/CardFilms"
 
 const Fade = require("react-reveal/Fade");
 
@@ -44,10 +45,11 @@ export default function IndexPage({
   return (
     <Layout>
       <h1>Desktop of Samuel</h1>
-      <SimpleGrid columns={2} gap={4}>
+      <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
         <CardMusic />
         <CardCurrentlyPlaying />
+        <CardFilms/>
       </SimpleGrid>
       <Box my="8">
       <small>#01</small>
