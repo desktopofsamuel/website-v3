@@ -9,6 +9,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListPortfolio from "@/components/ListPortfolio";
 
+
 const Fade = require('react-reveal/Fade')
 
 export const getStaticProps: GetStaticProps<{

@@ -16,9 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./components/*"],
-      "@/utils": ["./utils"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/components/*": ["components/*"],
+      "@/utils": ["utils/"],
+      "@/lib/*": ["lib/*"],
+      "contentlayer/generated": [".contentlayer/generated"]
     }
   },
   "include": [

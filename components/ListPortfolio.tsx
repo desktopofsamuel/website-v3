@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import { Button, Box, Flex, Grid, Heading, Text, useDimensions } from "@chakra-ui/react";
+import { Button, Box, Flex, Grid, Heading, Text, useColorModeValue, } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 
 export default function ListPortfolio({ data }: any) {
@@ -13,7 +13,7 @@ export default function ListPortfolio({ data }: any) {
           <Text textTransform="uppercase" fontSize="sm">
             {post.subtitle}
           </Text>
-          <Heading fontSize="2xl" my="0" color={post.color}>{post.title}</Heading>
+          <Heading fontSize="2xl" my="0" >{post.title}</Heading>
           <Text>{post.description}</Text>
           <Button variant="solid">View Process</Button>
         </Box>

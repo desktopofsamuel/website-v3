@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { sortByDate } from "@/utils";
+import { sortByDate } from "../utils";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -19,8 +19,11 @@ import styles from "../styles/Home.module.css";
 import ListBlog from "@/components/ListBlog";
 import ListPortfolio from "@/components/ListPortfolio";
 import NextImage from "@/components/NextImage";
+import CardBook from "@/components/CardBook";
+import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
+import CardMusic from "@/components/CardMusic";
 
-const Fade = require('react-reveal/Fade')
+const Fade = require("react-reveal/Fade");
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
@@ -41,11 +44,18 @@ export default function IndexPage({
   return (
     <Layout>
       <h1>Desktop of Samuel</h1>
+      <SimpleGrid columns={2} gap={4}>
+        <CardBook />
+        <CardMusic />
+        <CardCurrentlyPlaying />
+      </SimpleGrid>
+      <Box my="8">
       <small>#01</small>
       <Heading>Interaction and Experience Design</Heading>
       <Text>
         Extensive experience delivering products in corporations and start-ups
       </Text>
+
       <Link href="/work">
         <Button>View Process</Button>
       </Link>
@@ -57,6 +67,7 @@ export default function IndexPage({
             <ListPortfolio key={post.slug} data={post} />
           ))}
       </Fade>
+      </Box>
       <small>#02</small>
       <Heading>Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
