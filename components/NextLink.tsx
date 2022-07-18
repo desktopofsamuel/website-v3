@@ -45,7 +45,7 @@ export default function NextLink({
 const defaultProps: LinkProps = {
   target: `_self`,
   className: "",
-  children: {},
+  children: "",
   href: "",
   passHref: false,
   variant: "",
