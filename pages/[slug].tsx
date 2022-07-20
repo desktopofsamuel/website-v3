@@ -9,6 +9,8 @@ import { NextSeo } from "next-seo";
 import CONFIG from "../config";
 import { useState, useEffect } from "react";
 import {
+  Box,
+  Text,
   chakra,
   Heading,
   Alert,
@@ -75,23 +77,6 @@ export const getStaticProps: GetStaticProps<{
   return { props: { post } };
 };
 
-const containerStyle = {
-  "* > img": {
-    width: "100%",
-    display: "inline-block",
-  },
-  display: "block",
-  position: "relative",
-  maxWidth: "800px",
-  overflow: "hidden",
-
-  "* > nav": {
-    position: "absolute",
-    top: "0",
-    right: "0",
-  },
-};
-
 export default function SinglePostPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -116,8 +101,10 @@ export default function SinglePostPage({
           // ],
         }}
       />
-      <Heading>{post.title}</Heading>
-      <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
+      <Box paddingTop="20">
+        <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
+        <Heading variant="pagetitle">{post.title}</Heading>
+      </Box>
       <Article
         sx={{
           display: "block",
@@ -125,11 +112,17 @@ export default function SinglePostPage({
           maxWidth: "800px",
           overflow: "hidden",
 
-          "nav": {
-          position: 'sticky',
-          top: '0',
-          right: '0',
-          height: '200px',
+          nav: {
+            position: "sticky",
+            top: "0",
+            right: "0",
+            height: "200px",
+          },
+
+          "h1, h2, h3, h4, h5, h6": {
+            fontFamily: "Space Grotesk",
+            color: "black",
+            lineHeight: "short",
           },
         }}
       >

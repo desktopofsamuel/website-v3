@@ -44,7 +44,7 @@ export default function IndexPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <h1>Desktop of Samuel</h1>
+      <Heading variant="pagetitle">Desktop of Samuel</Heading>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
         <CardMusic />
@@ -52,7 +52,7 @@ export default function IndexPage({
         <CardFilms/>
       </SimpleGrid>
       <Box my="8">
-      <small>#01</small>
+      <Heading variant="small">#01</Heading>
       <Heading>Interaction and Experience Design</Heading>
       <Text>
         Extensive experience delivering products in corporations and start-ups
@@ -70,7 +70,7 @@ export default function IndexPage({
           ))}
       </Fade>
       </Box>
-      <small>#02</small>
+      <Heading variant="small">#02</Heading>
       <Heading>Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
       <Link href="/blog">
@@ -81,7 +81,7 @@ export default function IndexPage({
           <ListBlog key={post.slug} data={post} />
         ))}
       </SimpleGrid>
-      <small>#03</small>
+      <Heading variant="small">#03</Heading>
       <Heading>Tools & Resources</Heading>
       <Text>
         Best resources and tools I have been using. Guide on getting started in
@@ -112,7 +112,7 @@ export default function IndexPage({
               </Box>
             ))}
           <VStack p="8">
-            <small>#04</small>
+            <Heading variant="small">#04</Heading>
             <Heading>Through the lens</Heading>
             <Text>Sets of photos according to cities that I have visited.</Text>
             <Link href="/photo">

@@ -10,9 +10,9 @@ const customTheme = extendTheme({
     useSystemColorMode: false,
   },
   fonts: {
-    body: "Roboto Serif, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
+    body: "Chivo, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
     heading:
-      "Roboto Serif, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
+      "Space Grotesk, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
     mono: "Space Mono, IBM Plex Mono, monospace",
   },
   colors: {
@@ -27,6 +27,11 @@ const customTheme = extendTheme({
     },
     yellow: {
       100: '#FFF9EF',
+      200: '#F2E3CD',
+      300: '#EEDDCC',
+      800: '4F483B',
+      900: '150D00',
+
     },
     primary: {
       300: "#33aaff",
@@ -52,7 +57,7 @@ const customTheme = extendTheme({
   semanticTokens: {
     colors: {
       text: {
-        default: "gray.600",
+        default: "yellow.900",
         _dark: "indigo.300",
       },
       background: {
@@ -60,7 +65,7 @@ const customTheme = extendTheme({
         _dark: "indigo.900",
       },
       border: {
-        default: "indigo.300",
+        default: "yellow.200",
         _dark: "indigo.800",
       },
       outline: {
@@ -123,6 +128,7 @@ const customTheme = extendTheme({
   components: {
     Button: {
       baseStyle: (props) => ({
+        fontFamily: "Space Grotesk",
         // background: mode('indigo.100', 'indigo.900')(props),
         _hover: {
           textDecoration: "none",
@@ -179,6 +185,13 @@ const customTheme = extendTheme({
           marginBottom: "2",
           fontSize: "sm",
         }),
+        small: (props) => ({
+          fontSize: 'sm',
+          fontFamily: "heading",
+          fontWeight: "medium",
+          textTransform: 'uppercase',
+          letterSpacing: 'wide',
+        })
       },
     },
     Link: {
@@ -233,9 +246,10 @@ const customTheme = extendTheme({
       },
       variants: {
         pagetitle: {
-          fontSize: "4xl",
+          fontSize: "6xl",
           mt: "0",
           mb: "8",
+          letterSpacing: 'tighter',
         },
         title: {
           fontSize: "2xl",
@@ -247,8 +261,9 @@ const customTheme = extendTheme({
         },
         small: {
           fontSize: 'sm',
-          letterSpacing: 'loose',
-          textTransform: "uppercase",
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          letterSpacing: 'wide',
         }
       },
       defaultProps: {
@@ -260,7 +275,6 @@ const customTheme = extendTheme({
     global: (props) => ({
       body: {
         lineHeight: "taller",
-        letterSpacing: "tight",
         background: "background",
       },
       p: {

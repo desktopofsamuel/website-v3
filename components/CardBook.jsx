@@ -16,23 +16,14 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import CardBase from "@/components/CardBase"
 
 const Books = () => {
   const { data, error } = useSWR("/api/books", fetcher);
 
   return (
     <>
-      <Box
-        border="1px solid"
-        borderColor="border"
-        p="4"
-        boxShadow="sm"
-        transition="all ease-in-out 200ms"
-        _hover={{ boxShadow: "md" }}
-        borderRadius="16"
-        gridColumn={{ base: "span 2", md: "initial" }}
-      >
-        <Text variant="small">📚 Recently reading</Text>
+     <CardBase title="📚 Recently reading">
         {!data ? (
           <>
             <Skeleton width="50%" /> <Skeleton />
@@ -77,7 +68,7 @@ const Books = () => {
             </Grid>
           ))
         )}
-      </Box>
+      </CardBase>
     </>
   );
 };

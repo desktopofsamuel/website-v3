@@ -26,6 +26,7 @@ const getAccessToken = async () => {
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5`;
 const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5`
 const CURRENTLY_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
+const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=3`
 
 export const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
@@ -51,6 +52,16 @@ export const getCurrentlyPlaying = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch(CURRENTLY_PLAYING_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    }
+  });
+};
+
+export const getRecentlyPlayed = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch(RECENTLY_PLAYED_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`
     }

@@ -4,7 +4,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
 import ListBlog from "@/components/ListBlog";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Heading } from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
 
 const Fade = require('react-reveal/Fade')
@@ -24,7 +24,7 @@ export default function BlogListPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <h1>Blog</h1>
+      <Heading variant="pagetitle">Blog</Heading>
       <p>
         A collection of posts I wrote about design process, technology and
         productivity.

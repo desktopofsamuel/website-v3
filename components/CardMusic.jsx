@@ -9,6 +9,7 @@ import {
   SimpleGrid,
   useColorModeValue,
   Tooltip,
+  Heading,
   Center,
   Image as ChakraImage,
   keyframes,
@@ -17,6 +18,7 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import CardBase from "@/components/CardBase";
 // import Image from "next/image";
 
 const bounce = keyframes`
@@ -58,17 +60,7 @@ const CardMusic = () => {
 
   return (
     <>
-      <Box
-        border="1px solid"
-        borderColor="border"
-        boxShadow="sm"
-        transition="all ease-in-out 200ms"
-        _hover={{ boxShadow: "md" }}
-        p="4"
-        borderRadius="16"
-        gridColumn={{ base: "span 2", md: "initial" }}
-      >
-        <Text variant="small">🎧 Recently listening to</Text>
+      <CardBase title="🎧 Recently listening">
         <SimpleGrid
           columns={2}
           row={2}
@@ -183,14 +175,14 @@ const CardMusic = () => {
                     </Box>
                   </Box>
                 </NextLink>
-                <Text m="0" mt={2} fontSize="sm" lineHeight="short">
+                <Heading m="2" fontSize="sm" lineHeight="short">
                   {artist.name}
-                </Text>
+                </Heading>
               </Center>
             ))
           )}
         </SimpleGrid>
-      </Box>
+        </CardBase>
     </>
   );
 };

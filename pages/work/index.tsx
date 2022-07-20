@@ -8,7 +8,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListPortfolio from "@/components/ListPortfolio";
-
+import { Heading, Text } from "@chakra-ui/react";
 
 const Fade = require('react-reveal/Fade')
 
@@ -30,10 +30,10 @@ export default function WorkListPage({
       title="Portfolio"
       description="Websites & apps portfolio with UI/UX design showcase"
     >
-      <h1>Portfolio</h1>
-      <p>Selected websites and apps showcase since 2015.</p>
+      <Heading variant="pagetitle">Portfolio</Heading>
+      <Text>Selected websites and apps showcase since 2015.</Text>
 
-      <h2>Featured List</h2>
+      <Text variant="small">Featured List</Text>
       <Fade bottom>
         {works
           .filter((post) => post.feature === true)
@@ -42,8 +42,8 @@ export default function WorkListPage({
             <ListPortfolio key={post.slug} data={post} />
           ))}
       </Fade>
-      <h2>More Work</h2>
-      <p>Check out some of my personal work & design projects.</p>
+      <Heading variant="small">More Work</Heading>
+      <Text>Check out some of my personal work & design projects.</Text>
       {works
         .filter((post) => post.feature !== true)
         .sort(sortByDate)

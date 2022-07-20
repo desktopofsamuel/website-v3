@@ -14,10 +14,10 @@ export default function ListBlogDetail({ data }: any) {
           <NextImage src={post.cover} alt={post.title} />
         </Box>
         <Box>
-          <Text textTransform="uppercase">
+          <Text variant="small">
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </Text>
-          <Heading fontSize="xl" my="0">{post.title}</Heading>
+          <Heading variant="posttitle">{post.title}</Heading>
           <Text>{post.description}</Text>
         </Box>
       </Grid>

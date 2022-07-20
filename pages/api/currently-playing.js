@@ -7,7 +7,7 @@ export default async function CurrentPlaying(_, res) {
   }
 
   const song = await response.json();
-  console.log(song.item.images);
+  // console.log(song.item.images);
 
   const isPlaying = song.is_playing;
   const title = song.item.name;

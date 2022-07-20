@@ -17,6 +17,7 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import CardBase from "@/components/CardBase";
 
 const CardFilms = () => {
   const { data, error } = useSWR("/api/films", fetcher);
@@ -48,18 +49,7 @@ const CardFilms = () => {
 
   return (
     <>
-      <Box
-        backgroundColor={useColorModeValue("gray.50", "gray.700")}
-        p="4"
-        borderRadius="16"
-        gridColumn="span 2"
-        width="100%"
-        zIndex="0"
-        position="relative"
-      >
-        <Text variant="small" textTransform="uppercase" letterSpacing="wide">
-          🎬 最近看
-        </Text>
+      <CardBase title="🎬 Recently watching">
         <Grid
           display="flex"
           flexDirection="row"
@@ -100,7 +90,7 @@ const CardFilms = () => {
             ))
           )}
         </Grid>
-      </Box>
+        </CardBase>
     </>
   );
 };
