@@ -24,7 +24,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const CardCurrentlyPlaying = () => {
   const { data: staticData } = useSWR("/api/recently-played", fetcher);
   const { data: dynamicData } = useSWR("/api/currently-playing", fetcher);
-  
+
   return dynamicData?.isPlaying ? (
    <CardBase title="Currently playing">
       <Heading>{dynamicData.title}</Heading>
@@ -34,8 +34,8 @@ const CardCurrentlyPlaying = () => {
    <CardBase title="Last played">
       {staticData?.map((song, i) => (
         <>
-          <Heading my="0">{song.title}</Heading>
-          <Text>{song.artist}</Text>
+          <Heading my="0" fontSize="6xl">{song.title}</Heading>
+          <Text fontFamily="heading">{song.artist}</Text>
         </>
       ))}
     </CardBase>

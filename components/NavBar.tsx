@@ -10,6 +10,7 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
+  Text,
   Center,
   ModalBody,
   ModalCloseButton,
@@ -27,7 +28,7 @@ export default function NavBar() {
       <Container as="header" maxW="1080px">
         <Flex as="nav" alignItems="center">
           <Link href="/">
-            <p>Desktop of Samuel</p>
+            <Text fontFamily="heading" cursor="pointer">Desktop of Samuel</Text>
           </Link>
           <Spacer />
           <List
@@ -36,6 +37,7 @@ export default function NavBar() {
             listStyleType="none"
             flexDir="row"
             gap="4"
+            fontFamily="heading"
           >
             <ListItem>
               <Link href="/">Home</Link>
@@ -64,8 +66,8 @@ export default function NavBar() {
           <ModalCloseButton />
           <ModalBody>
             <Center>
-              <Box width="fit-content">
-                <Flex flexDir="column" textAlign="center">
+              <Box width="fit-content" fontFamily="heading">
+                <Flex  flexDirection="column" textAlign="center" >
                   <Link href="/">Home</Link>
                   <Link href="/about">About</Link>
                   <Link href="/blog">Blog</Link>

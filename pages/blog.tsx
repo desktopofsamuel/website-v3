@@ -4,7 +4,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
 import ListBlog from "@/components/ListBlog";
-import { Grid, Heading } from "@chakra-ui/react";
+import { Grid, Heading, Text } from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
 
 const Fade = require('react-reveal/Fade')
@@ -29,7 +29,7 @@ export default function BlogListPage({
         A collection of posts I wrote about design process, technology and
         productivity.
       </p>
-      <h2>Featured posts</h2>
+      <Text variant="small">Featured posts</Text>
       <Grid gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr"}} gap="4">
         <Fade bottom>
         {posts
@@ -40,7 +40,7 @@ export default function BlogListPage({
           ))}
           </Fade>
       </Grid>
-      <h2>All posts</h2>
+      <Text variant="small">All posts</Text>
       <Fade bottom>
       {posts
         .filter((post) => post.feature !== true)

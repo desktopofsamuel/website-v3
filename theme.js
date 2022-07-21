@@ -26,12 +26,11 @@ const customTheme = extendTheme({
       400: "red",
     },
     yellow: {
-      100: '#FFF9EF',
-      200: '#F2E3CD',
-      300: '#EEDDCC',
-      800: '4F483B',
-      900: '150D00',
-
+      100: "#FFF9EF",
+      200: "#F2E3CD",
+      300: "#EEDDCC",
+      800: "4F483B",
+      900: "150D00",
     },
     primary: {
       300: "#33aaff",
@@ -56,9 +55,13 @@ const customTheme = extendTheme({
   },
   semanticTokens: {
     colors: {
-      text: {
+      primarytext: {
         default: "yellow.900",
         _dark: "indigo.300",
+      },
+      secondarytext: {
+        default: "yellow.800",
+        _dark: "indigo.200",
       },
       background: {
         default: "yellow.100",
@@ -186,12 +189,12 @@ const customTheme = extendTheme({
           fontSize: "sm",
         }),
         small: (props) => ({
-          fontSize: 'sm',
+          fontSize: "sm",
           fontFamily: "heading",
           fontWeight: "medium",
-          textTransform: 'uppercase',
-          letterSpacing: 'wide',
-        })
+          textTransform: "uppercase",
+          letterSpacing: "wide",
+        }),
       },
     },
     Link: {
@@ -241,33 +244,37 @@ const customTheme = extendTheme({
     Heading: {
       baseStyle: {
         fontSize: "2xl",
-        fontWeight: '600',
-        letterSpacing: 'tight',
+        fontWeight: "600",
+        letterSpacing: "tight",
       },
       variants: {
-        pagetitle: {
+        pagetitle: (props) => ({
           fontSize: "6xl",
-          mt: "0",
+          mt: {
+            sm: "5vh",
+            md: "20vh",
+          },
           mb: "8",
-          letterSpacing: 'tighter',
-        },
-        title: {
+          letterSpacing: "tighter",
+        }),
+        title: (props) => ({
           fontSize: "2xl",
           my: "0",
           lineHeight: "tall",
-        },
-        heading: {
+        }),
+        heading: (props) => ({
           fontSize: "3xl",
-        },
-        small: {
-          fontSize: 'sm',
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          letterSpacing: 'wide',
-        }
+          my: "4",
+        }),
+        small: (props) => ({
+          fontSize: "sm",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          letterSpacing: "wide",
+        }),
       },
       defaultProps: {
-        variant: "pagetitle",
+        variant: "title",
       },
     },
   },
@@ -280,7 +287,7 @@ const customTheme = extendTheme({
       p: {
         color: "text",
         my: "4",
-        fontWeight: '500',
+        fontWeight: "500",
         a: {
           color: mode("primary.500", "primary.400")(props),
           borderBottomWidth: "1px",
@@ -303,12 +310,14 @@ const customTheme = extendTheme({
         },
       },
       h1: {
+        fontFamily: "heading",
         fontSize: "3xl",
         fontWeight: "bold",
         mt: "8",
         mb: "4",
       },
       h2: {
+        fontFamily: "heading",
         fontSize: "2xl",
         fontWeight: "bold",
         lineHeight: "taller",
@@ -316,6 +325,7 @@ const customTheme = extendTheme({
         mb: "4",
       },
       h3: {
+        fontFamily: "heading",
         fontSize: "md",
         fontWeight: "bold",
         mt: "8",
@@ -333,12 +343,12 @@ const customTheme = extendTheme({
         whiteSpace: "pre-wrap",
         fontSize: "sm",
         lineHeight: "short",
-        backgroundColor: "gray.200",
+        backgroundColor: "yellow.200",
       },
       code: {
         padding: "1",
         margin: "2 0",
-        backgroundColor: "gray.200",
+        backgroundColor: "yellow.200",
         borderRadius: "2",
       },
       iframe: {

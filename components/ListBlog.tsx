@@ -12,7 +12,7 @@ export default function ListBlog({ data }: any) {
         <Box position="relative" width="fit-content">
           <NextImage src={post.cover} alt={post.title} />
         </Box>
-        <Heading variant="posttitle">{post.title}</Heading>
+        <Heading variant="heading" my="0">{post.title}</Heading>
         <Text>{post.excerpt}</Text>
       </Box>
     </Link>

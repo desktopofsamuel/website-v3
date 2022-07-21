@@ -82,7 +82,6 @@ const CardFilms = () => {
               >
                 <NextLink href={item.link} target="_blank" variant="noeffect">
                   <Tooltip label={item.name} fontSize="md" mt="10px">
-                    {/* <CustomImage src={item.image} alt={item.name} ref={ref} /> */}
                     <CustomCard src={item.image} alt={item.name} />
                   </Tooltip>
                 </NextLink>

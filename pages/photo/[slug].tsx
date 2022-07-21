@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<{
   return { props: { post } };
 };
 
-export default function SingleWorkPage({
+export default function SinglePhotoPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);

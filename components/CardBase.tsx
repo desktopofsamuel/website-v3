@@ -1,11 +1,12 @@
+import React from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
 
 type Props = {
-  children: any,
-  title: string,
-}
+  children: any;
+  title: string;
+};
 
-const CardBase = ({ children, title }: Props) => {
+const CardBase = ({ children, title}: Props) => {
   return (
     <Box
       border="1px solid"
@@ -17,10 +18,16 @@ const CardBase = ({ children, title }: Props) => {
       borderRadius="16"
       gridColumn={{ base: "span 2", md: "initial" }}
     >
-      <Text variant="small" my="2">{title}</Text>
+      <Text variant="small" my="2">
+        {title}
+      </Text>
       {children}
     </Box>
-  );
+  )
 };
 
-export default CardBase
+// const CardBase = React.forwardRef(({ children, title}: Props,  ref )) => (
+
+//   );
+
+export default CardBase;

@@ -101,9 +101,9 @@ export default function SinglePostPage({
           // ],
         }}
       />
-      <Box paddingTop="20">
-        <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
+      <Box>
         <Heading variant="pagetitle">{post.title}</Heading>
+        <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
       </Box>
       <Article
         sx={{

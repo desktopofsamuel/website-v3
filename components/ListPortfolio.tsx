@@ -13,7 +13,7 @@ export default function ListPortfolio({ data }: any) {
           <Text variant="small" my="0">
             {post.subtitle}
           </Text>
-          <Heading variant="postTitle">{post.title}</Heading>
+          <Heading variant="heading">{post.title}</Heading>
           <Text>{post.description}</Text>
           <Button variant="solid">View Process</Button>
         </Box>
