@@ -121,7 +121,7 @@ export default function SinglePostPage({
           },
 
           "h1, h2, h3, h4, h5, h6": {
-            fontFamily: "Space Grotesk",
+            fontFamily: "fonts.heading",
             color: "colors.black",
             lineHeight: "short",
           },

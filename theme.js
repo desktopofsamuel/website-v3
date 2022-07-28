@@ -331,6 +331,18 @@ const customTheme = extendTheme({
         mt: "8",
         mb: "4",
       },
+      blockquote: {
+        fontFamily: "heading",
+        margin: "10 0",
+      },
+      "blockquote > p": {
+        fontStyle: "normal",
+        fontFamily: "heading",
+        fontSize: "2xl",
+        lineHeight: "short",
+        letterSpacing: "tight", 
+        padding: "10",
+      },
       ul: {
         listStyle: "square",
         my: "2",
