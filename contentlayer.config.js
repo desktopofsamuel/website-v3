@@ -32,6 +32,7 @@ export const Post = defineDocumentType(() => ({
     tags: {
       type: "list",
       of: { type: "string" },
+      required: true,
     },
     feature: {
       type: "boolean",
@@ -67,7 +68,7 @@ export const Post = defineDocumentType(() => ({
     },
     description: {
       type: "string",
-      resolve: (post) => parseMarkdown(post.body.raw, 155),
+      resolve: (post) => parseMarkdown(post.body.raw, 300),
     },
   },
 }));
