@@ -51,6 +51,11 @@ export default function NavBar() {
             <ListItem>
               <Link href="/work">Work</Link>
             </ListItem>
+            <IconButton
+                    aria-label="Switch Color Mode"
+                    icon={colorMode === `light` ? <SunIcon /> : <MoonIcon />}
+                    onClick={toggleColorMode}
+                  />
           </List>
           <IconButton
             aria-label="Open Menu"

@@ -27,16 +27,16 @@ const CardCurrentlyPlaying = () => {
 
   return dynamicData?.isPlaying ? (
    <CardBase title="Currently playing">
-      <Heading>{dynamicData.title}</Heading>
-      <Text>{dynamicData.artist}</Text>
+      <Heading my="0" fontSize="5xl">{dynamicData.title}</Heading>
+      <Text fontFamily="heading">{dynamicData.artist}</Text>
       </CardBase>
   ) : (
    <CardBase title="Last played">
       {staticData?.map((song, i) => (
-        <>
-          <Heading my="0" fontSize="6xl">{song.title}</Heading>
+        <Box key={i}>
+          <Heading my="0" fontSize="5xl">{song.title}</Heading>
           <Text fontFamily="heading">{song.artist}</Text>
-        </>
+        </Box>
       ))}
     </CardBase>
   );

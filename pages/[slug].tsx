@@ -113,15 +113,16 @@ export default function SinglePostPage({
           overflow: "hidden",
 
           nav: {
-            position: "sticky",
-            top: "0",
+            position: "fixed",
+            padding: "8",
+            top: "30%",
             right: "0",
-            height: "200px",
+            width: "250px",
           },
 
           "h1, h2, h3, h4, h5, h6": {
             fontFamily: "Space Grotesk",
-            color: "black",
+            color: "colors.black",
             lineHeight: "short",
           },
         }}
