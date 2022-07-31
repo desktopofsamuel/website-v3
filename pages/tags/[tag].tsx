@@ -34,9 +34,7 @@ export default function TagPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      {/* {console.log(tag, posts)} */}
       <Heading variant="pagetitle">Posts tagged as {tag}</Heading>
-
       {posts?.sort(sortByDate).map((post) => (
         <ListBlogDetail key={post.slug} data={post} />
       ))}

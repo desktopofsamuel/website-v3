@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import { allWorks, Work } from "contentlayer/generated";
+import { allPhotos, Photo } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { sortByDate } from "@/utils";
@@ -13,17 +13,17 @@ import { Heading, Text } from "@chakra-ui/react";
 const Fade = require('react-reveal/Fade')
 
 export const getStaticProps: GetStaticProps<{
-  works: Work[];
+  photos: Photo[];
 }> = () => {
   return {
     props: {
-      works: allWorks,
+      photos: allPhotos,
     },
   };
 };
 
 export default function PhotoListPage({
-  works,
+  photos,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
@@ -34,23 +34,14 @@ export default function PhotoListPage({
       <Text>I’m greatly inspired by cities and stories within. Therefore I publish sets of photos according to cities that I have visited. More photos on my Instagram.</Text>
 
       <Text variant="small">Featured List</Text>
-      <Fade bottom>
-        {works
-          .filter((post) => post.feature === true)
-          .sort(sortByDate)
-          .map((post) => (
-            <ListPortfolio key={post.slug} data={post} />
-          ))}
-      </Fade>
       <Heading variant="small">More Work</Heading>
       <Text>Check out some of my personal work & design projects.</Text>
-      {works
-        .filter((post) => post.feature !== true)
+      {photos
         .sort(sortByDate)
         .map((post) => (
           <div key={post.slug}>
             <p>
-              <Link href={`/work/${post.slug}/`}>{post.title}</Link>
+              <Link href={`/photo/${post.slug}/`}>{post.title}</Link>
             </p>
           </div>
         ))}

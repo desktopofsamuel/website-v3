@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -89,7 +90,7 @@ const CardFilms = () => {
             ))
           )}
         </Grid>
-        </CardBase>
+      </CardBase>
     </>
   );
 };

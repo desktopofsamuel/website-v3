@@ -13,6 +13,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { sortByDate } from "../utils";
 import type { NextPage } from "next";
+import { useRef } from "react"
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";

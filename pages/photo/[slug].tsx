@@ -1,4 +1,4 @@
-import { allWorks, Work } from "contentlayer/generated";
+import { allPhotos, Photo } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Layout from "@/components/Layout";
@@ -8,15 +8,15 @@ import CONFIG from "../../config";
 
 export const getStaticPaths = () => {
   return {
-    paths: allWorks.map((post) => ({ params: { slug: post.slug } })),
+    paths: allPhotos.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps<{
-  post: Work;
+  post: Photo;
 }> = ({ params }) => {
-  const post = allWorks.find((post) => post.slug === params?.slug);
+  const post = allPhotos.find((post) => post.slug === params?.slug);
 
   if (!post) {
     return { notFound: true };
@@ -30,10 +30,10 @@ export default function SinglePhotoPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Layout title={`${post.title} for ${post.subtitle}`} description={post.excerpt}>
+    <Layout title={post.title} description={post.excerpt}>
         <NextSeo
         openGraph={{
-          url: CONFIG.URL + `/work/` + post.slug,
+          url: CONFIG.URL + `/photo/` + post.slug,
           type: "article",
           article: {
             publishedTime: post.date,

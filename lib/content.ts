@@ -22,8 +22,6 @@ const postsWithTag = (tag: string): Post[] => {
   // Search for Tag Name by Static Path
   const object: answerProps = allTags.find(o => o.path === `/tags/${tag}`) as any;
   const result = allPosts.filter((post) => post.tags.includes(object.name)); 
-
-
   return result
 };
 

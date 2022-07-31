@@ -6,7 +6,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
 import { parseMarkdown } from "./utils";
-import toc from "@jsdevtools/rehype-toc"
+import toc from "@jsdevtools/rehype-toc";
+import remarkGfm from "remark-gfm";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -44,11 +45,11 @@ export const Post = defineDocumentType(() => ({
     },
     category: {
       type: "enum",
-      options: ['Ctrl Alt Setup', 'Design Journal'],
+      options: ["Ctrl Alt Setup", "Design Journal"],
       default: "Design Journal",
     },
     draft: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
     tldr: {
@@ -64,7 +65,8 @@ export const Post = defineDocumentType(() => ({
     },
     excerpt: {
       type: "string",
-      resolve: (post) => post.tldr ? post.tldr : parseMarkdown(post.body.raw, 155),
+      resolve: (post) =>
+        post.tldr ? post.tldr : parseMarkdown(post.body.raw, 155),
     },
     description: {
       type: "string",
@@ -132,13 +134,13 @@ export const Work = defineDocumentType(() => ({
     },
     category: {
       type: "enum",
-      options: ['UI/UX Design', 'Web Design', 'Brand Design'],
+      options: ["UI/UX Design", "Web Design", "Brand Design"],
       default: "UI/UX Design",
     },
     draft: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
-    }
+    },
   },
   computedFields: {
     slug: {
@@ -153,12 +155,70 @@ export const Work = defineDocumentType(() => ({
   },
 }));
 
+export const Photo = defineDocumentType(() => ({
+  name: "Photo",
+  contentType: "mdx",
+  // Location of Post source files (relative to `contentDirPath`)
+  filePathPattern: "photo/**/*.mdx",
+  // At the time of writing, we also have to define the `fields`
+  // option to prevent an error on generation. We'll discuss
+  // this option later. For now, we'll add an empty object.
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    date: {
+      type: "date",
+      required: true,
+    },
+    path: {
+      type: "string",
+      required: false,
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+    },
+    feature: {
+      type: "boolean",
+      required: false,
+    },
+    cover: {
+      type: "string",
+      required: false,
+    },
+    draft: {
+      type: "boolean",
+      required: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) =>
+        post.path ? `${post.path}` : `${kebabCase(post.title)}`,
+    },
+    excerpt: {
+      type: "string",
+      resolve: (post) => parseMarkdown(post.body.raw, 155),
+    },
+    description: {
+      type: "string",
+      resolve: (post) => parseMarkdown(post.body.raw, 300),
+    },
+  },
+}));
+
 export default makeSource({
   // Location of source files for all defined documentTypes
   contentDirPath: "content",
-  documentTypes: [Post, Work],
+  documentTypes: [Post, Work, Photo],
   mdx: {
-    remarkPlugins: [[remarkUnwrapImages]],
+    remarkPlugins: [
+      [remarkGfm],
+      [remarkUnwrapImages], 
+    ],
     rehypePlugins: [
       [rehypePrism],
       [rehypeSlug],
