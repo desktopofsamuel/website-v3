@@ -26,10 +26,12 @@ export default function WorkListPage({
   works,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
+   
     <Layout
       title="Portfolio"
       description="Websites & apps portfolio with UI/UX design showcase"
     >
+       {console.log(works)}
       <Heading variant="pagetitle">Portfolio</Heading>
       <Text>Selected websites and apps showcase since 2015.</Text>
 

@@ -17,6 +17,7 @@
     "@fontsource/chivo": "^4.5.7",
     "@fontsource/space-grotesk": "^4.5.8",
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@notionhq/client": "^2.1.1",
     "contentlayer": "^0.2.5",
     "framer-motion": "^6",
     "next": "12.2.0",
