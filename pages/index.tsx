@@ -1,5 +1,12 @@
 import Layout from "components/Layout";
-import { allPosts, allWorks, Post, Work } from "contentlayer/generated";
+import {
+  allPhotos,
+  allPosts,
+  allWorks,
+  Post,
+  Work,
+  Photo,
+} from "contentlayer/generated";
 import {
   Grid,
   Heading,
@@ -13,7 +20,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { sortByDate } from "../utils";
 import type { NextPage } from "next";
-import { useRef } from "react"
+import { useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -23,18 +30,20 @@ import NextImage from "@/components/NextImage";
 import CardBook from "@/components/CardBook";
 import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
 import CardMusic from "@/components/CardMusic";
-import CardFilms from "@/components/CardFilms"
+import CardFilms from "@/components/CardFilms";
 
 const Fade = require("react-reveal/Fade");
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
   works: Work[];
+  photos: Photo[];
 }> = () => {
   return {
     props: {
       posts: allPosts,
       works: allWorks,
+      photos: allPhotos,
     },
   };
 };
@@ -42,6 +51,7 @@ export const getStaticProps: GetStaticProps<{
 export default function IndexPage({
   posts,
   works,
+  photos,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
@@ -50,26 +60,26 @@ export default function IndexPage({
         <CardBook />
         <CardMusic />
         <CardCurrentlyPlaying />
-        <CardFilms/>
+        <CardFilms />
       </SimpleGrid>
       <Box my="8">
-      <Heading variant="small">#01</Heading>
-      <Heading>Interaction and Experience Design</Heading>
-      <Text>
-        Extensive experience delivering products in corporations and start-ups
-      </Text>
+        <Heading variant="small">#01</Heading>
+        <Heading>Interaction and Experience Design</Heading>
+        <Text>
+          Extensive experience delivering products in corporations and start-ups
+        </Text>
 
-      <Link href="/work">
-        <Button>View Process</Button>
-      </Link>
-      <Fade bottom>
-        {works
-          .filter((post) => post.feature === true)
-          .sort(sortByDate)
-          .map((post) => (
-            <ListPortfolio key={post.slug} data={post} />
-          ))}
-      </Fade>
+        <Link href="/work">
+          <Button>View Process</Button>
+        </Link>
+        <Fade bottom>
+          {works
+            .filter((post) => post.feature === true)
+            .sort(sortByDate)
+            .map((post) => (
+              <ListPortfolio key={post.slug} data={post} />
+            ))}
+        </Fade>
       </Box>
       <Heading variant="small">#02</Heading>
       <Heading>Notes on Design & Technology</Heading>
@@ -78,19 +88,24 @@ export default function IndexPage({
         <Button>Read my blog</Button>
       </Link>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={4}>
-        {posts.sort(sortByDate).map((post) => (
-          <ListBlog key={post.slug} data={post} />
-        ))}
+        {posts
+          .sort(sortByDate)
+          .slice(0, 4)
+          .map((post) => (
+            <ListBlog key={post.slug} data={post} />
+          ))}
       </SimpleGrid>
-      <Heading variant="small">#03</Heading>
-      <Heading>Tools & Resources</Heading>
-      <Text>
-        Best resources and tools I have been using. Guide on getting started in
-        design & code.
-      </Text>
-      <Link href="/resources">
-        <Button>My awesome setup</Button>
-      </Link>
+      <Box my="8">
+        <Heading variant="small">#03</Heading>
+        <Heading>Tools & Resources</Heading>
+        <Text>
+          Best resources and tools I have been using. Guide on getting started
+          in design & code.
+        </Text>
+        <Link href="/resources">
+          <Button>My awesome setup</Button>
+        </Link>
+      </Box>
       <Box
         marginLeft="50%"
         width="calc(100vw - 20px)"
@@ -99,18 +114,20 @@ export default function IndexPage({
         <Grid
           gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
         >
-          {posts
+          {photos
             .sort(sortByDate)
             .slice(0, 4)
             .map((post) => (
-              <Box key={post.slug} role="group" overflow="hidden">
-                <NextImage
-                  src={post.cover}
-                  layout="fill"
-                  transition="0.5s all ease-in-out"
-                  _groupHover={{ transform: "scale(1.05)" }}
-                />
-              </Box>
+              <Link href={`/photo/${post.slug}`} key={post.slug}>
+                <Box role="group" overflow="hidden">
+                  <NextImage
+                    src={post.cover}
+                    layout="fill"
+                    transition="0.5s all ease-in-out"
+                    _groupHover={{ transform: "scale(1.05)" }}
+                  />
+                </Box>
+              </Link>
             ))}
           <VStack p="8">
             <Heading variant="small">#04</Heading>
@@ -120,18 +137,20 @@ export default function IndexPage({
               <Button>My photos shot around the world</Button>
             </Link>
           </VStack>
-          {posts
+          {photos
             .sort(sortByDate)
             .slice(4, 8)
             .map((post) => (
-              <Box key={post.slug} role="group" overflow="hidden">
-                <NextImage
-                  src={post.cover}
-                  layout="fill"
-                  transition="0.5s all ease-in-out"
-                  _groupHover={{ transform: "scale(1.05)" }}
-                />
-              </Box>
+              <Link href={`/photo/${post.slug}`} key={post.slug}>
+                <Box role="group" overflow="hidden">
+                  <NextImage
+                    src={post.cover}
+                    layout="fill"
+                    transition="0.5s all ease-in-out"
+                    _groupHover={{ transform: "scale(1.05)" }}
+                  />
+                </Box>
+              </Link>
             ))}
         </Grid>
       </Box>
