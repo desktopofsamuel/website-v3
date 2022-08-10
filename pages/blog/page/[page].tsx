@@ -6,8 +6,7 @@ import { Heading, SimpleGrid } from "@chakra-ui/react";
 import { sortByDate } from "@/utils";
 import Pagination from "@/components/Pagination";
 import { GetStaticProps } from "next/types";
-
-const POSTS_PER_PAGE = 6;
+import { POSTS_PER_PAGE } from "../../../config"
 
 export async function getStaticPaths() {
   const numPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
@@ -56,11 +55,11 @@ export default function BlogPaginatedPage({
   currentPage: number;
 }) {
   return (
-    <Layout>
+    <Layout title={`All blog posts - ${currentPage} of ${numPages}`}>
       <Heading>
-        Page {currentPage} of {numPages}
+        All blog posts - {currentPage} of {numPages}
       </Heading>
-      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={4}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
         {posts.map((post) => (
           <ListBlog key={post.slug} data={post} />
         ))}
