@@ -8,7 +8,7 @@ export default function ListPortfolio({ data }: any) {
 
   return (
     <Link href={`/work/${post.slug}/`} >
-      <Grid gridTemplateColumns={{ sm: "1fr", md: "1fr 2fr"}} gap="4" marginY="10" border="1px solid" borderColor="border" p="8" borderRadius="2xl">
+      <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 2fr"}} gap="4" marginY="10" border="1px solid" borderColor="border" p="8" borderRadius="2xl">
         <Box>
           <Text variant="small" my="0">
             {post.subtitle}

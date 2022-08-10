@@ -33,9 +33,10 @@ export default function NavBar() {
           <Spacer />
           <List
             as="nav"
-            display={{ sm: "none", md: "flex" }}
+            display={{ base: "none", md: "flex" }}
             listStyleType="none"
             flexDir="row"
+            alignItems="center"
             gap="4"
             fontFamily="heading"
           >
@@ -60,7 +61,7 @@ export default function NavBar() {
           <IconButton
             aria-label="Open Menu"
             icon={<HamburgerIcon />}
-            display={{ sm: "block", md: "none" }}
+            display={{ base: "block", md: "none" }}
             onClick={onOpen}
           />
         </Flex>
