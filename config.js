@@ -1,8 +1,8 @@
 module.exports = {
-  TITLE: "Desktop of Samuel",
-  DESCRIPTION: "UI/UX 設計師，談談科技、Gadget心得。",
+  TITLE: "Samuel Wong — Hong Kong UI/UX Designer | Desktop of Samuel",
+  DESCRIPTION: "I'm Samuel, I'm a Hong Kong based UI/UX Designer. User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design - A personal design portfolio, also journal for designers' side-projects.",
   KEYWORDS: "科技,設計,UI,UX,旅行,城市,香港",
-  URL: "https://notes.desktopofsamuel.com",
+  URL: "https://desktopofsamuel.com",
   PATH_PREFIX: "",
   USERNAME: "@desktopofsamuel",
   EMAIL: "",
@@ -44,6 +44,5 @@ module.exports = {
   TWITTER_USERNAME: "@desktopofsamuel",
   COPYRIGHT: "© 版權所有",
   OG_IMAGE: "/opengraph.png",
-  LOCALE: "zh-hk",
-  BIO: "科技 | 設計 | 城市  <br/> <br/>   UI/UX 設計師，喜愛攝影，漫遊城市的不同角落。",
+  LOCALE: "en",
 };

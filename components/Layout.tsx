@@ -2,11 +2,12 @@ import { Container } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { MetaTag } from "next-seo/lib/types";
 
 type LayoutProps = {
   title?: string;
   description?: string;
-  keywords?: [string];
+  keywords?: string[],
   children: React.ReactNode;
 };
 

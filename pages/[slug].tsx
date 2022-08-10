@@ -19,6 +19,8 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
+import { ArticleJsonLd } from "next-seo";
+import { AUTHOR_NAME, URL } from "../config";
 
 // const NextImage = (props: any) => {
 //   return (
@@ -83,6 +85,24 @@ export default function SinglePostPage({
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <Layout title={post.title} description={post.excerpt}>
+      <ArticleJsonLd
+        url={CONFIG.URL + `/` + post.slug}
+        title={post.title}
+        // images={[
+        //   {post.cover},
+        // ]}
+        datePublished={post.date}
+        dateModified={post.date}
+        authorName={[
+          {
+            name: AUTHOR_NAME,
+            url: URL,
+          },
+        ]}
+        publisherName="Desktop Of Samuel"
+        publisherLogo="https://www.example.com/photos/logo.jpg"
+        description={post.excerpt}
+      />
       <NextSeo
         openGraph={{
           url: CONFIG.URL + `/` + post.slug,
@@ -101,6 +121,7 @@ export default function SinglePostPage({
           // ],
         }}
       />
+
       <Box>
         <Heading variant="pagetitle">{post.title}</Heading>
         <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>

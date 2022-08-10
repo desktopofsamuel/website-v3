@@ -24,14 +24,14 @@ export default function BlogListPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout>
+    <Layout title="Blog" description="A collection of posts I wrote about design process, technology and productivity.">
       <Heading variant="pagetitle">Blog</Heading>
       <p>
         A collection of posts I wrote about design process, technology and
         productivity.
       </p>
       <Text variant="small">Featured posts</Text>
-      <Grid gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr" }} gap="4">
+      <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="4">
         <Fade bottom>
           {posts
             .filter((post) => post.feature === true)

@@ -30,7 +30,7 @@ export default function SingleWorkPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Layout title={`${post.title} for ${post.subtitle}`} description={post.excerpt}>
+    <Layout title={`${post.subtitle}`} description={post.excerpt}>
         <NextSeo
         openGraph={{
           url: CONFIG.URL + `/work/` + post.slug,

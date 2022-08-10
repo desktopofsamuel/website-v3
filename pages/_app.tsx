@@ -15,6 +15,7 @@ import type { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS={true} theme={customTheme}>
+      
         <DefaultSeo {...SEO} />
       <Component {...pageProps} />
     </ChakraProvider>
