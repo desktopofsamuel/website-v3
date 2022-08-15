@@ -5,6 +5,8 @@ export const sortByDate = (a, b) => {
 export const parseMarkdown = (markdownText, char) => {
   const charLimit = char || 500;
   const htmlText = markdownText
+    .toString()
+    .replace(/^### (.*$)/gim, "")
     // hide h3 title
     .toString()
     .replace(/^### (.*$)/gim, "")

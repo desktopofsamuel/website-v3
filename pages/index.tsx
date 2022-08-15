@@ -54,7 +54,9 @@ export default function IndexPage({
   photos,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design">
+    <Layout 
+    // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
+    >
       <Heading variant="pagetitle">Desktop of Samuel</Heading>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
@@ -112,7 +114,11 @@ export default function IndexPage({
         style={{ transform: "translateX(-50%)" }}
       >
         <Grid
-          gridTemplateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+          }}
         >
           {photos
             .sort(sortByDate)

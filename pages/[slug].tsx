@@ -88,17 +88,12 @@ export default function SinglePostPage({
       <ArticleJsonLd
         url={CONFIG.URL + `/` + post.slug}
         title={post.title}
-        // images={[
-        //   {post.cover},
-        // ]}
+        images={[
+          `${CONFIG.URL}${post.cover}`,
+        ]}
         datePublished={post.date}
         dateModified={post.date}
-        authorName={[
-          {
-            name: AUTHOR_NAME,
-            url: URL,
-          },
-        ]}
+        authorName={AUTHOR_NAME}
         publisherName="Desktop Of Samuel"
         publisherLogo="https://www.example.com/photos/logo.jpg"
         description={post.excerpt}

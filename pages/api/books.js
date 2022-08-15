@@ -5,7 +5,7 @@ const RSS_URL = "https://damp-lowlands-80262.herokuapp.com/oku";
 function fetcher(url) {
   let parser = new Parser();
   const result = parser.parseURL(url);
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
