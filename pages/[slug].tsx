@@ -9,6 +9,7 @@ import { NextSeo } from "next-seo";
 import CONFIG from "../config";
 import { useState, useEffect } from "react";
 import {
+  Button,
   Box,
   Text,
   chakra,
@@ -130,10 +131,19 @@ export default function SinglePostPage({
 
           nav: {
             position: "fixed",
-            padding: "8",
+            padding: "4",
             top: "30%",
             right: "0",
             width: "250px",
+            
+          },
+
+          "nav > ol > li": {
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            fontSize: "12px",
+            margin: "4px 0px",
           },
 
           "h1, h2, h3, h4, h5, h6": {
@@ -150,6 +160,7 @@ export default function SinglePostPage({
             AlertIcon,
             AlertTitle,
             AlertDescription,
+            Button,
           }}
         />
       </Article>
