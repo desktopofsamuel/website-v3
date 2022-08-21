@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
+import { SimpleGrid, GridItem} from "@chakra-ui/react"
 
 export const getStaticPaths = () => {
   return {
@@ -51,7 +52,7 @@ export default function SinglePhotoPage({
       />
       <h1>{post.title}</h1>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
-      <MDXContent />
+      <MDXContent components={{ SimpleGrid, GridItem }}/>
     </Layout>
   );
 }

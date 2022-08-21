@@ -151,6 +151,7 @@ export default function IndexPage({
                 <Box role="group" overflow="hidden">
                   <NextImage
                     src={post.cover}
+                    alt={post.title}
                     layout="fill"
                     transition="0.5s all ease-in-out"
                     _groupHover={{ transform: "scale(1.05)" }}
