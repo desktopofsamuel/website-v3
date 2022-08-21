@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { allTags } from "@/lib/content";
+import { allTags, groupTags } from "@/lib/content";
 import { Heading, Text } from "@chakra-ui/react";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
