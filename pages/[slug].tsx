@@ -80,6 +80,15 @@ export const getStaticProps: GetStaticProps<{
   return { props: { post } };
 };
 
+const components = {
+  NextImage,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  Button,
+}
+
 export default function SinglePostPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -152,16 +161,7 @@ export default function SinglePostPage({
           },
         }}
       >
-        <MDXContent
-          components={{
-            NextImage,
-            Alert,
-            AlertIcon,
-            AlertTitle,
-            AlertDescription,
-            Button,
-          }}
-        />
+        <MDXContent components={components}/>
       </Article>
       {/* <Markdown
         options={{

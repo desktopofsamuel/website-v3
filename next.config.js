@@ -12,4 +12,9 @@ module.exports = withContentlayer({
     locales: ["en"],
     defaultLocale: "en",
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 });

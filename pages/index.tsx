@@ -24,11 +24,10 @@ import { sortByDate } from "../utils";
 import type { NextPage } from "next";
 import { useRef } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListBlog from "@/components/ListBlog";
 import ListPortfolio from "@/components/ListPortfolio";
-import NextImage from "@/components/NextImage";
+import Image from "next/future/image";
 import CardBook from "@/components/CardBook";
 import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
 import CardMusic from "@/components/CardMusic";
@@ -129,13 +128,12 @@ export default function IndexPage({
               <Link href={`/photo/${post.slug}`} key={post.slug}>
                 <Box role="group" overflow="hidden" position="relative">
                   {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
-                  <NextImage
+                  <Image
                     src={post.cover}
-                    layout="fill"
-                    objectFit="cover"
+                    alt={post.title}
+                    layout="raw"
                     transition="0.5s all ease-in-out"
-                    transform="scale(1.1)"
-                    _groupHover={{ transform: "scale(1.15)" }}
+                    _groupHover={{ transform: "scale(1.05)" }}
                   />
                 </Box>
               </Link>
@@ -153,10 +151,10 @@ export default function IndexPage({
             .map((post) => (
               <Link href={`/photo/${post.slug}`} key={post.slug}>
                 <Box role="group" overflow="hidden">
-                  <NextImage
+                  <Image
                     src={post.cover}
                     alt={post.title}
-                    layout="fill"
+                    layout="raw"
                     transition="0.5s all ease-in-out"
                     _groupHover={{ transform: "scale(1.05)" }}
                   />

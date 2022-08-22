@@ -2,7 +2,7 @@ import { Box,chakra  } from '@chakra-ui/react'
 import Image from "next/image";
 
 const CoverImg = chakra(Image, {
-    shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt','quality','placeholder','blurDataURL','loader '].includes(prop),
+    shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt','quality','placeholder','blurDataURL','loader'].includes(prop),
   })
 
 type Loader = {

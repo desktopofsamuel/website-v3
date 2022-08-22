@@ -5,7 +5,8 @@ import Layout from "@/components/Layout";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
-import { SimpleGrid, GridItem} from "@chakra-ui/react"
+import { Wrap, WrapItem, Stack, SimpleGrid, Text, GridItem, Box, Heading} from "@chakra-ui/react"
+import Image from 'next/future/image'
 
 export const getStaticPaths = () => {
   return {
@@ -25,6 +26,16 @@ export const getStaticProps: GetStaticProps<{
 
   return { props: { post } };
 };
+
+const ResponsiveImage = (props) => (
+  <Image alt={props.alt} layout="raw" style={{ width: "100%"}} src={props.src} {...props}>{console.log(props)}</Image>
+)
+
+const components = {
+  img: ResponsiveImage,
+  SimpleGrid,
+  GridItem,
+}
 
 export default function SinglePhotoPage({
   post,
@@ -50,9 +61,9 @@ export default function SinglePhotoPage({
           // ],
         }}
       />
-      <h1>{post.title}</h1>
-      <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
-      <MDXContent components={{ SimpleGrid, GridItem }}/>
+      <Heading variant="posttitle">{post.title}</Heading>
+      <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
+      <MDXContent components={components}/>
     </Layout>
   );
 }
