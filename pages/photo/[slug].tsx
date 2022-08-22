@@ -27,8 +27,8 @@ export const getStaticProps: GetStaticProps<{
   return { props: { post } };
 };
 
-const ResponsiveImage = (props) => (
-  <Image alt={props.alt} layout="raw" style={{ width: "100%"}} src={props.src} {...props}>{console.log(props)}</Image>
+const ResponsiveImage = (props: any) => (
+  <Image alt={props.alt} layout="raw" style={{ width: "100%"}} src={props.src} {...props}/>
 )
 
 const components = {
