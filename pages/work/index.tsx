@@ -8,7 +8,8 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListPortfolio from "@/components/ListPortfolio";
-import { Heading, Text } from "@chakra-ui/react";
+import { Grid, Heading, Text } from "@chakra-ui/react";
+import ListPortfolioSmall from "@/components/ListPortfolioSmall";
 
 const Fade = require('react-reveal/Fade')
 
@@ -44,16 +45,16 @@ export default function WorkListPage({
       </Fade>
       <Heading variant="small">More Work</Heading>
       <Text>Check out some of my personal work & design projects.</Text>
+      <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 1fr"}} gap="4">
+      <Fade bottom>
       {works
         .filter((post) => post.feature !== true)
         .sort(sortByDate)
         .map((post) => (
-          <div key={post.slug}>
-            <p>
-              <Link href={`/work/${post.slug}/`}>{post.title}</Link>
-            </p>
-          </div>
+          <ListPortfolioSmall key={post.slug} data={post} />
         ))}
+         </Fade>
+        </Grid>
     </Layout>
   );
 }

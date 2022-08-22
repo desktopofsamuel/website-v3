@@ -135,7 +135,6 @@ export default function SinglePostPage({
             top: "30%",
             right: "0",
             width: "250px",
-            
           },
 
           "nav > ol > li": {

@@ -14,7 +14,9 @@ import {
   Button,
   SimpleGrid,
   Box,
+  Flex,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
@@ -31,6 +33,8 @@ import CardBook from "@/components/CardBook";
 import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
 import CardMusic from "@/components/CardMusic";
 import CardFilms from "@/components/CardFilms";
+import NextLink from "@/components/NextLink";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const Fade = require("react-reveal/Fade");
 
@@ -41,9 +45,9 @@ export const getStaticProps: GetStaticProps<{
 }> = () => {
   return {
     props: {
-      posts: allPosts,
-      works: allWorks,
-      photos: allPhotos,
+      posts: allPosts.sort(sortByDate).slice(0, 4),
+      works: allWorks.filter((post) => post.feature === true).sort(sortByDate),
+      photos: allPhotos.sort(sortByDate).slice(0, 8),
     },
   };
 };
@@ -56,8 +60,11 @@ export default function IndexPage({
   return (
     <Layout 
     // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
-    >
-      <Heading variant="pagetitle">Desktop of Samuel</Heading>
+    > 
+      <Flex justifyContent="space-between" alignItems="baseline">
+      <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
+      <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
+      </Flex>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
         <CardMusic />
@@ -66,7 +73,7 @@ export default function IndexPage({
       </SimpleGrid>
       <Box my="8">
         <Heading variant="small">#01</Heading>
-        <Heading>Interaction and Experience Design</Heading>
+        <Heading variant="pagetitle">Interaction and Experience Design</Heading>
         <Text>
           Extensive experience delivering products in corporations and start-ups
         </Text>
@@ -76,8 +83,6 @@ export default function IndexPage({
         </Link>
         <Fade bottom>
           {works
-            .filter((post) => post.feature === true)
-            .sort(sortByDate)
             .map((post) => (
               <ListPortfolio key={post.slug} data={post} />
             ))}
@@ -91,8 +96,6 @@ export default function IndexPage({
       </Link>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
         {posts
-          .sort(sortByDate)
-          .slice(0, 4)
           .map((post) => (
             <ListBlog key={post.slug} data={post} />
           ))}
@@ -121,16 +124,18 @@ export default function IndexPage({
           }}
         >
           {photos
-            .sort(sortByDate)
             .slice(0, 4)
             .map((post) => (
               <Link href={`/photo/${post.slug}`} key={post.slug}>
-                <Box role="group" overflow="hidden">
+                <Box role="group" overflow="hidden" position="relative">
+                  {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
                   <NextImage
                     src={post.cover}
                     layout="fill"
+                    objectFit="cover"
                     transition="0.5s all ease-in-out"
-                    _groupHover={{ transform: "scale(1.05)" }}
+                    transform="scale(1.1)"
+                    _groupHover={{ transform: "scale(1.15)" }}
                   />
                 </Box>
               </Link>
@@ -144,7 +149,6 @@ export default function IndexPage({
             </Link>
           </VStack>
           {photos
-            .sort(sortByDate)
             .slice(4, 8)
             .map((post) => (
               <Link href={`/photo/${post.slug}`} key={post.slug}>

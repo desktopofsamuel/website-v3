@@ -26,12 +26,12 @@ const CardCurrentlyPlaying = () => {
   const { data: dynamicData } = useSWR("/api/currently-playing", fetcher);
 
   return dynamicData?.isPlaying ? (
-   <CardBase title="Currently playing">
+   <CardBase title="🎧 Currently playing">
       <Heading my="0" fontSize="5xl">{dynamicData.title}</Heading>
       <Text fontFamily="heading">{dynamicData.artist}</Text>
       </CardBase>
   ) : (
-   <CardBase title="Last played">
+   <CardBase title="🎧 Last played">
       {staticData?.map((song, i) => (
         <Box key={i}>
           <Heading my="0" fontSize="5xl">{song.title}</Heading>

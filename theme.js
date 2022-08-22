@@ -355,12 +355,12 @@ const customTheme = extendTheme({
         whiteSpace: "pre-wrap",
         fontSize: "sm",
         lineHeight: "short",
-        backgroundColor: "yellow.200",
+        backgroundColor: "border",
       },
       code: {
         padding: "1",
         margin: "2 0",
-        backgroundColor: "yellow.200",
+        backgroundColor: "border",
         borderRadius: "2",
       },
       iframe: {
