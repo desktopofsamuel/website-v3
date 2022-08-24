@@ -62,9 +62,9 @@ export default function IndexPage({
     <Layout 
     // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
     > 
-      <Flex justifyContent="space-between" alignItems="baseline">
-      <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
-      <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
+      <Flex flexDir={{ base: "column", md: "row"}} justifyContent="space-between" alignItems="baseline">
+  <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
+  <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
       </Flex>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
@@ -73,7 +73,6 @@ export default function IndexPage({
         <CardFilms />
       </SimpleGrid>
       <Box my="8">
-        <Heading variant="small">#01</Heading>
         <Heading variant="pagetitle">Interaction and Experience Design</Heading>
         <Text>
           Extensive experience delivering products in corporations and start-ups
@@ -89,8 +88,8 @@ export default function IndexPage({
             ))}
         </Fade>
       </Box>
-      <Heading variant="small">#02</Heading>
-      <Heading>Notes on Design & Technology</Heading>
+   
+      <Heading variant="pagetitle">Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
       <Link href="/blog">
         <Button>Read my blog</Button>
@@ -102,8 +101,7 @@ export default function IndexPage({
           ))}
       </SimpleGrid>
       <Box my="8">
-        <Heading variant="small">#03</Heading>
-        <Heading>Tools & Resources</Heading>
+        <Heading variant="pagetitle">Tools & Resources</Heading>
         <Text>
           Best resources and tools I have been using. Guide on getting started
           in design & code.
@@ -140,9 +138,8 @@ export default function IndexPage({
                 </Box>
               </Link>
             ))}
-          <VStack p="8">
-            <Heading variant="small">#04</Heading>
-            <Heading>Through the lens</Heading>
+          <VStack p="8" justifyContent="center">
+            <Heading fontSize="4xl">Through the lens</Heading>
             <Text>Sets of photos according to cities that I have visited.</Text>
             <Link href="/photo">
               <Button>My photos shot around the world</Button>
@@ -156,7 +153,7 @@ export default function IndexPage({
                   <NextImage
                     src={post.cover}
                     alt={post.title}
-                    // layout="raw"
+                    layotu="fill"
                     transition="0.5s all ease-in-out"
                     _groupHover={{ transform: "scale(1.05)" }}
                   />

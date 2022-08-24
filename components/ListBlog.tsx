@@ -9,10 +9,10 @@ export default function ListBlog({ data }: any) {
   return (
     <Link href={`/${post.slug}/`}>
       <Box marginY="4" cursor="pointer">
-        <Box position="relative" width="fit-content">
-          <NextImage src={post.cover} alt={post.title} />
-        </Box>
-        <Heading variant="heading" my="0">{post.title}</Heading>
+        <NextImage src={post.cover} alt={post.title} />
+        <Heading variant="heading" my="4">
+          {post.title}
+        </Heading>
         <Text>{post.excerpt}</Text>
       </Box>
     </Link>

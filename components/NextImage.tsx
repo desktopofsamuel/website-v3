@@ -1,42 +1,45 @@
-import { Box,chakra  } from '@chakra-ui/react'
-import Image from "next/image";
+import { Box, Wrap, chakra } from "@chakra-ui/react";
+import Image from "next/future/image";
 
 const CoverImg = chakra(Image, {
-    shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt','quality','placeholder','blurDataURL','loader'].includes(prop),
-  })
+  shouldForwardProp: (prop) =>
+    [
+      "width",
+      "height",
+      "src",
+      "alt",
+      "quality",
+      "placeholder",
+      "blurDataURL",
+      "loader",
+    ].includes(prop),
+});
 
 type Loader = {
-  src?: String,
-  width?: Number,
-  quality?: Number,
-}
+  src?: String;
+  width?: Number;
+  quality?: Number;
+};
 
 const myLoader = ({ src, width, quality }: Loader) => {
-    return `${src}?w=${width}&q=${quality}`;
-  };
+  return `${src}?w=${width}&q=${quality}`;
+};
 
 export const NextImage = (props: any) => {
-  const { src, alt, ...rest } = props
+  const { src, alt, ...rest } = props;
   return (
-    <Box pos="relative" cursor="pointer" className="group"  {...rest}>
-    <CoverImg
-        w="auto"
-        h="auto"  
-        loader={myLoader}
-        width={1280}
-        quality={100}
-        height={800}
-        src={src}
-        alt={alt}
-        objectFit="contain"
+    <Box overflow="hidden" cursor="pointer ">
+      <Box
         transition="all 0.5s ease-in-out"
-        _groupHover={{
-          opacity: '0.7'
-          // transform: 'scale(1.05)',
+        _hover={{
+          opacity: "0.7",
+          transform: "scale(1.05)",
         }}
-      />
+      >
+        <Image loader={myLoader} quality={100} src={src} alt={alt} {...rest} />
+      </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default NextImage
+export default NextImage;

@@ -4,15 +4,44 @@ import {
   Flex,
   Box,
   Heading,
+  SimpleGrid,
   Text,
   Button,
   Center,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
+import Profile from "../public/static/profile-2014.jpeg";
 import Layout from "@/components/Layout";
 import NextLink from "@/components/NextLink";
-import Image from "next/image";
+import Image from "next/future/image";
+import NextImage from "@/components/NextImage";
+import HSBC from "../public/about/hsbc.svg";
+import HyperAir from "../public/about/hyperair.svg";
+import Playa from "../public/about/playa.svg";
+
+type Props = {
+  title: string, 
+  text: string, 
+  image?: string,
+}
+
+const Entry: React.FC<Props> = ({ title, text, image }) => {
+  return <Flex
+    justifyContent="space-between"
+    border="1px solid"
+    borderColor="border"
+    borderRadius="lg"
+    paddingX="4"
+    paddingY="3"
+  >
+    <Box>
+      <Heading>{title}</Heading>
+      <Text variant="small">{text}</Text>
+    </Box>
+    {image && <Image src={image} alt="HSBC Logo" />}
+  </Flex>;
+};
 
 const AboutPage: NextPage = () => {
   return (
@@ -34,9 +63,9 @@ const AboutPage: NextPage = () => {
           </Button>
         </Box>
         <Image
-          src="/static/profile-2014.jpg"
+          src={Profile}
           alt="Portrait of Samuel Wong"
-          layout="intrinsic"
+          placeholder="blur"
           width="1920"
           height="1280"
         />
@@ -45,7 +74,7 @@ const AboutPage: NextPage = () => {
         <Heading fontSize="3xl" my="10">
           My Journey
         </Heading>
-        <Box display={{ base: "block", md: "flex"}} gap="8">
+        <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
             <Heading textTransform="uppercase">Interned At Apple</Heading>
             <Text>
@@ -65,39 +94,46 @@ const AboutPage: NextPage = () => {
           <Box>
             <Heading textTransform="uppercase">Switching to product</Heading>
             <Text>
-              Currently, I work as a UX/UI consultant in finance sector. Before
-              that, I worked as a Principal Designer at Hyperair, a travel
-              start-up based in Hong Kong.
+              Currently, I work as a UX/UI consultant in crypto sector. Before
+              that, I built products for bank and startup.
             </Text>
           </Box>
-        </Box>
+        </SimpleGrid>
       </Box>
       <Box>
         <Heading fontSize="4xl">Samuel Wong</Heading>
         <Box py="4">
-          <Heading textTransform="uppercase" fontSize="md" my="4">Career</Heading>
+          <Heading textTransform="uppercase" fontSize="md" my="4">
+            Career
+          </Heading>
           <Grid gap="4">
-          <Box border="1px solid" borderColor="border" borderRadius="md" paddingX="4" paddingY="3" >
-            <Heading>Product Designer @ OKX</Heading>
-            <Text variant="small">2022 - Now</Text>
-          </Box>
-          <Box border="1px solid" borderColor="border" borderRadius="md" paddingX="4" paddingY="3" >
-            <Heading>UX/UI Consultant @ HSBC</Heading>
-            <Text variant="small">2021 - 2022</Text>
-          </Box>
-          <Box border="1px solid" borderColor="border" borderRadius="md" paddingX="4" paddingY="3" >
-            <Heading>Principal Designer @ HyperAir</Heading>
-            <Text variant="small">2019 - 2021</Text>
-          </Box>
+            <Entry title="Product Designer @ OKX" text="2022 - Now" />
+            <Entry title="UX/UI Consultant @ HSBC" text="2021 - 2022" image={HSBC}/>
+            <Entry title="Principal Designer @ HyperAir" text="2019 - 2021" image={HyperAir}/>
+            <Entry title="Co-founder & Design Lead @ Playa" text="2015 - 2019" image={Playa}/>
           </Grid>
         </Box>
         <Box py="4">
-        <Heading textTransform="uppercase" fontSize="md" my="4">Education</Heading>
-        <Box border="1px solid" borderColor="border" borderRadius="md" paddingX="4" paddingY="3" >
+          <Heading textTransform="uppercase" fontSize="md" my="4">
+            Education
+          </Heading>
+          <Grid
+            border="1px solid"
+            borderColor="border"
+            borderRadius="lg"
+            paddingX="4"
+            paddingY="3"
+          >
             <Heading>Bachelor of Arts, The University of Hong Kong</Heading>
             <Text variant="small">2011 - 2015</Text>
-          </Box>
+          </Grid>
         </Box>
+        <Box py="4">
+          <Heading textTransform="uppercase" fontSize="md" my="4">
+            Community
+          </Heading>
+          <Entry title="Community moderator @ Friends of Figma, Hong Kong" text="2022 - Now"/>
+          </Box>
       </Box>
       <Box py="36" textAlign="center" id="contact">
         <Heading>Let&apos;s connect</Heading>
