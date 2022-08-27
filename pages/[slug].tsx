@@ -18,10 +18,16 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import { ArticleJsonLd } from "next-seo";
 import { AUTHOR_NAME, URL } from "../config";
+import { getHeadings } from "utils";
+import ScrollspyNav from "react-scrollspy-nav";
+import NextLink from "@/components/NextLink";
+import slugger from "github-slugger";
 
 // const NextImage = (props: any) => {
 //   return (
@@ -87,20 +93,24 @@ const components = {
   AlertTitle,
   AlertDescription,
   Button,
-}
+};
 
 export default function SinglePostPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
+  const headings = getHeadings(post.body.raw);
+  const ids = headings.map((item) => slugger.slug(item.text));
+  const toc = headings.map((item) => item.text);
+
+  console.log(ids);
+
   return (
     <Layout title={post.title} description={post.excerpt}>
       <ArticleJsonLd
         url={CONFIG.URL + `/` + post.slug}
         title={post.title}
-        images={[
-          `${CONFIG.URL}${post.cover}`,
-        ]}
+        images={[`${CONFIG.URL}${post.cover}`]}
         datePublished={post.date}
         dateModified={post.date}
         authorName={AUTHOR_NAME}
@@ -131,6 +141,33 @@ export default function SinglePostPage({
         <Heading variant="pagetitle">{post.title}</Heading>
         <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
       </Box>
+      <Box
+        display={{ base: "none", lg: "block" }}
+        position="fixed"
+        top="40vh"
+        right="1vw"
+        marginLeft="36px"
+        maxWidth="250px"
+        fontSize="sm"
+        zIndex={100}
+      >
+        <ScrollspyNav
+          scrollTargetIds={ids}
+          offset={500}
+          activeNavClass="is-active"
+          scrollDuration="1000"
+        >
+          <UnorderedList>
+            {headings.map((item) => (
+              <ListItem key={item.text}>
+                <NextLink href={`#${slugger.slug(item.text)}`}>
+                  {item.text}
+                </NextLink>
+              </ListItem>
+            ))}
+          </UnorderedList>
+        </ScrollspyNav>
+      </Box>
       <Article
         sx={{
           display: "block",
@@ -139,6 +176,7 @@ export default function SinglePostPage({
           overflow: "hidden",
 
           nav: {
+            display: "none",
             position: "fixed",
             padding: "4",
             top: "30%",
@@ -161,7 +199,7 @@ export default function SinglePostPage({
           },
         }}
       >
-        <MDXContent components={components}/>
+        <MDXContent components={components} />
       </Article>
       {/* <Markdown
         options={{
