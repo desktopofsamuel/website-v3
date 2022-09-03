@@ -139,7 +139,7 @@ export default function IndexPage({
               </Link>
             ))}
           <VStack p="8" justifyContent="center">
-            <Heading fontSize="4xl">Through the lens</Heading>
+            <Heading fontSize="2xl">Through the lens</Heading>
             <Text>Sets of photos according to cities that I have visited.</Text>
             <Link href="/photo">
               <Button>My photos shot around the world</Button>

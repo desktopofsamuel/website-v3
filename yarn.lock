@@ -228,19 +228,19 @@
   dependencies:
     "@chakra-ui/utils" "2.0.2"
 
-"@chakra-ui/icon@3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-3.0.8.tgz#728476d657f1fc80c2ee0f39859703a0f3314b68"
-  integrity sha512-avd6mthBoG9R8cLLAROi/FItgk7wHy1YpeAXOrGdK/U/ECVWZev64RmI1UduKuVOLlSZldXWzFJmLdw6dAMG7A==
+"@chakra-ui/icon@3.0.9":
+  version "3.0.9"
+  resolved "https://registry.npmjs.org/@chakra-ui/icon/-/icon-3.0.9.tgz"
+  integrity sha512-P2Pwm/za6m1W1oqL2kGHH6XrrymsBjqYAFwOW2lB5Q6mI1e+RYe/iMxDoPSLHMYhqdfH7vyib/ffE3Vv3a5oTA==
   dependencies:
-    "@chakra-ui/utils" "2.0.8"
+    "@chakra-ui/shared-utils" "2.0.1"
 
 "@chakra-ui/icons@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.0.8.tgz#38659b322165566806a8e7a9f1e0d38fa15128f1"
-  integrity sha512-otX85/laLd9rC26EsaRK/QufXxclfK/JGw3vdxh+sEULFgwuC56tUzmXTwIt8GcDIx/LvZBkDgkXN0sn6Cqmog==
+  version "2.0.9"
+  resolved "https://registry.npmjs.org/@chakra-ui/icons/-/icons-2.0.9.tgz"
+  integrity sha512-6xvV2rC8wATgfnRH+fC9mi0nLcgKjhHKO29lV1pGioVI0yWK0dqc//zjcyBhMMpW5ABnSfig7ujVBf3op/Syzg==
   dependencies:
-    "@chakra-ui/icon" "3.0.8"
+    "@chakra-ui/icon" "3.0.9"
 
 "@chakra-ui/image@2.0.3":
   version "2.0.3"
@@ -466,6 +466,11 @@
     "@chakra-ui/form-control" "2.0.2"
     "@chakra-ui/utils" "2.0.2"
 
+"@chakra-ui/shared-utils@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@chakra-ui/shared-utils/-/shared-utils-2.0.1.tgz"
+  integrity sha512-NXDBl/u4wrSNp0ON5R3r3evkRurrAz2yuO7neooaG+O5HEenVouGqm4CsXd6lUAPmjwiGzA0LQFNCt0Hj92dXg==
+
 "@chakra-ui/skeleton@2.0.6":
   version "2.0.6"
   resolved "https://registry.npmjs.org/@chakra-ui/skeleton/-/skeleton-2.0.6.tgz"
@@ -618,16 +623,6 @@
   version "2.0.2"
   resolved "https://registry.npmjs.org/@chakra-ui/utils/-/utils-2.0.2.tgz"
   integrity sha512-9AC/ir9zm0shgFG7kdzOKUH2Wx5VB71M3uRMEsMZf75YlhhiU7AvBNtWXnJu+CBiTi41rKa5A+2ImMOsuPfGbA==
-  dependencies:
-    "@types/lodash.mergewith" "4.6.6"
-    css-box-model "1.2.1"
-    framesync "5.3.0"
-    lodash.mergewith "4.6.2"
-
-"@chakra-ui/utils@2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-2.0.8.tgz#b75e1cd22479eaa64410bd42849e638138971b20"
-  integrity sha512-5xSzOYSYbJEh+myY1mC6rOX+mzM/F2fiDqAw0zybHhfUab4zPHCO5RlgYVJ0L1DlGZUogVgRP6szH1xoBCcWQg==
   dependencies:
     "@types/lodash.mergewith" "4.6.6"
     css-box-model "1.2.1"
@@ -1348,6 +1343,11 @@
   resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.51.tgz"
   integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
 
+"@types/github-slugger@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@types/github-slugger/-/github-slugger-1.3.0.tgz#16ab393b30d8ae2a111ac748a015ac05a1fc5524"
+  integrity sha512-J/rMZa7RqiH/rT29TEVZO4nBoDP9XJOjnbbIofg7GQKs4JIduEO3WLpte+6WeUz/TcrXKlY+bM7FYrp8yFB+3g==
+
 "@types/hast@^2.0.0":
   version "2.3.4"
   resolved "https://registry.npmjs.org/@types/hast/-/hast-2.3.4.tgz"
@@ -1362,7 +1362,7 @@
 
 "@types/lodash.kebabcase@^4.1.7":
   version "4.1.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.kebabcase/-/lodash.kebabcase-4.1.7.tgz#eb2d1162c669ecbc77f9912a31e952563848deff"
+  resolved "https://registry.npmjs.org/@types/lodash.kebabcase/-/lodash.kebabcase-4.1.7.tgz"
   integrity sha512-qzrcpK5uiADZ9OyZaegalM0b9Y3WetoBQ04RAtP3xZFGC5ul1UxmbjZ3j6suCh0BDkvgQmoMh8t5e9cVrdJYMw==
   dependencies:
     "@types/lodash" "*"
@@ -2218,7 +2218,7 @@ escape-string-regexp@^4.0.0:
 
 escape-string-regexp@^5.0.0:
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
+  resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
 eslint-config-next@12.2.0:
@@ -2689,14 +2689,9 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-github-slugger@^1.1.1:
+github-slugger@^1.1.1, github-slugger@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/github-slugger/-/github-slugger-1.4.0.tgz"
-  integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
-
-github-slugger@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.4.0.tgz#206eb96cdb22ee56fdc53a28d5a302338463444e"
   integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
@@ -3318,7 +3313,7 @@ markdown-extensions@^1.0.0:
 
 markdown-table@^3.0.0:
   version "3.0.2"
-  resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-3.0.2.tgz#9b59eb2c1b22fe71954a65ff512887065a7bb57c"
+  resolved "https://registry.npmjs.org/markdown-table/-/markdown-table-3.0.2.tgz"
   integrity sha512-y8j3a5/DkJCmS5x4dMCQL+OR0+2EAq3DOtio1COSHsmW2BGXnNCK3v12hJt1LrUz5iZH5g0LmuYOjDdI+czghA==
 
 markdown-to-jsx@^7.1.7:
@@ -3337,7 +3332,7 @@ mdast-util-definitions@^5.0.0:
 
 mdast-util-find-and-replace@^2.0.0:
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/mdast-util-find-and-replace/-/mdast-util-find-and-replace-2.2.1.tgz#249901ef43c5f41d6e8a8d446b3b63b17e592d7c"
+  resolved "https://registry.npmjs.org/mdast-util-find-and-replace/-/mdast-util-find-and-replace-2.2.1.tgz"
   integrity sha512-SobxkQXFAdd4b5WmEakmkVoh18icjQRxGy5OWTCzgsLRm1Fu/KCtwD1HIQSsmq5ZRjVH0Ehwg6/Fn3xIUk+nKw==
   dependencies:
     escape-string-regexp "^5.0.0"
@@ -3371,7 +3366,7 @@ mdast-util-frontmatter@^1.0.0:
 
 mdast-util-gfm-autolink-literal@^1.0.0:
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-1.0.2.tgz#4032dcbaddaef7d4f2f3768ed830475bb22d3970"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-1.0.2.tgz"
   integrity sha512-FzopkOd4xTTBeGXhXSBU0OCDDh5lUj2rd+HQqG92Ld+jL4lpUfgX2AT2OHAVP9aEeDKp7G92fuooSZcYJA3cRg==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -3381,7 +3376,7 @@ mdast-util-gfm-autolink-literal@^1.0.0:
 
 mdast-util-gfm-footnote@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm-footnote/-/mdast-util-gfm-footnote-1.0.1.tgz#11d2d40a1a673a399c459e467fa85e00223191fe"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-footnote/-/mdast-util-gfm-footnote-1.0.1.tgz"
   integrity sha512-p+PrYlkw9DeCRkTVw1duWqPRHX6Ywh2BNKJQcZbCwAuP/59B0Lk9kakuAd7KbQprVO4GzdW8eS5++A9PUSqIyw==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -3390,7 +3385,7 @@ mdast-util-gfm-footnote@^1.0.0:
 
 mdast-util-gfm-strikethrough@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm-strikethrough/-/mdast-util-gfm-strikethrough-1.0.1.tgz#a4a74c36864ec6a6e3bbd31e1977f29beb475789"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-strikethrough/-/mdast-util-gfm-strikethrough-1.0.1.tgz"
   integrity sha512-zKJbEPe+JP6EUv0mZ0tQUyLQOC+FADt0bARldONot/nefuISkaZFlmVK4tU6JgfyZGrky02m/I6PmehgAgZgqg==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -3398,7 +3393,7 @@ mdast-util-gfm-strikethrough@^1.0.0:
 
 mdast-util-gfm-table@^1.0.0:
   version "1.0.4"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm-table/-/mdast-util-gfm-table-1.0.4.tgz#0dbb25f04fd9c0877dc63b76203ecbdf5d945755"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-table/-/mdast-util-gfm-table-1.0.4.tgz"
   integrity sha512-aEuoPwZyP4iIMkf2cLWXxx3EQ6Bmh2yKy9MVCg4i6Sd3cX80dcLEfXO/V4ul3pGH9czBK4kp+FAl+ZHmSUt9/w==
   dependencies:
     markdown-table "^3.0.0"
@@ -3407,7 +3402,7 @@ mdast-util-gfm-table@^1.0.0:
 
 mdast-util-gfm-task-list-item@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-1.0.1.tgz#6f35f09c6e2bcbe88af62fdea02ac199cc802c5c"
+  resolved "https://registry.npmjs.org/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-1.0.1.tgz"
   integrity sha512-KZ4KLmPdABXOsfnM6JHUIjxEvcx2ulk656Z/4Balw071/5qgnhz+H1uGtf2zIGnrnvDC8xR4Fj9uKbjAFGNIeA==
   dependencies:
     "@types/mdast" "^3.0.0"
@@ -3415,7 +3410,7 @@ mdast-util-gfm-task-list-item@^1.0.0:
 
 mdast-util-gfm@^2.0.0:
   version "2.0.1"
-  resolved "https://registry.yarnpkg.com/mdast-util-gfm/-/mdast-util-gfm-2.0.1.tgz#16fcf70110ae689a06d77e8f4e346223b64a0ea6"
+  resolved "https://registry.npmjs.org/mdast-util-gfm/-/mdast-util-gfm-2.0.1.tgz"
   integrity sha512-42yHBbfWIFisaAfV1eixlabbsa6q7vHeSPY+cg+BBjX51M8xhgMacqH9g6TftB/9+YkcI0ooV4ncfrJslzm/RQ==
   dependencies:
     mdast-util-from-markdown "^1.0.0"
@@ -3564,7 +3559,7 @@ micromark-extension-frontmatter@^1.0.0:
 
 micromark-extension-gfm-autolink-literal@^1.0.0:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-1.0.3.tgz#dc589f9c37eaff31a175bab49f12290edcf96058"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-1.0.3.tgz"
   integrity sha512-i3dmvU0htawfWED8aHMMAzAVp/F0Z+0bPh3YrbTPPL1v4YAlCZpy5rBO5p0LPYiZo0zFVkoYh7vDU7yQSiCMjg==
   dependencies:
     micromark-util-character "^1.0.0"
@@ -3575,7 +3570,7 @@ micromark-extension-gfm-autolink-literal@^1.0.0:
 
 micromark-extension-gfm-footnote@^1.0.0:
   version "1.0.4"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-1.0.4.tgz#cbfd8873b983e820c494498c6dac0105920818d5"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-1.0.4.tgz"
   integrity sha512-E/fmPmDqLiMUP8mLJ8NbJWJ4bTw6tS+FEQS8CcuDtZpILuOb2kjLqPEeAePF1djXROHXChM/wPJw0iS4kHCcIg==
   dependencies:
     micromark-core-commonmark "^1.0.0"
@@ -3589,7 +3584,7 @@ micromark-extension-gfm-footnote@^1.0.0:
 
 micromark-extension-gfm-strikethrough@^1.0.0:
   version "1.0.4"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-strikethrough/-/micromark-extension-gfm-strikethrough-1.0.4.tgz#162232c284ffbedd8c74e59c1525bda217295e18"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-strikethrough/-/micromark-extension-gfm-strikethrough-1.0.4.tgz"
   integrity sha512-/vjHU/lalmjZCT5xt7CcHVJGq8sYRm80z24qAKXzaHzem/xsDYb2yLL+NNVbYvmpLx3O7SYPuGL5pzusL9CLIQ==
   dependencies:
     micromark-util-chunked "^1.0.0"
@@ -3601,7 +3596,7 @@ micromark-extension-gfm-strikethrough@^1.0.0:
 
 micromark-extension-gfm-table@^1.0.0:
   version "1.0.5"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-table/-/micromark-extension-gfm-table-1.0.5.tgz#7b708b728f8dc4d95d486b9e7a2262f9cddbcbb4"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-1.0.5.tgz"
   integrity sha512-xAZ8J1X9W9K3JTJTUL7G6wSKhp2ZYHrFk5qJgY/4B33scJzE2kpfRL6oiw/veJTbt7jiM/1rngLlOKPWr1G+vg==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -3612,14 +3607,14 @@ micromark-extension-gfm-table@^1.0.0:
 
 micromark-extension-gfm-tagfilter@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-tagfilter/-/micromark-extension-gfm-tagfilter-1.0.1.tgz#fb2e303f7daf616db428bb6a26e18fda14a90a4d"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-tagfilter/-/micromark-extension-gfm-tagfilter-1.0.1.tgz"
   integrity sha512-Ty6psLAcAjboRa/UKUbbUcwjVAv5plxmpUTy2XC/3nJFL37eHej8jrHrRzkqcpipJliuBH30DTs7+3wqNcQUVA==
   dependencies:
     micromark-util-types "^1.0.0"
 
 micromark-extension-gfm-task-list-item@^1.0.0:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-task-list-item/-/micromark-extension-gfm-task-list-item-1.0.3.tgz#7683641df5d4a09795f353574d7f7f66e47b7fc4"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm-task-list-item/-/micromark-extension-gfm-task-list-item-1.0.3.tgz"
   integrity sha512-PpysK2S1Q/5VXi72IIapbi/jliaiOFzv7THH4amwXeYXLq3l1uo8/2Be0Ac1rEwK20MQEsGH2ltAZLNY2KI/0Q==
   dependencies:
     micromark-factory-space "^1.0.0"
@@ -3630,7 +3625,7 @@ micromark-extension-gfm-task-list-item@^1.0.0:
 
 micromark-extension-gfm@^2.0.0:
   version "2.0.1"
-  resolved "https://registry.yarnpkg.com/micromark-extension-gfm/-/micromark-extension-gfm-2.0.1.tgz#40f3209216127a96297c54c67f5edc7ef2d1a2a2"
+  resolved "https://registry.npmjs.org/micromark-extension-gfm/-/micromark-extension-gfm-2.0.1.tgz"
   integrity sha512-p2sGjajLa0iYiGQdT0oelahRYtMWvLjy8J9LOCxzIQsllMCGLbsLW+Nc+N4vi02jcRJvedVJ68cjelKIO6bpDA==
   dependencies:
     micromark-extension-gfm-autolink-literal "^1.0.0"
@@ -4331,7 +4326,7 @@ react-focus-lock@^2.9.1:
 
 react-icons@^4.4.0:
   version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
   integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
 
 react-is@^16.13.1, react-is@^16.7.0:
@@ -4372,7 +4367,7 @@ react-reveal@^1.2.2:
 
 react-scrollspy-nav@^1.3.0:
   version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-scrollspy-nav/-/react-scrollspy-nav-1.3.0.tgz#ad532b39ee20383feb493ade406c52e987c7e059"
+  resolved "https://registry.npmjs.org/react-scrollspy-nav/-/react-scrollspy-nav-1.3.0.tgz"
   integrity sha512-M4Ls+BBbavx7Xmq6kTM7yIHqoVHg94RfI5NSm9VV//5B7zBmxjd0OtF068Pdl7tVDczmjTvb7P6w5++qKooftw==
 
 react-style-singleton@^2.2.1:
@@ -4506,7 +4501,7 @@ remark-frontmatter@^4.0.1:
 
 remark-gfm@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/remark-gfm/-/remark-gfm-3.0.1.tgz#0b180f095e3036545e9dddac0e8df3fa5cfee54f"
+  resolved "https://registry.npmjs.org/remark-gfm/-/remark-gfm-3.0.1.tgz"
   integrity sha512-lEFDoi2PICJyNrACFOfDD3JlLkuSbOa5Wd8EPt06HUdptv8Gn0bxYTdbU/XXQ3swAPkEaGxxPN9cbnMHvVu1Ig==
   dependencies:
     "@types/mdast" "^3.0.0"

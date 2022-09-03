@@ -20,7 +20,11 @@
       "@/utils": ["utils/"],
       "@/lib/*": ["lib/*"],
       "contentlayer/generated": [".contentlayer/generated"]
-    }
+    },
+    "typeRoots": [
+      "../node_modules/@types",
+      "../@types"
+    ],
   },
   "include": [
     "next-env.d.ts",

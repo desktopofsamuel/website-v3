@@ -28,6 +28,7 @@ import { getHeadings } from "utils";
 import ScrollspyNav from "react-scrollspy-nav";
 import NextLink from "@/components/NextLink";
 import slugger from "github-slugger";
+import kebabCase from "lodash.kebabcase";
 
 // const NextImage = (props: any) => {
 //   return (
@@ -100,10 +101,7 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
-  const ids = headings.map((item) => slugger.slug(item.text));
-  const toc = headings.map((item) => item.text);
-
-  console.log(ids);
+  const ids = headings.map((item: { text: string | undefined; }) => slugger.slug(kebabCase(item.text)))
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -150,23 +148,26 @@ export default function SinglePostPage({
         maxWidth="250px"
         fontSize="sm"
         zIndex={100}
+        
       >
+        <UnorderedList listStyleType="none" >
         <ScrollspyNav
           scrollTargetIds={ids}
-          offset={500}
+          offset={1000}
           activeNavClass="is-active"
           scrollDuration="1000"
+          reference="top"
         >
-          <UnorderedList>
-            {headings.map((item) => (
-              <ListItem key={item.text}>
-                <NextLink href={`#${slugger.slug(item.text)}`}>
+            {headings.map((item: any) => (
+              <ListItem key={item.text} borderLeft="1px" borderColor="border" paddingLeft="2">
+                <NextLink href={`#${slugger.slug(kebabCase(item.text))}`}>
                   {item.text}
                 </NextLink>
               </ListItem>
             ))}
-          </UnorderedList>
+          
         </ScrollspyNav>
+        </UnorderedList>
       </Box>
       <Article
         sx={{
