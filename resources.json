@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Design OKR",
+    "description": "OKR template to get you started to progress your design career! With actionable objectives and key results.",
+    "cta": "Read How To Use",
+    "link": "./navigating-design-career-with-design-okrs/",
+    "photo": "/static/20210309-DesignOKR.png"
+  },
+  {
+    "title": "UX Design Career Kit",
+    "description": "My list of favorite and helpful resources for job hunting. Helpful tips from Twitter's design leaders are included!",
+    "cta": "Get The Kit",
+    "link": "",
+    "photo": "/static/20210310-UXDesignCareerKit.png"
+  },
+  {
+    "title": "What I Use",
+    "description": "Walkthrough of my hardware & software setup",
+    "cta": "What I Use",
+    "link": "https://notes.desktopofsamuel.com/pages/uses",
+    "photo": "/static/20210310-whatiuse.png"
+  }
+]

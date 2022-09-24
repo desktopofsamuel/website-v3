@@ -56,13 +56,13 @@ const Books = () => {
                     fontSize="md"
                     fontWeight="bold"
                     lineHeight="8"
-                    color="text.900" 
+                    color="primarytext" 
                   >
                     {item.name || <Skeleton />}
                   </Heading>
                   <ExternalLinkIcon mx="2" />
                 </NextLink>
-                <Text m="0" fontSize="xs" textTransform="uppercase">
+                <Text m="0" fontSize="xs" color="secondarytext" textTransform="uppercase">
                   {`by ${item.author}` || <Skeleton />}
                 </Text>
               </Box>

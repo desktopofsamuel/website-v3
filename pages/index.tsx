@@ -66,6 +66,8 @@ export default function IndexPage({
   <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
   <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
       </Flex>
+      <Text color="secondarytext">Full-stack UI/UX designer crafting websites &
+mobile applications with bespoke experience.</Text>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
         <CardMusic />
