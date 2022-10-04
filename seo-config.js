@@ -24,4 +24,15 @@ export default {
     site: "@desktopofsamuel",
     cardType: "summary_large_image",
   },
+  additionalLinkTags: [
+    {
+      rel: "icon",
+      href: "https://desktopofsamuel.com/favicon.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      href: "https://desktopofsamuel.com/touch-icon-ipad.jpg",
+      sizes: "76x76",
+    },
+  ],
 };
