@@ -5,7 +5,7 @@ import Link from "next/link";
 import { sortByDate } from "@/utils";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ListPortfolio from "@/components/ListPortfolio";
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";

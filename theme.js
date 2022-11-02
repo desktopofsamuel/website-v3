@@ -211,6 +211,7 @@ const customTheme = extendTheme({
         noeffect: (props) => ({
           _hover: {
             borderBottomColor: "transparent",
+            color: "initial"
           },
         }),
         postTitle: (props) => ({

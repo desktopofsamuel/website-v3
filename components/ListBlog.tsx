@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Link from "next/link";
+import NextLink from "@/components/NextLink"
 import { Box, Heading, Text, useDimensions } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 
@@ -7,7 +7,7 @@ export default function ListBlog({ data }: any) {
   const post = data;
 
   return (
-    <Link href={`/${post.slug}/`}>
+    <NextLink href={`/${post.slug}/`} variant="noeffect">
       <Box marginY="4" cursor="pointer">
         <NextImage src={post.cover} alt={post.title} />
         <Heading variant="heading" my="4">
@@ -15,6 +15,6 @@ export default function ListBlog({ data }: any) {
         </Heading>
         <Text>{post.excerpt}</Text>
       </Box>
-    </Link>
+    </NextLink>
   );
 }

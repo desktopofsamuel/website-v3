@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
 import { Wrap, WrapItem, Stack, SimpleGrid, Text, GridItem, Box, Heading} from "@chakra-ui/react"
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 export const getStaticPaths = () => {
   return {

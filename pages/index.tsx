@@ -28,7 +28,6 @@ import styles from "../styles/Home.module.css";
 import ListBlog from "@/components/ListBlog";
 import ListPortfolio from "@/components/ListPortfolio";
 import Image from "next/image";
-// import Image from "next/future/image";
 import CardBook from "@/components/CardBook";
 import CardCurrentlyPlaying from "@/components/CardCurrentlyPlaying";
 import CardMusic from "@/components/CardMusic";
@@ -80,7 +79,7 @@ mobile applications with bespoke experience.</Text>
           Extensive experience delivering products in corporations and start-ups
         </Text>
 
-        <Link href="/work">
+        <Link href="/work" legacyBehavior>
           <Button>View Process</Button>
         </Link>
         <Fade bottom>
@@ -93,7 +92,7 @@ mobile applications with bespoke experience.</Text>
    
       <Heading variant="pagetitle">Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
-      <Link href="/blog">
+      <Link href="/blog" legacyBehavior>
         <Button>Read my blog</Button>
       </Link>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
@@ -108,7 +107,7 @@ mobile applications with bespoke experience.</Text>
           Best resources and tools I have been using. Guide on getting started
           in design & code.
         </Text>
-        <Link href="/resources">
+        <Link href="/resources" legacyBehavior>
           <Button>My awesome setup</Button>
         </Link>
       </Box>
@@ -127,7 +126,7 @@ mobile applications with bespoke experience.</Text>
           {photos
             .slice(0, 4)
             .map((post) => (
-              <Link href={`/photo/${post.slug}`} key={post.slug}>
+              <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
                 <Box role="group" overflow="hidden" position="relative">
                   {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
                   <NextImage
@@ -143,14 +142,14 @@ mobile applications with bespoke experience.</Text>
           <VStack p="8" justifyContent="center">
             <Heading fontSize="2xl">Through the lens</Heading>
             <Text>Sets of photos according to cities that I have visited.</Text>
-            <Link href="/photo">
+            <Link href="/photo" legacyBehavior>
               <Button>My photos shot around the world</Button>
             </Link>
           </VStack>
           {photos
             .slice(4, 8)
             .map((post) => (
-              <Link href={`/photo/${post.slug}`} key={post.slug}>
+              <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
                 <Box role="group" overflow="hidden">
                   <NextImage
                     src={post.cover}

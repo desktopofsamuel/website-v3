@@ -9,8 +9,5 @@ module.exports = withContentlayer({
     domains: ["i.scdn.co", "a.ltrbxd.com"],
   },
   experimental: {
-    images: {
-      allowFutureImage: true,
-    },
   },
 });

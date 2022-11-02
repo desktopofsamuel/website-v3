@@ -14,7 +14,7 @@ import {
 import Profile from "../public/static/profile-2014.jpeg";
 import Layout from "@/components/Layout";
 import NextLink from "@/components/NextLink";
-import Image from "next/future/image";
+import Image from "next/image";
 import NextImage from "@/components/NextImage";
 import HSBC from "../public/about/hsbc.svg";
 import HyperAir from "../public/about/hyperair.svg";
