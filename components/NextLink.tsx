@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { Link as ChakraLink, chakra } from "@chakra-ui/react";
-
-const CustomLink = chakra(Link);
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 export default function NextLink({
   children,
@@ -17,16 +15,16 @@ export default function NextLink({
   const internal = /^\/(?!\/)/.test(href);
   if (internal)
     return (
-      <Link href={href} passHref>
-        <ChakraLink
-          href={href}
-          className={className}
-          variant={variant}
-          {...rest}
-        >
-          {children}
-        </ChakraLink>
-      </Link>
+      <ChakraLink
+        as={Link}
+        href={href}
+        passHref
+        className={className}
+        variant={variant}
+        {...rest}
+      >
+        {children}
+      </ChakraLink>
     );
   return (
     <ChakraLink

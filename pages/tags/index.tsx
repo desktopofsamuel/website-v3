@@ -19,7 +19,7 @@ export default function TagListPage({ tags }:any ) {
     <Layout>
       <Heading variant="pagetitle">Tags</Heading>
       {tags.map((tag: { path: string, name: string }, i: number) => (
-        <Link href={tag.path} key={i}>
+        <Link href={tag.path} key={i} legacyBehavior>
           <Text>{tag.name}</Text>
         </Link>
       ))}

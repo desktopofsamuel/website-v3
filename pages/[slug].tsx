@@ -57,8 +57,7 @@ const Img = (props: any) => {
       <Image
         src={props.src}
         alt={props.alt}
-        layout="fill"
-        objectFit="contain"
+        style={{ objectFit: "contain" }}
       />
     </div>
   );

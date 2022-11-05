@@ -27,8 +27,8 @@ export default function NavBar() {
     <>
       <Container as="header" maxW="1080px">
         <Flex as="nav" alignItems="center">
-          <Link href="/">
-            <Text fontFamily="heading" cursor="pointer">Desktop of Samuel</Text>
+          <Link href="/" >
+            <Text fontFamily="heading" cursor="pointer" variant="noeffect">Desktop of Samuel</Text>
           </Link>
           <Spacer />
           <List

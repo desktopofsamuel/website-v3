@@ -52,7 +52,7 @@ export default function BlogListPage({
           ))}
         <Center>
           <Button>
-            <NextLink href="/blog/page/2" variant="noeffect">View More</NextLink>
+            <NextLink href="/blog/page/2">View More</NextLink>
           </Button>
         </Center>
       </Fade>

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Link from "next/link";
+import NextLink from "@/components/NextLink"
 import { Box, Grid, Heading, Text, useDimensions } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import dayjs from "dayjs";
@@ -8,7 +8,7 @@ export default function ListBlogDetail({ data }: any) {
   const post = data;
 
   return (
-    <Link href={`/${post.slug}/`}>
+    <NextLink href={`/${post.slug}/`}>
       <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 1fr"}}  gap="10" marginY="10" alignItems="center" cursor="pointer">
         <Box position="relative" width="fit-content">
           <NextImage src={post.cover} alt={post.title} />
@@ -21,6 +21,6 @@ export default function ListBlogDetail({ data }: any) {
           <Text noOfLines={3}>{post.description}</Text>
         </Box>
       </Grid>
-    </Link>
+    </NextLink>
   );
 }
