@@ -74,7 +74,7 @@ mobile applications with bespoke experience.</Text>
         <CardFilms />
       </SimpleGrid>
       <Box my="8">
-        <Heading variant="pagetitle">Interaction and Experience Design</Heading>
+        <Heading variant="title">Interaction and Experience Design</Heading>
         <Text>
           Extensive experience delivering products in corporations and start-ups
         </Text>
@@ -90,7 +90,7 @@ mobile applications with bespoke experience.</Text>
         </Fade>
       </Box>
    
-      <Heading variant="pagetitle">Notes on Design & Technology</Heading>
+      <Heading variant="title">Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
       <Link href="/blog" legacyBehavior>
         <Button>Read my blog</Button>
@@ -102,7 +102,7 @@ mobile applications with bespoke experience.</Text>
           ))}
       </SimpleGrid>
       <Box my="8">
-        <Heading variant="pagetitle">Tools & Resources</Heading>
+        <Heading variant="title">Tools & Resources</Heading>
         <Text>
           Best resources and tools I have been using. Guide on getting started
           in design & code.

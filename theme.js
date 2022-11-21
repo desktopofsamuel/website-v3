@@ -250,7 +250,10 @@ const customTheme = extendTheme({
       },
       variants: {
         pagetitle: (props) => ({
-          fontSize: "6xl",
+          fontSize: {
+            sm: "5xl",
+            md: "6xl",
+          },
           mt: {
             sm: "5vh",
             md: "20vh",
@@ -259,12 +262,18 @@ const customTheme = extendTheme({
           letterSpacing: "tighter",
         }),
         title: (props) => ({
-          fontSize: "2xl",
+          fontSize: {
+            base: "4xl",
+            md: "6xl",
+          },
           my: "0",
           lineHeight: "tall",
         }),
         heading: (props) => ({
-          fontSize: "3xl",
+          fontSize: { 
+            base: "3xl",
+            md: "6xl",
+          },
           my: "4",
         }),
         small: (props) => ({
@@ -311,15 +320,13 @@ const customTheme = extendTheme({
         },
       },
       h1: {
-        fontFamily: "heading",
-        fontSize: "3xl",
+        fontFamily: "heading",  
         fontWeight: "bold",
         mt: "8",
         mb: "4",
       },
       h2: {
         fontFamily: "heading",
-        fontSize: "2xl",
         fontWeight: "bold",
         lineHeight: "taller",
         mt: "8",

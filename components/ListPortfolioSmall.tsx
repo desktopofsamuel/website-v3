@@ -18,7 +18,7 @@ export default function ListPortfolio({ data }: any) {
           <Text variant="small" my="0">
             {post.year}
           </Text></HStack>
-          <Heading variant="heading">{post.subtitle} - {post.title}</Heading>
+          <Heading variant="heading">{post.subtitle}</Heading>
           <Text>{post.description}</Text>
         </Box>
           <NextImage src={post.cover} alt={post.title} />

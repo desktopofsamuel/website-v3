@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
+import { Heading } from "@chakra-ui/react";
 
 export const getStaticPaths = () => {
   return {
@@ -31,7 +32,7 @@ export default function SingleWorkPage({
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <Layout title={`${post.subtitle}`} description={post.excerpt}>
-        <NextSeo
+      <NextSeo
         openGraph={{
           url: CONFIG.URL + `/work/` + post.slug,
           type: "article",
@@ -49,7 +50,7 @@ export default function SingleWorkPage({
           // ],
         }}
       />
-      <h1>{post.title}</h1>
+      <Heading variant="pagetitle">{post.subtitle}</Heading>
       <small>{dayjs(post.date).format("MMM DD, YYYY")}</small>
       <MDXContent />
     </Layout>
