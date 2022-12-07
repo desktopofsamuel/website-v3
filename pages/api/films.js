@@ -1,6 +1,6 @@
 import Parser from "rss-parser";
 
-const RSS_URL = "https://damp-lowlands-80262.herokuapp.com/letterboxd";
+const RSS_URL = "https://rss-proxy.onrender.com/letterboxd";
 
 function fetcher(url) {
   let parser = new Parser();
