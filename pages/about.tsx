@@ -7,10 +7,12 @@ import {
   SimpleGrid,
   Text,
   Button,
+  Spacer,
   Center,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
+import Profile2022 from "../public/static/samuel-profile-2022.jpeg";
 import Profile from "../public/static/profile-2014.jpeg";
 import Layout from "@/components/Layout";
 import NextLink from "@/components/NextLink";
@@ -24,40 +26,66 @@ import OKX from "../public/about/okx.svg";
 import Figma from "../public/about/figma.svg";
 
 type Props = {
-  title: string, 
-  text: string, 
-  image?: string,
-}
+  title: string;
+  text: string;
+  image?: string;
+};
 
 const Entry: React.FC<Props> = ({ title, text, image }) => {
-  return <Grid
-    // justifyContent="space-between"
-    gridTemplateColumns={{ base: "72px auto",  md: "max-content auto"}}
-    gap="4"
-    alignItems="center"
-    border="1px solid"
-    borderColor="border"
-    borderRadius="lg"
-    paddingX={{ base: 2, md: 4 }}
-    paddingY={{ base: 2, md: 3 }}
-  >
-     {image && <Box _hover={{ opacity: 0.5}} transition="all 500ms ease-in-out" opacity={1}><Image src={image} alt="HSBC Logo" /></Box>}
-    <Box>
-      <Heading fontSize={{ base: "lg", md: "2xl"}}>{title}</Heading>
-      <Text variant="small" my="0">{text}</Text>
-    </Box>
-   
-  </Grid>;
+  return (
+    <Grid
+      // justifyContent="space-between"
+      gridTemplateColumns={{ base: "72px auto", md: "max-content auto" }}
+      gap="4"
+      alignItems="center"
+      border="1px solid"
+      borderColor="border"
+      borderRadius="lg"
+      paddingX={{ base: 2, md: 4 }}
+      paddingY={{ base: 2, md: 3 }}
+    >
+      {image && (
+        <Box
+          _hover={{ opacity: 0.5 }}
+          transition="all 500ms ease-in-out"
+          opacity={1}
+        >
+          <Image src={image} alt="HSBC Logo" />
+        </Box>
+      )}
+      <Box>
+        <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
+        <Text variant="small" my="0">
+          {text}
+        </Text>
+      </Box>
+    </Grid>
+  );
 };
 
 const AboutPage: NextPage = () => {
   return (
     <Layout>
-      <Center display="flex" flexDir="column">
-        <Box py="24" maxW={{ base: "initial", md: "60%" }}>
+      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "8", md: "16"}} alignItems="center" py={{ base: "2", md: "20"}} >
+        <Image
+          src={Profile2022}
+          alt="Portrait of Samuel Wong"
+          placeholder="blur"
+          width="240"
+          height="240"
+          style={{
+            borderRadius: "50%",
+          }}
+        />
+
+        <Box py={{ base: 2, md: 6}}  maxW={{ base: "initial", md: "80%" }}>
           <Heading>Hello, my name is Samuel Wong.</Heading>
           <Text>
-          I got into product design because I&apos;m deeply passionate about technology and how it profoundly changes our way of living. For the past 7 years, I have been solving users and business problems and delivering delightful interfaces & experiences across industries like web3, investment, and travel. 
+            I got into product design because I&apos;m deeply passionate about
+            technology and how it profoundly changes our way of living. For the
+            past 7 years, I have been solving users and business problems and
+            delivering delightful interfaces & experiences across industries
+            like web3, investment, and travel.
           </Text>
           <Button size="lg">
             <NextLink href="#contact" variant="noeffect">
@@ -65,14 +93,7 @@ const AboutPage: NextPage = () => {
             </NextLink>
           </Button>
         </Box>
-        <Image
-          src={Profile}
-          alt="Portrait of Samuel Wong"
-          placeholder="blur"
-          width="1920"
-          height="1280"
-        />
-      </Center>
+      </Grid>
       <Box py="24">
         <Heading fontSize="3xl" my="10">
           My Journey
@@ -89,16 +110,29 @@ const AboutPage: NextPage = () => {
           <Box>
             <Heading textTransform="uppercase">Starting my agency</Heading>
             <Text>
-              With growing freelance web & design projects, I co-founded a digital agency after graduation. We helped small businesses, entrepreneurs, and non-profits launching their projects.
+              With growing freelance web & design projects, I co-founded a
+              digital agency after graduation. We helped small businesses,
+              entrepreneurs, and non-profits launching their projects.
             </Text>
           </Box>
           <Box>
             <Heading textTransform="uppercase">Switching to product</Heading>
             <Text>
-              After that, I had worked in start-up & corporation as a prdouct designer. Currently I am working Product Designer  working in the crypto industry.
+              After that, I had worked in start-up & corporation as a prdouct
+              designer. Currently I am working as a Product Designer in the
+              crypto industry.
             </Text>
           </Box>
         </SimpleGrid>
+      </Box>
+      <Box py="12">
+      <Image
+        src={Profile}
+        alt="Portrait of Samuel Wong"
+        placeholder="blur"
+        width="1920"
+        height="1280"
+      />
       </Box>
       <Box>
         <Heading fontSize="4xl">Resume</Heading>
@@ -107,11 +141,31 @@ const AboutPage: NextPage = () => {
             Career
           </Heading>
           <Grid gap="4">
-            <Entry title="Product Designer @ OKX" text="2022 - Now" image={OKX}/>
-            <Entry title="UX/UI Consultant @ HSBC" text="2021 - 2022" image={HSBC}/>
-            <Entry title="Principal Designer @ HyperAir" text="2019 - 2021" image={HyperAir}/>
-            <Entry title="Co-founder & Design Lead @ Playa" text="2015 - 2019" image={Playa}/>
-            <Entry title="Cross Content Intern @ Apple" text="2012 - 2013" image={Apple}/>
+            <Entry
+              title="Product Designer @ OKX"
+              text="2022 - Now"
+              image={OKX}
+            />
+            <Entry
+              title="UX/UI Consultant @ HSBC"
+              text="2021 - 2022"
+              image={HSBC}
+            />
+            <Entry
+              title="Principal Designer @ HyperAir"
+              text="2019 - 2021"
+              image={HyperAir}
+            />
+            <Entry
+              title="Co-founder & Design Lead @ Playa"
+              text="2015 - 2019"
+              image={Playa}
+            />
+            <Entry
+              title="Cross Content Intern @ Apple"
+              text="2012 - 2013"
+              image={Apple}
+            />
           </Grid>
         </Box>
         <Box py="4">
@@ -133,8 +187,12 @@ const AboutPage: NextPage = () => {
           <Heading textTransform="uppercase" fontSize="md" my="4">
             Community
           </Heading>
-          <Entry title="Community moderator @ Friends of Figma, Hong Kong" text="2022 - Now" image={Figma}/>
-          </Box>
+          <Entry
+            title="Community moderator @ Friends of Figma, Hong Kong"
+            text="2022 - Now"
+            image={Figma}
+          />
+        </Box>
       </Box>
       <Box py="36" textAlign="center" id="contact">
         <Heading>Let&apos;s connect</Heading>
