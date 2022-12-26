@@ -11,6 +11,7 @@ import {
   Center,
   UnorderedList,
   ListItem,
+  HStack,
 } from "@chakra-ui/react";
 import Profile2022 from "../public/static/samuel-profile-2022.jpeg";
 import Profile from "../public/static/profile-2014.jpeg";
@@ -66,7 +67,7 @@ const Entry: React.FC<Props> = ({ title, text, image }) => {
 const AboutPage: NextPage = () => {
   return (
     <Layout>
-      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "8", md: "16"}} alignItems="center" py={{ base: "4", md: "16"}} >
+      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "4", md: "16"}} alignItems="center" py={{ base: "4", md: "16"}} >
         <Image
           src={Profile2022}
           alt="Portrait of Samuel Wong"
@@ -78,7 +79,7 @@ const AboutPage: NextPage = () => {
           }}
         />
 
-        <Box py={{ base: 2, md: 6}}  maxW={{ base: "initial", md: "80%" }}>
+        <Box maxW={{ base: "initial", md: "80%" }}>
           <Heading>Hello, my name is Samuel Wong.</Heading>
           <Text>
             I got into product design because I&apos;m deeply passionate about
@@ -87,20 +88,26 @@ const AboutPage: NextPage = () => {
             delivering delightful interfaces & experiences across industries
             like web3, investment, and travel.
           </Text>
+          <HStack>
           <Button size="lg">
             <NextLink href="#contact" variant="noeffect">
               Let&apos;s Chat
             </NextLink>
           </Button>
+          <Button size="lg" variant="outline" color="blue.500">
+            <NextLink href="#resume" variant="noeffect">
+              My resume
+            </NextLink>
+          </Button></HStack>
         </Box>
       </Grid>
-      <Box py="24">
+      <Box py="16">
         <Heading fontSize="3xl" my="10">
           My Journey
         </Heading>
         <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
-            <Heading textTransform="uppercase">Interned At Apple</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">Interned At Apple</Heading>
             <Text>
               Majoring in Arts in college, I took a gap year working in iTunes &
               App Store, Apple. This valuable experience cultivated my interest
@@ -108,15 +115,15 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase">Starting my agency</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">Starting my agency</Heading>
             <Text>
               With growing freelance web & design projects, I co-founded a
-              digital agency after graduation. We helped small businesses,
+              digital agency after graduation. Me and my team helped small businesses,
               entrepreneurs, and non-profits launching their projects.
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase">Switching to product</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">Switching to product</Heading>
             <Text>
               After that, I had worked in start-up & corporation as a prdouct
               designer. Currently I am working as a Product Designer in the
@@ -134,7 +141,7 @@ const AboutPage: NextPage = () => {
         height="1280"
       />
       </Box>
-      <Box>
+      <Box id="resume">
         <Heading fontSize="4xl">Resume</Heading>
         <Box py="4">
           <Heading textTransform="uppercase" fontSize="md" my="4">
@@ -192,6 +199,29 @@ const AboutPage: NextPage = () => {
             text="2022 - Now"
             image={Figma}
           />
+        </Box>
+        <Box py="4">
+          <Heading textTransform="uppercase" fontSize="md" my="4">
+            Awards
+          </Heading>
+          <Grid gap="4">
+            <Entry
+              title="Google Play Best Everyday Essential Nominee"
+              text="2022"
+            />
+            <Entry
+              title="OGCIO Web Accessibility Recognition Scheme Triple Gold Award"
+              text="2018, 2016"
+            />
+            <Entry
+              title="Best .HK LegCo Members Website Award (Gold)"
+              text="2017"
+            />
+            <Entry
+              title="Hong Kong Cyberport Creative Micro Fund"
+              text="2016"
+            />
+          </Grid>
         </Box>
       </Box>
       <Box py="36" textAlign="center" id="contact">
