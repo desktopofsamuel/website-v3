@@ -66,7 +66,7 @@ const Entry: React.FC<Props> = ({ title, text, image }) => {
 const AboutPage: NextPage = () => {
   return (
     <Layout>
-      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "8", md: "16"}} alignItems="center" py={{ base: "2", md: "20"}} >
+      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "8", md: "16"}} alignItems="center" py={{ base: "4", md: "16"}} >
         <Image
           src={Profile2022}
           alt="Portrait of Samuel Wong"

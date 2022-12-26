@@ -69,22 +69,26 @@ export default function NavBar() {
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="full">
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
-          <ModalBody>
+          <ModalCloseButton />  
+          <ModalBody display="flex" justifyContent="center">
             <Center>
-              <Box width="fit-content" fontFamily="heading">
-                <Flex  flexDirection="column" textAlign="center" >
+             
+                <Flex fontFamily="heading" fontSize="3xl"  fontWeight="600" 
+        letterSpacing="tight" flexDirection="column" textAlign="center" alignItems="center">
                   <Link href="/">Home</Link>
                   <Link href="/about">About</Link>
                   <Link href="/blog">Blog</Link>
                   <Link href="/work">Work</Link>
+                  <Box h="24px"/>
                   <IconButton
+                  width="48px"
+                  height="48px"
+                  borderRadius="50%"
                     aria-label="Switch Color Mode"
                     icon={colorMode === `light` ? <SunIcon /> : <MoonIcon />}
                     onClick={toggleColorMode}
                   />
                 </Flex>
-              </Box>
             </Center>
           </ModalBody>
         </ModalContent>
