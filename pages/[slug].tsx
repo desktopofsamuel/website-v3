@@ -148,7 +148,7 @@ export default function SinglePostPage({
         zIndex={100}
       >
         <UnorderedList listStyleType="none">
-          {console.log(ids)}
+          {/* {console.log(ids)} */}
           <ScrollspyNav
             scrollTargetIds={ids}
             offset={1000}
