@@ -56,7 +56,6 @@ const Books = () => {
                     fontSize="md"
                     fontWeight="bold"
                     lineHeight="8"
-                    color="primarytext" 
                   >
                     {item.name || <Skeleton />}
                   </Heading>

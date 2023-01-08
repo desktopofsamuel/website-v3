@@ -34,7 +34,7 @@ export default function WorkListPage({
       <Heading variant="pagetitle">Portfolio</Heading>
       <Text>Selected websites and apps showcase since 2015.</Text>
 
-      <Text variant="small">Featured List</Text>
+      <Text variant="small">Featured</Text>
       <Fade bottom>
         {works
           .filter((post) => post.feature === true)
