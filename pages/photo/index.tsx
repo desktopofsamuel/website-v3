@@ -34,10 +34,6 @@ export default function PhotoListPage({
     >
       <Heading variant="pagetitle">Photography</Heading>
       <Text>I’m greatly inspired by cities and stories within. Therefore I publish sets of photos according to cities that I have visited. More photos on my Instagram.</Text>
-
-      <Text variant="small">Featured List</Text>
-      <Heading variant="small">More Work</Heading>
-      <Text>Check out some of my personal work & design projects.</Text>
       <SimpleGrid columns={2} spacing={2}>
       {photos
         .sort(sortByDate)

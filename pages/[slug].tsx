@@ -54,11 +54,7 @@ const Img = (props: any) => {
         position: "relative",
       }}
     >
-      <Image
-        src={props.src}
-        alt={props.alt}
-        style={{ objectFit: "contain" }}
-      />
+      <Image src={props.src} alt={props.alt} style={{ objectFit: "contain" }} />
     </div>
   );
 };
@@ -100,7 +96,10 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
-  const ids = headings.map((item: { text: string | undefined; }) => slugger.slug(kebabCase(item.text)))
+  console.log(headings)
+  const ids = headings.map((item: { text: string | undefined }) =>
+    slugger.slug(kebabCase(item.text))
+  );
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -147,25 +146,29 @@ export default function SinglePostPage({
         maxWidth="250px"
         fontSize="sm"
         zIndex={100}
-        
       >
-        <UnorderedList listStyleType="none" >
-        <ScrollspyNav
-          scrollTargetIds={ids}
-          offset={1000}
-          activeNavClass="is-active"
-          scrollDuration="1000"
-          reference="top"
-        >
+        <UnorderedList listStyleType="none">
+          {/* {console.log(ids)} */}
+          <ScrollspyNav
+            scrollTargetIds={ids}
+            offset={1000}
+            activeNavClass="is-active"
+            scrollDuration="1000"
+            reference="top"
+          >
             {headings.map((item: any) => (
-              <ListItem key={item.text} borderLeft="1px" borderColor="border" paddingLeft="2">
+              <ListItem
+                key={item.text}
+                borderLeft="1px"
+                borderColor="border"
+                paddingLeft="2"
+              >
                 <NextLink href={`#${slugger.slug(kebabCase(item.text))}`}>
                   {item.text}
                 </NextLink>
               </ListItem>
             ))}
-          
-        </ScrollspyNav>
+          </ScrollspyNav>
         </UnorderedList>
       </Box>
       <Article

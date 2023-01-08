@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Box, UnorderedList, ListItem, } from "@chakra-ui/react";
 
 export const getStaticPaths = () => {
   return {
@@ -22,7 +22,6 @@ export const getStaticProps: GetStaticProps<{
   if (!post) {
     return { notFound: true };
   }
-
   return { props: { post } };
 };
 
