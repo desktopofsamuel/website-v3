@@ -96,10 +96,13 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
-  console.log(headings)
   const ids = headings.map((item: { text: string | undefined }) =>
-    slugger.slug(kebabCase(item.text))
+    kebabCase(item.text)
   );
+  const newids = headings.map((item: { text: string | undefined }) =>
+  kebabCase(item.text)
+  );
+  console.log(newids)
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -148,12 +151,11 @@ export default function SinglePostPage({
         zIndex={100}
       >
         <UnorderedList listStyleType="none">
-          {/* {console.log(ids)} */}
           <ScrollspyNav
             scrollTargetIds={ids}
-            offset={1000}
             activeNavClass="is-active"
             scrollDuration="1000"
+            headerBackground
             reference="top"
           >
             {headings.map((item: any) => (
@@ -161,9 +163,11 @@ export default function SinglePostPage({
                 key={item.text}
                 borderLeft="1px"
                 borderColor="border"
+                lineHeight="base"
                 paddingLeft="2"
+               paddingBottom="2"
               >
-                <NextLink href={`#${slugger.slug(kebabCase(item.text))}`}>
+                <NextLink href={`#${kebabCase(item.text)}`}>
                   {item.text}
                 </NextLink>
               </ListItem>

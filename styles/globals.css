@@ -22,5 +22,6 @@ a {
 }
 
 .is-active {
-  color: red;
+  color: #0077CC;
+  text-decoration: underline;
 }
