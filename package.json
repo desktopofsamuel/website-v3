@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "node rss-gen.mjs && next-sitemap"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
@@ -19,7 +19,6 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "contentlayer": "^0.2.9",
     "framer-motion": "^6",
-    "fs": "^0.0.1-security",
     "github-slugger": "^1.4.0",
     "gray-matter": "^4.0.3",
     "next": "^13.0.0",
@@ -56,6 +55,5 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "typescript": "4.7.4"
-  },
-  "exports": "./generated"
+  }
 }

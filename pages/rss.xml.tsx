@@ -3,7 +3,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import { sortByDate } from "../utils";
 import CONFIG from "../config.js";
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: any) {
   const feed = new RSS({
     title: CONFIG.TITLE,
     description: CONFIG.DESCRIPTION,
@@ -14,7 +14,7 @@ export async function getServerSideProps({ res }) {
     copyright: CONFIG.COPYRIGHT,
     language: CONFIG.LOCALE,
     pubDate: new Date().toLocaleString(),
-    ttl: "60",
+    ttl: 60,
   });
 
   allPosts.sort(sortByDate).map((post) => ({
