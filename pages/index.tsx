@@ -61,6 +61,7 @@ export default function IndexPage({
     <Layout 
     // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
     > 
+    <Head><meta name="follow.it-verification-code" content="aYHmMlGswgxauPT7REPs"/></Head>
       <Flex flexDir={{ base: "column", md: "row"}} justifyContent="space-between" alignItems="baseline">
   <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
   <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
