@@ -17,7 +17,7 @@
     "title": "What I Use",
     "description": "Walkthrough of my hardware & software setup",
     "cta": "What I Use",
-    "link": "https://notes.desktopofsamuel.com/pages/uses",
+    "link": "./uses",
     "photo": "/static/20210310-whatiuse.png"
   }
 ]
