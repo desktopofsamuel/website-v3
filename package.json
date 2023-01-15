@@ -17,6 +17,7 @@
     "@fontsource/chivo": "^4.5.7",
     "@fontsource/space-grotesk": "^4.5.8",
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "airtable": "^0.11.6",
     "contentlayer": "^0.2.9",
     "framer-motion": "^6",
     "github-slugger": "^1.4.0",
