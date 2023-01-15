@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import React from "react";
 import { allPosts, Post } from "contentlayer/generated";
+import { allPostsList } from "@/lib/content";
 import ListBlog from "@/components/ListBlog";
 import { Heading, SimpleGrid } from "@chakra-ui/react";
 import { sortByDate } from "@/utils";

@@ -3,13 +3,12 @@ import { unique } from "typescript-array-utils";
 import kebabCase from "lodash.kebabcase";
 
 // All tags used by blog posts
-const listOfTags = 
-unique(allPosts.flatMap((post) => post.tags));
+const listOfTags = unique(allPosts.flatMap((post) => post.tags));
 
-  type answerProps = {
-    name: string;
-    path: string
-  };
+type answerProps = {
+  name: string;
+  path: string;
+};
 
 // allTags with name and
 const allTags = listOfTags.map((tag) => ({
@@ -17,12 +16,33 @@ const allTags = listOfTags.map((tag) => ({
   path: `/tags/${kebabCase(tag)}`,
 }));
 
+const allPostsList = allPosts.map((post) => ({
+  slug: post.slug,
+  title: post.title,
+  tags: post.tags,
+  description: post.description,
+  cover: post.cover,
+  category: post.category,
+  date: post.date,
+}));
+
 // All posts marked with a specific tag, convert from params to tag name
-const postsWithTag = (tag: string): Post[] => {
+const postsWithTag = (tag: string): any => {
   // Search for Tag Name by Static Path
-  const object: answerProps = allTags.find(o => o.path === `/tags/${tag}`) as any;
-  const result = allPosts.filter((post) => post.tags.includes(object.name)); 
-  return result
+  const object: answerProps = allTags.find(
+    (o) => o.path === `/tags/${tag}`
+  ) as any;
+  const results = allPostsList.filter((post) => post.tags.includes(object.name));
+  // const filteredResults = results.map((post) => ({
+  //   slug: post.slug,
+  //   title: post.title,
+  //   description: post.description,
+  //   cover: post.cover,
+  //   category: post.category,
+  //   date: post.date,
+  // }));
+  // console.log(filteredResults);
+  return results;
 };
 
-export { allTags, postsWithTag };
+export { allTags, postsWithTag, allPostsList };

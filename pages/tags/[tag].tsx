@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import { allPosts, Post } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
