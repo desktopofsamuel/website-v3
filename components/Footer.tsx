@@ -35,7 +35,7 @@ export default function Footer() {
           <HStack gap="1">
             <NextLink
               variant="noeffect"
-              href="https://www.linkedin.com/in/wongchunlong/"
+              href="https://www.linkedin.com/in/desktopofsamuel/"
             >
               <IconButton aria-label="Linkedin" icon={<FaLinkedin />} />
             </NextLink>
