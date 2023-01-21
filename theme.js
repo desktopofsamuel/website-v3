@@ -162,7 +162,15 @@ const customTheme = extendTheme({
           },
         }),
         outline: (props) => ({
-          borderColor: "indigo.200",
+          background: "none",
+          color: mode("primary.500", "primary.400")(props),
+          borderColor: mode("indigo.200", "indigo.700")(props),
+          _hover: {
+            background: "none",
+            borderColor: mode("indigo.200", "indigo.600")(props),
+            color: mode("primary.500", "primary.400")(props),
+          }
+          
         }),
         brand: (props) => ({
           backgroundColor: mode("primary.500", "primary.400")(props),

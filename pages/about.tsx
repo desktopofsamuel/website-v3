@@ -11,6 +11,7 @@ import {
   Center,
   UnorderedList,
   ListItem,
+  VStack,
   HStack,
 } from "@chakra-ui/react";
 import Profile2022 from "../public/static/samuel-profile-2022.jpeg";
@@ -28,11 +29,12 @@ import Figma from "../public/about/figma.svg";
 
 type Props = {
   title: string;
+  subtitle?: string;
   text: string;
   image?: string;
 };
 
-const Entry: React.FC<Props> = ({ title, text, image }) => {
+const Entry: React.FC<Props> = ({ title, text, image, subtitle }) => {
   return (
     <Grid
       // justifyContent="space-between"
@@ -51,11 +53,14 @@ const Entry: React.FC<Props> = ({ title, text, image }) => {
           transition="all 500ms ease-in-out"
           opacity={1}
         >
-          <Image src={image} alt="HSBC Logo" />
+          <Image src={image} alt={`Logo of ${subtitle}`} />
         </Box>
       )}
       <Box>
         <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
+        <Text fontFamily="heading" fontSize="lg" textTransform="uppercase" my="0">
+          {subtitle}
+        </Text>
         <Text variant="small" my="0">
           {text}
         </Text>
@@ -67,7 +72,12 @@ const Entry: React.FC<Props> = ({ title, text, image }) => {
 const AboutPage: NextPage = () => {
   return (
     <Layout>
-      <Grid gridTemplateColumns={{ base: "auto", md: "auto auto"}} gap={{ base: "4", md: "16"}} alignItems="center" py={{ base: "4", md: "16"}} >
+      <Grid
+        gridTemplateColumns={{ base: "auto", md: "auto auto" }}
+        gap={{ base: "4", md: "16" }}
+        alignItems="center"
+        py={{ base: "4", md: "16" }}
+      >
         <Image
           src={Profile2022}
           alt="Portrait of Samuel Wong"
@@ -80,25 +90,26 @@ const AboutPage: NextPage = () => {
         />
 
         <Box maxW={{ base: "initial", md: "80%" }}>
-          <Heading>Hello, my name is Samuel Wong.</Heading>
+          <Heading>Hello, my name is Samuel.</Heading>
           <Text>
             I got into product design because I&apos;m deeply passionate about
             technology and how it profoundly changes our way of living. For the
-            past 7 years, I have been solving users and business problems and
-            delivering delightful interfaces & experiences across industries
-            like web3, investment, and travel.
+            past 8 years, I have been solving users and business problems and
+            delivering delightful interfaces & experiences across domains
+            like web3, finance, and travel industries.
           </Text>
           <HStack>
-          <Button size="lg">
-            <NextLink href="#contact" variant="noeffect">
-              Let&apos;s Chat
-            </NextLink>
-          </Button>
-          <Button size="lg" variant="outline" color="blue.500">
-            <NextLink href="#resume" variant="noeffect">
-              My resume
-            </NextLink>
-          </Button></HStack>
+            <Button size="lg">
+              <NextLink href="#contact" variant="noeffect">
+                Let&apos;s Chat
+              </NextLink>
+            </Button>
+            <Button size="lg" variant="outline" color="blue.500">
+              <NextLink href="#resume" variant="noeffect">
+                My resume
+              </NextLink>
+            </Button>
+          </HStack>
         </Box>
       </Grid>
       <Box py="16">
@@ -107,7 +118,9 @@ const AboutPage: NextPage = () => {
         </Heading>
         <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">Interned At Apple</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">
+              Interned At Apple
+            </Heading>
             <Text>
               Majoring in Arts in college, I took a gap year working in iTunes &
               App Store, Apple. This valuable experience cultivated my interest
@@ -115,15 +128,20 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">Starting my agency</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">
+              Starting my agency
+            </Heading>
             <Text>
               With growing freelance web & design projects, I co-founded a
-              digital agency after graduation. Me and my team helped small businesses,
-              entrepreneurs, and non-profits launching their projects.
+              digital agency after graduation. Me and my team helped small
+              businesses, entrepreneurs, and non-profits launching their
+              projects.
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">Switching to product</Heading>
+            <Heading textTransform="uppercase" fontSize="2xl">
+              Switching to product
+            </Heading>
             <Text>
               After that, I had worked in start-up & corporation as a prdouct
               designer. Currently I am working as a Product Designer in the
@@ -133,43 +151,48 @@ const AboutPage: NextPage = () => {
         </SimpleGrid>
       </Box>
       <Box py="12">
-      <Image
-        src={Profile}
-        alt="Portrait of Samuel Wong"
-        placeholder="blur"
-        width="1920"
-        height="1280"
-      />
+        <Image
+          src={Profile}
+          alt="Portrait of Samuel Wong"
+          placeholder="blur"
+          width="1920"
+          height="1280"
+        />
       </Box>
       <Box id="resume">
-        <Heading fontSize="4xl">Resume</Heading>
+        <Heading fontSize="4xl">Resume of Samuel Wong</Heading>
         <Box py="4">
           <Heading textTransform="uppercase" fontSize="md" my="4">
             Career
           </Heading>
           <Grid gap="4">
             <Entry
-              title="Product Designer @ OKX"
+              title="Product Designer II"
+              subtitle="OKX"
               text="2022 - Now"
               image={OKX}
             />
             <Entry
-              title="UX/UI Consultant @ HSBC"
+              title="UX/UI Consultant"
+              subtitle="HSBC via Protiviti"
               text="2021 - 2022"
               image={HSBC}
             />
             <Entry
-              title="Principal Designer @ HyperAir"
+              title="Principal Designer"
+              subtitle="HyperAir"
               text="2019 - 2021"
               image={HyperAir}
             />
             <Entry
-              title="Co-founder & Design Lead @ Playa"
+              title="Co-founder & Design Lead"
+              subtitle="Playa"
               text="2015 - 2019"
               image={Playa}
             />
             <Entry
-              title="Cross Content Intern @ Apple"
+              title="Cross Content Intern"
+              subtitle="Apple"
               text="2012 - 2013"
               image={Apple}
             />
@@ -195,7 +218,8 @@ const AboutPage: NextPage = () => {
             Community
           </Heading>
           <Entry
-            title="Community moderator @ Friends of Figma, Hong Kong"
+            title="Community Moderator"
+            subtitle="Friends of Figma, Hong Kong"
             text="2022 - Now"
             image={Figma}
           />
