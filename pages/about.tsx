@@ -26,6 +26,7 @@ import Playa from "../public/about/playa.svg";
 import Apple from "../public/about/apple.svg";
 import OKX from "../public/about/okx.svg";
 import Figma from "../public/about/figma.svg";
+import Adplist from "../public/about/adplist.svg";
 
 type Props = {
   title: string;
@@ -139,7 +140,8 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">
+            <Heading textTransform="uppercase" fontSize="2xl" 
+              >
               Switching to product
             </Heading>
             <Text>
@@ -167,7 +169,7 @@ const AboutPage: NextPage = () => {
           </Heading>
           <Grid gap="4">
             <Entry
-              title="Product Designer II"
+              title="Product Designer"
               subtitle="OKX"
               text="2022 - Now"
               image={OKX}
@@ -217,16 +219,23 @@ const AboutPage: NextPage = () => {
           <Heading textTransform="uppercase" fontSize="md" my="4">
             Community
           </Heading>
+          <Grid gap="4">
           <Entry
             title="Community Moderator"
             subtitle="Friends of Figma, Hong Kong"
             text="2022 - Now"
             image={Figma}
           />
+           <Entry
+            title="Mentor"
+            subtitle="ADPList"
+            text="2022 - Now"
+            image={Adplist}
+          /></Grid>
         </Box>
         <Box py="4">
           <Heading textTransform="uppercase" fontSize="md" my="4">
-            Awards
+          Awards & recognition
           </Heading>
           <Grid gap="4">
             <Entry
