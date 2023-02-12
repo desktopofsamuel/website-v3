@@ -64,7 +64,7 @@ export default function IndexPage({
     <Head><meta name="follow.it-verification-code" content="aYHmMlGswgxauPT7REPs"/></Head>
       <Flex flexDir={{ base: "column", md: "row"}} justifyContent="space-between" alignItems="baseline">
   <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
-  <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >中文網誌</NextLink></Button>
+  <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >網誌</NextLink></Button>
       </Flex>
       <Text color="secondarytext">Full-stack UI/UX designer crafting websites &
 mobile applications with bespoke experience.</Text>

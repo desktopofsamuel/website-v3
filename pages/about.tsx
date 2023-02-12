@@ -33,14 +33,15 @@ type Props = {
   subtitle?: string;
   text: string;
   image?: string;
+  cta?: string;
+  href?: string;
 };
 
-const Entry: React.FC<Props> = ({ title, text, image, subtitle }) => {
+const Entry: React.FC<Props> = ({ title, text, image, subtitle, cta, href }) => {
   return (
-    <Grid
-      // justifyContent="space-between"
-      gridTemplateColumns={{ base: "72px auto", md: "max-content auto" }}
-      gap="4"
+    <Box
+      display="flex"
+      gap={{ base: "4", md: "8"}}
       alignItems="center"
       border="1px solid"
       borderColor="border"
@@ -53,20 +54,27 @@ const Entry: React.FC<Props> = ({ title, text, image, subtitle }) => {
           _hover={{ opacity: 0.5 }}
           transition="all 500ms ease-in-out"
           opacity={1}
+          maxWidth="72px"
         >
           <Image src={image} alt={`Logo of ${subtitle}`} />
-        </Box>
-      )}
-      <Box>
+        </Box> )
+      }
+      <Flex width="100%" alignItems="center">
+        <Box>
         <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
-        <Text fontFamily="heading" fontSize="lg" textTransform="uppercase" my="0">
+        <Text fontFamily="heading" fontSize="md" lineHeight="short" my="0">
           {subtitle}
         </Text>
         <Text variant="small" my="0">
           {text}
         </Text>
-      </Box>
-    </Grid>
+        </Box>
+        <Spacer/>
+        <Box>
+        { cta && <NextLink href={href} variant="noeffect"><Button variant="outline" width="min-content" size={{ base: "xs", md: "md"}} >{cta}</Button></NextLink>}</Box>
+      </Flex>
+     
+    </Box>
   );
 };
 
@@ -179,18 +187,24 @@ const AboutPage: NextPage = () => {
               subtitle="HSBC via Protiviti"
               text="2021 - 2022"
               image={HSBC}
+              cta="View Work"
+              href="/work/hsbc"
             />
             <Entry
               title="Principal Designer"
               subtitle="HyperAir"
               text="2019 - 2021"
               image={HyperAir}
+              cta="View Work"
+              href="/work/hyperair-fx"
             />
             <Entry
               title="Co-founder & Design Lead"
               subtitle="Playa"
               text="2015 - 2019"
               image={Playa}
+              cta="View Work"
+              href="/work/building-hong-kongs-first-water-dispenser-map"
             />
             <Entry
               title="Cross Content Intern"
@@ -231,6 +245,8 @@ const AboutPage: NextPage = () => {
             subtitle="ADPList"
             text="2022 - Now"
             image={Adplist}
+            cta="Make Appointment"
+            href="https://adplist.org/mentors/samuel-wong"
           /></Grid>
         </Box>
         <Box py="4">
