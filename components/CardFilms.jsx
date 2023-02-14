@@ -13,6 +13,7 @@ import {
   Tag,
   ImageProps,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import fetcher from "@/lib/fetcher";
@@ -47,46 +48,46 @@ const CardFilms = () => {
   ));
 
   CustomCard.displayName = "CustomCard";
-
+  const { isOpen, onOpen, onToggle, onClose } = useDisclosure();
   return (
     <>
       <CardBase title="🎬 Recently watching">
-        <Grid
-          display="flex"
-          flexDirection="row"
-          zIndex="-10"
-          position="relative"
-        >
+        <Grid display="flex" flexDirection="row" zIndex={1} position="relative">
           {!data ? (
             <>
               <Loader /> <Loader /> <Loader /> <Loader /> <Loader />
             </>
           ) : (
             data.map((item, i) => (
-              <Box
+              <Tooltip
+                label={item.name}
+                fontSize="md"
+                mt="10px"
+                onMouseHover={onOpen}
                 key={i}
-                width="100%"
-                borderRadius="4px"
-                overflow="hidden"
-                transition="all 100ms ease-in-out"
-                transform="scale(0.9)"
-                boxShadow="2px 0 7px rgba(0,0,0,0.2);"
-                _hover={{
-                  zIndex: "100",
-                  transform: "rotate3d(1, 1, 1,2deg) scale(1)",
-                  boxShadow: "6px 0 7px rgba(0,0,0,0.5);",
-                }}
-                zIndex={-i}
-                _notFirst={{
-                  ml: "-30px",
-                }}
               >
-                <NextLink href={item.link} target="_blank" variant="noeffect">
-                  <Tooltip label={item.name} fontSize="md" mt="10px">
+                <Box
+                  key={i}
+                  width="100%"
+                  borderRadius="4px"
+                  overflow="hidden"
+                  transition="all 100ms ease-in-out"
+                  transform="scale(0.9)"
+                  boxShadow="2px 0 7px rgba(0,0,0,0.2);"
+                  _hover={{
+                    zIndex: "100",
+                    transform: "rotate3d(1, 1, 1,2deg) scale(1)",
+                    boxShadow: "6px 0 7px rgba(0,0,0,0.5);",
+                  }}
+                  _notFirst={{
+                    ml: "-30px",
+                  }}
+                >
+                  <NextLink href={item.link} target="_blank" variant="noeffect">
                     <CustomCard src={item.image} alt={item.name} />
-                  </Tooltip>
-                </NextLink>
-              </Box>
+                  </NextLink>
+                </Box>
+              </Tooltip>
             ))
           )}
         </Grid>
