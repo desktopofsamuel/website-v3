@@ -24,25 +24,11 @@ import {
 import NextImage from "@/components/NextImage";
 import { ArticleJsonLd } from "next-seo";
 import { AUTHOR_NAME, URL } from "../config";
-import { getHeadings } from "utils";
+import { getHeadings } from "utils/getHeadings";
 import ScrollspyNav from "react-scrollspy-nav";
 import NextLink from "@/components/NextLink";
 import slugger from "github-slugger";
 import kebabCase from "lodash.kebabcase";
-
-// const NextImage = (props: any) => {
-//   return (
-//     <div style={{ width: "100%", height: "100%", position: "relative" }}>
-//       <Image
-//         src={props.src}
-//         alt={props.alt}
-//         layout="fill"
-//         style={{ objectFit: "cover" }}
-//         loading="lazy"
-//       />
-//     </div>
-//   );
-// };
 
 const Img = (props: any) => {
   return (
@@ -95,14 +81,8 @@ export default function SinglePostPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
-  const headings = getHeadings(post.body.raw);
-  const ids = headings.map((item: { text: string | undefined }) =>
-    kebabCase(item.text)
-  );
-  const newids = headings.map((item: { text: string | undefined }) =>
-  kebabCase(item.text)
-  );
-  console.log(newids)
+  const { headings, ids} = getHeadings(post.body.raw);
+  console.log(headings)
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -157,18 +137,20 @@ export default function SinglePostPage({
             scrollDuration="1000"
             headerBackground
             reference="top"
+            offset={50}
           >
-            {headings.map((item: any) => (
+            {headings.map((heading, index) => (
               <ListItem
-                key={item.text}
+                key={index}
                 borderLeft="1px"
                 borderColor="border"
                 lineHeight="base"
                 paddingLeft="2"
                paddingBottom="2"
+               id={heading.id}
               >
-                <NextLink href={`#${kebabCase(item.text)}`}>
-                  {item.text}
+                <NextLink href={heading.id}>
+                  {heading.text}
                 </NextLink>
               </ListItem>
             ))}
