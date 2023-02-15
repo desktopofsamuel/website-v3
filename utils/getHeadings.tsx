@@ -6,7 +6,7 @@ type Heading = {
   id: string;
 }
 
-function getHeadings(markdown: string): { headings: Heading[], ids: string[] } {
+export function getHeadings(markdown: string): { headings: Heading[], ids: string[] } {
    
   // Split the Markdown input into an array of lines
   const lines = markdown.split("\n");
