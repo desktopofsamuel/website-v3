@@ -24,25 +24,11 @@ import {
 import NextImage from "@/components/NextImage";
 import { ArticleJsonLd } from "next-seo";
 import { AUTHOR_NAME, URL } from "../config";
-import { getHeadings } from "utils";
+import {getHeadings} from "utils/getHeadings";
 import ScrollspyNav from "react-scrollspy-nav";
 import NextLink from "@/components/NextLink";
 import slugger from "github-slugger";
 import kebabCase from "lodash.kebabcase";
-
-// const NextImage = (props: any) => {
-//   return (
-//     <div style={{ width: "100%", height: "100%", position: "relative" }}>
-//       <Image
-//         src={props.src}
-//         alt={props.alt}
-//         layout="fill"
-//         style={{ objectFit: "cover" }}
-//         loading="lazy"
-//       />
-//     </div>
-//   );
-// };
 
 const Img = (props: any) => {
   return (
@@ -96,13 +82,8 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
-  const ids = headings.map((item: { text: string | undefined }) =>
-    kebabCase(item.text)
-  );
-  const newids = headings.map((item: { text: string | undefined }) =>
-  kebabCase(item.text)
-  );
-  console.log(newids)
+  const ids = headings.map((heading) => heading.id);
+  console.log(headings)
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -140,8 +121,23 @@ export default function SinglePostPage({
         <Heading variant="pagetitle">{post.title}</Heading>
         <Text variant="small">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
       </Box>
-      <Box
-        display={{ base: "none", lg: "block" }}
+      <Article
+        sx={{
+          display: "block",
+          position: "relative",
+          maxWidth: "800px",
+          overflow: "hidden",
+
+          "h1, h2, h3, h4, h5, h6": {
+            fontFamily: "fonts.heading",
+            color: "colors.black",
+            lineHeight: "short",
+          },
+        }}
+      >
+        <Box
+        as="aside"
+        display={{ base: "none", xl: "block" }}
         position="fixed"
         top="40vh"
         right="1vw"
@@ -158,54 +154,23 @@ export default function SinglePostPage({
             headerBackground
             reference="top"
           >
-            {headings.map((item: any) => (
+            {headings.map((heading, index) => (
               <ListItem
-                key={item.text}
+                key={index}
                 borderLeft="1px"
                 borderColor="border"
                 lineHeight="base"
                 paddingLeft="2"
                paddingBottom="2"
               >
-                <NextLink href={`#${kebabCase(item.text)}`}>
-                  {item.text}
+                <NextLink href={`#${heading.id}`}>
+                  {heading.text}
                 </NextLink>
               </ListItem>
             ))}
           </ScrollspyNav>
         </UnorderedList>
       </Box>
-      <Article
-        sx={{
-          display: "block",
-          position: "relative",
-          maxWidth: "800px",
-          overflow: "hidden",
-
-          nav: {
-            display: "none",
-            position: "fixed",
-            padding: "4",
-            top: "30%",
-            right: "0",
-            width: "250px",
-          },
-
-          "nav > ol > li": {
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            fontSize: "12px",
-            margin: "4px 0px",
-          },
-
-          "h1, h2, h3, h4, h5, h6": {
-            fontFamily: "fonts.heading",
-            color: "colors.black",
-            lineHeight: "short",
-          },
-        }}
-      >
         <MDXContent components={components} />
       </Article>
       {/* <Markdown

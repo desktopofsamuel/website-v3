@@ -224,7 +224,6 @@ export default makeSource({
       [rehypeSlug],
       [rehypeAutolinkHeadings],
       [rehypeAccessibleEmojis],
-      [toc],
     ],
   },
 });
