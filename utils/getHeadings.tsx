@@ -1,4 +1,5 @@
-import { kebabCase } from "lodash";
+
+import GithubSlugger from 'github-slugger'
 
 type Heading = {
   text: string;
@@ -6,7 +7,7 @@ type Heading = {
   id: string;
 }
 
-export function getHeadings(markdown: string): { headings: Heading[], ids: string[] } {
+export function getHeadings(markdown: string): Heading[] {
    
   // Split the Markdown input into an array of lines
   const lines = markdown.split("\n");
@@ -29,8 +30,10 @@ export function getHeadings(markdown: string): { headings: Heading[], ids: strin
     // as well as any Markdown links enclosed in square brackets and parentheses
     const text = line.replace(/#+\s+/g, "").replace(/\[(.*?)\]\(.*?\)/g, "$1");
 
-    // kebabcase the text
-    const id = kebabCase(text);
+    const slugger = new GithubSlugger()
+    // Slugger the text
+    
+    const id = slugger.slug(text);
     // Add the result to the array
     result.push({ text, level, id });
   }
