@@ -29,8 +29,10 @@ const customTheme = extendTheme({
       100: "#FFF9EF",
       200: "#F2E3CD",
       300: "#EEDDCC",
-      800: "4F483B",
-      900: "150D00",
+      500: "#A99A7F",
+      700: "#6B614F",
+      800: "#4F483B",
+      900: "#150D00",
     },
     primary: {
       300: "#33aaff",
@@ -60,7 +62,7 @@ const customTheme = extendTheme({
         _dark: "indigo.300",
       },
       secondarytext: {
-        default: "yellow.800",
+        default: "yellow.700",
         _dark: "indigo.200",
       },
       background: {
@@ -129,6 +131,23 @@ const customTheme = extendTheme({
     widest: "0.1em",
   },
   components: {
+    Tag: {
+      baseStyle: (props) => ({
+      }),
+      variants: {
+        solid: (props) => ({
+          fontFamily: "Space Grotesk",
+          textTransform: "uppercase",
+          fontSize: "2xl",
+          fontWeight: "600",
+          letterSpacing: "tight",
+          backgroundColor: "white",
+        })
+      },
+      defaultProps: {
+        variant: "solid"
+      },
+    },
     Button: {
       baseStyle: (props) => ({
         fontFamily: "Space Grotesk",
@@ -169,8 +188,7 @@ const customTheme = extendTheme({
             background: "none",
             borderColor: mode("indigo.200", "indigo.600")(props),
             color: mode("primary.500", "primary.400")(props),
-          }
-          
+          },
         }),
         brand: (props) => ({
           backgroundColor: mode("primary.500", "primary.400")(props),
@@ -219,7 +237,7 @@ const customTheme = extendTheme({
         noeffect: (props) => ({
           _hover: {
             borderBottomColor: "transparent",
-            color: "initial"
+            color: "initial",
           },
         }),
         postTitle: (props) => ({
@@ -278,22 +296,33 @@ const customTheme = extendTheme({
           lineHeight: "tall",
         }),
         heading: (props) => ({
-          fontSize: { 
+          fontSize: {
             base: "3xl",
             md: "6xl",
           },
           my: "4",
         }),
         small: (props) => ({
-          fontSize: "sm",
-          fontWeight: "bold",
+          fontSize: "md",
+          fontWeight: "black",
           textTransform: "uppercase",
-          letterSpacing: "wide",
+          letterSpacing: "wider",
         }),
       },
       defaultProps: {
         variant: "title",
       },
+    },
+    Tag: {
+      baseStyle: {
+        fontFamily: "Space Grotesk",
+        textTransform: "uppercase",
+        fontSize: "2xl",
+        fontWeight: "600",
+        letterSpacing: "tight",
+      },
+      variant: {},
+      defaultProps: {},
     },
   },
   styles: {
@@ -328,7 +357,7 @@ const customTheme = extendTheme({
         },
       },
       h1: {
-        fontFamily: "heading",  
+        fontFamily: "heading",
         fontWeight: "bold",
         mt: "8",
         mb: "4",
@@ -356,7 +385,7 @@ const customTheme = extendTheme({
         fontFamily: "heading",
         fontSize: "2xl",
         lineHeight: "short",
-        letterSpacing: "tight", 
+        letterSpacing: "tight",
         padding: "10",
       },
       ul: {

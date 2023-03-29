@@ -32,7 +32,7 @@ export const NextImage = (props: any) => {
     overflow="hidden" cursor="pointer"
     >
       <Box position="relative" width="auto" height="auto" 
-        transition="all 0.5s ease-in-out"
+        transition="all 0.5s ease-in-out" 
         _hover={{
           opacity: "0.7",
           transform: "scale(1.05)",

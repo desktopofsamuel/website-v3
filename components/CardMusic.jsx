@@ -50,7 +50,7 @@ const CardMusic = () => {
     return (
       <Center textAlign="center" flexDirection="column">
         <Skeleton width="80px" height="80px" circle />
-        <Skeleton/>
+        <Skeleton width="120px" height="20px"/>
       </Center>
     );
   }
