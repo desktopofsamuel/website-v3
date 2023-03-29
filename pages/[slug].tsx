@@ -13,6 +13,7 @@ import {
   Box,
   Text,
   chakra,
+  VStack,
   Heading,
   Alert,
   AlertIcon,
@@ -23,6 +24,7 @@ import {
   HStack,
   SimpleGrid,
   Tag,
+  Flex,
 } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import { ArticleJsonLd } from "next-seo";
@@ -134,71 +136,82 @@ export default function SinglePostPage({
           // ],
         }}
       />
-
-      <Box>
-      <Box>
-      <Box maxWidth="720px" pb="4">
-        <NextImage src={post.cover}/>
-      <Text variant="small" color="secondarytext">{dayjs(post.date).format("MMM DD, YYYY")}</Text>
-        <Heading>{post.title}</Heading>
-        <Text fontSize="lg" color="secondarytext">{post.tldr}</Text>
-      </Box></Box>
+      <Box
+        as="aside"
+        display={{ base: "none", xl: "block" }}
+        position="fixed"
+        top="50%"
+        right="1vw"
+        transform="translateY(-50%)"
+        marginLeft="36px"
+        maxWidth="200px"
+        fontSize="xs"
+        zIndex={100}
+      >
+        <UnorderedList listStyleType="none">
+          <ScrollspyNav
+            scrollTargetIds={ids}
+            activeNavClass="is-active"
+            scrollDuration="1000"
+            headerBackground
+            reference="top"
+          >
+            {headings.map((heading, index) => (
+              <ListItem
+                key={index}
+                borderLeft="1px"
+                borderColor="border"
+                lineHeight="base"
+                paddingLeft="2"
+                paddingBottom="2"
+              >
+                <NextLink href={`#${heading.id}`}>{heading.text}</NextLink>
+              </ListItem>
+            ))}
+          </ScrollspyNav>
+        </UnorderedList>
+      </Box>
+      <NextImage src={post.cover} />
       <Article
         sx={{
           display: "block",
           position: "relative",
           maxWidth: "800px",
           overflow: "hidden",
+          margin: "0 auto",
 
-          "h1, h2, h3, h4, h5, h6": {
-            fontFamily: "fonts.heading",
-            color: "colors.black",
-            lineHeight: "short",
+          "> *": {
+            maxWidth: "800px",
           },
         }}
       >
-        <Box
-          as="aside"
-          display={{ base: "none", xl: "block" }}
-          position="fixed"
-          top="40vh"
-          right="1vw"
-          marginLeft="36px"
-          maxWidth="250px"
-          fontSize="sm"
-          zIndex={100}
-        >
-          <UnorderedList listStyleType="none">
-            <ScrollspyNav
-              scrollTargetIds={ids}
-              activeNavClass="is-active"
-              scrollDuration="1000"
-              headerBackground
-              reference="top"
-            >
-              {headings.map((heading, index) => (
-                <ListItem
-                  key={index}
-                  borderLeft="1px"
-                  borderColor="border"
-                  lineHeight="base"
-                  paddingLeft="2"
-                  paddingBottom="2"
-                >
-                  <NextLink href={`#${heading.id}`}>{heading.text}</NextLink>
-                </ListItem>
-              ))}
-            </ScrollspyNav>
-          </UnorderedList>
-        </Box>
-   
+        <VStack pb="4">
+          <Flex width="100%" direction="column">
+            <Box display="inline-block">
+              <Text variant="small" color="secondarytext">
+                {dayjs(post.date).format("MMM DD, YYYY")} · {post.timetoread}{" "}
+                min read
+              </Text>
+            </Box>
+            <Heading lineHeight="short">{post.title}</Heading>
+            <Text fontSize="lg" fontFamily="heading" color="secondarytext">
+              {post.tldr}
+            </Text>
+          </Flex>
+        </VStack>
+
         <MDXContent components={components} />
         <HStack>
-        {post.tags.map((tag) => (
-          <NextLink key={tag} variant="noeffect" href={`/tags/${kebabCase(tag)}`}>
-            <Tag variant='solid'>{tag}</Tag>
-          </NextLink>
-        ))}</HStack>
+          {post.tags.map((tag) => (
+            <NextLink
+              key={tag}
+              variant="noeffect"
+              href={`/tags/${kebabCase(tag)}`}
+            >
+              <Tag variant="outline">{tag}</Tag>
+            </NextLink>
+          ))}
+        </HStack>
         {/* <Heading fontSize="lg">You might find these interestings</Heading>
         <SimpleGrid columns={3} gap={4}>
           {relatedPosts.slice(0, 3).map((post) => (
@@ -206,7 +219,6 @@ export default function SinglePostPage({
           ))}
         </SimpleGrid> */}
       </Article>
-      </Box>
       {/* <Markdown
         options={{
           wrapper: "article",

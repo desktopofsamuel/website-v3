@@ -5,7 +5,7 @@ import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
-import { parseMarkdown } from "./utils";
+import { parseMarkdown, parseReadTime } from "./utils";
 import toc from "@jsdevtools/rehype-toc";
 import remarkGfm from "remark-gfm";
 
@@ -72,6 +72,10 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       resolve: (post) => parseMarkdown(post.body.raw, 300),
     },
+    timetoread: {
+      type: "number",
+      resolve: (post) => parseReadTime(post.body.raw)
+    }
   },
 }));
 

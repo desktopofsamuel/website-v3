@@ -359,6 +359,7 @@ const customTheme = extendTheme({
       h1: {
         fontFamily: "heading",
         fontWeight: "bold",
+        fontSize: "xl",
         mt: "8",
         mb: "4",
       },
@@ -366,6 +367,7 @@ const customTheme = extendTheme({
         fontFamily: "heading",
         fontWeight: "bold",
         lineHeight: "taller",
+        fontSize: "lg",
         mt: "8",
         mb: "4",
       },
