@@ -2,6 +2,16 @@ export const sortByDate = (a, b) => {
   return new Date(b.date) - new Date(a.date);
 };
 
+export const parseReadTime = (markdown) => {
+  // Determine the number of words in the post content
+  const wordCount = markdown.split(/\s+/g).length;
+  // Assuming an average reading speed of 200 words per minute
+  const wordsPerMinute = 200;
+  // Calculate the estimated reading time in minutes
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  return readingTime;
+}
+
 export const parseMarkdown = (markdownText, char) => {
   const charLimit = char || 500;
   const htmlText = markdownText
