@@ -302,6 +302,10 @@ const customTheme = extendTheme({
           },
           my: "4",
         }),
+        subtitle: (props) => ({
+          fontSize: "xl",
+          my: "4",
+        }),
         small: (props) => ({
           fontSize: "md",
           fontWeight: "black",

@@ -64,14 +64,20 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps<{
   post: Post;
-}> = ({ params }) => {
+  relatedPosts: Post[];
+}> = async ({ params }) => {
   const post = allPosts.find((post) => post.slug === params?.slug);
 
   if (!post) {
     return { notFound: true };
   }
 
-  return { props: { post } };
+  // Get up to 3 posts that share the same category as the current post
+  const relatedPosts = allPosts
+    .filter((p) => p.category === post.category && p.slug !== post.slug)
+    .slice(0, 3);
+
+  return { props: { post, relatedPosts } };
 };
 
 const components = {
@@ -85,6 +91,7 @@ const components = {
 
 export default function SinglePostPage({
   post,
+  relatedPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
@@ -189,8 +196,8 @@ export default function SinglePostPage({
           <Flex width="100%" direction="column">
             <Box display="inline-block">
               <Text variant="small" color="secondarytext">
-                {dayjs(post.date).format("MMM DD, YYYY")} · {post.timetoread}{" "}
-                min read
+                {dayjs(post.date).format("MMM DD, YYYY")} · posted in{" "}
+                {post.category} · {post.timetoread} min read
               </Text>
             </Box>
             <Heading lineHeight="short">{post.title}</Heading>
@@ -219,6 +226,19 @@ export default function SinglePostPage({
           ))}
         </SimpleGrid> */}
       </Article>
+      {relatedPosts && (
+        <>
+          <Text fontFamily="heading" fontStyle="bold">
+            Related articles you might like
+          </Text>
+          <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6}>
+            {relatedPosts.map((post) => (
+              <ListBlog key={post.slug} data={post} small />
+            ))}
+          </SimpleGrid>
+        </>
+      )}
+
       {/* <Markdown
         options={{
           wrapper: "article",
