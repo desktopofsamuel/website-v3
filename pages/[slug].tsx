@@ -25,6 +25,7 @@ import {
   SimpleGrid,
   Tag,
   Flex,
+  IconButton,
 } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import { ArticleJsonLd } from "next-seo";
@@ -35,6 +36,7 @@ import NextLink from "@/components/NextLink";
 import slugger from "github-slugger";
 import kebabCase from "lodash.kebabcase";
 import ListBlog from "@/components/ListBlog";
+import { ArrowUpIcon } from "@chakra-ui/icons";
 
 const Img = (props: any) => {
   return (
@@ -75,7 +77,7 @@ export const getStaticProps: GetStaticProps<{
   // Get up to 3 posts that share the same category as the current post
   const relatedPosts = allPosts
     .filter((p) => p.category === post.category && p.slug !== post.slug)
-    .slice(0, 3);
+    .slice(0, 2);
 
   return { props: { post, relatedPosts } };
 };
@@ -88,6 +90,13 @@ const components = {
   AlertDescription,
   Button,
 };
+
+const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+
+function scrollToTop() {
+  if (!isBrowser()) return;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 export default function SinglePostPage({
   post,
@@ -143,6 +152,15 @@ export default function SinglePostPage({
           // ],
         }}
       />
+      <Box position="fixed" bottom="2" right="2">
+        <IconButton
+          aria-label="Back to Top"
+          icon={<ArrowUpIcon />}
+          onClick={scrollToTop}
+        >
+          <NextLink href="#top" />
+        </IconButton>
+      </Box>
       <Box
         as="aside"
         display={{ base: "none", xl: "block" }}
@@ -178,7 +196,7 @@ export default function SinglePostPage({
           </ScrollspyNav>
         </UnorderedList>
       </Box>
-      <NextImage src={post.cover} />
+      <NextImage src={post.cover} id="top" />
       <Article
         sx={{
           display: "block",
@@ -225,19 +243,18 @@ export default function SinglePostPage({
             <ListBlog key={post.slug} data={post} />
           ))}
         </SimpleGrid> */}
-      </Article>
-      {relatedPosts && (
-        <>
-          <Text fontFamily="heading" fontStyle="bold">
-            Related articles you might like
-          </Text>
-          <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6}>
+        {relatedPosts && (
+        <Flex marginTop="10" flexDir="column" alignItems="center">
+          <Text textAlign="center" variant="small">Read more</Text>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 1, md: 6 }}>
             {relatedPosts.map((post) => (
               <ListBlog key={post.slug} data={post} small />
             ))}
           </SimpleGrid>
-        </>
+        </Flex>
       )}
+      </Article>
+      
 
       {/* <Markdown
         options={{
