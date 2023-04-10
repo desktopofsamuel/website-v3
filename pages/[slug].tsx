@@ -74,10 +74,26 @@ export const getStaticProps: GetStaticProps<{
     return { notFound: true };
   }
 
-  // Get up to 3 posts that share the same category as the current post
-  const relatedPosts = allPosts
-    .filter((p) => p.category === post.category && p.slug !== post.slug)
+  // Get up to 3 posts that share the same tag as the current post
+  let relatedPosts = allPosts
+    .filter((p) => {
+      const hasSharedTag = p.tags.some((tag) => post.tags.includes(tag));
+      return hasSharedTag && p.slug !== post.slug;
+    })
+    .sort((a, b) => {
+      // Sort related posts by the order of the tags in the current post
+      const aIndex = post.tags.findIndex((tag) => a.tags.includes(tag));
+      const bIndex = post.tags.findIndex((tag) => b.tags.includes(tag));
+      return aIndex - bIndex;
+    })
     .slice(0, 2);
+
+  // If no related posts found, then find posts in the same category
+  if (relatedPosts.length === 0) {
+    relatedPosts = allPosts
+      .filter((p) => p.category === post.category && p.slug !== post.slug)
+      .slice(0, 2);
+  }
 
   return { props: { post, relatedPosts } };
 };
