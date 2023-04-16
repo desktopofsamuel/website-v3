@@ -1,4 +1,4 @@
-import { table } from "../../lib/airtable";
+import { table } from "lib/airtable";
 
 export default async (_req, res) => {
   try {
@@ -9,10 +9,11 @@ export default async (_req, res) => {
         "Category",
         "CreateTime",
         "ExtraLink",
+        "LastUpdateTime",
         "CTA"
       ],
       filterByFormula: "AND({Status} = 'Published', {Category} = 'Hardware')",
-      sort: [ {field: "CreateTime", direction: "desc"} ]
+      sort: [ {field: "LastUpdateTime", direction: "desc"} ]
     }).firstPage();
 
     res.status(200).json(records);

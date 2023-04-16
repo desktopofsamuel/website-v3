@@ -1,19 +1,21 @@
-import { table } from "../../lib/airtable";
+import { table } from "lib/airtable";
 
 export default async (_req, res) => {
   try {
     const records = await table.select({
       fields: [
         "Name",
-        "Description",
-        "Category",
-        "CreateTime",
+        // "Description",
+        // "Category",
+        // "CreateTime",
         "ExtraLink",
+        "Link",
+        "LastUpdateTime",
         "CTA",
         "Image"
       ],
       filterByFormula: "AND({Status} = 'Published', NOT({Category} = 'Hardware'))",
-      sort: [ {field: "CreateTime", direction: "desc"} ]
+      sort: [ {field: "LastUpdateTime", direction: "desc"} ]
     }).firstPage();
 
 
