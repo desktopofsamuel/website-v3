@@ -14,6 +14,7 @@ type answerProps = {
 const allTags = listOfTags.map((tag) => ({
   name: tag,
   path: `/tags/${kebabCase(tag)}`,
+  count: allPosts.reduce((count, post) => count + (post.tags.includes(tag) ? 1 : 0), 0)
 }));
 
 const allPostsList = allPosts.map((post) => ({
