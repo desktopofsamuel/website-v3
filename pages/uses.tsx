@@ -1,11 +1,13 @@
 import { NextPage } from "next";
 import Layout from "@/components/Layout";
+import Skeleton from "react-loading-skeleton";
 import useSWR from "swr";
 import { Text, Box, Grid, Button, Heading } from "@chakra-ui/react";
 import fetcher from "@/lib/fetcher";
 import CardResources from "@/components/CardResources";
 import NextLink from "@/components/NextLink";
 import NextImage from "@/components/NextImage";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type Props = [
   fields: {
@@ -22,10 +24,24 @@ const UsesPage: NextPage = () => {
   return (
     <Layout title="Uses">
       <Heading variant="pagetitle">Uses</Heading>
-      <Heading>Apps</Heading>
+      <Heading fontSize="2xl">Apps</Heading>
       <Text>Tools that I love to use everyday</Text>
       {!appsData ? (
-        <Text>Loading...</Text>
+        <Grid
+          gap="4"
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+          }}
+        >
+         <Skeleton height="74px"/>
+         <Skeleton height="74px"/>
+         <Skeleton height="74px"/>
+         <Skeleton height="74px"/>
+         <Skeleton height="74px"/>
+         <Skeleton height="74px"/>
+        </Grid>
       ) : (
         <Grid
           gap="4"
@@ -36,7 +52,12 @@ const UsesPage: NextPage = () => {
           }}
         >
           {appsData.map((item: any, i: number) => (
-            <NextLink key={i} href={item.fields.Link} target="_blank" variant="noeffect">
+            <NextLink
+              key={i}
+              href={item.fields.Link}
+              target="_blank"
+              variant="noeffect"
+            >
               <Grid
                 border="1px solid"
                 borderColor="border"
@@ -79,7 +100,7 @@ const UsesPage: NextPage = () => {
           ))}
         </Grid>
       )}
-      <Heading py="4">Hardware</Heading>
+      <Heading fontSize="2xl" py="4">Hardware</Heading>
       {!gadgetsData ? (
         <Text>Loading...</Text>
       ) : (
@@ -98,7 +119,8 @@ const UsesPage: NextPage = () => {
                 <Heading fontSize="xl" my="0" lineHeight="short">
                   {item.fields["Name"]}
                 </Heading>
-                <Box color="primarytext"
+                <Box
+                  color="primarytext"
                   dangerouslySetInnerHTML={{
                     __html: `${item.fields["Description"]}`,
                   }}

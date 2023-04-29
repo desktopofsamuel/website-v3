@@ -4,6 +4,12 @@ import { Heading, Text } from "@chakra-ui/react";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import NextLink from "@/components/NextLink";
 
+type allTagsProps = {
+  name: string;
+  path: string;
+  count: number;
+}
+
 export const getStaticProps: GetStaticProps<{
   tags: any;
 }> = ({ params }: any) => {
@@ -20,11 +26,7 @@ export default function TagListPage({ tags }: any) {
       <Heading variant="pagetitle">Tags</Heading>
       {tags.map(
         (
-          tag: {
-            count: number;
-            path: string;
-            name: string;
-          },
+          tag: allTagsProps,
           i: number
         ) => (
           <NextLink href={tag.path} key={i}>
