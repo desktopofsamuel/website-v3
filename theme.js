@@ -132,8 +132,7 @@ const customTheme = extendTheme({
   },
   components: {
     Tag: {
-      baseStyle: (props) => ({
-      }),
+      baseStyle: (props) => ({}),
       variants: {
         solid: (props) => ({
           fontFamily: "Space Grotesk",
@@ -142,10 +141,10 @@ const customTheme = extendTheme({
           fontWeight: "600",
           letterSpacing: "tight",
           backgroundColor: "white",
-        })
+        }),
       },
       defaultProps: {
-        variant: "solid"
+        variant: "solid",
       },
     },
     Button: {
@@ -222,6 +221,12 @@ const customTheme = extendTheme({
           letterSpacing: "wide",
         }),
       },
+    },
+    StatNumber: {
+      baseStyle: (props) => ({
+        fontSize: "2xl",
+        color: mode("primary.500", "primary.400")(props),
+      }),
     },
     Link: {
       baseStyle: (props) => ({

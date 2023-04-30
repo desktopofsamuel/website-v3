@@ -15,6 +15,7 @@ import SEO from "../seo-config";
 import customTheme from "../theme.js";
 import { ChakraProvider } from "@chakra-ui/provider";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ChakraProvider resetCSS={true} theme={customTheme}>
         <DefaultSeo {...SEO} />
         <Component {...pageProps} />
+        <Analytics />
       </ChakraProvider>
     </>
   );

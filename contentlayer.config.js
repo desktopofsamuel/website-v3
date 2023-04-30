@@ -145,6 +145,14 @@ export const Work = defineDocumentType(() => ({
       type: "boolean",
       required: false,
     },
+    role: {
+      type: "string",
+      required: false,
+    },
+    platform: {
+      type: "string",
+      required: false,
+    }
   },
   computedFields: {
     slug: {
