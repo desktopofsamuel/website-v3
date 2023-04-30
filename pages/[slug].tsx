@@ -152,20 +152,20 @@ export default function SinglePostPage({
       />
       <NextSeo
         openGraph={{
-          url: CONFIG.URL + `/` + post.slug,
+          url: CONFIG.URL + `/` + post.slug + `/`,
           type: "article",
           article: {
             publishedTime: post.date,
             tags: post.tags,
             authors: [CONFIG.URL],
           },
-          // images: [
-          //   {
-          //     url: frontmatter.socialImage
-          //       ? CONFIG.URL + frontmatter.socialImage
-          //       : CONFIG.URL + CONFIG.OG_IMAGE,
-          //   },
-          // ],
+          images: [
+            {
+              url: post.cover
+                ? CONFIG.URL + post.cover
+                : CONFIG.URL + CONFIG.OG_IMAGE,
+            },
+          ],
         }}
       />
       <Box position="fixed" bottom="2" right="2">
