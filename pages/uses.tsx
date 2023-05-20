@@ -14,7 +14,7 @@ import {
   BreadcrumbSeparator,
 } from "@chakra-ui/react";
 import fetcher from "@/lib/fetcher";
-import CardResources from "@/components/CardResources";
+import CardResources from "@/components/CardResourcesMain";
 import NextLink from "@/components/NextLink";
 import NextImage from "@/components/NextImage";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -39,8 +39,8 @@ const UsesPage: NextPage = () => {
           <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href="/resources/career">
-            UX Career Kit
+          <BreadcrumbLink href="/uses">
+            Uses
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>

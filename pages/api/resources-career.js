@@ -12,6 +12,7 @@ export default async (_req, res) => {
         "Handle",
         "AuthorLink",
         "Stage",
+        "Tag",
       ],
       filterByFormula: "AND({Status} = 'Published', NOT({Category} = 'Thread'))",
       sort: [ {field: "LastUpdateTime", direction: "desc"} ]

@@ -20,9 +20,10 @@ type Props = [
     fields: any;
     Name: string;
     Description: string;
-    Category: any;
+    Category: string;
     Stage: string;
     Images: any;
+    Tag: string;
   }
 ];
 
@@ -48,7 +49,9 @@ const UsesPage: NextPage = () => {
       <Text>
         A list of helpful resources to kickstart your UX design career
       </Text>
-      <Heading fontSize="2xl" mt="8">Search</Heading>
+      <Heading fontSize="2xl" mt="8">
+        Search
+      </Heading>
       {!careerData ? (
         <SimpleGrid gap="4" columns={3}>
           <Skeleton height="100px" />
@@ -70,13 +73,16 @@ const UsesPage: NextPage = () => {
                 title={item.fields.Name}
                 description={item.fields.Text}
                 url={item.fields.Link}
+                tag={item.fields.Tag}
                 key={i}
               />
             ))}
         </Grid>
       )}
 
-      <Heading fontSize="2xl" mt="8">Prepare</Heading>
+      <Heading fontSize="2xl" mt="8">
+        Prepare
+      </Heading>
       {!careerData ? (
         <SimpleGrid gap="4" columns={3}>
           <Skeleton height="100px" />
@@ -98,6 +104,7 @@ const UsesPage: NextPage = () => {
                 title={item.fields.Name}
                 description={item.fields.Text}
                 url={item.fields.Link}
+                tag={item.fields.Tag}
                 key={i}
               />
             ))}
