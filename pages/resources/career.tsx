@@ -17,6 +17,7 @@ import {
 
 type Props = [
   fields: {
+    fields: any;
     Name: string;
     Description: string;
     Category: any;
@@ -132,7 +133,14 @@ const UsesPage: NextPage = () => {
                 target="_blank"
                 variant="noeffect"
               >
-                <Box>
+                 <Box
+              p="4"
+              border="1px solid"
+              borderColor="border"
+              gridTemplateColumns="max-content auto"
+              gridGap="8"
+              borderRadius="md"
+            >
                   <Heading fontSize="xl" my="0" lineHeight="short">
                     {item.fields.Name}
                   </Heading>
