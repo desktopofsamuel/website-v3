@@ -2,22 +2,20 @@ import { base } from "lib/airtable";
 
 export default async (_req, res) => {
   try {
-    const records = await base("Tech").select({
+    const records = await base("Career").select({
       fields: [
         "Name",
-        // "Description",
-        // "Category",
-        // "CreateTime",
-        "ExtraLink",
+        "Text",
         "Link",
-        "LastUpdateTime",
-        "CTA",
-        "Image"
+        "Status",
+        "Category",
+        "Handle",
+        "AuthorLink",
+        "Stage",
       ],
-      filterByFormula: "AND({Status} = 'Published', NOT({Category} = 'Hardware'))",
+      filterByFormula: "AND({Status} = 'Published', NOT({Category} = 'Thread'))",
       sort: [ {field: "LastUpdateTime", direction: "desc"} ]
     }).firstPage();
-
 
     res.status(200).json(records);
     
