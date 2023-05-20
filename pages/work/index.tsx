@@ -45,7 +45,7 @@ export default function WorkListPage({
       </Fade>
       <Heading variant="small">Projects</Heading>
       <Text>Check out some of my personal work & design projects.</Text>
-      <Grid gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr 1fr"}} gap="2">
+      <Grid gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr"}} gap="4">
       <Fade bottom>
       {works
         .filter((post) => post.feature !== true && post.draft !== true)

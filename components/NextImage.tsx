@@ -26,10 +26,10 @@ const myLoader = ({ src, width, quality }: Loader) => {
 };
 
 export const NextImage = (props: any) => {
-  const { src, alt, ...rest } = props;
+  const { src, alt, noeffect, ...rest } = props;
   return (
     <Box display="block" position="relative"
-    overflow="hidden" cursor="pointer"
+    overflow="hidden" cursor={ noeffect ? "initial" : "pointer"}
     >
       <Box position="relative" width="auto" height="auto" 
         transition="all 0.5s ease-in-out" 
