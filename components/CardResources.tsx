@@ -1,36 +1,31 @@
-import { Box, Text, Heading, Button, Grid, SimpleGrid } from "@chakra-ui/react";
-import React from "react";
-import resources from "../resources.json"
-import NextImage from "./NextImage";
-import NextLink from "./NextLink";
+import NextLink from "@/components/NextLink";
+import CardBase from "@/components/CardBase";
+import { Heading, Text } from "@chakra-ui/react";
 
 type Props = {
-  title: string;
-  description: string;
-  cta: string;
-  link: string;
-  photo: string;
+  title: string,
+  description: string,
+  url: string,
+}
+
+const CardResources = ({title, description, url}: Props) => {
+  return (
+    <NextLink href={url} target="_blank" variant="noeffect">
+      <CardBase title="">
+        <Heading fontSize="xl" my="0" lineHeight="short">
+          {title}
+        </Heading>
+        <Text>{description}</Text>
+        {/* {item.fields.ExtraLink && (
+                        <Button>
+                          <NextLink href={item.fields.ExtraLink}>
+                            {item.fields["CTA"]}
+                          </NextLink>
+                        </Button>
+                      )} */}
+      </CardBase>
+    </NextLink>
+  );
 };
 
-export default function CardResources() {
-  return (
-    <SimpleGrid spacing={8}>
-      {resources.map((item: Props) => (
-        <Grid gridTemplateColumns={{ base: "1fr", sm: "1fr 1fr"}} gap="4" key={item.title}>
-          
-          <Box>
-          <NextLink href={item.link} variant="noeffect">
-            <NextImage src={item.photo} alt={item.title}/>
-            </NextLink>
-          </Box>
-          <Box>
-          <Heading>{item.title}</Heading>
-          <Text>{item.description}</Text>
-          <Button><NextLink href={item.link} variant="noeffect">{item.cta}</NextLink></Button>
-          </Box>
-         
-        </Grid>
-      ))}
-    </SimpleGrid>
-  );
-}
+export default CardResources;
