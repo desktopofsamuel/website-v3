@@ -3,8 +3,7 @@ import { Post } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
-import ListBlog from "@/components/ListBlog";
-import { Grid, Heading, Text } from "@chakra-ui/react";
+import { Box, Grid, Heading, Text } from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
 import { allTags, postsWithTag } from "@/lib/content";
 
@@ -34,7 +33,10 @@ export default function TagPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <Heading variant="pagetitle">Posts tagged as {tag}</Heading>
+      <Box>
+        <Heading>{tag}</Heading>
+        <Text display="inline">({posts.length})</Text>
+      </Box>
       {posts?.sort(sortByDate).map((post) => (
         <ListBlogDetail key={post.slug} data={post} />
       ))}

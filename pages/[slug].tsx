@@ -217,7 +217,7 @@ export default function SinglePostPage({
         sx={{
           display: "block",
           position: "relative",
-          maxWidth: "800px",
+          maxWidth: "680px",
           overflow: "hidden",
           margin: "0 auto",
 

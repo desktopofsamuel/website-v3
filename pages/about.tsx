@@ -37,11 +37,18 @@ type Props = {
   href?: string;
 };
 
-const Entry: React.FC<Props> = ({ title, text, image, subtitle, cta, href }) => {
+const Entry: React.FC<Props> = ({
+  title,
+  text,
+  image,
+  subtitle,
+  cta,
+  href,
+}) => {
   return (
     <Box
       display="flex"
-      gap={{ base: "4", md: "8"}}
+      gap={{ base: "4", md: "8" }}
       alignItems="center"
       border="1px solid"
       borderColor="border"
@@ -57,23 +64,34 @@ const Entry: React.FC<Props> = ({ title, text, image, subtitle, cta, href }) => 
           maxWidth="72px"
         >
           <Image src={image} alt={`Logo of ${subtitle}`} />
-        </Box> )
-      }
+        </Box>
+      )}
       <Flex width="100%" alignItems="center">
         <Box>
-        <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
-        <Text fontFamily="heading" fontSize="md" lineHeight="short" my="0">
-          {subtitle}
-        </Text>
-        <Text variant="small" my="0">
-          {text}
-        </Text>
+          <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
+         
+          <Text fontFamily="heading" fontSize="md" lineHeight="short" my="0">
+            {subtitle}
+          </Text>
+          <Text variant="small" my="0">
+            {text}
+          </Text>
         </Box>
-        <Spacer/>
+        <Spacer />
         <Box>
-        { cta && <NextLink href={href} variant="noeffect"><Button variant="outline" width="min-content" size={{ base: "xs", md: "md"}} >{cta}</Button></NextLink>}</Box>
+          {cta && (
+            <NextLink href={href} variant="noeffect">
+              <Button
+                variant="outline"
+                width="min-content"
+                size={{ base: "xs", md: "md" }}
+              >
+                {cta}
+              </Button>
+            </NextLink>
+          )}
+        </Box>
       </Flex>
-     
     </Box>
   );
 };
@@ -104,8 +122,8 @@ const AboutPage: NextPage = () => {
             I got into product design because I&apos;m deeply passionate about
             technology and how it profoundly changes our way of living. For the
             past 8 years, I have been solving users and business problems and
-            delivering delightful interfaces & experiences across domains
-            like web3, finance, and travel industries.
+            delivering delightful interfaces & experiences across domains like
+            web3, finance, and travel industries.
           </Text>
           <HStack>
             <Button size="lg">
@@ -138,7 +156,7 @@ const AboutPage: NextPage = () => {
           </Box>
           <Box>
             <Heading textTransform="uppercase" fontSize="2xl">
-              Starting my agency
+              Starting an agency
             </Heading>
             <Text>
               With growing freelance web & design projects, I co-founded a
@@ -148,9 +166,8 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl" 
-              >
-              Switching to product
+            <Heading textTransform="uppercase" fontSize="2xl">
+              Lead product design
             </Heading>
             <Text>
               After that, I had worked in start-up & corporation as a prdouct
@@ -167,14 +184,13 @@ const AboutPage: NextPage = () => {
           placeholder="blur"
           width="1920"
           height="1280"
+          style={{ borderRadius: "1em" }}
         />
       </Box>
       <Box id="resume">
-        <Heading fontSize="4xl">Resume of Samuel Wong</Heading>
+        <Heading fontSize="4xl">Experiences</Heading>
         <Box py="4">
-          <Heading textTransform="uppercase" fontSize="md" my="4">
-            Career
-          </Heading>
+          <Heading variant="small">Career</Heading>
           <Grid gap="4">
             <Entry
               title="Product Designer"
@@ -215,9 +231,7 @@ const AboutPage: NextPage = () => {
           </Grid>
         </Box>
         <Box py="4">
-          <Heading textTransform="uppercase" fontSize="md" my="4">
-            Education
-          </Heading>
+          <Heading variant="small">Education</Heading>
           <Grid
             border="1px solid"
             borderColor="border"
@@ -230,43 +244,46 @@ const AboutPage: NextPage = () => {
           </Grid>
         </Box>
         <Box py="4">
-          <Heading textTransform="uppercase" fontSize="md" my="4">
-            Community
-          </Heading>
-          <Grid gap="4">
-          <Entry
-            title="Community Moderator"
-            subtitle="Friends of Figma, Hong Kong"
-            text="2022 - Now"
-            image={Figma}
-          />
-           <Entry
-            title="Mentor"
-            subtitle="ADPList"
-            text="2022 - Now"
-            image={Adplist}
-            cta="Make Appointment"
-            href="https://adplist.org/mentors/samuel-wong"
-          /></Grid>
-        </Box>
-        <Box py="4">
-          <Heading textTransform="uppercase" fontSize="md" my="4">
-          Awards & recognition
-          </Heading>
+          <Heading variant="small">Community</Heading>
           <Grid gap="4">
             <Entry
-              title="Google Play Best Everyday Essential Nominee"
+              title="Community Moderator"
+              subtitle="Friends of Figma, Hong Kong"
+              text="2022 - Now"
+              image={Figma}
+              cta="Learn more"
+              href="https://friends.figma.com/hong-kong"
+            />
+            <Entry
+              title="Mentor"
+              subtitle="ADPList"
+              text="2022 - Now"
+              image={Adplist}
+              cta="Schedule a time"
+              href="https://adplist.org/mentors/samuel-wong"
+            />
+          </Grid>
+        </Box>
+        <Box py="4">
+          <Heading variant="small">Awards & recognitions</Heading>
+          <Grid gap="4">
+            <Entry
+              title="Best Everyday Essential Nominee"
+              subtitle="Google Play"
               text="2022"
             />
             <Entry
-              title="OGCIO Web Accessibility Recognition Scheme Triple Gold Award"
+              title="Web Accessibility Recognition Scheme Triple Gold Award"
+              subtitle="OGCIO"
               text="2018, 2016"
             />
             <Entry
+              subtitle="HKIRC"
               title="Best .HK LegCo Members Website Award (Gold)"
               text="2017"
             />
             <Entry
+              subtitle="Cyberport"
               title="Hong Kong Cyberport Creative Micro Fund"
               text="2016"
             />
