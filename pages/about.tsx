@@ -65,19 +65,20 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
 }) => {
   return (
     <SimpleGrid
-      columns={{ base: 1, md: 2 }}
-      gap={8}
+      columns={{ base: 1, sm: 2 }}
+      gap={{ base: 4 , md: 8 }}
       alignItems="center"
       justifyContent="center"
       role="group"
     >
-      <Box>
+      <Box height="100%">
         <Center
           backgroundColor="border"
           width="100%"
-          minHeight="15vh"
+          height="100%"
+          minHeight={{ base: "200px", md: "250px"}}
           borderRadius="2xl"
-          transition="all 1000ms ease-in-out"
+          transition="all 600ms ease-in-out"
           _groupHover={{
             backgroundColor: `${color}`,
           }}
@@ -95,7 +96,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             {small}
           </Text>
         </HStack>
-        <Text>{text}</Text>
+        <Text my={{ base: 2, md: 4}}>{text}</Text>
         {/* <Text variant="small" my="0">
           {small}
         </Text> */}
@@ -104,7 +105,6 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             <Button
               variant="outline"
               width="min-content"
-              size={{ base: "xs", md: "md" }}
             >
               {cta}
             </Button>
@@ -126,6 +126,7 @@ const Entry: React.FC<EntryProps> = ({
   return (
     <Box
       display="flex"
+      flexDirection={{ base: "column", md: "row"}}
       gap={{ base: "4", md: "8" }}
       alignItems="center"
       border="1px solid"
@@ -146,12 +147,11 @@ const Entry: React.FC<EntryProps> = ({
       )}
       <Flex width="100%" alignItems="center">
         <Box>
-          <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
-
+          <Heading fontSize={{ base: "xl", md: "2xl" }}>{title}</Heading>
           <Text fontFamily="heading" fontSize="md" lineHeight="short" my="0">
             {subtitle}
           </Text>
-          <Text variant="small" my="0">
+          <Text variant="small" my="0" color="secondarytext">
             {text}
           </Text>
         </Box>
@@ -162,7 +162,7 @@ const Entry: React.FC<EntryProps> = ({
               <Button
                 variant="outline"
                 width="min-content"
-                size={{ base: "xs", md: "md" }}
+                size={{ base: "sm", md: "md" }}
               >
                 {cta}
               </Button>
@@ -359,15 +359,17 @@ const AboutPage: NextPage = () => {
         </Box>
         <Box py="4">
           <Heading variant="small">Education</Heading>
-          <Grid
-            border="1px solid"
-            borderColor="border"
-            borderRadius="lg"
-            paddingX="4"
-            paddingY="3"
-          >
-            <Heading>Bachelor of Arts, The University of Hong Kong</Heading>
-            <Text variant="small">2011 - 2015</Text>
+          <Grid gap="4">
+            <Entry
+              title="The University of Hong Kong"
+              subtitle="Bachelor of Arts"
+              text="2011 - 2015"
+            />
+            {/* <Entry
+              title="IDEO U"
+              subtitle="Human Centered Strategy"
+              text="2022 - 2023"
+            /> */}
           </Grid>
         </Box>
         <Box py="4">
