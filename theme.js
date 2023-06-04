@@ -293,18 +293,12 @@ const customTheme = extendTheme({
           letterSpacing: "tighter",
         }),
         title: (props) => ({
-          fontSize: {
-            base: "4xl",
-            md: "6xl",
-          },
+          fontSize: "4xl",
           my: "0",
           lineHeight: "tall",
         }),
         heading: (props) => ({
-          fontSize: {
-            base: "3xl",
-            md: "6xl",
-          },
+          fontSize: "3xl",
           my: "4",
         }),
         subtitle: (props) => ({

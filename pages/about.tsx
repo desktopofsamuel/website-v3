@@ -27,14 +27,83 @@ import Apple from "../public/about/apple.svg";
 import OKX from "../public/about/okx.svg";
 import Figma from "../public/about/figma.svg";
 import Adplist from "../public/about/adplist.svg";
+import Okxlogo from "../public/about/okx-logo.svg";
+import Playalogo from "../public/about/playa-logo.svg";
+import Applelogo from "../public/about/apple-logo.svg";
+import Hyperairlogo from "../public/about/hyperair-logo.svg";
+import Hsbclogo from "../public/about/hsbc-logo.svg";
 
 type Props = {
   title: string;
   subtitle?: string;
   text: string;
   image?: string;
+  small?: string;
+  color: string;
   cta?: string;
   href?: string;
+};
+
+const CompanyCard: React.FC<Props> = ({
+  title,
+  subtitle,
+  small,
+  text,
+  image,
+  cta,
+  color,
+  href,
+}) => {
+  return (
+    <SimpleGrid
+      columns={{ base: 1, md: 2 }}
+      gap={8}
+      alignItems="center"
+      justifyContent="center"
+      role="group"
+    >
+      <Box>
+        <Center
+          backgroundColor="border"
+          width="100%"
+          minHeight="15vh"
+          borderRadius="2xl"
+          transition="all 1000ms ease-in-out"
+          _groupHover={{
+            backgroundColor: `${color}`,
+          }}
+        >
+          <Image src={image} alt={`Logo of ${title}`} />
+        </Center>
+      </Box>
+      <Box>
+        <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
+        <HStack>
+          <Text my="0" color="secondarytext" variant="small">
+            {subtitle}
+          </Text>
+          <Text my="0" color="secondarytext" variant="small">
+            {small}
+          </Text>
+        </HStack>
+        <Text>{text}</Text>
+        {/* <Text variant="small" my="0">
+          {small}
+        </Text> */}
+        {cta && (
+          <NextLink href={href} variant="noeffect">
+            <Button
+              variant="outline"
+              width="min-content"
+              size={{ base: "xs", md: "md" }}
+            >
+              {cta}
+            </Button>
+          </NextLink>
+        )}
+      </Box>
+    </SimpleGrid>
+  );
 };
 
 const Entry: React.FC<Props> = ({
@@ -69,7 +138,7 @@ const Entry: React.FC<Props> = ({
       <Flex width="100%" alignItems="center">
         <Box>
           <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
-         
+
           <Text fontFamily="heading" fontSize="md" lineHeight="short" my="0">
             {subtitle}
           </Text>
@@ -149,9 +218,9 @@ const AboutPage: NextPage = () => {
               Interned At Apple
             </Heading>
             <Text>
-              Majoring in Arts in college, I took a gap year working in iTunes &
-              App Store, Apple. This valuable experience cultivated my interest
-              and knowledge in digital products.
+              Majoring in Arts in college, I took a gap year working for Apple's
+              iTunes & App Store team. This valuable experience cultivated my
+              interest and knowledge in digital products.
             </Text>
           </Box>
           <Box>
@@ -170,9 +239,9 @@ const AboutPage: NextPage = () => {
               Lead product design
             </Heading>
             <Text>
-              After that, I had worked in start-up & corporation as a prdouct
-              designer. Currently I am working as a Product Designer in the
-              crypto industry.
+              After that, I transitioned to start-up & corporations as a prdouct
+              designer to run design teams. Currently I am working as a Product
+              Designer in the crypto industry.
             </Text>
           </Box>
         </SimpleGrid>
@@ -191,7 +260,56 @@ const AboutPage: NextPage = () => {
         <Heading fontSize="4xl">Experiences</Heading>
         <Box py="4">
           <Heading variant="small">Career</Heading>
-          <Grid gap="4">
+          <Grid gap="8">
+            <CompanyCard
+              image={Okxlogo}
+              title="Product Designer"
+              subtitle="OKX"
+              text="Currently leading a design team to build easy and accessible crypto investment products"
+              small="2022 - Now"
+              color="#000000"
+            />
+            <CompanyCard
+              title="UX/UI Consultant"
+              subtitle="HSBC"
+              text="Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience"
+              small="2021 - 2022"
+              image={Hsbclogo}
+              color="#DB0011"
+              cta="View Work"
+              href="/work/hsbc"
+            />
+            <CompanyCard
+              title="Principal Designer"
+              subtitle="HyperAir"
+              small="2019 - 2021"
+              text="First design hire and design team of one, scaled product offering from prototype to multiple pillars with B2C & B2B platforms. Shipped data-driven design & feature enhancement for scale"
+              image={Hyperairlogo}
+              cta="View Work"
+              href="/work/hyperair-fx"
+              color="#0176ee"
+            />
+            <CompanyCard
+              image={Playalogo}
+              title="Co-founder & Design Lead"
+              subtitle="Playa"
+              text="Cofounded a bootstrapped digital agency, designed and shipped web and app development projects from concept to delivery for SMB and start-up clients"
+              small="2015 - 2019"
+              color="#49CC74"
+              cta="View Work"
+              href="https://playa.hk/portfolio.html"
+            />
+
+            <CompanyCard
+              title="Cross Content Intern"
+              subtitle="Apple"
+              small="2012 - 2013"
+              text="1-year full-time internship for iTunes & App Store team to curate local content and conduct editorial research & planning for APAC regions"
+              image={Applelogo}
+              color="#86868B"
+            />
+          </Grid>
+          {/* <Grid gap="4">
             <Entry
               title="Product Designer"
               subtitle="OKX"
@@ -228,7 +346,7 @@ const AboutPage: NextPage = () => {
               text="2012 - 2013"
               image={Apple}
             />
-          </Grid>
+          </Grid> */}
         </Box>
         <Box py="4">
           <Heading variant="small">Education</Heading>
@@ -251,13 +369,13 @@ const AboutPage: NextPage = () => {
               subtitle="Friends of Figma, Hong Kong"
               text="2022 - Now"
               image={Figma}
-              cta="Learn more"
+              cta="View upcoming events"
               href="https://friends.figma.com/hong-kong"
             />
             <Entry
               title="Mentor"
               subtitle="ADPList"
-              text="2022 - Now"
+              text="2023 - Now"
               image={Adplist}
               cta="Schedule a time"
               href="https://adplist.org/mentors/samuel-wong"
@@ -268,23 +386,23 @@ const AboutPage: NextPage = () => {
           <Heading variant="small">Awards & recognitions</Heading>
           <Grid gap="4">
             <Entry
-              title="Best Everyday Essential Nominee"
-              subtitle="Google Play"
+              title="Google Play"
+              subtitle="Best of 2022 - Everyday Essential Nominee"
               text="2022"
             />
             <Entry
-              title="Web Accessibility Recognition Scheme Triple Gold Award"
-              subtitle="OGCIO"
+              title="OGCIO"
+              subtitle="Web Accessibility Recognition Scheme Triple Gold Award"
               text="2018, 2016"
             />
             <Entry
-              subtitle="HKIRC"
-              title="Best .HK LegCo Members Website Award (Gold)"
+              subtitle="Best .HK LegCo Members Website Award (Gold)"
+              title="HKIRC"
               text="2017"
             />
             <Entry
-              subtitle="Cyberport"
-              title="Hong Kong Cyberport Creative Micro Fund"
+              subtitle="Hong Kong Cyberport Creative Micro Fund"
+              title="Cyberport"
               text="2016"
             />
           </Grid>
@@ -296,11 +414,10 @@ const AboutPage: NextPage = () => {
           Drop me a line if you want to say hi, or share your thoughts on my
           writings.
         </Text>
-        <Button size="lg">
-          <NextLink variant="noeffect" href="mailto:desktopofsamuel@gmail.com">
-            Start Conversation
-          </NextLink>
-        </Button>
+
+        <NextLink variant="noeffect" href="mailto:desktopofsamuel@gmail.com">
+          <Button size="lg">Get in Touch</Button>
+        </NextLink>
       </Box>
     </Layout>
   );
