@@ -33,18 +33,27 @@ import Applelogo from "../public/about/apple-logo.svg";
 import Hyperairlogo from "../public/about/hyperair-logo.svg";
 import Hsbclogo from "../public/about/hsbc-logo.svg";
 
-type Props = {
+type CompanyCardProps = {
   title: string;
   subtitle?: string;
   text: string;
-  image?: string;
+  image: string;
   small?: string;
-  color: string;
+  color?: string;
   cta?: string;
   href?: string;
 };
 
-const CompanyCard: React.FC<Props> = ({
+type EntryProps = {
+  title: string;
+  subtitle?: string;
+  text: string;
+  image?: string;
+  cta?: string;
+  href?: string;
+};
+
+const CompanyCard: React.FC<CompanyCardProps> = ({
   title,
   subtitle,
   small,
@@ -106,7 +115,7 @@ const CompanyCard: React.FC<Props> = ({
   );
 };
 
-const Entry: React.FC<Props> = ({
+const Entry: React.FC<EntryProps> = ({
   title,
   text,
   image,
@@ -218,9 +227,9 @@ const AboutPage: NextPage = () => {
               Interned At Apple
             </Heading>
             <Text>
-              Majoring in Arts in college, I took a gap year working for Apple's
-              iTunes & App Store team. This valuable experience cultivated my
-              interest and knowledge in digital products.
+              Majoring in Arts in college, I took a gap year working for
+              Apple&apos;s iTunes & App Store team. This valuable experience
+              cultivated my interest and knowledge in digital products.
             </Text>
           </Box>
           <Box>

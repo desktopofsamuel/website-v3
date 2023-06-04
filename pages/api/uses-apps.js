@@ -1,6 +1,6 @@
 import { table } from "lib/airtable";
 
-export default async (_req, res) => {
+const handler = async (_req, res) => {
   try {
     const records = await table.select({
       fields: [
@@ -26,3 +26,5 @@ export default async (_req, res) => {
     res.status(500).json({ msg: "Something went wrong! 😕" });
   }
 };
+
+export default handler;
