@@ -234,7 +234,7 @@ const AboutPage: NextPage = () => {
           </Box>
           <Box>
             <Heading textTransform="uppercase" fontSize="2xl">
-              Starting an agency
+              Co-founding an agency
             </Heading>
             <Text>
               With growing freelance web & design projects, I co-founded a
@@ -272,16 +272,16 @@ const AboutPage: NextPage = () => {
           <Grid gap="8">
             <CompanyCard
               image={Okxlogo}
-              title="Product Designer"
+              title="Senior Product Designer"
               subtitle="OKX"
-              text="Currently leading a design team to build easy and accessible crypto investment products"
+              text="Currently leading a design team to build seamless, accessible crypto investment products for general public within a constantly evolving crypto landscape."
               small="2022 - Now"
               color="#000000"
             />
             <CompanyCard
               title="UX/UI Consultant"
-              subtitle="HSBC"
-              text="Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience"
+              subtitle="HSBC via Protiviti"
+              text="Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience."
               small="2021 - 2022"
               image={Hsbclogo}
               color="#DB0011"
@@ -292,7 +292,7 @@ const AboutPage: NextPage = () => {
               title="Principal Designer"
               subtitle="HyperAir"
               small="2019 - 2021"
-              text="First design hire and design team of one, scaled product offering from prototype to multiple pillars with B2C & B2B platforms. Shipped data-driven design & feature enhancement for scale"
+              text="First design hire and design team of one, scaled product offering from prototype to multiple pillars with B2C & B2B platforms. Shipped data-driven design & feature enhancement for scale."
               image={Hyperairlogo}
               cta="View Work"
               href="/work/hyperair-fx"
@@ -302,7 +302,7 @@ const AboutPage: NextPage = () => {
               image={Playalogo}
               title="Co-founder & Design Lead"
               subtitle="Playa"
-              text="Cofounded a bootstrapped digital agency, designed and shipped web and app development projects from concept to delivery for SMB and start-up clients"
+              text="Cofounded a bootstrapped digital agency, designed and shipped web and app development projects from concept to delivery for SMB and start-up clients."
               small="2015 - 2019"
               color="#49CC74"
               cta="View Work"
@@ -313,7 +313,7 @@ const AboutPage: NextPage = () => {
               title="Cross Content Intern"
               subtitle="Apple"
               small="2012 - 2013"
-              text="1-year full-time internship for iTunes & App Store team to curate local content and conduct editorial research & planning for APAC regions"
+              text="1-year full-time internship for iTunes & App Store team to curate local content and conduct editorial research & planning for APAC regions."
               image={Applelogo}
               color="#86868B"
             />
