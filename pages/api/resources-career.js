@@ -1,18 +1,20 @@
 import { base } from "lib/airtable";
 
-const handler = async (_req, res) => {
+export default async (_req, res) => {
   try {
-    const records = await base("Tech").select({
+    const records = await base("Career").select({
       fields: [
         "Name",
-        "Description",
+        "Text",
+        "Link",
+        "Status",
         "Category",
-        "CreateTime",
-        "ExtraLink",
-        "LastUpdateTime",
-        "CTA"
+        "Handle",
+        "AuthorLink",
+        "Stage",
+        "Tag",
       ],
-      filterByFormula: "AND({Status} = 'Published', {Category} = 'Hardware')",
+      filterByFormula: "AND({Status} = 'Published', NOT({Category} = 'Thread'))",
       sort: [ {field: "LastUpdateTime", direction: "desc"} ]
     }).firstPage();
 
@@ -23,5 +25,3 @@ const handler = async (_req, res) => {
     res.status(500).json({ msg: "Something went wrong! 😕" });
   }
 };
-
-export default handler;

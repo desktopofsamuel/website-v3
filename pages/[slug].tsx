@@ -212,7 +212,7 @@ export default function SinglePostPage({
           </ScrollspyNav>
         </UnorderedList>
       </Box>
-      <NextImage src={post.cover} id="top" />
+      <NextImage src={post.cover} noeffect id="top" />
       <Article
         sx={{
           display: "block",

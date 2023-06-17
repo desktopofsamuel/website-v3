@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { Heading, Box, Text, HStack } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import Layout from "@/components/Layout";
-import CardResources from "@/components/CardResources";
+import CardResourcesMain from "@/components/CardResourcesMain";
 import Link from "next/link";
 import NextLink from "@/components/NextLink";
 
@@ -44,7 +44,7 @@ const ResourcesPage: NextPage = () => {
   return (
     <Layout title="Resources">
       <Heading variant="pagetitle">Resources</Heading>
-      <CardResources />
+      <CardResourcesMain />
       {/* <Box as="section">
       <Heading>Books</Heading>
       <HStack>

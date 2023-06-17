@@ -2,9 +2,19 @@ import { NextPage } from "next";
 import Layout from "@/components/Layout";
 import Skeleton from "react-loading-skeleton";
 import useSWR from "swr";
-import { Text, Box, Grid, Button, Heading } from "@chakra-ui/react";
+import {
+  Text,
+  Box,
+  Grid,
+  Button,
+  Heading,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from "@chakra-ui/react";
 import fetcher from "@/lib/fetcher";
-import CardResources from "@/components/CardResources";
+import CardResources from "@/components/CardResourcesMain";
 import NextLink from "@/components/NextLink";
 import NextImage from "@/components/NextImage";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -24,6 +34,16 @@ const UsesPage: NextPage = () => {
   return (
     <Layout title="Uses">
       <Heading variant="pagetitle">Uses</Heading>
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="/uses">
+            Uses
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <Heading fontSize="2xl">Apps</Heading>
       <Text>Tools that I love to use everyday</Text>
       {!appsData ? (
@@ -35,12 +55,12 @@ const UsesPage: NextPage = () => {
             lg: "1fr 1fr 1fr",
           }}
         >
-         <Skeleton height="74px"/>
-         <Skeleton height="74px"/>
-         <Skeleton height="74px"/>
-         <Skeleton height="74px"/>
-         <Skeleton height="74px"/>
-         <Skeleton height="74px"/>
+          <Skeleton height="74px" />
+          <Skeleton height="74px" />
+          <Skeleton height="74px" />
+          <Skeleton height="74px" />
+          <Skeleton height="74px" />
+          <Skeleton height="74px" />
         </Grid>
       ) : (
         <Grid
@@ -100,7 +120,9 @@ const UsesPage: NextPage = () => {
           ))}
         </Grid>
       )}
-      <Heading fontSize="2xl" py="4">Hardware</Heading>
+      <Heading fontSize="2xl" py="4">
+        Hardware
+      </Heading>
       {!gadgetsData ? (
         <Text>Loading...</Text>
       ) : (

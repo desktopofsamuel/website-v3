@@ -1,8 +1,8 @@
-import { table } from "lib/airtable";
+import { base } from "lib/airtable";
 
 const handler = async (_req, res) => {
   try {
-    const records = await table.select({
+    const records = await base("Tech").select({
       fields: [
         "Name",
         // "Description",
