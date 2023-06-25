@@ -4,9 +4,22 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
 import ListBlog from "@/components/ListBlog";
-import { Button, Center, Grid, Heading, Text } from "@chakra-ui/react";
+import ListFeed from "@/components/ListFeed";
+import {
+  Box,
+  Button,
+  Center,
+  Grid,
+  Heading,
+  ListItem,
+  Text,
+  UnorderedList,
+  VStack,
+} from "@chakra-ui/react";
 import ListBlogDetail from "@/components/ListBlogDetail";
 import NextLink from "@/components/NextLink";
+import fetcher from "@/lib/fetcher";
+import useSWR from "swr";
 
 const Fade = require("react-reveal/Fade");
 
@@ -23,13 +36,22 @@ export const getStaticProps: GetStaticProps<{
 export default function BlogListPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  // const { data: feedData } = useSWR<Props>("/api/feed", fetcher);
   return (
-    <Layout title="Blog" description="A collection of posts I wrote about design process, technology and productivity.">
+    <Layout
+      title="Blog"
+      description="A collection of posts I wrote about design process, technology and productivity."
+    >
       <Heading variant="pagetitle">Blog</Heading>
-      <p>
+      <Text>
         A collection of posts I wrote about design process, technology and
         productivity.
-      </p>
+      </Text>
+      {/* <Text variant="small">Feed</Text>
+      <UnorderedList margin="0">
+      {feedData && feedData.map((item: any, i: number) => (
+         <ListFeed data={item} key={i} />
+      ))}</UnorderedList> */}
       <Text variant="small">Featured posts</Text>
       <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="4">
         <Fade bottom>
