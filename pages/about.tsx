@@ -365,11 +365,11 @@ const AboutPage: NextPage = () => {
               subtitle="Bachelor of Arts"
               text="2011 - 2015"
             />
-            {/* <Entry
+            <Entry
               title="IDEO U"
               subtitle="Human Centered Strategy"
               text="2022 - 2023"
-            /> */}
+            />
           </Grid>
         </Box>
         <Box py="4">
@@ -380,7 +380,7 @@ const AboutPage: NextPage = () => {
               subtitle="Friends of Figma, Hong Kong"
               text="2022 - Now"
               image={Figma}
-              cta="View upcoming events"
+              cta="Join upcoming events"
               href="https://friends.figma.com/hong-kong"
             />
             <Entry
@@ -388,7 +388,7 @@ const AboutPage: NextPage = () => {
               subtitle="ADPList"
               text="2023 - Now"
               image={Adplist}
-              cta="Schedule a time"
+              cta="Schedule a session"
               href="https://adplist.org/mentors/samuel-wong"
             />
           </Grid>

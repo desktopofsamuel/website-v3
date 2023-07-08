@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { allTags } from "@/lib/content";
-import { Heading, Text } from "@chakra-ui/react";
+import { Flex, Box, GridItem, Heading, Text, Grid, SimpleGrid } from "@chakra-ui/react";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import NextLink from "@/components/NextLink";
 
@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps<{
 }> = ({ params }: any) => {
   return {
     props: {
-      tags: allTags.sort((a, b) => b.count - a.count),
+      tags: allTags.sort((a, b) => b.count - a.count).filter(tag => tag.count > 1),
     },
   };
 };
@@ -24,18 +24,22 @@ export default function TagListPage({ tags }: any) {
   return (
     <Layout>
       <Heading variant="pagetitle">Tags</Heading>
+      <SimpleGrid columns={3} gap="8">
       {tags.map(
         (
           tag: allTagsProps,
           i: number
         ) => (
-          <NextLink href={tag.path} key={i}>
-            <Text>
-              {tag.name} {`(${tag.count})`}
+          <GridItem key={i} display="flex" justifyContent="space-between">
+          <NextLink href={tag.path}>
+            <Text margin="0">
+              {tag.name}
             </Text>
           </NextLink>
+          <Text variant="small">({tag.count})</Text></GridItem>
         )
       )}
+      </SimpleGrid>
     </Layout>
   );
 }

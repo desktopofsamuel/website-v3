@@ -65,6 +65,7 @@ const UsesPage: NextPage = () => {
             md: "1fr 1fr",
             lg: "1fr 1fr 1fr",
           }}
+          alignItems="stretch"
         >
           {careerData
             .filter((item) => item.fields.Stage === "Search")
@@ -111,7 +112,71 @@ const UsesPage: NextPage = () => {
         </Grid>
       )}
 
-      {/* Apps */}
+     
+<Heading fontSize="2xl" mt="8">
+     Interview
+      </Heading>
+      {!careerData ? (
+        <SimpleGrid gap="4" columns={3}>
+          <Skeleton height="100px" />
+          <Skeleton height="100px" /> <Skeleton height="100px" />
+        </SimpleGrid>
+      ) : (
+        <Grid
+          gap="4"
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+          }}
+        >
+          {careerData
+            .filter((item) => item.fields.Stage === "Interview")
+            .map((item: any, i: number) => (
+              <CardResources
+                title={item.fields.Name}
+                description={item.fields.Text}
+                url={item.fields.Link}
+                tag={item.fields.Tag}
+                key={i}
+              />
+            ))}
+        </Grid>
+      )}
+
+
+<Heading fontSize="2xl" mt="8">
+      Career
+      </Heading>
+      {!careerData ? (
+        <SimpleGrid gap="4" columns={3}>
+          <Skeleton height="100px" />
+          <Skeleton height="100px" /> <Skeleton height="100px" />
+        </SimpleGrid>
+      ) : (
+        <Grid
+          gap="4"
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+          }}
+        >
+          {careerData
+            .filter((item) => item.fields.Stage === "Career")
+            .map((item: any, i: number) => (
+              <CardResources
+                title={item.fields.Name}
+                description={item.fields.Text}
+                url={item.fields.Link}
+                tag={item.fields.Tag}
+                key={i}
+              />
+            ))}
+        </Grid>
+      )}
+
+
     </Layout>
   );
 };
