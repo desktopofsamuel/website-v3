@@ -23,7 +23,7 @@ const CardResources = ({ title, description, url, tag }: Props) => {
           </Heading>
           <ExternalLinkIcon mx="2" mb="1" />
         </Box>
-        <Text>{description}</Text>
+        <Text color="secondarytext">{description}</Text>
         {/* {item.fields.ExtraLink && (
                         <Button>
                           <NextLink href={item.fields.ExtraLink}>

@@ -1,6 +1,6 @@
 import { base } from "lib/airtable";
 
-export default async (_req, res) => {
+export default async function handler(_req, res) {
   try {
     const records = await base("Career").select({
       fields: [

@@ -17,6 +17,7 @@ const CardBase = ({ children, title}: Props) => {
       _hover={{ boxShadow: "md" }}
       borderRadius="16"
       gridColumn={{ base: "span 2", md: "initial" }}
+      height="100%"
     >
       <Text variant="small" my="2">
         {title}
