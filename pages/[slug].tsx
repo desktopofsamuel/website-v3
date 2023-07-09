@@ -223,6 +223,7 @@ export default function SinglePostPage({
 
           "> *": {
             maxWidth: "800px",
+            width: "100%",
           },
         }}
       >

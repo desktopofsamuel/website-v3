@@ -38,10 +38,6 @@ export default function FeedPage() {
       description="A collection of posts I wrote about design process, technology and productivity."
     >
       <Heading variant="pagetitle">Feed</Heading>
-      <Text>
-        A collection of posts I wrote about design process, technology and
-        productivity.
-      </Text>
       <UnorderedList margin="0">
         {feedData &&
           feedData.map((item: any, i: number) => (

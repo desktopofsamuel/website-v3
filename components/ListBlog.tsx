@@ -15,6 +15,7 @@ export default function ListBlog({ data, small }: any) {
         </Heading>
         <Text
           fontSize={small ? "sm" : "md"}
+          noOfLines={small ? 2 : 3 }
         >
           {post.excerpt}
         </Text>

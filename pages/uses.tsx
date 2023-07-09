@@ -44,7 +44,7 @@ const UsesPage: NextPage = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <Heading fontSize="2xl">Apps</Heading>
+      <Heading fontSize="3xl" my="10">Apps</Heading>
       <Text>Tools that I love to use everyday</Text>
       {!appsData ? (
         <Grid
@@ -120,7 +120,7 @@ const UsesPage: NextPage = () => {
           ))}
         </Grid>
       )}
-      <Heading fontSize="2xl" py="4">
+      <Heading fontSize="3xl" my="10">
         Hardware
       </Heading>
       {!gadgetsData ? (
