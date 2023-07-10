@@ -1,0 +1,63 @@
+---
+date: "2023-07-11"
+title: "Portfolio Day 2023"
+category: "Work In Progress"
+tags:
+- "React"
+- "Portfolio"
+- "ChatGPT"
+cover: "/static/portfolio-2023.png"
+---
+
+Today is Portfolio Day and I want to share a recap of my personal website updates for the past year! Even though my work has mostly stay the same, my website has underwent small and incremental changes over the year.
+
+## UX Career Kit
+
+
+A few years ago, I created the [UX Career Kit](./resources/career) to assist designers in early career. I recently updated the list and added new resources to make it even more helpful. I have also integrated it into my website under the Resources section. Please feel free to share your thoughts and comments with me to help make it even better.
+
+## Feed
+
+
+Started a small experiment to create [my own feed](./feed). It would be a short-form content celebrating small wins, recap on community events, share personal updates. I'm using Airtable as a backend for easy access but also looking to new possibilities (Threads? or Post.cv?). For now, it will be a separate page, but I plan to integrate it with either the landing page or the About section.
+
+## About & Uses Page 
+
+
+Over the past years, I have made slight design adjustments to the [About](./about) and [Uses](./uses) pages on my website to ensure they are visually appealing and user-friendly.
+
+## How’s ChatGPT has been helping?
+
+
+ChatGPT has become viral in the past few months, and I want to delve into how it has helped sharpen my front-end coding skills. As a self-taught coder, I often find debugging to be a challenging process, involving extensive browsing on Stackoverflow.
+
+However, ChatGPT has been a game-changer for me. It successfully debugged my Chakra UI tooltip issue (caused by a wrong z-index setting). Additionally, it managed to create a related posts query for my NextJS + [ContentLayer](https://www.contentlayer.dev/) based on a plain text explanation I provided within 2 prompts.
+
+```js
+  // Get up to 3 posts that share the same tag as the current post
+  let relatedPosts = allPosts
+    .filter((p) => {
+      const hasSharedTag = p.tags.some((tag) => post.tags.includes(tag));
+      return hasSharedTag && p.slug !== post.slug;
+    })
+    .sort((a, b) => {
+      // Sort related posts by the order of the tags in the current post
+      const aIndex = post.tags.findIndex((tag) => a.tags.includes(tag));
+      const bIndex = post.tags.findIndex((tag) => b.tags.includes(tag));
+      return aIndex - bIndex;
+    })
+    .slice(0, 2);
+
+  // If no related posts found, then find posts in the same category
+  if (relatedPosts.length === 0) {
+    relatedPosts = allPosts
+      .filter((p) => p.category === post.category && p.slug !== post.slug)
+      .slice(0, 2);
+  }
+
+```
+
+
+Moreover, integrating ChatGPT with VSCode has significantly improved my workflow. It helps me write commit messages and comments to explain my code, making the previously tedious tasks effortless.
+
+The advancement of AI is focused on enhancing people's efficiency rather than replacing their work. We just need to find ways to integrate it into our workflows and continue learning.
