@@ -203,7 +203,7 @@ export default function SinglePostPage({
                 borderLeft="1px"
                 borderColor="border"
                 lineHeight="base"
-                paddingLeft="2"
+                paddingLeft={`${2 + (heading.level - 1) * 1}`} 
                 paddingBottom="2"
               >
                 <NextLink href={`#${heading.id}`}>{heading.text}</NextLink>
@@ -212,7 +212,7 @@ export default function SinglePostPage({
           </ScrollspyNav>
         </UnorderedList>
       </Box>
-      <NextImage src={post.cover} noeffect id="top" />
+      <NextImage src={post.cover} alt={post.title} priority noeffect id="top" />
       <Article
         sx={{
           display: "block",
