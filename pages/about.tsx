@@ -18,7 +18,7 @@ import Profile2022 from "../public/static/samuel-profile-2022.jpeg";
 import Profile from "../public/static/profile-2014.jpeg";
 import Layout from "@/components/Layout";
 import NextLink from "@/components/NextLink";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import NextImage from "@/components/NextImage";
 import HSBC from "../public/about/hsbc.svg";
 import HyperAir from "../public/about/hyperair.svg";
@@ -35,11 +35,13 @@ import Hsbclogo from "../public/about/hsbc-logo.svg";
 import Ama from "../public/about/Design System AMA2.jpg";
 import FirmVisit from "../public/about/Firm Visit.jpeg";
 
+
+
 type CompanyCardProps = {
   title: string;
   subtitle?: string;
-  text: string;
-  image: string;
+  text?: string;
+  image: string | StaticImageData;
   small?: string;
   color?: string;
   cta?: string;
@@ -198,6 +200,7 @@ const AboutPage: NextPage = () => {
         gap={{ base: "4", md: "16" }}
         alignItems="center"
         py={{ base: "4", md: "16" }}
+        marginTop={{ base: "4", md: "16" }}
       >
         <Image
           src={Profile2022}
@@ -211,7 +214,7 @@ const AboutPage: NextPage = () => {
         />
 
         <Box maxW={{ base: "initial", md: "80%" }}>
-          <Heading>Hello, my name is Samuel.</Heading>
+          <Heading lineHeight="short">Hello, my name is Samuel.</Heading>
           <Text>
             I got into product design because I&apos;m deeply passionate about
             technology and how it profoundly changes our way of living. For the
@@ -239,7 +242,7 @@ const AboutPage: NextPage = () => {
         </Heading>
         <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">
+            <Heading fontSize="2xl">
               Interned At Apple
             </Heading>
             <Text>
@@ -249,7 +252,7 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">
+            <Heading fontSize="2xl">
               Co-founding an agency
             </Heading>
             <Text>
@@ -260,7 +263,7 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading textTransform="uppercase" fontSize="2xl">
+            <Heading fontSize="2xl">
               Lead product design
             </Heading>
             <Text>
@@ -271,7 +274,7 @@ const AboutPage: NextPage = () => {
           </Box>
         </SimpleGrid>
       </Box>
-      <Box py="12">
+      <Box py={{ base: 4, md: 16 }}>
         <Image
           src={Profile}
           alt="Portrait of Samuel Wong"
@@ -281,7 +284,7 @@ const AboutPage: NextPage = () => {
           style={{ borderRadius: "1em" }}
         />
       </Box>
-      <Box id="resume">
+      <Box id="resume" py="16">
         <Heading fontSize="4xl">Experiences</Heading>
         <Box py="4">
           <Heading variant="small">Career</Heading>
