@@ -32,6 +32,8 @@ import Playalogo from "../public/about/playa-logo.svg";
 import Applelogo from "../public/about/apple-logo.svg";
 import Hyperairlogo from "../public/about/hyperair-logo.svg";
 import Hsbclogo from "../public/about/hsbc-logo.svg";
+import Ama from "../public/about/Design System AMA2.jpg";
+import FirmVisit from "../public/about/Firm Visit.jpeg";
 
 type CompanyCardProps = {
   title: string;
@@ -61,12 +63,12 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
   image,
   cta,
   color,
-  href,
+  href = "",
 }) => {
   return (
     <SimpleGrid
       columns={{ base: 1, sm: 2 }}
-      gap={{ base: 4 , md: 8 }}
+      gap={{ base: 4, md: 8 }}
       alignItems="center"
       justifyContent="center"
       role="group"
@@ -76,7 +78,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
           backgroundColor="border"
           width="100%"
           height="100%"
-          minHeight={{ base: "200px", md: "250px"}}
+          minHeight={{ base: "200px", md: "250px" }}
           borderRadius="2xl"
           transition="all 600ms ease-in-out"
           _groupHover={{
@@ -87,29 +89,40 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
         </Center>
       </Box>
       <Box>
-        <Heading fontSize={{ base: "lg", md: "2xl" }}>{title}</Heading>
+        <Heading fontSize={{ base: "lg", md: "2xl" }} lineHeight="short">
+          {title}
+        </Heading>
         <HStack>
           <Text my="0" color="secondarytext" variant="small">
             {subtitle}
+          </Text>
+          <Text color="yellow.300" my="0" variant="small">
+            {" "}
+            |{" "}
           </Text>
           <Text my="0" color="secondarytext" variant="small">
             {small}
           </Text>
         </HStack>
-        <Text my={{ base: 2, md: 4}}>{text}</Text>
+        <Text my={{ base: 2, md: 4 }}>{text}</Text>
         {/* <Text variant="small" my="0">
           {small}
         </Text> */}
-        {cta && (
-          <NextLink href={href} variant="noeffect">
-            <Button
-              variant="outline"
-              width="min-content"
-            >
+        {cta &&
+          (href === "" ? (
+            <Button variant="disabled" width="min-content" aria-disabled>
               {cta}
             </Button>
-          </NextLink>
-        )}
+          ) : (
+            <NextLink href={href} variant="noeffect">
+              <Button
+                variant={href ? "outline" : "disabled"}
+                width="min-content"
+              >
+                {cta}
+              </Button>
+            </NextLink>
+          ))}
       </Box>
     </SimpleGrid>
   );
@@ -126,7 +139,7 @@ const Entry: React.FC<EntryProps> = ({
   return (
     <Box
       display="flex"
-      flexDirection={{ base: "column", md: "row"}}
+      flexDirection={{ base: "column", md: "row" }}
       gap={{ base: "4", md: "8" }}
       alignItems="center"
       border="1px solid"
@@ -175,6 +188,9 @@ const Entry: React.FC<EntryProps> = ({
 };
 
 const AboutPage: NextPage = () => {
+  const startYear = 2015;
+  const currentYear = new Date().getFullYear();
+  const experienceYears = currentYear - startYear;
   return (
     <Layout>
       <Grid
@@ -199,9 +215,9 @@ const AboutPage: NextPage = () => {
           <Text>
             I got into product design because I&apos;m deeply passionate about
             technology and how it profoundly changes our way of living. For the
-            past 8 years, I have been solving users and business problems and
-            delivering delightful interfaces & experiences across domains like
-            web3, finance, and travel industries.
+            past {experienceYears} years, I have been solving users and business
+            problems and delivering delightful interfaces & experiences across
+            domains like web3, finance, and travel industries.
           </Text>
           <HStack>
             <Button size="lg">
@@ -274,14 +290,15 @@ const AboutPage: NextPage = () => {
               image={Okxlogo}
               title="Senior Product Designer"
               subtitle="OKX"
-              text="Currently leading a design team to build seamless, accessible crypto investment products for general public within a constantly evolving crypto landscape."
+              text="Currently leading a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023."
               small="2022 - Now"
+              cta="Coming soon"
               color="#000000"
             />
             <CompanyCard
               title="UX/UI Consultant"
               subtitle="HSBC via Protiviti"
-              text="Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience."
+              text="Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience for Asia market."
               small="2021 - 2022"
               image={Hsbclogo}
               color="#DB0011"
@@ -302,7 +319,7 @@ const AboutPage: NextPage = () => {
               image={Playalogo}
               title="Co-founder & Design Lead"
               subtitle="Playa"
-              text="Cofounded a bootstrapped digital agency, designed and shipped web and app development projects from concept to delivery for SMB and start-up clients."
+              text="Co-founder of a bootstrapped digital agency, shipped award-winning web and app projects from concept to delivery for SMB and start-up clients."
               small="2015 - 2019"
               color="#49CC74"
               cta="View Work"
@@ -313,7 +330,7 @@ const AboutPage: NextPage = () => {
               title="Cross Content Intern"
               subtitle="Apple"
               small="2012 - 2013"
-              text="1-year full-time internship for iTunes & App Store team to curate local content and conduct editorial research & planning for APAC regions."
+              text="Deferred from university for 1-year full-time internship at iTunes & App Store team to curate APAC editorial content for apps, films, music and books."
               image={Applelogo}
               color="#86868B"
             />
@@ -373,6 +390,23 @@ const AboutPage: NextPage = () => {
           </Grid>
         </Box>
         <Box py="4">
+          <Heading variant="small">Engagement</Heading>
+          <Grid gap="4">
+            <CompanyCard
+              image={FirmVisit}
+              subtitle="OKX Product Design Team Representative"
+              title="Campus Recruitment: HKUST Firm Visit"
+              small="2023"
+            />
+            <CompanyCard
+              image={Ama}
+              subtitle="Host of Friends of Figma HK"
+              title="Let's talk about Design System"
+              small="2022 Sep"
+            />
+          </Grid>
+        </Box>
+        <Box py="4">
           <Heading variant="small">Community</Heading>
           <Grid gap="4">
             <Entry
@@ -395,7 +429,7 @@ const AboutPage: NextPage = () => {
         </Box>
         <Box py="4">
           <Heading variant="small">Awards & recognitions</Heading>
-          <Grid gap="4">
+          <Grid gap="4" gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}>
             <Entry
               title="Google Play"
               subtitle="Best of 2022 - Everyday Essential Nominee"
@@ -419,6 +453,7 @@ const AboutPage: NextPage = () => {
           </Grid>
         </Box>
       </Box>
+
       <Box py="36" textAlign="center" id="contact">
         <Heading>Let&apos;s connect</Heading>
         <Text>

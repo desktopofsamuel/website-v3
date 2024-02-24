@@ -40,7 +40,7 @@ export default function ListPortfolio({ data }: any) {
               key={index}
               fontFamily="heading"
               variant="small"
-              color="secondarytext"
+              color="yellow.500"
             >
               {tag}
             </Text>

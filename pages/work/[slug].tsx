@@ -99,65 +99,67 @@ export default function SingleWorkPage({
           },
         }}
       >
-        <NextImage src={post.cover} id="top" />
         <VStack pb="4" marginTop="16">
           <Flex direction="column">
-            <Heading lineHeight="short">{post.title}</Heading>
+            <Heading fontSize="2xl" lineHeight="short">
+              {post.title}
+            </Heading>
             <Text fontSize="lg" fontFamily="heading" color="secondarytext">
               {post.description}
             </Text>
           </Flex>
+          <NextImage src={post.cover} id="top" />
         </VStack>
         <Fullbleed
-          // sx={{
-          //   width: "100vw!important",
-          //   position: "relative",
-          //   left: "50%",
-          //   right: "50%",
-          //   marginLeft: "-50vw",
-          //   marginRight: "-50vw",
-          //   backgroundColor: "gray.200",
-          // }}
-        >
-          <SimpleGrid columns={[2, 3]} row={2} gap="1">
-            <Box display="inline-block">
-              <Text variant="small" color="secondarytext">
-                role
-              </Text>
-              <Text fontFamily="heading">{post.role}</Text>
-            </Box>
+        // sx={{
+        //   width: "100vw!important",
+        //   position: "relative",
+        //   left: "50%",
+        //   right: "50%",
+        //   marginLeft: "-50vw",
+        //   marginRight: "-50vw",
+        //   backgroundColor: "gray.200",
+        // }}
+        ></Fullbleed>
+        <Box px="16">
+        <MDXContent components={components} /></Box>
+        <SimpleGrid columns={2} row={2} gap="8" pt="8">
+          <Box display="inline-block">
+            <Text variant="small" color="secondarytext" my="0">
+              role
+            </Text>
+            <Text fontFamily="heading" fontSize="2xl" my="0">{post.role}</Text>
+          </Box>
 
+          <Box>
+            <Text variant="small" color="secondarytext" my="0">
+              Industry
+            </Text>
             <Box>
-              <Text variant="small" color="secondarytext">
-                Category
-              </Text>
-              <Box>
-                <Text fontFamily="heading">{post.tags?.join(", ")}</Text>
-              </Box>
+              <Text fontFamily="heading" fontSize="2xl" my="0" lineHeight="short">{post.tags?.join(", ")}</Text>
             </Box>
-            {post.year ? (
-              <Box>
-                <Text variant="small" color="secondarytext">
-                  Timeframe
-                </Text>
-                <Text fontFamily="heading">{post.year}</Text>
-              </Box>
-            ) : (
-              ""
-            )}
-            {post.platform ? (
-              <Box display="inline-block">
-                <Text variant="small" color="secondarytext">
-                  Platforms
-                </Text>
-                <Text fontFamily="heading">{post.platform}</Text>
-              </Box>
-            ) : (
-              ""
-            )}
-          </SimpleGrid>
-        </Fullbleed>
-        <MDXContent components={components}/>
+          </Box>
+          {post.year ? (
+            <Box>
+              <Text variant="small" color="secondarytext" my="0">
+                Timeframe
+              </Text>
+              <Text fontFamily="heading" fontSize="2xl" my="0" >{post.year}</Text>
+            </Box>
+          ) : (
+            ""
+          )}
+          {post.platform ? (
+            <Box display="inline-block">
+              <Text variant="small" color="secondarytext" my="0">
+                Platforms
+              </Text>
+              <Text fontFamily="heading" fontSize="2xl" my="0">{post.platform}</Text>
+            </Box>
+          ) : (
+            ""
+          )}
+        </SimpleGrid>
         <Text variant="small" color="secondarytext" mt="20">
           Last update on {dayjs(post.date).format("MMM DD, YYYY")}
         </Text>

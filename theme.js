@@ -195,7 +195,8 @@ const customTheme = extendTheme({
           color: "white",
         }),
         disabled: (props) => ({
-          color: "primary.500",
+          border: "1px solid",
+          borderColor: mode("yellow.200","yellow.200")(props),
         }),
         defaultProps: {
           // colorScheme: 'indigo',
