@@ -87,7 +87,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             backgroundColor: `${color}`,
           }}
         >
-          <Image src={image} alt={`Logo of ${title}`} />
+          <Image src={image} alt={`${title}`} />
         </Center>
       </Box>
       <Box>
