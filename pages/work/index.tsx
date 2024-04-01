@@ -43,8 +43,7 @@ export default function WorkListPage({
             <ListPortfolio key={post.slug} data={post} />
           ))}
       </Fade>
-      <Heading variant="small">Projects</Heading>
-      <Text>Check out some of my personal work & design projects.</Text>
+      <Heading variant="small">Side Projects</Heading>
       <Grid gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr"}} gap="4">
       <Fade bottom>
       {works

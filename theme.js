@@ -223,12 +223,6 @@ const customTheme = extendTheme({
         }),
       },
     },
-    StatNumber: {
-      baseStyle: (props) => ({
-        fontSize: "2xl",
-        color: mode("primary.500", "primary.400")(props),
-      }),
-    },
     Link: {
       baseStyle: (props) => ({
         transition: "all 500ms ease-in-out",

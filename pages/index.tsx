@@ -58,16 +58,28 @@ export default function IndexPage({
   photos,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout 
+    <Layout
     // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
-    > 
-    <Head><meta name="follow.it-verification-code" content="aYHmMlGswgxauPT7REPs"/></Head>
-      <Flex flexDir={{ base: "column", md: "row"}} justifyContent="space-between" alignItems="baseline">
-  <Heading variant="pagetitle" as="h1">Desktop of Samuel</Heading>
-  <Button rightIcon={<ArrowForwardIcon/>} fontSize="xs" p="2"><NextLink href="https://notes.desktopofsamuel.com" target="_blank" variant="noeffect" >網誌</NextLink></Button>
+    >
+      <Head>
+        <meta
+          name="follow.it-verification-code"
+          content="aYHmMlGswgxauPT7REPs"
+        />
+      </Head>
+      <Flex
+        flexDir={{ base: "column", md: "row" }}
+        justifyContent="space-between"
+        alignItems="baseline"
+      >
+        <Heading variant="pagetitle" as="h1">
+          Desktop of Samuel
+        </Heading>
       </Flex>
-      <Text color="secondarytext">Full-stack UI/UX designer crafting websites &
-mobile applications with bespoke experience.</Text>
+      <Text color="secondarytext">
+        Full-stack UI/UX designer crafting websites & mobile applications with
+        bespoke experience.
+      </Text>
       <SimpleGrid columns={2} row={2} gap={4}>
         <CardBook />
         <CardMusic />
@@ -84,23 +96,21 @@ mobile applications with bespoke experience.</Text>
           <Button>View Process</Button>
         </Link>
         <Fade bottom>
-          {works
-            .map((post) => (
-              <ListPortfolio key={post.slug} data={post} />
-            ))}
+          {works.map((post) => (
+            <ListPortfolio key={post.slug} data={post} />
+          ))}
         </Fade>
       </Box>
-   
+
       <Heading variant="title">Notes on Design & Technology</Heading>
       <Text>I write about design, technology and productivity.</Text>
       <Link href="/blog" legacyBehavior>
         <Button>Read my blog</Button>
       </Link>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-        {posts
-          .map((post) => (
-            <ListBlog key={post.slug} data={post} />
-          ))}
+        {posts.map((post) => (
+          <ListBlog key={post.slug} data={post} />
+        ))}
       </SimpleGrid>
       <Box my="8">
         <Heading variant="title">Tools & Resources</Heading>
@@ -124,22 +134,20 @@ mobile applications with bespoke experience.</Text>
             lg: "1fr 1fr 1fr",
           }}
         >
-          {photos
-            .slice(0, 4)
-            .map((post) => (
-              <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
-                <Box role="group" overflow="hidden" position="relative">
-                  {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
-                  <NextImage
-                    src={post.cover}
-                    alt={post.title}
-                    // layout="raw"
-                    transition="0.5s all ease-in-out"
-                    _groupHover={{ transform: "scale(1.05)" }}
-                  />
-                </Box>
-              </Link>
-            ))}
+          {photos.slice(0, 4).map((post) => (
+            <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
+              <Box role="group" overflow="hidden" position="relative">
+                {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
+                <NextImage
+                  src={post.cover}
+                  alt={post.title}
+                  // layout="raw"
+                  transition="0.5s all ease-in-out"
+                  _groupHover={{ transform: "scale(1.05)" }}
+                />
+              </Box>
+            </Link>
+          ))}
           <VStack p="8" justifyContent="center">
             <Heading fontSize="2xl">Through the lens</Heading>
             <Text>Sets of photos according to cities that I have visited.</Text>
@@ -147,21 +155,19 @@ mobile applications with bespoke experience.</Text>
               <Button>My photos shot around the world</Button>
             </Link>
           </VStack>
-          {photos
-            .slice(4, 8)
-            .map((post) => (
-              <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
-                <Box role="group" overflow="hidden">
-                  <NextImage
-                    src={post.cover}
-                    alt={post.title}
-                    layotu="fill"
-                    transition="0.5s all ease-in-out"
-                    _groupHover={{ transform: "scale(1.05)" }}
-                  />
-                </Box>
-              </Link>
-            ))}
+          {photos.slice(4, 8).map((post) => (
+            <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
+              <Box role="group" overflow="hidden">
+                <NextImage
+                  src={post.cover}
+                  alt={post.title}
+                  layotu="fill"
+                  transition="0.5s all ease-in-out"
+                  _groupHover={{ transform: "scale(1.05)" }}
+                />
+              </Box>
+            </Link>
+          ))}
         </Grid>
       </Box>
     </Layout>

@@ -2,6 +2,7 @@ import { allWorks, Work } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Layout from "@/components/Layout";
+import { sortByDate } from "@/utils";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";
 import CONFIG from "../../config";
@@ -25,6 +26,13 @@ import {
   StatGroup,
   HStack,
 } from "@chakra-ui/react";
+import NextPrev from "@/components/NextPrev"
+
+type WorkPageProps = {
+  post: Work;
+  nextPost?: Work;
+  prevPost?: Work;
+};
 
 const Article = chakra("article", {
   baseStyle: {},
@@ -50,20 +58,35 @@ const components = {
   StatGroup,
 };
 
-export const getStaticProps: GetStaticProps<{
-  post: Work;
-}> = ({ params }) => {
+export const getStaticProps: GetStaticProps = ({ params }) => {
   const post = allWorks.find((post) => post.slug === params?.slug);
+  const fileredWorks = allWorks
+  .filter((work) => work.feature === true) // Filter for featured works
+  .filter((work) => work.draft !== true) // Filter for draft works
+  .sort(sortByDate)
+  const currentIndex = fileredWorks.findIndex((post) => post.slug === params?.slug);
+  const nextPost =
+    currentIndex < fileredWorks.length - 1 ? fileredWorks[currentIndex + 1] : null;
+  const prevPost = currentIndex > 0 ? fileredWorks[currentIndex - 1] : null;
 
   if (!post) {
     return { notFound: true };
   }
-  return { props: { post } };
+  return {
+    props: {
+      post,
+      currentIndex,
+      nextPost,
+      prevPost,
+    },
+  };
 };
 
 export default function SingleWorkPage({
   post,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+  nextPost,
+  prevPost,
+}:  WorkPageProps) {
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
@@ -122,13 +145,17 @@ export default function SingleWorkPage({
         // }}
         ></Fullbleed>
         <Box px="16">
-        <MDXContent components={components} /></Box>
+          <MDXContent components={components} />
+        </Box>
+
         <SimpleGrid columns={2} row={2} gap="8" pt="8">
           <Box display="inline-block">
             <Text variant="small" color="secondarytext" my="0">
               role
             </Text>
-            <Text fontFamily="heading" fontSize="2xl" my="0">{post.role}</Text>
+            <Text fontFamily="heading" fontSize="2xl" my="0">
+              {post.role}
+            </Text>
           </Box>
 
           <Box>
@@ -136,7 +163,14 @@ export default function SingleWorkPage({
               Industry
             </Text>
             <Box>
-              <Text fontFamily="heading" fontSize="2xl" my="0" lineHeight="short">{post.tags?.join(", ")}</Text>
+              <Text
+                fontFamily="heading"
+                fontSize="2xl"
+                my="0"
+                lineHeight="short"
+              >
+                {post.tags?.join(", ")}
+              </Text>
             </Box>
           </Box>
           {post.year ? (
@@ -144,7 +178,9 @@ export default function SingleWorkPage({
               <Text variant="small" color="secondarytext" my="0">
                 Timeframe
               </Text>
-              <Text fontFamily="heading" fontSize="2xl" my="0" >{post.year}</Text>
+              <Text fontFamily="heading" fontSize="2xl" my="0">
+                {post.year}
+              </Text>
             </Box>
           ) : (
             ""
@@ -154,15 +190,19 @@ export default function SingleWorkPage({
               <Text variant="small" color="secondarytext" my="0">
                 Platforms
               </Text>
-              <Text fontFamily="heading" fontSize="2xl" my="0">{post.platform}</Text>
+              <Text fontFamily="heading" fontSize="2xl" my="0">
+                {post.platform}
+              </Text>
             </Box>
           ) : (
             ""
           )}
         </SimpleGrid>
+       
         <Text variant="small" color="secondarytext" mt="20">
           Last update on {dayjs(post.date).format("MMM DD, YYYY")}
         </Text>
+        <NextPrev nextPost={nextPost!} prevPost={prevPost!}  />
       </Article>
     </Layout>
   );
