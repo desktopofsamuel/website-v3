@@ -52,7 +52,7 @@ type CompanyCardProps = {
 type EntryProps = {
   title: string;
   subtitle?: string;
-  text: string;
+  text?: string;
   image?: string;
   cta?: string;
   href?: string;
