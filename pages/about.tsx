@@ -11,6 +11,7 @@ import {
   Center,
   UnorderedList,
   ListItem,
+  IconButton,
   VStack,
   HStack,
 } from "@chakra-ui/react";
@@ -34,8 +35,7 @@ import Hyperairlogo from "../public/about/hyperair-logo.svg";
 import Hsbclogo from "../public/about/hsbc-logo.svg";
 import Ama from "../public/about/Design System AMA2.jpg";
 import FirmVisit from "../public/about/Firm Visit.jpeg";
-
-
+import { FaTwitter, FaEnvelope, FaMedium, FaLinkedin, FaGithub } from "react-icons/fa";
 
 type CompanyCardProps = {
   title: string;
@@ -46,6 +46,7 @@ type CompanyCardProps = {
   color?: string;
   cta?: string;
   href?: string;
+  noAnimation?: boolean;
 };
 
 type EntryProps = {
@@ -66,6 +67,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
   cta,
   color,
   href = "",
+  noAnimation = false,
 }) => {
   return (
     <SimpleGrid
@@ -87,7 +89,15 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             backgroundColor: `${color}`,
           }}
         >
-          <Image src={image} alt={`${title}`} />
+          <Box
+            _groupHover={{
+              transform: noAnimation ? "scale(1)" : "scale(1.05)",
+            }}
+            transition="all 250ms ease-in"
+            transitionDelay="200"
+          >
+            <Image src={image} alt={`${title}`} />
+          </Box>
         </Center>
       </Box>
       <Box>
@@ -148,7 +158,7 @@ const Entry: React.FC<EntryProps> = ({
       borderColor="border"
       borderRadius="lg"
       paddingX={{ base: 2, md: 4 }}
-      paddingY={{ base: 2, md: 3 }}
+      paddingY={{ base: 2, md: 6 }}
     >
       {image && (
         <Box
@@ -223,7 +233,26 @@ const AboutPage: NextPage = () => {
             domains like web3, finance, and travel industries.
           </Text>
           <HStack>
-            <Button size="lg">
+            <HStack gap="1">
+            <NextLink
+              variant="noeffect"
+              href="https://www.linkedin.com/in/desktopofsamuel/"
+            >
+              <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Linkedin" icon={<FaLinkedin />} />
+            </NextLink>
+            <NextLink
+              variant="noeffect"
+              href="mailto:desktopofsamuel@gmail.com"
+            >
+            <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Email" icon={<FaEnvelope />} /></NextLink>
+            <NextLink
+              variant="noeffect"
+              href="https://www.github.com/desktopofsamuel"
+            >
+            <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Github" icon={<FaGithub />} /></NextLink>
+           
+          </HStack>
+            {/* <Button size="lg">
               <NextLink href="#contact" variant="noeffect">
                 Let&apos;s Chat
               </NextLink>
@@ -232,7 +261,7 @@ const AboutPage: NextPage = () => {
               <NextLink href="#resume" variant="noeffect">
                 My resume
               </NextLink>
-            </Button>
+            </Button> */}
           </HStack>
         </Box>
       </Grid>
@@ -242,9 +271,7 @@ const AboutPage: NextPage = () => {
         </Heading>
         <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
-            <Heading fontSize="2xl">
-              Interned At Apple
-            </Heading>
+            <Heading fontSize="2xl">Interned At Apple</Heading>
             <Text>
               Majoring in Arts in college, I took a gap year working for
               Apple&apos;s iTunes & App Store team. This valuable experience
@@ -252,9 +279,7 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading fontSize="2xl">
-              Co-founding an agency
-            </Heading>
+            <Heading fontSize="2xl">Co-founding an agency</Heading>
             <Text>
               With growing freelance web & design projects, I co-founded a
               digital agency after graduation. Me and my team helped small
@@ -263,9 +288,7 @@ const AboutPage: NextPage = () => {
             </Text>
           </Box>
           <Box>
-            <Heading fontSize="2xl">
-              Lead product design
-            </Heading>
+            <Heading fontSize="2xl">Lead product design</Heading>
             <Text>
               After that, I transitioned to start-up & corporations as a prdouct
               designer to run design teams. Currently I am working as a Product
@@ -383,12 +406,11 @@ const AboutPage: NextPage = () => {
             <Entry
               title="The University of Hong Kong"
               subtitle="Bachelor of Arts"
-              text="2011 - 2015"
             />
             <Entry
               title="IDEO U"
               subtitle="Human Centered Strategy"
-              text="2022 - 2023"
+              text="2023"
             />
           </Grid>
         </Box>
@@ -400,12 +422,14 @@ const AboutPage: NextPage = () => {
               subtitle="OKX Product Design Team Representative"
               title="Campus Recruitment: HKUST Firm Visit"
               small="2023"
+              noAnimation
             />
             <CompanyCard
               image={Ama}
               subtitle="Host of Friends of Figma HK"
               title="Let's talk about Design System"
               small="2022 Sep"
+              noAnimation
             />
           </Grid>
         </Box>

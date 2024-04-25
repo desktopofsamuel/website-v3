@@ -189,14 +189,19 @@ const customTheme = extendTheme({
             color: mode("primary.500", "primary.400")(props),
           },
         }),
+        icon: (props) => ({
+          background: "none",
+          color: mode("primary.500", "primary.400")(props),
+          border: "1px solid",
+          borderColor: mode("yellow.200", "yellow.100")(props),
+        }),
         brand: (props) => ({
           backgroundColor: mode("primary.500", "primary.400")(props),
-
           color: "white",
         }),
         disabled: (props) => ({
           border: "1px solid",
-          borderColor: mode("yellow.200","yellow.200")(props),
+          borderColor: mode("yellow.200", "yellow.200")(props),
         }),
         defaultProps: {
           // colorScheme: 'indigo',
@@ -278,7 +283,7 @@ const customTheme = extendTheme({
         pagetitle: (props) => ({
           fontSize: {
             sm: "5xl",
-            md: "6xl",
+            md: "8xl",
           },
           mt: {
             sm: "5vh",

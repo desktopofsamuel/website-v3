@@ -9,7 +9,13 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FaTwitter, FaInstagram, FaMedium, FaLinkedin, FaGithub } from "react-icons/fa";
+import {
+  FaTwitter,
+  FaInstagram,
+  FaMedium,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 import React from "react";
 import NextLink from "./NextLink";
 
@@ -49,25 +55,31 @@ export default function Footer() {
               variant="noeffect"
               href="https://www.instagram.com/desktopofsamuel"
             >
-            <IconButton aria-label="Instagram" icon={<FaInstagram />} />
+              <IconButton aria-label="Instagram" icon={<FaInstagram />} />
             </NextLink>
             <NextLink
               variant="noeffect"
               href="https://medium.com/desktop-of-samuel"
             >
-            <IconButton aria-label="Medium" icon={<FaMedium />} /></NextLink>
+              <IconButton aria-label="Medium" icon={<FaMedium />} />
+            </NextLink>
             <NextLink
               variant="noeffect"
               href="https://www.github.com/desktopofsamuel"
             >
-            <IconButton aria-label="Medium" icon={<FaGithub />} /></NextLink>
+              <IconButton aria-label="Github" icon={<FaGithub />} />
+            </NextLink>
           </HStack>
         </GridItem>
         <GridItem>
           <Heading variant="small">Subscribe</Heading>
           <Text variant="caption">
             I write regularly on the subject of design and technology. Feel free
-            to <NextLink href="https://follow.it/samuel-wong-hong-kong-ui-ux-designer-desktop-of-samuel?leanpub"> subscribe my latest writings .</NextLink>
+            to{" "}
+            <NextLink href="https://follow.it/samuel-wong-hong-kong-ui-ux-designer-desktop-of-samuel?leanpub">
+              {" "}
+              subscribe my latest writings .
+            </NextLink>
           </Text>
         </GridItem>
       </Grid>
