@@ -19,7 +19,7 @@ const CardBase = ({ children, title}: Props) => {
       gridColumn={{ base: "span 2", md: "initial" }}
       height="100%"
     >
-      <Text variant="small" my="2">
+      <Text variant="small" my="2" color="secondarytext">
         {title}
       </Text>
       {children}
