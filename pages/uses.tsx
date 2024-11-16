@@ -376,43 +376,43 @@ const uses: Array<Uses> = [
   {
     title: "Mobbin",
     description:
-      "Obsidian now serves as a local content management system when I can edit most of my content as I reverted saving blogs, resources locally.",
-    url: "https://www.raycast.com/hey/11fac304",
+      "I use Mobbin to quickly discover common UI and UX patterns and discover the best design apporach without registering any apps",
+    url: "https://mobbin.com/?referrer_workspace_id=4bfd1db9-2fbb-44ca-a4ca-c835b78d9486",
     icon: MobbinIcon,
   },
   {
     title: "Raycast",
     description:
-      "I'm using Raycast everyday with an upgraded plan. It is productivity powerhouse that can do clipboard history, window management and best of all AI Chat support.",
+      "I use Raycast everyday with upgraded plan. It is productivity powerhouse that can do clipboard history, window management and best of all AI Chat support.",
     url: "https://www.raycast.com/hey/11fac304",
     icon: RayacastIcon,
   },
   {
     title: "Arc Browser",
     description:
-      "Obsidian now serves as a local content management system when I can edit most of my content as I reverted saving blogs, resources locally.",
-    url: "https://www.raycast.com/hey/11fac304",
+      "I have been daily driving Arc for more than 2 years, it's elegant, fun with new ideas around how we interact with the internet.",
+    url: "https://arc.net/gift/76e7ab44",
     icon: ArcIcon,
   },
   {
     title: "Obsidian",
     description:
-      "Obsidian now serves as a local content management system when I can edit most of my content as I reverted saving blogs, resources locally.",
-    url: "https://www.raycast.com/hey/11fac304",
+      "Obsidian now serves as note-taking system for my structured notes.",
+    url: "https://obsidian.md/?utm_source=desktopofsamuel",
     icon: ObsidianIcon,
   },
   {
     title: "Readwise",
     description:
-      "Obsidian now serves as a local content management system when I can edit most of my content as I reverted saving blogs, resources locally.",
-    url: "https://www.raycast.com/hey/11fac304",
+      "I am establishing a content digest system with Readwise as the central hub for all content consumption.",
+    url: "https://readwise.io/i/samuel8292",
     icon: ReadwiseIcon,
   },
   {
     title: "Figma",
     description:
-      "Obsidian now serves as a local content management system when I can edit most of my content as I reverted saving blogs, resources locally.",
-    url: "https://www.raycast.com/hey/11fac304",
+      "Without a question, Figma is a daily driver for me. It's a totally free & excellent graphic design tools to create banners and social media graphics.",
+    url: "https://www.figma.com/?utm_source=desktopofsamuel",
     icon: FigmaIcon,
   },
 ];
