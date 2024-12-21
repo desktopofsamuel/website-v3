@@ -271,7 +271,7 @@ const AboutPage: NextPage = () => {
         </Heading>
         <SimpleGrid columns={[1, 1, 3]} gap="8">
           <Box>
-            <Heading fontSize="2xl">Interned At Apple</Heading>
+            <Heading fontSize="2xl">Interned at Apple</Heading>
             <Text>
               Majoring in Arts in college, I took a gap year working for
               Apple&apos;s iTunes & App Store team. This valuable experience
@@ -291,8 +291,7 @@ const AboutPage: NextPage = () => {
             <Heading fontSize="2xl">Lead product design</Heading>
             <Text>
               After that, I transitioned to start-up & corporations as a prdouct
-              designer to run design teams. Currently I am working as a Product
-              Designer in the crypto industry.
+              designer to lead design projects in travel, banking and crypto industries.
             </Text>
           </Box>
         </SimpleGrid>
@@ -317,7 +316,7 @@ const AboutPage: NextPage = () => {
               title="Senior Product Designer"
               subtitle="OKX"
               text="Currently leading a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023."
-              small="2022 - Now"
+              small="2022 - 2024"
               cta="Coming soon"
               color="#000000"
             />
@@ -411,6 +410,11 @@ const AboutPage: NextPage = () => {
               title="IDEO U"
               subtitle="Human Centered Strategy"
               text="2023"
+            />
+            <Entry
+              title="Glide"
+              subtitle="Glide Certifcation Level 1 - 3"
+              text="2024"
             />
           </Grid>
         </Box>

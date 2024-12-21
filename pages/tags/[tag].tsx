@@ -33,9 +33,9 @@ export default function TagPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <Box>
+      <Box mt="36">
         <Flex gap="2">
-          <Heading>{tag}</Heading>
+          <Heading fontSize="5xl">{tag}</Heading>
           <Text>({posts.length})</Text>
         </Flex>
       </Box>

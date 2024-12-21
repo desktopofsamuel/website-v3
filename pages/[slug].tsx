@@ -186,6 +186,7 @@ export default function SinglePostPage({
         transform="translateY(-50%)"
         marginLeft="36px"
         maxWidth="200px"
+        fontFamily="heading"
         fontSize="xs"
         zIndex={100}
       >
@@ -212,7 +213,7 @@ export default function SinglePostPage({
           </ScrollspyNav>
         </UnorderedList>
       </Box>
-      <NextImage src={post.cover} alt={post.title} priority noeffect id="top" />
+     
       <Article
         sx={{
           display: "block",
@@ -227,21 +228,24 @@ export default function SinglePostPage({
           },
         }}
       >
-        <VStack pb="4">
+       
+        <VStack mt="36" pb="4">
           <Flex width="100%" direction="column">
-            <Box display="inline-block">
-              <Text variant="small" color="secondarytext">
-                {dayjs(post.date).format("MMM DD, YYYY")} · posted in{" "}
-                {post.category} · {post.timetoread} min read
+            <Box display="inline-block" color="secondarytext" >
+              <Text variant="small" fontFamily="body" >
+                Published on {dayjs(post.date).format("MMM DD, YYYY")} in{" "}
+            {post.category}{" · "} {post.timetoread} min read
               </Text>
             </Box>
-            <Heading lineHeight="short">{post.title}</Heading>
+            <Heading fontSize="5xl" lineHeight="shorter">{post.title}</Heading>
             <Text fontSize="lg" fontFamily="heading" color="secondarytext">
               {post.tldr}
             </Text>
           </Flex>
         </VStack>
-
+        <Box width="100%" position="relative" left="50%" transform="translateX(-50%)">
+          <NextImage src={post.cover} alt={post.title} priority noeffect id="top" />
+        </Box>
         <MDXContent components={components} />
         <HStack>
           {post.tags.map((tag) => (
