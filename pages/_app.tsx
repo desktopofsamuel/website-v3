@@ -1,7 +1,5 @@
 import "../styles/globals.css";
 import "../styles/prism.css";
-// import "@fontsource/roboto-serif/400.css"
-// import "@fontsource/roboto-serif/variable.css"
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";

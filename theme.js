@@ -211,8 +211,7 @@ const customTheme = extendTheme({
     Text: {
       baseStyle: (props) => ({
         transition: "all 100ms ease-in-out",
-        // color: mode('red.900', 'whiteAlpha.100')(props),
-      }),
+    }),
       variants: {
         caption: (props) => ({
           margin: "0",
@@ -293,7 +292,7 @@ const customTheme = extendTheme({
           letterSpacing: "tighter",
         }),
         title: (props) => ({
-          fontSize: "4xl",
+          fontSize: "5xl",
           my: "0",
           lineHeight: "tall",
         }),
@@ -333,6 +332,7 @@ const customTheme = extendTheme({
       body: {
         lineHeight: "taller",
         background: "background",
+        fontFeatureSettings: "zero",
       },
       p: {
         color: "text",

@@ -124,7 +124,7 @@ export default function SingleWorkPage({
       >
         <VStack pb="4" marginTop="16">
           <Flex direction="column">
-            <Heading fontSize="4xl" lineHeight="short">
+            <Heading variant="title" lineHeight="short">
               {post.title}
             </Heading>
             <Text fontSize="lg" fontFamily="heading" color="secondarytext">

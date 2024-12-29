@@ -226,26 +226,43 @@ export default function SinglePostPage({
             maxWidth: "800px",
             width: "100%",
           },
+
+          h1: {
+            fontSize: "5xl",
+            lineHeight: "shorter",
+            letterSpacing: "tight",
+          },
+
+          h2: {
+            fontSize: "2xl",
+            lineHeight: "shorter",
+            letterSpacing: "tight",
+          },
         }}
       >
        
         <VStack mt="36" pb="4">
           <Flex width="100%" direction="column">
-            <Box display="inline-block" color="secondarytext" >
-              <Text variant="small" fontFamily="body" >
-                Published on {dayjs(post.date).format("MMM DD, YYYY")} in{" "}
-            {post.category}{" · "} {post.timetoread} min read
+            <Box display="inline-block">
+              <Text variant="small" fontFamily="body" color="primary.500" >
+              {post.category}
+           
               </Text>
             </Box>
-            <Heading fontSize="5xl" lineHeight="shorter">{post.title}</Heading>
-            <Text fontSize="lg" fontFamily="heading" color="secondarytext">
+            <Heading as="h1" variant="title" lineHeight="shorter">{post.title}</Heading>
+            <Text fontSize="lg" color="secondarytext">
               {post.tldr}
             </Text>
+            <HStack gap="2">
+            <Text variant="small" color="secondarytext">{dayjs(post.date).format("MMMM DD, YYYY")} </Text><span>·</span>
+            <Text variant="small" color="secondarytext">{post.timetoread} min read</Text></HStack>
           </Flex>
         </VStack>
+
         <Box width="100%" position="relative" left="50%" transform="translateX(-50%)">
           <NextImage src={post.cover} alt={post.title} priority noeffect id="top" />
         </Box>
+       
         <MDXContent components={components} />
         <HStack>
           {post.tags.map((tag) => (
