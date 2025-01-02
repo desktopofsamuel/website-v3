@@ -228,7 +228,7 @@ export default function SinglePostPage({
           },
 
           h1: {
-            fontSize: "5xl",
+            fontSize: "4xl",
             lineHeight: "shorter",
             letterSpacing: "tight",
           },
@@ -249,13 +249,13 @@ export default function SinglePostPage({
            
               </Text>
             </Box>
-            <Heading as="h1" variant="title" lineHeight="shorter">{post.title}</Heading>
+            <Heading as="h1" variant="title" lineHeight="shorter" >{post.title}</Heading >
             <Text fontSize="lg" color="secondarytext">
               {post.tldr}
             </Text>
-            <HStack gap="2">
-            <Text variant="small" color="secondarytext">{dayjs(post.date).format("MMMM DD, YYYY")} </Text><span>·</span>
-            <Text variant="small" color="secondarytext">{post.timetoread} min read</Text></HStack>
+            <HStack gap="2" borderTop=".5px solid" borderColor="border" pt="4">
+            <Text variant="small" color="tertiarytext">{dayjs(post.date).format("MMMM DD, YYYY")} </Text><span>·</span>
+            <Text variant="small" color="tertiarytext">{post.timetoread} min read</Text></HStack>
           </Flex>
         </VStack>
 
