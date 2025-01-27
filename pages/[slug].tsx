@@ -271,7 +271,7 @@ export default function SinglePostPage({
               variant="noeffect"
               href={`/tags/${kebabCase(tag)}`}
             >
-              <Tag variant="outline">{tag}</Tag>
+              <Tag>{tag}</Tag>
             </NextLink>
           ))}
         </HStack>

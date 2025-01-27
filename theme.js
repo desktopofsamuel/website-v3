@@ -26,8 +26,8 @@ const customTheme = extendTheme({
       400: "red",
     },
     yellow: {
-      100: "#FFF9EF",
-      200: "#F2E3CD",
+      100: "oklch(98.4% 0.0147 80.71)",
+      200: "oklch(92.2% 0.0335 77.59)",
       300: "#EEDDCC",
       500: "#A99A7F",
       700: "#6B614F",
@@ -35,9 +35,10 @@ const customTheme = extendTheme({
       900: "#150D00",
     },
     primary: {
+      100: "oklch(97% 0.0148 238.24)",
       300: "#33aaff",
       400: "#78c7ff",
-      500: "#0077CC",
+      500: "oklch(70% 0.1875 238.24)",
     },
     secondary: {
       300: "rgb(202,20,20,0.7)",
@@ -64,6 +65,10 @@ const customTheme = extendTheme({
       secondarytext: {
         default: "yellow.700",
         _dark: "indigo.200",
+      },
+      tertiarytext: {
+        default: "indigo.800",
+        _dark: "indigo.300",
       },
       background: {
         default: "yellow.100",
@@ -132,25 +137,25 @@ const customTheme = extendTheme({
   },
   components: {
     Tag: {
-      baseStyle: (props) => ({}),
+      baseStyle: (props) => ({
+      
+      }),
       variants: {
-        solid: (props) => ({
-          fontFamily: "Space Grotesk",
+        outline: (props) => ({
           textTransform: "uppercase",
-          fontSize: "2xl",
-          fontWeight: "600",
+          backgroundColor: "red",
           letterSpacing: "tight",
-          backgroundColor: "white",
+          border: "1px solid",
+          borderColor: mode("yellow.500", "indigo.400")(props),
         }),
       },
       defaultProps: {
-        variant: "solid",
+        variant: "outline",
       },
     },
     Button: {
       baseStyle: (props) => ({
-        fontFamily: "Space Grotesk",
-        // background: mode('indigo.100', 'indigo.900')(props),
+        fontFamily: "heading",
         _hover: {
           textDecoration: "none",
         },
@@ -163,10 +168,9 @@ const customTheme = extendTheme({
       }),
       variants: {
         solid: (props) => ({
+          backgroundColor: mode("primary.100", "slate.900")(props),
           color: mode("primary.500", "primary.400")(props),
           _hover: {
-            // backgroundColor: 'primary.500',
-            // color: 'white',
             textDecoration: "none",
           },
         }),
@@ -193,7 +197,7 @@ const customTheme = extendTheme({
           background: "none",
           color: mode("primary.500", "primary.400")(props),
           border: "1px solid",
-          borderColor: mode("yellow.200", "yellow.100")(props),
+          borderColor: mode("yellow.200", "indigo.100")(props),
         }),
         brand: (props) => ({
           backgroundColor: mode("primary.500", "primary.400")(props),
@@ -201,10 +205,10 @@ const customTheme = extendTheme({
         }),
         disabled: (props) => ({
           border: "1px solid",
-          borderColor: mode("yellow.200", "yellow.200")(props),
+          borderColor: mode("yellow.200", "indigo.700")(props),
         }),
         defaultProps: {
-          // colorScheme: 'indigo',
+          variant: "solid",
         },
       },
     },
@@ -315,17 +319,6 @@ const customTheme = extendTheme({
         variant: "title",
       },
     },
-    Tag: {
-      baseStyle: {
-        fontFamily: "Space Grotesk",
-        textTransform: "uppercase",
-        fontSize: "2xl",
-        fontWeight: "600",
-        letterSpacing: "tight",
-      },
-      variant: {},
-      defaultProps: {},
-    },
   },
   styles: {
     global: (props) => ({
@@ -395,6 +388,10 @@ const customTheme = extendTheme({
       },
       ul: {
         listStyle: "square",
+        my: "2",
+      },
+      ol: {
+        listStyle: "decimal",
         my: "2",
       },
       li: {

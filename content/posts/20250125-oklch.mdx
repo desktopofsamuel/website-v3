@@ -1,0 +1,47 @@
+---
+slug: "oklch-explained-for-designers"
+title: "OKLCH, explained for designers"
+date: 2025-02-01
+category: "Design Journal"
+tags:
+  - Color
+  - CSS  
+cover: "/static/oklch-color.png"
+tldr: "OKLCH is a new color space that improves design and development with a wider color gamut. Learn why it's the new standard for web colors."
+feature: true
+---
+
+Last week, TailwindCSS released their v4 version with [revamped color tokens using OKLCH](https://tailwindcss.com/docs/colors#default-color-palette-reference). I forsee more web devs are going to adopt OKLCH as the new standard for color tokens. This might sound very technical, but it's actually a significant change UI/UX designer should be aware of. With major browsers now reaching 93.1% adoption rate, OKLCH is on track to be the new standard that bridges design and development.
+
+## Why should designers care about OKLCH?
+
+Most designers are familiar with RGB and HSL color spaces, but OKLCH is a new way of thinking about color. Here's an example: Traditionally, RGB use hexcodes (e.g. `#0077CC`), which are not easy to understand for humans. HSL is a more human-readable format (e.g. `hsl(205deg, 100%, 40%, 1)` for the same color),  but lightness in HSL have different contrast in different hues, ergo it's not perfect withaccessibility issues. 
+
+OKLCH is a new system that solves this by offering a color space that's closer to how we actually perceive colors with better ergonomics in design and development experience. It stands for Oklab Lightness, Chroma, and Hue, and it's written as `oklch(56.01% 0.1577 249.8 / 50%)`.
+
+Additionally, have I mentioned that OKLCH supports a wider range of colors with P3 support?  It means 30% more new colors that you can use that are human perceivable comparing to RGB. There're more colors to choose from for your palette.
+
+## Applying OKLCH in design system
+
+Think about the last time you tried to create a consistent color scale for your design system. With RGB or HSL, increasing brightness often leads to washed-out colors, and it's very time-consuming to tweak color for both light and dark mode, while maintaining accessible color contrast. OKLCH's perceptual uniformity ensures that color transitions feel natural. By deducting lightness (0.65 to 0.55) The lightness parameter in OKLCH actually corresponds to how bright we perceive the color, unlike HSL where yellow appears brighter than blue at the same lightness value.
+
+By doing so, OKLCH also means devs can calculate color scale more efficiently by defining fewer color tokens. For example in disabled or hover state, you can simply set CSS calculating function `oklch(from var(--color-blue) calc(l/2 + .2) c h);` to darken the color. To explain this example in plain text, it means we're taking the lightness value of the defined blue variable, and then divide it by 2, and then add 20% to it, and then use the same chroma and hue value to calculate the new color.
+
+## OK, so what are we waiting for and why are we still using RGB?
+
+1. While modern browsers have embraced OKLCH with 93% adoption (industry standard is 98%), native app frameworks are still playing catch-up. This creates a fragmented ecosystem where web applications can leverage OKLCH's benefits, but native apps remain falling behind with RGB & HSL. This pose a challenge for designers to maintain consistency across platforms.
+2. While flagship smartphones boast P3 color gamut support, offering richer color reproduction. Majority of home-use desktop monitors still only support sRGB color space. Professional monitors supporting wider color gamuts remain a minority in the market. This gap means lower ROI for brands to invest in updating their color where only a few users can see the difference.
+3. Even design tools like Figma, Sketch  has not natively support OKLCH yet. Third-party plugins are required to convert OKLCH to RGB.
+
+## Looking forward
+
+With great backward compatibility in modern CSS, You can still start using OKLCH today given all the mentioned limitation, as long as you as you set RGB as fallback. This will ensure widest adoption without breaking old devices and technologies. For designers getting started with OKLCH, I recommend experimenting with the color space in browser DevTools or [color picker](https://oklch.com) first, understand how OKLCH values translate to visual colors, making it easier to incorporate into your design process later.
+
+With all being said, OKLCH is still subjectively better and I believe it's on track to be the new color standard that bridges design and development. Let me know what you think!
+
+
+## Resources
+- [TailwindCSS v4 Documentation](https://tailwindcss.com)
+- [OKLCH Color Picker Tool](https://oklch.com)
+- [OKLCH Color Variations Figma Plugin](https://www.figma.com/community/plugin/1261721955648857186)
+- [oklch() Browser Adoption](https://caniuse.com/mdn-css_types_color_oklch) 
