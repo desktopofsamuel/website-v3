@@ -67,6 +67,11 @@ const Article = chakra("article", {
     },
     li: {
       my: "2",
+        a: {
+          color: "primary.500",
+          borderBottomWidth: "1px",
+          borderBottomColor: "primary.500",
+        },
     },
   },
 });
