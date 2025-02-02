@@ -28,7 +28,7 @@ export default function NavBar() {
     <>
       <Container as="header" maxW="1080px">
         <Flex as="nav" alignItems="center" my="8">
-          <NextLink href="/" fontFamily="heading">Desktop of Samuel </NextLink>
+          <NextLink href="/">Desktop of Samuel </NextLink>
           <Spacer />
           <List
             as="nav"

@@ -21,6 +21,7 @@ export default function NextLink({
         passHref
         className={className}
         variant={variant}
+        fontFamily="heading"
         {...rest}
       >
         {children}
@@ -33,6 +34,7 @@ export default function NextLink({
       className={className}
       rel="noreferrer noopener"
       variant={variant}
+      fontFamily="heading"
       {...rest}
     >
       {children}
