@@ -23,6 +23,7 @@ export default function ListPortfolio({ data }: any) {
         <NextLink
           variant="noeffect"
           href={post.url ? post.url : `/work/${post.slug}/`}
+          target="_blank"
         >
           <HStack>
             <Heading variant="heading" fontSize="2xl">
