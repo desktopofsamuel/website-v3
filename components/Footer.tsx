@@ -15,9 +15,31 @@ import {
   FaMedium,
   FaLinkedin,
   FaGithub,
-} from "react-icons/fa";
+  FaXTwitter,
+} from "react-icons/fa6";
 import React from "react";
 import NextLink from "./NextLink";
+
+const SocialIconButton = ({ 
+  icon, 
+  label, 
+  ...props 
+}: { 
+  icon: React.ReactElement; 
+  label: string;
+}) => (
+  <IconButton
+    aria-label={label}
+    icon={icon}
+    color="yellow.700"
+    backgroundColor="yellow.100"
+    _hover={{
+      backgroundColor: "yellow.500",
+      color: "white",
+    }}
+    {...props}
+  />
+);
 
 export default function Footer() {
   return (
@@ -25,6 +47,7 @@ export default function Footer() {
       <Grid
         gridTemplateColumns={{ base: "1fr", sm: "1fr 1fr 1fr" }}
         gap={{ base: "2", md: "8" }}
+       
       >
         <GridItem>
           <Heading variant="small">Let&apos;s Chat</Heading>
@@ -33,41 +56,61 @@ export default function Footer() {
             together.
           </Text>
         </GridItem>
-        <GridItem>
+        <GridItem> 
           <Heading variant="small">Keep In Touch</Heading>
           <Text variant="caption">
             Follow my social media and see what I&apos;m up to.
           </Text>
-          <HStack gap="1">
+          <HStack gap="1"  ml="-2">
             <NextLink
               variant="noeffect"
               href="https://www.linkedin.com/in/desktopofsamuel/"
+              target="_blank"
             >
-              <IconButton aria-label="Linkedin" icon={<FaLinkedin />} />
+              <SocialIconButton
+                icon={<FaLinkedin size="24px" />}
+                label="Linkedin"
+              />
             </NextLink>
             <NextLink
               variant="noeffect"
-              href="https://www.twitter.com/desktopofsamuel"
+              href="https://www.x.com/desktopofsamuel"
+              target="_blank"
             >
-              <IconButton aria-label="Twitter" icon={<FaTwitter />} />{" "}
+              <SocialIconButton
+                icon={<FaXTwitter size="24px" />}
+                label="X"
+              />
             </NextLink>
             <NextLink
               variant="noeffect"
               href="https://www.instagram.com/desktopofsamuel"
+              target="_blank"
             >
-              <IconButton aria-label="Instagram" icon={<FaInstagram />} />
+              <SocialIconButton
+                icon={<FaInstagram size="24px" />}
+                label="Instagram"
+              />
             </NextLink>
             <NextLink
               variant="noeffect"
               href="https://medium.com/desktop-of-samuel"
+              target="_blank"
             >
-              <IconButton aria-label="Medium" icon={<FaMedium />} />
+              <SocialIconButton
+                icon={<FaMedium size="24px" />}
+                label="Medium"
+              />
             </NextLink>
             <NextLink
               variant="noeffect"
               href="https://www.github.com/desktopofsamuel"
+              target="_blank"
             >
-              <IconButton aria-label="Github" icon={<FaGithub />} />
+              <SocialIconButton
+                label="Github"
+                icon={<FaGithub size="24px"/>}
+              />
             </NextLink>
           </HStack>
         </GridItem>

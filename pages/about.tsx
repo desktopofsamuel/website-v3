@@ -35,7 +35,7 @@ import Hyperairlogo from "../public/about/hyperair-logo.svg";
 import Hsbclogo from "../public/about/hsbc-logo.svg";
 import Ama from "../public/about/Design System AMA2.jpg";
 import FirmVisit from "../public/about/Firm Visit.jpeg";
-import { FaTwitter, FaEnvelope, FaMedium, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa6";
 
 type CompanyCardProps = {
   title: string;
