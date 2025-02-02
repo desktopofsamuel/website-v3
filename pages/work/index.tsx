@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-export default function WorkListPage({
+  export default function WorkListPage({
   works,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -33,8 +33,6 @@ export default function WorkListPage({
     >
       <Heading variant="pagetitle">Portfolio</Heading>
       <Text>Selected websites and apps showcase since 2015.</Text>
-
-      <Text variant="small">Featured</Text>
       <Fade bottom>
         {works
           .filter((post) => post.feature === true && post.draft !== true)

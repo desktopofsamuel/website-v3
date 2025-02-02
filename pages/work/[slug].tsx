@@ -131,7 +131,7 @@ export default function SingleWorkPage({
               {post.description}
             </Text>
           </Flex>
-          <NextImage src={post.cover} id="top" />
+          <NextImage src={post.cover} id="top" noeffect  />
         </VStack>
         <Fullbleed
         // sx={{

@@ -6,7 +6,7 @@ import { mode } from "@chakra-ui/theme-tools";
 const customTheme = extendTheme({
   config: {
     cssVarPrefix: "dos",
-    initialColorMode: "light",
+    initialColorMode: "dark",
     useSystemColorMode: false,
   },
   fonts: {
@@ -17,66 +17,54 @@ const customTheme = extendTheme({
   },
   colors: {
     transparent: "rgba(0,0,0,0)",
-    text: {
-      100: "lightgray",
-      400: "darkgray",
-    },
-    brand: {
-      100: "orange",
-      400: "red",
-    },
     yellow: {
-      100: "oklch(98.4% 0.0147 80.71)",
-      200: "oklch(92.2% 0.0335 77.59)",
-      300: "#EEDDCC",
-      500: "#A99A7F",
-      700: "#6B614F",
-      800: "#4F483B",
-      900: "#150D00",
+      100: "oklch(98% 0.0147 83.7)",
+      200: "oklch(96% 0.0147 83.7)",
+      300: "oklch(90% 0.0147 83.7)",
+      400: "oklch(86% 0.0147 83.7)",
+      500: "oklch(70% 0.0147 83.7)",
+      600: "oklch(72% 0.0147 83.7)",
+      700: "oklch(55% 0.0147 83.7)",
+      800: "oklch(68% 0.0147 83.7)",
+      900: "oklch(66% 0.0147 83.7)",
     },
     primary: {
       100: "oklch(97% 0.0148 238.24)",
-      300: "#33aaff",
-      400: "#78c7ff",
+      200: "oklch(90% 0.0148 238.24)",
+      300: "oklch(85% 0.0148 238.24)",
+      400: "oklch(74% 0.15 234.83)",
       500: "oklch(70% 0.1875 238.24)",
-    },
-    secondary: {
-      300: "rgb(202,20,20,0.7)",
-      400: "#ca1414",
-    },
-    indigo: {
-      100: "#EAF4FA",
-      200: "#D6E8F6",
-      300: "#BBBFCC",
-      400: "#9AB2CD",
-      500: "#748cad",
-      600: "#546D94",
-      700: "#3A507C",
-      800: "#253764",
-      900: "#1A2025",
+      600: "oklch(65% 0.1875 238.24)",
+      700: "oklch(35% 0.06 237.89)",
+      800: "oklch(26% 0.04 237.6)",
+      900: "oklch(20% 0.04 237.96)",
     },
   },
   semanticTokens: {
     colors: {
       primarytext: {
         default: "yellow.900",
-        _dark: "indigo.300",
+        _dark: "primary.300",
       },
       secondarytext: {
         default: "yellow.700",
-        _dark: "indigo.200",
+        _dark: "primary.300",
       },
       tertiarytext: {
-        default: "indigo.800",
-        _dark: "indigo.300",
+        default: "primary.800",
+        _dark: "primary.300",
       },
       background: {
         default: "yellow.100",
-        _dark: "indigo.900",
+        _dark: "primary.900",
+      },
+      lift: {
+        default: "yellow.200",
+        _dark: "primary.800",
       },
       border: {
-        default: "yellow.200",
-        _dark: "indigo.800",
+        default: "yellow.300",
+        _dark: "primary.800",
       },
       outline: {
         default: "gray.200",
@@ -146,7 +134,7 @@ const customTheme = extendTheme({
           backgroundColor: "red",
           letterSpacing: "tight",
           border: "1px solid",
-          borderColor: mode("yellow.500", "indigo.400")(props),
+          borderColor: mode("yellow.500", "primary.400")(props),
         }),
       },
       defaultProps: {
@@ -168,17 +156,19 @@ const customTheme = extendTheme({
       }),
       variants: {
         solid: (props) => ({
-          backgroundColor: mode("primary.100", "slate.900")(props),
-          color: mode("primary.500", "primary.400")(props),
+          backgroundColor: mode("primary.100", "primary.800")(props),
+          color: mode("primary.500", "primary.500")(props),
           _hover: {
             textDecoration: "none",
+            backgroundColor: mode("primary.500", "primary.700")(props),
+            color: mode("white", "primary.500")(props),
           },
         }),
         ghost: (props) => ({
           background: "none",
           color: mode("primary.500", "white")(props),
           _hover: {
-            background: mode("indigo.100", "whiteAlpha.200")(props),
+            background: mode("primary.100", "whiteAlpha.200")(props),
             color: mode("primary.500", "white")(props),
             textDecoration: "none",
           },
@@ -186,18 +176,20 @@ const customTheme = extendTheme({
         outline: (props) => ({
           background: "none",
           color: mode("primary.500", "primary.400")(props),
-          borderColor: mode("indigo.200", "indigo.700")(props),
+          borderColor: mode("primary.200", "primary.700")(props),
           _hover: {
             background: "none",
-            borderColor: mode("indigo.200", "indigo.600")(props),
+            borderColor: mode("primary.200", "primary.600")(props),
             color: mode("primary.500", "primary.400")(props),
           },
         }),
         icon: (props) => ({
-          background: "none",
+          background: mode("primary.100", "primary.800")(props),
           color: mode("primary.500", "primary.400")(props),
-          border: "1px solid",
-          borderColor: mode("yellow.200", "indigo.100")(props),
+          _hover: {
+            background: mode("primary.500", "primary.500")(props),
+            color: mode("white", "white")(props),
+          },
         }),
         brand: (props) => ({
           backgroundColor: mode("primary.500", "primary.400")(props),
@@ -205,7 +197,7 @@ const customTheme = extendTheme({
         }),
         disabled: (props) => ({
           border: "1px solid",
-          borderColor: mode("yellow.200", "indigo.700")(props),
+          borderColor: mode("yellow.200", "primary.700")(props),
         }),
         defaultProps: {
           variant: "solid",
@@ -332,9 +324,9 @@ const customTheme = extendTheme({
         my: "4",
         fontWeight: "500",
         a: {
-          color: mode("primary.500", "primary.400")(props),
+          color: mode("primary.500", "primary.500")(props),
           borderBottomWidth: "1px",
-          borderBottomColor: mode("primary.500", "primary.400")(props),
+          borderBottomColor: mode("primary.500", "primary.500")(props),
         },
       },
       a: {
@@ -347,8 +339,8 @@ const customTheme = extendTheme({
         borderBottomWidth: "1px",
         borderBottomColor: "transparent",
         _hover: {
-          color: mode("primary.500", "primary.400")(props),
-          borderBottomColor: mode("primary.500", "primary.400")(props),
+          color: mode("primary.400", "primary.400")(props),
+          borderBottomColor: mode("primary.400", "primary.400")(props),
           borderBottomWidth: "1px",
         },
       },
@@ -387,28 +379,30 @@ const customTheme = extendTheme({
         padding: "10",
       },
       ul: {
-        listStyle: "square",
+        listStyle: "bullet",
         my: "2",
       },
       ol: {
         listStyle: "decimal",
-        my: "2",
+        listStylePosition: "inside",
       },
       li: {
-        color: mode("gray.600", "indigo.300")(props),
       },
       pre: {
         my: "2",
+        padding: "2px 6px",
         whiteSpace: "pre-wrap",
         fontSize: "sm",
         lineHeight: "short",
-        backgroundColor: "border",
+        backgroundColor: "lift",
       },
       code: {
-        padding: "1",
-        margin: "2 0",
-        backgroundColor: "border",
-        borderRadius: "2",
+        my: "2",
+        padding: "2px 6px",
+        whiteSpace: "pre-wrap",
+        fontSize: "sm",
+        lineHeight: "short",
+        backgroundColor: "lift",
       },
       iframe: {
         py: "8",

@@ -31,12 +31,6 @@ const SocialIconButton = ({
   <IconButton
     aria-label={label}
     icon={icon}
-    color="yellow.700"
-    backgroundColor="yellow.100"
-    _hover={{
-      backgroundColor: "yellow.500",
-      color: "white",
-    }}
     {...props}
   />
 );

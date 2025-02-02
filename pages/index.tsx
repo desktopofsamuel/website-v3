@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       posts: allPosts.sort(sortByDate).slice(0, 4),
-      works: allWorks.filter((post) => post.feature === true).sort(sortByDate),
+      works: allWorks.filter((post) => post.feature === true && post.draft !== true).sort(sortByDate),
       photos: allPhotos.sort(sortByDate).slice(0, 8),
     },
   };

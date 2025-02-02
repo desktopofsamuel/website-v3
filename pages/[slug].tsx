@@ -54,7 +54,21 @@ const Img = (props: any) => {
 };
 
 const Article = chakra("article", {
-  baseStyle: {},
+  baseStyle: {
+    ul: {
+      listStyle: "disc",
+      listStylePosition: "inside",
+      my: "2",
+    },
+    ol: {
+      listStyle: "decimal",
+      listStylePosition: "inside",
+      my: "2",
+    },
+    li: {
+      my: "2",
+    },
+  },
 });
 
 export const getStaticPaths = () => {
@@ -121,21 +135,6 @@ export default function SinglePostPage({
   const MDXContent = useMDXComponent(post.body.code);
   const headings = getHeadings(post.body.raw);
   const ids = headings.map((heading) => heading.id);
-  // const relatedPosts = allPosts.filter(
-  //   (p) => p.slug !== post.slug && post.tags.some((tag) => p.tags.includes(tag))
-  // );
-
-  // // Return early if no related posts found
-  // if (relatedPosts.length === 0) {
-  //   return null;
-  // }
-
-  // {
-  //   console.log(post.tags);
-  // }
-  // {
-  //   console.log(relatedPosts);
-  // }
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -147,7 +146,7 @@ export default function SinglePostPage({
         dateModified={post.date}
         authorName={AUTHOR_NAME}
         publisherName="Desktop Of Samuel"
-        publisherLogo="https://www.example.com/photos/logo.jpg"
+        publisherLogo={CONFIG.URL + CONFIG.OG_IMAGE}
         description={post.excerpt}
       />
       <NextSeo

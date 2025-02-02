@@ -1,0 +1,90 @@
+---
+path: "okx-shark-fin"
+title: "BETH Shark Fin for OKX Earn"
+description: "Creating a scalable multi-crypto solution for structured financial products"
+subtitle: "OKX"
+draft: true
+feature: false
+date: "2025-02-01"
+year: "2024 July → 2024 Oct"
+cover: "/static/sharkfin-cover.png"
+photo: "/static/sharkfin-mock.jpeg"
+category: "UI/UX Design"
+tags: 
+    - "Finance"
+    - "Crypto"
+    - "Web3"
+    - "Structured Products"
+    - "Investment"
+color: "#1D262E"
+role: "UX Lead"
+platform: "Web App, Mobile App"
+---
+# BETH Shark Fin
+## Background:
+### What is Shark Fin? 
+Shark Fin is a principal-protected savings product, which rewards users with higher APRs when the underlying asset expires within a pre-defined range. Offered as one of the financial products under OKX Cefi’s Grow tab. Before the project started, Shark Fin was built and marketed to invest stablecoins (USDT) tracking underlying crypto (BTC & ETH) with bullish and bearish movements.
+### Goal and objectives:
+Project goal is to support new crypto (BETH) as soon as possible, aligning to overall business goal to build all-rounded Cefi ecosystem around Ethereum (ETH). Especially for ETH holders who staked ETH within OKX using BETH. It will incentivise them to keep their ETH in OKX ecosystem, exposing to additional financial instruments. BETH Shark Fin also provides additional APR as BETH bear interest everyday. 
+### Shark Fin value proposition within Earn
+Shark Fin is branded as a low risk, fixed term Earn products with guranteed APR with opportunities to earn more in both bullish or bearish market. User invest with USDT and BETH while tracking the performance of BTC, ETH and BETH as underlying currency.
+## My role:
+I worked as Product Design Lead for Earn & Structured Products team. For this project I worked as the key design contributor, my counterparts include content designer, product managers and front-end and back-end devs.
+
+Collaborator:
+- Content Designer: Zee
+- Product Manager: Harvey, Barton & Henry
+- Product Owner: Tom
+- Devs: Denis
+
+## Competitive Analysis
+I kickstarted the project with competitive analysis as there are a lot of competitors launched their own version of Shark Fin. 
+- Every exchange’s product operation is slightly different
+- Trader Persona who usually own more than 1 exchange account: need to know similarities and differences
+## Insights from Research
+We’ve conducted user testing for each product line regularly. There were outstanding research insights that we kept in mind during the design process:
+
+Due to project’s urgency and limited resources, the team has decided not to conduct pre-launch user testing given the project is considered as business iteration and there are other priority projects with new preposition & brand new journeys. 
+## Goal alignment
+After initial scoping and competitive research, adding a new currency support may seem simple, but the original system is architected toward investing single currency only. 
+The design (how it was marketed in entry points & landing page, subscription flow, historical listing), mental model that the user perceives, as well as content, are required a full end-to-end journey evaluation as scope of change.
+Raising this to the stakeholders, we’ve gained their support to make the solution toward to the goal to support multi-currency Shark Fin to be scalable and sustainable, instead of quick fix to accommodate one more crypto type.
+
+## 3 Design Challenges I’ve identified 
+### 1. Framing the change to product capabilities from single currency investment to multi-currency
+After aligning the goal the team, we identified the landing page as key design challenge to tackle. Landing page lists all available products and we’re adding one more dimension (investment crypto) on top of existing parameters (Term, Strategy, Underlying crypto). Before drilling into the design details, most important thing we identified is to seek alignment regarding the product hierarchy with stakeholders.
+
+Existing design group products by term mainly because 7 day term and 3 day term are available alternatively thoughout the week. Toggling and defaulting active segment would be the most convenient so user can always see all products available for purchase when visiting. However after adding one more dimension (investment crypto) , 3 viable options are drafted, including:
+- option 1: group by invest crypto, 
+- option 2: group by term
+- option 3: group by strategy 
+
+While content designer focused on coining the terminology to better explain parameters, I also worked on a draft on all options & guiding question that help the team to evaluate explorations and conclude on a direction.
+1. Does the hierarchy meet user’s purchase behaviour and how the product operate?
+2. Does the hierarchy result in simplicity?
+3. Does the final solution scalable as the product grows? 
+
+Through discussion, option 3 Group by strategy was eliminated early on. It does not fulfil the 2nd question as it would create much more complexity in exposing term, crypto and underlying crypto all at once.
+
+Ringing back to the design goal for scalability, option 1 group by invest crypto may sound a good idea, but From UI perspective, Currently we use segment control to be primary differentiator to segregate the product, switching 7/3day into Invest USDT / BETH is not scalable as horizontal segment will have low scalability to support more token. 
+
+### 2. Fulfilling best experience despite technical limitation
+After confirming the hierarchy and design principles in the product setup. It’s time to cover all scenario and cases. One of the annoyance in original product requirement is about the settlement time between USDT & BETH Shark Fin products. Each product subscription time is slightly different due to settlement mechanism. 
+
+From that, I also clarified about settlement mechanism is specific to BETH, how the behaviour would differ when there are new crypto added. Collecting all the screens (promotion, landing page, subscription), states(adversing, open, partially sold out, sold out and closed) and time of week. I mapped out the whole timeline to illustrate state change for each screens & entry point. Comparing to a normal user flow, such table helped indicate how a component change across time and state, that save time for development. It also has laid the foundation for future work when new crypto need to be added.
+
+![](/static/sf-timeline.png)
+
+### 3. Simplify user flow to reduce annoyance and cognitive load
+While it’s not main objective to improve the usability, but the product has not been updated since it’s launched two years ago. I have also proposed few tweaks along the way as we update the design. Content designer also proposed a new write up to to align terminology and key concepts.
+
+![](/static/shark-fin-subscribe.png)
+
+
+Key changes include simplifying the scenarios so it’s easier to preview settlement scenario, improve onboarding by restructuring the help centre to explain the product, include interactive chart to explain key product concepts.
+
+![](/static/shark-fin-about.png)
+
+
+## Results
+With 3 months of work, BETH was launched in 2024 November, and it is well received Structured Products within Earn. Fast follow, with the original design goal to have a scalable solution for more crypto support. OKSOL was listed as Shark Fin products in a much shorter time frame from 3 months to 1 months. 
