@@ -35,7 +35,7 @@ import Hyperairlogo from "../public/about/hyperair-logo.svg";
 import Hsbclogo from "../public/about/hsbc-logo.svg";
 import Ama from "../public/about/Design System AMA2.jpg";
 import FirmVisit from "../public/about/Firm Visit.jpeg";
-import { FaTwitter, FaEnvelope, FaMedium, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa6";
 
 type CompanyCardProps = {
   title: string;
@@ -238,7 +238,7 @@ const AboutPage: NextPage = () => {
               variant="noeffect"
               href="https://www.linkedin.com/in/desktopofsamuel/"
             >
-              <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Linkedin" icon={<FaLinkedin />} />
+              <IconButton fontSize='20px' isRound={true} aria-label="Linkedin" icon={<FaLinkedin />} />
             </NextLink>
             <NextLink
               variant="noeffect"
@@ -249,7 +249,7 @@ const AboutPage: NextPage = () => {
               variant="noeffect"
               href="https://www.github.com/desktopofsamuel"
             >
-            <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Github" icon={<FaGithub />} /></NextLink>
+            <IconButton fontSize='20px' isRound={true} aria-label="Github" icon={<FaGithub />} /></NextLink>
            
           </HStack>
             {/* <Button size="lg">

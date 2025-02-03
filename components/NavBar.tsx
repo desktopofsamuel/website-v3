@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import NextLink from "@/components/NextLink";
 
 export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,10 +27,8 @@ export default function NavBar() {
   return (
     <>
       <Container as="header" maxW="1080px">
-        <Flex as="nav" alignItems="center">
-          <Link href="/" >
-            <Text fontFamily="heading" cursor="pointer" variant="noeffect">Desktop of Samuel</Text>
-          </Link>
+        <Flex as="nav" alignItems="center" my="8">
+          <NextLink href="/">Desktop of Samuel </NextLink>
           <Spacer />
           <List
             as="nav"

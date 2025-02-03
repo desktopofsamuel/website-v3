@@ -32,8 +32,12 @@ export const NextImage = (props: any) => {
     overflow="hidden" cursor={ noeffect ? "initial" : "pointer"}
     >
       <Box position="relative" width="auto" height="auto" 
-        transition="all 0.5s ease-in-out" 
-        _hover={{
+        transition={noeffect ? "none" : "all 0.5s ease-in-out"}  
+        _hover={noeffect ? {} : {
+          opacity: "0.7",
+          transform: "scale(1.05)",
+        }}
+        _groupHover={noeffect ? {} : {
           opacity: "0.7",
           transform: "scale(1.05)",
         }}
