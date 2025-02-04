@@ -18,6 +18,9 @@ Most designers are familiar with RGB and HSL color spaces, but OKLCH is a new wa
 
 OKLCH is a new system that solves this by offering a color space that's closer to how we actually perceive colors with better ergonomics in design and development experience. It stands for Oklab Lightness, Chroma, and Hue, and it's written as `oklch(56.01% 0.1577 249.8 / 50%)`.
 
+![3D render of OKLCH color space, source render from OKLCH.com](/static/oklch-explained.png)
+_3D render & syntax of OKLCH color space, illustration render from [OKLCH.com](https://oklch.com)_
+
 Additionally, have I mentioned that OKLCH supports a wider range of colors with P3 compatibility?  It means 30% more new colors that you can use that are human perceivable comparing to RGB. There're more colors to choose from for your palette.
 
 ## Applying OKLCH in design system
@@ -31,6 +34,9 @@ By doing so, OKLCH also means devs can calculate color scale more efficiently by
 1. While [modern browsers](https://caniuse.com/mdn-css_types_color_oklch) have embraced OKLCH with 93% adoption (industry standard is 98%), native app frameworks are still playing catch-up. This creates a fragmented ecosystem where web applications can leverage OKLCH's benefits, but native apps remain falling behind with RGB & HSL. This pose a challenge for designers to maintain consistency across platforms.
 2. While flagship smartphones received P3 color gamut support, offering richer color reproduction. Majority of home-use desktop monitors still only support sRGB color space by default. Only professional monitors support wider color gamuts. This gap means lower ROI for brands to invest in updating their color where only a few users can see the difference.
 3. Even design tools like Figma, Sketch  has not natively support OKLCH yet. Third-party plugins are required to convert OKLCH to RGB.
+
+![](/static/oklch-2d.png)
+_Comprehensive color picker of OKLCH, with compatible color gamut range visualised_
 
 ## Looking forward
 
