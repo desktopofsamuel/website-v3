@@ -8,6 +8,7 @@ import {
   HStack,
   Stack,
   Text,
+  Button,
 } from "@chakra-ui/react";
 import {
   FaTwitter,
@@ -112,12 +113,12 @@ export default function Footer() {
           <Heading variant="small">Subscribe</Heading>
           <Text variant="caption">
             I write regularly on the subject of design and technology. Feel free
-            to{" "}
-            <NextLink href="https://follow.it/samuel-wong-hong-kong-ui-ux-designer-desktop-of-samuel?leanpub">
-              {" "}
-              subscribe my latest writings .
-            </NextLink>
-          </Text>
+            to subscribe my latest writings.
+            
+          </Text><Button variant="solid" size="sm">
+            <NextLink href="https://desktopofsamuel.medium.com/subscribe" target="_blank" className="text-white">
+              Subscribe
+            </NextLink></Button>
         </GridItem>
       </Grid>
     </Container>
