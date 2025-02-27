@@ -21,20 +21,14 @@ import {
 import React from "react";
 import NextLink from "./NextLink";
 
-const SocialIconButton = ({ 
-  icon, 
-  label, 
-  ...props 
-}: { 
-  icon: React.ReactElement; 
+const SocialIconButton = ({
+  icon,
+  label,
+  ...props
+}: {
+  icon: React.ReactElement;
   label: string;
-}) => (
-  <IconButton
-    aria-label={label}
-    icon={icon}
-    {...props}
-  />
-);
+}) => <IconButton aria-label={label} icon={icon} {...props} />;
 
 export default function Footer() {
   return (
@@ -42,7 +36,6 @@ export default function Footer() {
       <Grid
         gridTemplateColumns={{ base: "1fr", sm: "1fr 1fr 1fr" }}
         gap={{ base: "2", md: "8" }}
-       
       >
         <GridItem>
           <Heading variant="small">Let&apos;s Chat</Heading>
@@ -51,12 +44,12 @@ export default function Footer() {
             together.
           </Text>
         </GridItem>
-        <GridItem> 
+        <GridItem>
           <Heading variant="small">Keep In Touch</Heading>
           <Text variant="caption">
             Follow my social media and see what I&apos;m up to.
           </Text>
-          <HStack gap="1"  ml="-2">
+          <HStack gap="1" ml="-2">
             <NextLink
               variant="noeffect"
               href="https://www.linkedin.com/in/desktopofsamuel/"
@@ -72,10 +65,7 @@ export default function Footer() {
               href="https://www.x.com/desktopofsamuel"
               target="_blank"
             >
-              <SocialIconButton
-                icon={<FaXTwitter size="24px" />}
-                label="X"
-              />
+              <SocialIconButton icon={<FaXTwitter size="24px" />} label="X" />
             </NextLink>
             <NextLink
               variant="noeffect"
@@ -104,7 +94,7 @@ export default function Footer() {
             >
               <SocialIconButton
                 label="Github"
-                icon={<FaGithub size="24px"/>}
+                icon={<FaGithub size="24px" />}
               />
             </NextLink>
           </HStack>
@@ -114,11 +104,15 @@ export default function Footer() {
           <Text variant="caption">
             I write regularly on the subject of design and technology. Feel free
             to subscribe my latest writings.
-            
-          </Text><Button variant="solid" size="sm">
-            <NextLink href="https://desktopofsamuel.medium.com/subscribe" target="_blank" className="text-white">
+          </Text>{" "}
+          <NextLink
+            href="https://desktopofsamuel.medium.com/subscribe"
+            target="_blank"
+          >
+            <Button variant="solid" size="sm">
               Subscribe
-            </NextLink></Button>
+            </Button>
+          </NextLink>
         </GridItem>
       </Grid>
     </Container>
