@@ -1,0 +1,56 @@
+---
+title: "Mapping Variable Modes with Component Variants"
+date: "2025-03-01"
+tags: 
+  - Figma
+  - Design System
+cover: "/static/mapping-variable-modes.png"
+---
+
+Last year, Figma introduced a new way to handle light and dark modes: [Variable Modes](https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables). The promise was clear - design once, switch between modes seamlessly. No more maintaining separate dark mode screens. It is also a scalable system to support breakpoints or event languages. 
+
+When variable modes launched, I was so excited for the new dawn and say goodbye maintaining two sets of designs. But I faced immediate challenges at work. My Figma used a mix of legacy components, that does not support variables, and newly created components, that adopt to new color token system. Updating everything at once wasn't practical. I need a way to work with both systems.
+
+This isn't just my problem. Across the teams and industry, friends and colleagues are facing similar similar challenges:
+
+- Design systems take time to update. Teams need to maintain existing components while building new ones.
+- Edge cases keep appearing. A button might need brand colors in light mode but white in dark mode.
+- Some teams, like illustration or brand work differently. They may create light and dark asset but don't adopt design system's color tokens.
+
+## A simple solution
+
+After some trial and error, I found a practical approach that is backward compatible and easy to adopt: mapping variable modes to component variants. 
+
+Here's a quick example to illustrate:
+
+<video src="https://cdn.desktopofsamuel.com/CleanShot%202025-02-23%20at%2022.17.25.mp4" alt="Morphing of my Latte Art shot starting from Sep 2024" width="200px" height="auto" autoPlay loop muted/>
+
+You can also view this file on [Figma Community](https://www.figma.com/community/file/1477664164435547073). 
+
+In this example figma, I created a button that needs different colors in light and dark modes. By mapping the mode variable to component variants, the button automatically switches between color schemes. Previously, you might need an brand-invert or a semantic brand-button-bg token to achieve this. 
+
+The magic happens in applying variable mode to variant. Component variants respond to a simple text variable that toggles between "Light" and "Dark". There are two steps to this:
+
+![Screenshot of setting up a text variable that matches the variant name](/static/mapping-variable-01.png)
+
+1. Set up a local or global text variable that share the same name to your light/dark component variants. 
+
+![Screenshot of applying variable mode to variants](/static/mapping-variable-02.png)
+
+2. On your instances, click the apply variable icon and map the variant to the variable modes
+
+## Backward compatibility matters
+
+What makes this mapping approach powerful is its compatibility with existing design systems. Many teams already use variants for light and dark modes in their components. By mapping these variants to mode variables, we create a seamless connection between old and new. 
+
+While it’s not the most straightforward Figma feature, this approach is great on its flexible nature. It lets individual designers move forward while staying compatible with future system updates. Teams can adopt it gradually with its own pace and litte change is required from existing library. 
+
+## Making it work for your team and workflow
+
+For large teams: I highly recommend the text variable mode is setup in global library instead of locally in each file. It will be easier to manage and update. You can start as a individual contributor by mapping variants to modes in your own files after setting it up.
+
+For design system team, you can also promote this usage to your designers, this will buy you more time to update the library to be less dependent on bloating variants, therefore reduce educating and maintanence cost. Additionally, it reduce color variable bloat without creating many color tokens that reuse existing palettes.
+
+For smaller team, try it out with your library and see if this fit into your workflow. It's a good way to reduce variant count and make your library more maintainable, I expect less friction to adopt this approach.
+
+Let me know if you have any questions or feedback. I'm curious to know if this approach works for you! 
