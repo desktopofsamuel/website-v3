@@ -22,7 +22,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { sortByDate } from "../utils";
 import type { NextPage } from "next";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import ListBlog from "@/components/ListBlog";
@@ -57,6 +57,54 @@ export default function IndexPage({
   works,
   photos,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  // Add refs for the photo rows
+  const leftRowRef = useRef<HTMLDivElement>(null);
+  const rightRowRef = useRef<HTMLDivElement>(null);
+
+  // Add scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (leftRowRef.current && rightRowRef.current) {
+        // Calculate how far down the page we've scrolled
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.body.scrollHeight;
+        
+        // Get the position of the photo container
+        const photoContainer = document.querySelector('.photo-scroll-container');
+        if (!photoContainer) return;
+        
+        const containerRect = photoContainer.getBoundingClientRect();
+        const containerTop = containerRect.top + window.scrollY;
+        const containerBottom = containerRect.bottom + window.scrollY;
+        
+        // Only apply the effect when the container is in view
+        if (scrollPosition + windowHeight > containerTop && scrollPosition < containerBottom) {
+          // Calculate how much to move based on scroll position
+          const scrollPercentage = (scrollPosition + windowHeight - containerTop) / 
+                                  (windowHeight + containerRect.height);
+          
+          // Move the rows in opposite directions
+          const moveAmount = scrollPercentage * 15; // Adjust this value to control movement speed
+          
+          leftRowRef.current.style.transform = `translateX(-${moveAmount}%)`;
+          rightRowRef.current.style.transform = `translateX(${moveAmount}%)`;
+        }
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial call to position elements
+    handleScroll();
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Layout
     // keywords="Samuel Wong, Hong Kong, UI, UX, User Interface Design, User Experience Design, Product Design, Design Thinking, Product Development, Brand Design"
@@ -122,53 +170,123 @@ export default function IndexPage({
           <Button>My awesome setup</Button>
         </Link>
       </Box>
+      
+      {/* Photo Gallery with Scroll Interaction */}
       <Box
-        marginLeft="50%"
-        width="calc(100vw - 20px)"
-        style={{ transform: "translateX(-50%)" }}
+        position="relative"
+        width="100%"
+        overflow="hidden"
+        my="12"
       >
-        <Grid
-          gridTemplateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-          }}
+        <Heading variant="title" mb="4">Through the lens</Heading>
+        <Text mb="6">Sets of photos according to cities that I have visited.</Text>
+        <Link href="/photo" legacyBehavior>
+              <Button rightIcon={<ArrowForwardIcon />} mb="4">
+                View all photos
+              </Button>
+            </Link>
+        <Box 
+          as="section" 
+          className="photo-scroll-container"
+          position="relative"
+          height={{base: "600px", md: "500px"}}
+          width="100%"
         >
-          {photos.slice(0, 4).map((post) => (
-            <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
-              <Box role="group" overflow="hidden" position="relative">
-                {/* <Image src={post.cover} alt={post.title} w="300px" h="200px" layout="fill" objectFit="cover"/> */}
-                <NextImage
-                  src={post.cover}
-                  alt={post.title}
-                  // layout="raw"
-                  transition="0.5s all ease-in-out"
-                  _groupHover={{ transform: "scale(1.05)" }}
-                />
+          {/* First row - moves left on scroll */}
+          <Box 
+            className="photo-row photo-row-left"
+            position="absolute"
+            top="0"
+            left="0"
+            width="200%"
+            height="48%"
+            display="flex"
+            gap="4"
+            ref={leftRowRef}
+            transition="transform 0.3s ease-out"
+          >
+            {[...photos.slice(0, 4), ...photos.slice(0, 4)].map((post, index) => (
+              <Box 
+                key={`${post.slug}-${index}`}
+                role="group" 
+                overflow="hidden"
+                position="relative"
+                height="100%"
+                minWidth={{base: "280px", md: "350px"}}
+                borderRadius="md"
+              >
+                <NextLink href={`/photo/${post.slug}`}>
+                  <Box 
+                    position="relative" 
+                    width="100%" 
+                    height="100%"
+                    overflow="hidden"
+                  >
+                    <Image
+                      src={post.cover || ''}
+                      alt={post.title || ''}
+                      fill
+                      sizes="(max-width: 768px) 280px, 350px"
+                      style={{ 
+                        objectFit: "cover",
+                        transition: "all 0.5s ease-in-out"
+                      }}
+                      className="group-hover:scale-105"
+                    />
+                  </Box>
+                </NextLink>
               </Box>
-            </Link>
-          ))}
-          <VStack p="8" justifyContent="center">
-            <Heading fontSize="2xl">Through the lens</Heading>
-            <Text>Sets of photos according to cities that I have visited.</Text>
-            <Link href="/photo" legacyBehavior>
-              <Button>My photos shot around the world</Button>
-            </Link>
-          </VStack>
-          {photos.slice(4, 8).map((post) => (
-            <Link href={`/photo/${post.slug}`} key={post.slug} legacyBehavior>
-              <Box role="group" overflow="hidden">
-                <NextImage
-                  src={post.cover}
-                  alt={post.title}
-                  layotu="fill"
-                  transition="0.5s all ease-in-out"
-                  _groupHover={{ transform: "scale(1.05)" }}
-                />
+            ))}
+          </Box>
+
+          
+          {/* Second row - moves right on scroll */}
+          <Box 
+            className="photo-row photo-row-right"
+            position="absolute"
+            bottom="0"
+            right="0"
+            width="200%"
+            height="48%"
+            display="flex"
+            gap="4"
+            ref={rightRowRef}
+            transition="transform 0.3s ease-out"
+          >
+            {[...photos.slice(4, 8), ...photos.slice(4, 8)].map((post, index) => (
+              <Box 
+                key={`${post.slug}-${index}`}
+                role="group" 
+                overflow="hidden"
+                position="relative"
+                height="100%"
+                minWidth={{base: "280px", md: "350px"}}
+                borderRadius="md"
+              >
+                <NextLink href={`/photo/${post.slug}`}>
+                  <Box 
+                    position="relative" 
+                    width="100%" 
+                    height="100%"
+                    overflow="hidden"
+                  >
+                    <Image
+                      src={post.cover || ''}
+                      alt={post.title || ''}
+                      fill
+                      sizes="(max-width: 768px) 280px, 350px"
+                      style={{ 
+                        objectFit: "cover",
+                        transition: "all 0.5s ease-in-out"
+                      }}
+                      className="group-hover:scale-105"
+                    />
+                  </Box>
+                </NextLink>
               </Box>
-            </Link>
-          ))}
-        </Grid>
+            ))}
+          </Box>
+        </Box>
       </Box>
     </Layout>
   );
