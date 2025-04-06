@@ -28,7 +28,27 @@ export const getStaticProps: GetStaticProps<{
 };
 
 const ResponsiveImage = (props: any) => (
-  <Image alt={props.alt} layout="raw" style={{ width: "100%"}} src={props.src} {...props}/>
+  <Box 
+    position="relative" 
+    width="100%" 
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Image 
+      alt={props.alt} 
+      width={0}
+      height={0}
+      sizes="100vw"
+      style={{ 
+        width: "100%",
+        height: "auto",
+        objectFit: "contain"
+      }} 
+      src={props.src} 
+      {...props}
+    />
+  </Box>
 )
 
 const components = {
