@@ -10,7 +10,7 @@ const customTheme = extendTheme({
     useSystemColorMode: false,
   },
   fonts: {
-    body: "Chivo, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
+    body: "Instrument Sans Variable, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
     heading:
       "Space Grotesk, Noto Sans HK, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif",
     mono: "Space Mono, IBM Plex Mono, monospace",
@@ -29,21 +29,21 @@ const customTheme = extendTheme({
       900: "oklch(66% 0.0147 83.7)",
     },
     primary: {
-      100: "oklch(97% 0.0148 238.24)",
+      100: "oklch(94% 0.0148 238.24)",
       200: "oklch(90% 0.0148 238.24)",
       300: "oklch(85% 0.0148 238.24)",
       400: "oklch(74% 0.15 234.83)",
       500: "oklch(70% 0.1875 238.24)",
       600: "oklch(65% 0.1875 238.24)",
-      700: "oklch(35% 0.06 237.89)",
+      700: "oklch(50% 0.0345 237.89)",
       800: "oklch(26% 0.04 237.6)",
-      900: "oklch(20% 0.04 237.96)",
+      900: "oklch(19% 0.04 237.96)",
     },
   },
   semanticTokens: {
     colors: {
       primarytext: {
-        default: "yellow.900",
+        default: "primary.900",
         _dark: "primary.300",
       },
       secondarytext: {
@@ -51,7 +51,7 @@ const customTheme = extendTheme({
         _dark: "primary.300",
       },
       tertiarytext: {
-        default: "primary.800",
+        default: "primary.700",
         _dark: "primary.300",
       },
       background: {
@@ -206,6 +206,7 @@ const customTheme = extendTheme({
     },
     Text: {
       baseStyle: (props) => ({
+        color: "secondarytext",
         transition: "all 100ms ease-in-out",
     }),
       variants: {
@@ -320,7 +321,7 @@ const customTheme = extendTheme({
         fontFeatureSettings: "zero",
       },
       p: {
-        color: "text",
+        color: "primarytext",
         my: "4",
         fontWeight: "500",
         a: {

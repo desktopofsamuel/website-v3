@@ -126,7 +126,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
               {cta}
             </Button>
           ) : (
-            <NextLink href={href} variant="noeffect">
+            <NextLink href={href} variant="noeffect" passHref>
               <Button
                 variant={href ? "outline" : "disabled"}
                 width="min-content"
@@ -167,7 +167,7 @@ const Entry: React.FC<EntryProps> = ({
           opacity={1}
           maxWidth="72px"
         >
-          <Image src={image} alt={`Logo of ${subtitle}`} />
+          <Image src={image} alt={`Logo of ${subtitle}`}/>
         </Box>
       )}
       <Flex width="100%" alignItems="center">
@@ -183,7 +183,7 @@ const Entry: React.FC<EntryProps> = ({
         <Spacer />
         <Box>
           {cta && (
-            <NextLink href={href} variant="noeffect">
+            <NextLink href={href} variant="noeffect" passHref>
               <Button
                 variant="outline"
                 width="min-content"
@@ -237,17 +237,20 @@ const AboutPage: NextPage = () => {
             <NextLink
               variant="noeffect"
               href="https://www.linkedin.com/in/desktopofsamuel/"
+              passHref
             >
               <IconButton fontSize='20px' isRound={true} aria-label="Linkedin" icon={<FaLinkedin />} />
             </NextLink>
             <NextLink
               variant="noeffect"
               href="mailto:desktopofsamuel@gmail.com"
+              passHref
             >
             <IconButton variant="icon" fontSize='20px' isRound={true} aria-label="Email" icon={<FaEnvelope />} /></NextLink>
             <NextLink
               variant="noeffect"
               href="https://www.github.com/desktopofsamuel"
+              passHref
             >
             <IconButton fontSize='20px' isRound={true} aria-label="Github" icon={<FaGithub />} /></NextLink>
            
@@ -296,15 +299,29 @@ const AboutPage: NextPage = () => {
           </Box>
         </SimpleGrid>
       </Box>
-      <Box py={{ base: 4, md: 16 }}>
-        <Image
-          src={Profile}
-          alt="Portrait of Samuel Wong"
-          placeholder="blur"
-          width="1920"
-          height="1280"
-          style={{ borderRadius: "1em" }}
-        />
+      <Box>
+        <Box
+          position="relative"
+          sx={{
+            aspectRatio: {
+              base: "16/9",
+              md: "8/3"
+            }
+          }}
+          width="100%"
+        >
+          <Image
+            src={Profile}
+            alt="Portrait of Samuel Wong"
+            placeholder="blur"
+            fill
+            style={{ 
+              borderRadius: "1em",
+              objectFit: "cover",
+              objectPosition: "bottom"
+            }}
+          />
+        </Box>
       </Box>
       <Box id="resume" py="16">
         <Heading fontSize="4xl">Experiences</Heading>
@@ -492,7 +509,7 @@ const AboutPage: NextPage = () => {
           writings.
         </Text>
 
-        <NextLink variant="noeffect" href="mailto:desktopofsamuel@gmail.com">
+        <NextLink variant="noeffect" href="mailto:desktopofsamuel@gmail.com" passHref>
           <Button size="lg">Get in Touch</Button>
         </NextLink>
       </Box>

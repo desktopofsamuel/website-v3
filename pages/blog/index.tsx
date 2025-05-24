@@ -73,9 +73,9 @@ export default function BlogListPage({
             <ListBlogDetail key={post.slug} data={post} />
           ))}
         <Center>
-          <Button>
-            <NextLink href="/blog/page/2">View More</NextLink>
-          </Button>
+          <NextLink href="/blog/page/2" variant="noeffect" passHref>
+            <Button variant="solid">View More</Button>
+          </NextLink>
         </Center>
       </Fade>
     </Layout>

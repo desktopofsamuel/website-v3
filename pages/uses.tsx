@@ -21,6 +21,104 @@ interface Uses {
   icon: React.FC<React.ComponentPropsWithoutRef<"svg">>;
 }
 
+const UsesPage: NextPage = () => {
+  return (
+    <Layout title="Software and Tools that I daily drive">
+      <Heading variant="pagetitle">Uses</Heading>
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="/uses">Uses</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+      <Heading fontSize="2xl" my="8">
+        Tools that I love to use everyday
+      </Heading>
+      <Grid
+        templateColumns={{
+          base: "1fr",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
+        }}
+        gap={6}
+        pb={{ base: 10, md: 20 }}
+      >
+        {uses.map((item) => {
+          return (
+            <NextLink
+              href={item.url}
+              key={item.title}
+              target="_blank"
+              variant="noeffect"
+            >
+              <CardBase title="">
+                <Box py="4">
+                  <item.icon />
+                </Box>
+
+                <Text
+                  color="secondary"
+                  fontSize="lg"
+                  fontWeight="bold"
+                  fontFamily="heading"
+                  mb="0"
+                >
+                  {item.title}
+                </Text>
+                <Text color="tertiarytext" fontFamily="body">{item.description}</Text>
+              </CardBase>
+            </NextLink>
+          );
+        })}
+      </Grid>
+      <Heading fontSize="2xl" my="8">
+        Tools I use to build this site
+      </Heading>
+      <Grid
+        templateColumns={{
+          base: "1fr",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
+        }}
+        gap={6}
+        pb={{ base: 10, md: 20 }}
+      >
+        {stack.map((item) => {
+          return (
+            <NextLink
+              href={item.url}
+              key={item.title}
+              target="_blank"
+              variant="noeffect"
+            >
+              <CardBase title="">
+                <Box py="4">
+                  <item.icon />
+                </Box>
+
+                <Text
+                  color="secondary"
+                  fontSize="lg"
+                  fontWeight="bold"
+                  fontFamily="heading"
+                  mb="0"
+                >
+                  {item.title}
+                </Text>
+                <Text color="tertiarytext" fontFamily="body">{item.description}</Text>
+              </CardBase>
+            </NextLink>
+          );
+        })}
+      </Grid>
+    </Layout>
+  );
+};
+
+export default UsesPage;
+
 function MobbinIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
@@ -372,6 +470,88 @@ function FigmaIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
+function VercelIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg
+      width="64"
+      height="64"
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_3602_478)">
+        <path d="M32 4.25L64 59.6763H0L32 4.25Z" fill="black" />
+      </g>
+      <defs>
+        <clipPath id="clip0_3602_478">
+          <rect
+            width="64"
+            height="55.5"
+            fill="white"
+            transform="translate(0 4.25)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+function NextjsIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="64" height="64">
+      <mask height="180" id=":r8:mask0_408_134" maskUnits="userSpaceOnUse" width="180" x="0" y="0" style={{ maskType: "alpha" }}>
+        <circle cx="90" cy="90" fill="black" r="90"></circle>
+      </mask>
+      <g mask="url(#:r8:mask0_408_134)">
+        <circle cx="90" cy="90" data-circle="true" fill="black" r="90"></circle>
+        <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="url(#:r8:paint0_linear_408_134)"></path>
+        <rect fill="url(#:r8:paint1_linear_408_134)" height="72" width="12" x="115" y="54"></rect>
+      </g>
+      <defs>
+        <linearGradient gradientUnits="userSpaceOnUse" id=":r8:paint0_linear_408_134" x1="109" x2="144.5" y1="116.5" y2="160.5">
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+        </linearGradient>
+        <linearGradient gradientUnits="userSpaceOnUse" id=":r8:paint1_linear_408_134" x1="121" x2="120.799" y1="54" y2="106.875">
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+function CursorIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_3602_524)">
+    <path d="M31.8 64L59.6 48L31.8 32L4 48L31.8 64Z" fill="url(#paint0_linear_3602_524)"/>
+    <path d="M59.6002 48V16L31.8002 0V32L59.6002 48Z" fill="url(#paint1_linear_3602_524)"/>
+    <path d="M31.8 0L4 16V48L31.8 32V0Z" fill="url(#paint2_linear_3602_524)"/>
+    <path d="M59.6002 16L31.8002 64V32L59.6002 16Z" fill="#555555"/>
+    <path d="M59.6 16L31.8 32L4 16H59.6Z" fill="black"/>
+    </g>
+    <defs>
+    <linearGradient id="paint0_linear_3602_524" x1="31.8" y1="32" x2="31.8" y2="64" gradientUnits="userSpaceOnUse">
+    <stop offset="0.16" stop-opacity="0.39"/>
+    <stop offset="0.658" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_3602_524" x1="59.6002" y1="16.0987" x2="31.8002" y2="32.4" gradientUnits="userSpaceOnUse">
+    <stop offset="0.182" stop-opacity="0.31"/>
+    <stop offset="0.715" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear_3602_524" x1="31.8" y1="-8.28505e-07" x2="4" y2="48" gradientUnits="userSpaceOnUse">
+    <stop stop-opacity="0.6"/>
+    <stop offset="0.667" stop-opacity="0.22"/>
+    </linearGradient>
+    <clipPath id="clip0_3602_524">
+    <rect width="64" height="64" fill="white"/>
+    </clipPath>
+    </defs>
+    </svg>
+    
+  )}
+
 const uses: Array<Uses> = [
   {
     title: "Mobbin",
@@ -417,39 +597,28 @@ const uses: Array<Uses> = [
   },
 ];
 
-const UsesPage: NextPage = () => {
-  return (
-    <Layout title="Software and Tools that I daily drive">
-      <Heading variant="pagetitle">Uses</Heading>
-      <Breadcrumb>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href="/uses">Uses</BreadcrumbLink>
-        </BreadcrumbItem>
-      </Breadcrumb>
-      <Text>Tools that I love to use everyday</Text>
-      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={6} pb={{ base: 10, md: 40}}>
-        {uses.map((item) => {
-          return (
-            <NextLink href={item.url} key={item.title} target="_blank" variant="noeffect">
-          
-            <CardBase title="">
-              <Box py="4">
-                <item.icon />
-              </Box>
+const stack: Array<Uses> = [
+  {
+    title: "NextJS",
+    description:
+      "V3 of my portfolio has built on NextJS starting from V12, previously on GatsbyJS",
+    url: "https://nextjs.org/",
+    icon: NextjsIcon,
+  },
+  {
+    title: "Cursor",
+    description:
+      "I use Cursor for code editing, it's a great tool for AI-assisted coding.",
+    url: "https://www.cursor.com/",
+    icon: CursorIcon,
+  },
+  {
+    title: "Vercel",
+    description:
+      "My website is hosted on Vercel, it's a great platform for static site with generous hobby tier.",
+    url: "https://vercel.com/",
+    icon: VercelIcon,
+  },
+];
 
-              <Text fontSize="lg" fontWeight="bold" fontFamily="heading" mb="0">
-                {item.title}
-              </Text>
-              <Text>{item.description}</Text>
-              </CardBase></NextLink>
-          );
-        })}
-      </Grid>
-    </Layout>
-  );
-};
 
-export default UsesPage;

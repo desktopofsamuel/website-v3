@@ -108,6 +108,7 @@ export default function Footer() {
           <NextLink
             href="https://desktopofsamuel.medium.com/subscribe"
             target="_blank"
+            passHref
           >
             <Button variant="solid" size="sm">
               Subscribe

@@ -14,7 +14,7 @@
     "@chakra-ui/react": "^2.3.6",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@fontsource/chivo": "^4.5.7",
+    "@fontsource-variable/instrument-sans": "^5.2.5",
     "@fontsource/space-grotesk": "^4.5.8",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/font": "^14.2.15",
