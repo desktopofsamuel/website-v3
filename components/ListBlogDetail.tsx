@@ -17,7 +17,7 @@ export default function ListBlogDetail({ data }: any) {
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </Text>
           <Heading variant="heading">{post.title}</Heading>
-          <Text noOfLines={3} color="secondarytext">{post.description}</Text>
+          <Text noOfLines={3} fontFamily="body">{post.description}</Text>
         </Box>
       </Grid>
     </NextLink>

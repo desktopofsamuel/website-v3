@@ -1136,10 +1136,10 @@
   resolved "https://registry.npmjs.org/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@fontsource/chivo@^4.5.7":
-  version "4.5.7"
-  resolved "https://registry.npmjs.org/@fontsource/chivo/-/chivo-4.5.7.tgz"
-  integrity sha512-YNaw7X03yQuP+eYfkdowjEGEAMUnkgb0lXScoSGOdJGWVkvVTzvkaPf6PUdPTvi4Ts/oPNsCcJAmh7SnjKygRQ==
+"@fontsource-variable/instrument-sans@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/instrument-sans/-/instrument-sans-5.2.5.tgz#34eac0fc8e944603640176c4b9f2ad23e425ab98"
+  integrity sha512-y03KXtQDL09mm8TR4gYD77FIJPht8jaPcP9cOgl5nVSbjZZrzy1koxQOQuPF4QFE0eUsSRsjYnvISIiWcj3+gA==
 
 "@fontsource/space-grotesk@^4.5.8":
   version "4.5.8"
