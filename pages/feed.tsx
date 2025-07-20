@@ -20,7 +20,7 @@ import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import useSWR from "swr";
 
-const Fade = require("react-reveal/Fade");
+// const Fade = require("react-reveal/Fade");
 
 type Props = [
   fields: {

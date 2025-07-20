@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import { allPosts, Post } from "contentlayer/generated";
+import { allPosts, Post } from "contentlayer2/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { NextPage } from "next";
 import { sortByDate } from "@/utils";
@@ -21,7 +21,7 @@ import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import useSWR from "swr";
 
-const Fade = require("react-reveal/Fade");
+// import { motion } from "framer-motion";
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
@@ -54,30 +54,40 @@ export default function BlogListPage({
       ))}</UnorderedList> */}
       <Text variant="small">Featured posts</Text>
       <Grid gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="4">
-        <Fade bottom>
-          {posts
-            .filter((post) => post.feature === true)
-            .sort(sortByDate)
-            .map((post) => (
-              <ListBlog key={post.slug} data={post} />
-            ))}
-        </Fade>
+        {/* <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        > */}
+        {posts
+          .filter((post) => post.feature === true)
+          .sort(sortByDate)
+          .map((post) => (
+            <ListBlog key={post.slug} data={post} />
+          ))}
+        {/* </motion.div> */}
       </Grid>
       <Text variant="small">All posts</Text>
-      <Fade bottom>
-        {posts
-          .filter((post) => post.feature !== true)
-          .sort(sortByDate)
-          .slice(0, 6)
-          .map((post) => (
-            <ListBlogDetail key={post.slug} data={post} />
-          ))}
-        <Center>
-          <Button>
-            <NextLink href="/blog/page/2">View More</NextLink>
-          </Button>
-        </Center>
-      </Fade>
+      {/* <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      > */}
+      {posts
+        .filter((post) => post.feature !== true)
+        .sort(sortByDate)
+        .slice(0, 6)
+        .map((post) => (
+          <ListBlogDetail key={post.slug} data={post} />
+        ))}
+      <Center>
+        <Button>
+          <NextLink href="/blog/page/2">View More</NextLink>
+        </Button>
+      </Center>
+      {/* </motion.div> */}
     </Layout>
   );
 }

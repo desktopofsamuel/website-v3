@@ -12,7 +12,8 @@ import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 import NextLink from "@/components/NextLink";
 
-const Fade = require('react-reveal/Fade')
+// const Fade = require('react-reveal/Fade')
+
 
 export const getStaticProps: GetStaticProps<{
   photos: Photo[];

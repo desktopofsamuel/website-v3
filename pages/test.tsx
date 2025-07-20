@@ -35,8 +35,7 @@ import CardFilms from "@/components/CardFilms";
 import NextLink from "@/components/NextLink";
 import NextImage from "@/components/NextImage";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-
-const Fade = require("react-reveal/Fade");
+// import { motion } from "framer-motion";
 
 export const getStaticProps: GetStaticProps<{
   posts: Post[];
@@ -143,11 +142,16 @@ export default function IndexPage({
         <Link href="/work" legacyBehavior>
           <Button>View Process</Button>
         </Link>
-        <Fade bottom>
-          {works.map((post) => (
-            <ListPortfolio key={post.slug} data={post} />
-          ))}
-        </Fade>
+        {/* <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        > */}
+        {works.map((post) => (
+          <ListPortfolio key={post.slug} data={post} />
+        ))}
+        {/* </motion.div> */}
       </Box>
 
       <Heading variant="title">Notes on Design & Technology</Heading>

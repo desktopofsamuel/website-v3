@@ -11,7 +11,7 @@ import ListPortfolio from "@/components/ListPortfolio";
 import { Grid, Heading, Text } from "@chakra-ui/react";
 import ListPortfolioSmall from "@/components/ListPortfolioSmall";
 
-const Fade = require('react-reveal/Fade')
+// const Fade = require('react-reveal/Fade')
 
 export const getStaticProps: GetStaticProps<{
   works: Work[];
@@ -33,24 +33,24 @@ export const getStaticProps: GetStaticProps<{
     >
       <Heading variant="pagetitle">Portfolio</Heading>
       <Text>Selected websites and apps showcase since 2015.</Text>
-      <Fade bottom>
+      {/* <Fade bottom> */}
         {works
           .filter((post) => post.feature === true && post.draft !== true)
           .sort(sortByDate)
           .map((post) => (
             <ListPortfolio key={post.slug} data={post} />
           ))}
-      </Fade>
+      {/* </Fade> */}
       <Heading variant="small">Side Projects</Heading>
       <Grid gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr"}} gap="4">
-      <Fade bottom>
+      {/* <Fade bottom> */}
       {works
         .filter((post) => post.feature !== true && post.draft !== true)
         .sort(sortByDate)
         .map((post) => (
           <ListPortfolioSmall key={post.slug} data={post}/>
         ))}
-         </Fade>
+         {/* </Fade> */}
         </Grid>
     </Layout>
   );
