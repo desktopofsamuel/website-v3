@@ -20,7 +20,7 @@ const buttonVariants = cva(
         brand:
           "bg-primary-500 text-white dark:bg-primary-400",
         disabled:
-          "border border-yellow-200 dark:border-primary-700",
+          "border border-yellow-200 text-gray-300 dark:border-primary-700 cursor-not-allowed",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -41,6 +41,7 @@ function Button({
   variant,
   size,
   asChild = false,
+  disabled,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
@@ -52,6 +53,7 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      disabled={disabled || variant === "disabled"}
       {...props}
     />
   )

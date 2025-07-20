@@ -95,7 +95,7 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.className} ${instrumentSans.className}`} style={{
         margin: 0,
         padding: 0,
-        fontFamily: `${spaceGrotesk.style.fontFamily}, ${instrumentSans.style.fontFamily}, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`,
+        fontFamily: `var(--font-family-sans) -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`,
         lineHeight: '1.6',
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',

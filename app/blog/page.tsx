@@ -51,7 +51,7 @@ export default async function BlogPage() {
             All posts
           </h2>
           
-          <div className="flex flex-col space-y-8">
+          <div className="grid grid-cols-1 gap-2">
             {posts
               .filter((post) => post.feature !== true)
               .sort(sortByDate)

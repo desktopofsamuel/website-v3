@@ -1,6 +1,7 @@
 import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppLink from "@/components/AppLink";
+import Pagination from "@/components/AppPagination";
 import { allPosts, Post } from "contentlayer/generated";
 import { sortByDate } from "@/utils";
 import { Metadata } from "next";
@@ -82,98 +83,14 @@ export default async function BlogPaginatedPage({ params }: Props) {
         </div>
 
         {/* Posts Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "24px",
-          marginBottom: "48px"
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {posts.map((post) => (
             <AppListBlog key={post.slug} data={post} />
           ))}
         </div>
 
         {/* Pagination */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "16px",
-          marginTop: "48px"
-        }}>
-          {/* Previous Page */}
-          {currentPage > 1 && (
-            <AppLink 
-              href={`/blog/page/${currentPage - 1}`}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "12px 16px",
-                background: "#f1f3f4",
-                color: "#333",
-                textDecoration: "none",
-                borderRadius: "6px",
-                fontWeight: "bold",
-                transition: "background-color 0.2s ease"
-              }}
-            >
-              ← Previous
-            </AppLink>
-          )}
-
-          {/* Page Numbers */}
-          <div style={{
-            display: "flex",
-            gap: "8px"
-          }}>
-            {Array.from({ length: numPages }, (_, i) => {
-              const pageNum = i + 1;
-              const isCurrentPage = pageNum === currentPage;
-              
-              return (
-                <AppLink
-                  key={pageNum}
-                  href={`/blog/page/${pageNum}`}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "40px",
-                    height: "40px",
-                    background: isCurrentPage ? "#0070f3" : "#f1f3f4",
-                    color: isCurrentPage ? "white" : "#333",
-                    textDecoration: "none",
-                    borderRadius: "6px",
-                    fontWeight: "bold",
-                    transition: "background-color 0.2s ease"
-                  }}
-                >
-                  {pageNum}
-                </AppLink>
-              );
-            })}
-          </div>
-
-          {/* Next Page */}
-          {currentPage < numPages && (
-            <AppLink 
-              href={`/blog/page/${currentPage + 1}`}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "12px 16px",
-                background: "#f1f3f4",
-                color: "#333",
-                textDecoration: "none",
-                borderRadius: "6px",
-                fontWeight: "bold",
-                transition: "background-color 0.2s ease"
-              }}
-            >
-              Next →
-            </AppLink>
-          )}
-        </div>
+        <Pagination numPages={numPages} currentPage={currentPage} />
 
         {/* Back to Blog */}
         <div style={{

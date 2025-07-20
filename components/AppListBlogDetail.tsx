@@ -1,6 +1,7 @@
 import React from "react";
-import AppLink from "@/components/AppLink";
+import { Link } from "@/components/AppLink";
 import dayjs from "dayjs";
+import Image from "next/image";
 
 type AppListBlogDetailProps = {
   data: {
@@ -17,75 +18,32 @@ export default function AppListBlogDetail({ data }: AppListBlogDetailProps) {
   const post = data;
 
   return (
-    <AppLink href={`/${post.slug}/`} style={{
-      textDecoration: "none",
-      color: "inherit",
-      display: "block"
-    }}>
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "40px",
-        margin: "40px 0",
-        alignItems: "center",
-        cursor: "pointer",
-        transition: "transform 0.2s ease"
-      }}>
+    <Link href={`/${post.slug}/`} className="no-underline text-inherit block">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 items-center cursor-pointer transition-transform duration-200 ease-in-out">
         {post.cover && (
-          <div style={{
-            position: "relative",
-            width: "fit-content"
-          }}>
-            <div style={{
-              width: "100%",
-              height: "300px",
-              borderRadius: "8px",
-              overflow: "hidden"
-            }}>
-              <img 
-                src={post.cover} 
-                alt={post.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-              />
-            </div>
+          <div className="relative w-fit">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              className="w-full h-full object-cover aspect-[1.9/1] rounded-sm"
+              width={1200}
+              height={630}
+              priority
+            />
           </div>
         )}
         <div>
-          <p style={{
-            fontSize: "14px",
-            color: "#666",
-            margin: "0 0 8px 0",
-            textTransform: "uppercase",
-            letterSpacing: "0.5px"
-          }}>
+          <p className="font-heading font-bold text-sm text-gray-600 mb-2 uppercase tracking-wider">
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </p>
-          <h3 style={{
-            fontSize: "24px",
-            fontWeight: "bold",
-            margin: "0 0 16px 0",
-            lineHeight: "1.3"
-          }}>
+          <h3 className="text-3xl font-heading font-bold mb-4 leading-snug">
             {post.title}
           </h3>
-          <p style={{
-            fontSize: "16px",
-            color: "#666",
-            margin: 0,
-            lineHeight: "1.6",
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden"
-          }}>
+          <p className="text-base text-gray-600 m-0 leading-relaxed line-clamp-3">
             {post.description}
           </p>
         </div>
       </div>
-    </AppLink>
+    </Link>
   );
-} 
+}

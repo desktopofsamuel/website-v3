@@ -1,5 +1,6 @@
 import React from "react";
 import AppLink from "@/components/AppLink";
+import { TbBrandLinkedinFilled, TbBrandX, TbBrandInstagram, TbBrandMedium, TbBrandGithubFilled } from "react-icons/tb"
 import { Button } from "@/components/ui/button";
 
 export default function AppFooter() {
@@ -30,35 +31,35 @@ export default function AppFooter() {
               target="_blank"
               className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 no-underline text-gray-600 transition-colors hover:bg-gray-200"
             >
-              <span className="text-xl">💼</span>
+              <TbBrandLinkedinFilled size={24}/>
             </AppLink>
             <AppLink 
               href="https://www.x.com/desktopofsamuel"
               target="_blank"
               className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 no-underline text-gray-600 transition-colors hover:bg-gray-200"
             >
-              <span className="text-xl">𝕏</span>
+              <TbBrandX size={24}/>
             </AppLink>
             <AppLink 
               href="https://www.instagram.com/desktopofsamuel"
               target="_blank"
               className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 no-underline text-gray-600 transition-colors hover:bg-gray-200"
             >
-              <span className="text-xl">📷</span>
+              <TbBrandInstagram size={24}/>
             </AppLink>
             <AppLink 
               href="https://medium.com/desktop-of-samuel"
               target="_blank"
               className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 no-underline text-gray-600 transition-colors hover:bg-gray-200"
             >
-              <span className="text-xl">📝</span>
+              <TbBrandMedium size={24}/>
             </AppLink>
             <AppLink 
               href="https://www.github.com/desktopofsamuel"
               target="_blank"
               className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 no-underline text-gray-600 transition-colors hover:bg-gray-200"
             >
-              <span className="text-xl">💻</span>
+              <TbBrandGithubFilled size={24}/>
             </AppLink>
           </div>
         </div>

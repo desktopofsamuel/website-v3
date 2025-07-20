@@ -10,7 +10,7 @@ type AppLinkProps = {
   onClick?: () => void;
 };
 
-export default function AppLink({
+function AppLink({
   href,
   children,
   className = "",
@@ -51,4 +51,7 @@ export default function AppLink({
       {children}
     </a>
   );
-} 
+}
+
+export default AppLink;
+export { AppLink as Link }; 

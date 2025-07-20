@@ -1,5 +1,7 @@
 import React from "react";
-import AppLink from "@/components/AppLink";
+import { Link } from "@/components/AppLink";
+import Image from "next/image";
+import { cn } from "@/components/lib/utils";
 
 type AppListBlogProps = {
   data: {
@@ -15,59 +17,36 @@ export default function AppListBlog({ data, small = false }: AppListBlogProps) {
   const post = data;
 
   return (
-    <AppLink href={`/${post.slug}/`} style={{
-      textDecoration: "none",
-      color: "inherit",
-      display: "block"
-    }}>
-      <div style={{
-        margin: "16px 0",
-        cursor: "pointer",
-        transition: "transform 0.2s ease"
-      }}>
+    <Link href={`/${post.slug}/`} className="no-underline text-inherit block">
+      <div className="my-4 cursor-pointer group">
         {post.cover && (
-          <div style={{
-            width: "100%",
-            height: small ? "200px" : "300px",
-            borderRadius: "8px",
-            overflow: "hidden",
-            marginBottom: "16px"
-          }}>
-            <img 
-              src={post.cover} 
+          <div className={cn("w-full rounded-lg overflow-hidden mb-4", {
+            "h-[200px]": small,
+            "h-[300px]": !small
+          })}>
+            <Image
+              src={post.cover}
               alt={post.title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
-              }}
+              className="w-full h-full group-hover:scale-[1.02] group-hover:opacity-90 transition-all ease-in-out duration-500 object-cover  aspect-[1.9/1] rounded-sm"
+              width={1200}
+              height={630}
+              priority
             />
           </div>
         )}
-        <h3 style={{
-          fontFamily: "var(--font-space-grotesk)",
-          fontSize: small ? "20px" : "24px",
-          fontWeight: "bold",
-          margin: "0 0 16px 0",
-          lineHeight: "1.3"
-        }}>
+        <h3 className={cn("font-heading font-bold mb-4 leading-tight", {
+          "text-xl": small,
+          "text-2xl": !small
+        })}>
           {post.title}
         </h3>
-        <p style={{
-          fontFamily: "var(--font-instrument-sans)",
-          fontWeight: "500",
-          fontSize: small ? "14px" : "16px",
-          color: "#666",
-          margin: 0,
-          lineHeight: "1.6",
-          display: "-webkit-box",
-          WebkitLineClamp: small ? 2 : 3,
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden"
-        }}>
+        <p className={cn("font-body font-medium text-secondarytext leading-relaxed", {
+          "text-sm line-clamp-2": small,
+          "text-base line-clamp-3": !small
+        })}>
           {post.excerpt}
         </p>
       </div>
-    </AppLink>
+    </Link>
   );
-} 
+}
