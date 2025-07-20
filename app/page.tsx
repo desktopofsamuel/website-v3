@@ -33,7 +33,7 @@ export default function AppRouterTestPage() {
           marginBottom: "8px",
           marginTop: 0
         }}>
-          What's different in App Router:
+          Whats different in App Router:
         </h2>
         <ul style={{ 
           fontSize: "16px", 

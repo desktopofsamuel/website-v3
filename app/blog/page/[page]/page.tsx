@@ -7,17 +7,18 @@ import { Metadata } from "next";
 import { POSTS_PER_PAGE } from "@/config";
 
 type Props = {
-  params: { page: string };
+  params: Promise<{ page: string }>;
 };
 
 // Generate metadata for each page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const page = parseInt(params.page);
+  const { page } = await params;
+  const pageNum = parseInt(page);
   const numPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   
   return {
-    title: `All blog posts - ${page} of ${numPages}`,
-    description: `Page ${page} of ${numPages} - Browse all blog posts about design, technology, and productivity.`,
+    title: `All blog posts - ${pageNum} of ${numPages}`,
+    description: `Page ${pageNum} of ${numPages} - Browse all blog posts about design, technology, and productivity.`,
   };
 }
 

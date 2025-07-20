@@ -1,6 +1,6 @@
 import { allPhotos, Photo } from "contentlayer/generated";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 import Layout from "@/components/Layout";
 import { NextSeo } from "next-seo";
 import dayjs from "dayjs";

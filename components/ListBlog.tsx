@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import NextLink from "@/components/NextLink";
-import { Box, Heading, Text, useDimensions } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import NextImage from "@/components/NextImage";
 
 export default function ListBlog({ data, small }: any) {

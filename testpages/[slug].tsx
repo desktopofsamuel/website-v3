@@ -35,7 +35,7 @@ import ScrollspyNav from "react-scrollspy-nav";
 import NextLink from "@/components/NextLink";
 import slugger from "github-slugger";
 import kebabCase from "lodash.kebabcase";
-import ListBlog from "@/components/ListBlog";
+// import ListBlog from "@/components/ListBlog";
 import { ArrowUpIcon } from "@chakra-ui/icons";
 
 const Img = (props: any) => {
@@ -288,11 +288,11 @@ export default function SinglePostPage({
         {relatedPosts && (
         <Flex marginTop="10" flexDir="column" alignItems="center">
           <Text textAlign="center" variant="small">Read more</Text>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 1, md: 6 }}>
+          {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 1, md: 6 }}>
             {relatedPosts.map((post) => (
               <ListBlog key={post.slug} data={post} small />
             ))}
-          </SimpleGrid>
+          </SimpleGrid> */}
         </Flex>
       )}
       </Article>

@@ -3,7 +3,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkUnwrapImages from "remark-unwrap-images";
+// import remarkUnwrapImages from "remark-unwrap-images";
 import kebabCase from "lodash.kebabcase";
 import { parseMarkdown, parseReadTime } from "./utils";
 import toc from "@jsdevtools/rehype-toc";
@@ -229,7 +229,7 @@ export default makeSource({
   mdx: {
     remarkPlugins: [
       [remarkGfm],
-      [remarkUnwrapImages], 
+    //   remarkUnwrapImages, 
     ],
     rehypePlugins: [
       [rehypePrism],
