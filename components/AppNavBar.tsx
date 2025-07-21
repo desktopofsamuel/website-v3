@@ -25,7 +25,7 @@ export default function AppNavBar() {
           </AppLink>
           
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div style={{ display: "flex", gap: "16px" }}>
+            <div className="flex gap-x-4 font-heading">
               <AppLink href="/" style={{ textDecoration: "none", color: "inherit" }}>Home</AppLink>
               <AppLink href="/about" style={{ textDecoration: "none", color: "inherit" }}>About</AppLink>
               <AppLink href="/blog" style={{ textDecoration: "none", color: "inherit" }}>Blog</AppLink>

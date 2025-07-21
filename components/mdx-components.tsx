@@ -48,7 +48,7 @@ const mdxComponents = {
     <blockquote {...props} className="border-l-4 border-gray-300 pl-4 italic my-4" />
   ),
   code: (props: any) => (
-    <code {...props} className="bg-gray-100 px-1 py-0.5 rounded text-sm" />
+    <code {...props} className="px-1 py-0.5 rounded text-sm" />
   ),
   pre: (props: any) => (
     <pre {...props} className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto my-4" />
