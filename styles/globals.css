@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./theme.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -120,5 +121,9 @@
   }
   body {
     @apply bg-yellow-100 text-foreground font-body;
+  }
+
+  .font-heading {
+    @apply tracking-tight;
   }
 }

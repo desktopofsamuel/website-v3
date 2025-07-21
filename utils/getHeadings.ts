@@ -1,4 +1,3 @@
-
 import GithubSlugger from 'github-slugger'
 
 type Heading = {
@@ -40,4 +39,4 @@ export function getHeadings(markdown: string): Heading[] {
 
   // Return the array of results
   return result;
-}
+} 
