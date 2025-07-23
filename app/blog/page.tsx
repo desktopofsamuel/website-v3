@@ -31,9 +31,8 @@ export default async function BlogPage() {
 
         {/* Featured Posts Section */}
         <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-bold text-secondarytext font-heading">
-            Featured posts
-          </h2>
+        <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">Featured</h2>
+  
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {posts
@@ -47,10 +46,7 @@ export default async function BlogPage() {
 
         {/* All Posts Section */}
         <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-bold text-secondarytext font-heading">
-            All posts
-          </h2>
-          
+        <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">All posts</h2>
           <div className="grid grid-cols-1 gap-2">
             {posts
               .filter((post) => post.feature !== true)

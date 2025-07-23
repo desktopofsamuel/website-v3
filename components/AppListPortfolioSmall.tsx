@@ -1,4 +1,4 @@
-import Link from "@/components/NextLink";
+import Link from "@/components/AppLink";
 import { TbExternalLink } from "react-icons/tb";
 
 export default function AppListPortfolioSmall({ data }: any) {

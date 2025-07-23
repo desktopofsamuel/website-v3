@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import React from "react";
 
-import AppLink from "@/components/AppLink";
+import Link from "@/components/AppLink";
 
 export default function AppNavBar() {
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,21 +15,21 @@ export default function AppNavBar() {
           justifyContent: "space-between",
           padding: "32px 0"
         }}>
-          <AppLink href="/" style={{ 
+          <Link href="/" style={{ 
             fontSize: "24px", 
             fontWeight: "bold", 
             textDecoration: "none",
             color: "inherit"
           }}>
             Desktop of Samuel
-          </AppLink>
+          </Link>
           
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <div className="flex gap-x-4 font-heading">
-              <AppLink href="/" style={{ textDecoration: "none", color: "inherit" }}>Home</AppLink>
-              <AppLink href="/about" style={{ textDecoration: "none", color: "inherit" }}>About</AppLink>
-              <AppLink href="/blog" style={{ textDecoration: "none", color: "inherit" }}>Blog</AppLink>
-              <AppLink href="/work" style={{ textDecoration: "none", color: "inherit" }}>Work</AppLink>
+              <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>Home</Link>
+              <Link href="/about" style={{ textDecoration: "none", color: "inherit" }}>About</Link>
+              <Link href="/blog" style={{ textDecoration: "none", color: "inherit" }}>Blog</Link>
+              <Link href="/work" style={{ textDecoration: "none", color: "inherit" }}>Work</Link>
             </div>
             
             <button 

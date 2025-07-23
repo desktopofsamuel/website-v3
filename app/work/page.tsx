@@ -8,25 +8,28 @@ export default function WorkListPage() {
   const works = allWorks;
   return (
     <AppLayout>
-    <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold">Portfolio</h1>
-      <p>Selected websites and apps showcase since 2015.</p>
+      <div className="container mx-auto px-4">
+        <h1 className="text-4xl font-bold">Portfolio</h1>
+        <p>Selected websites and apps showcase since 2015.</p>
         {works
           .filter((post) => post.feature === true && post.draft !== true)
           .sort(sortByDate)
           .map((post) => (
             <AppListPortfolio key={post.slug} data={post} />
           ))}
-      <h2 className="text-2xl font-bold">Side Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {works
-        .filter((post) => post.feature !== true && post.draft !== true)
-        .sort(sortByDate)
-        .map((post) => (
-          <AppListPortfolioSmall key={post.slug} data={post}/>
-        ))}
+        <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">
+          Side Projects
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {works
+            .filter((post) => post.feature !== true && post.draft !== true)
+            .sort(sortByDate)
+            .map((post) => (
+              <AppListPortfolioSmall key={post.slug} data={post} />
+            ))}
         </div>
-    </div>
+      </div>
     </AppLayout>
   );
 }

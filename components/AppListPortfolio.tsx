@@ -1,4 +1,4 @@
-import Link from "@/components/NextLink";
+import Link from "@/components/AppLink";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
