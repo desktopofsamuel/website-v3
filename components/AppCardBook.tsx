@@ -5,7 +5,7 @@ import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardBase from "@/components/CardBase";
+import AppCardBase from "@/components/AppCardBase";
 
 const AppCardBook = () => {
   const { data } = useSWR("/api/books", fetcher, {
@@ -17,7 +17,7 @@ const AppCardBook = () => {
 
   return (
     <>
-      <CardBase title="📚 Recently reading">
+      <AppCardBase title="📚 Recently reading">
         {!data ? (
           <>
             <Skeleton width="50%" /> <Skeleton />
@@ -50,7 +50,7 @@ const AppCardBook = () => {
             </div>
           ))
         )}
-      </CardBase>
+      </AppCardBase>
     </>
   );
 };

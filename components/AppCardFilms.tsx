@@ -7,7 +7,7 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardBase from "@/components/CardBase";
+import AppCardBase from "@/components/AppCardBase";
 
 const AppCardFilms = () => {
   const { data } = useSWR("/api/films", fetcher, {
@@ -35,7 +35,7 @@ const AppCardFilms = () => {
   
   return (
     <>
-      <CardBase title="🎬 Recently watching">
+      <AppCardBase title="🎬 Recently watching">
         <div className="flex flex-row z-[1] relative">
           {!data ? (
             <>
@@ -55,7 +55,7 @@ const AppCardFilms = () => {
             ))
           )}
         </div>
-      </CardBase>
+      </AppCardBase>
     </>
   );
 };

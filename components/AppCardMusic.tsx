@@ -6,7 +6,7 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardBase from "@/components/CardBase";
+import AppCardBase from "@/components/CardBase";
 
 const AppCardMusic = () => {
   const { data } = useSWR("/api/top-artists", fetcher, {
@@ -27,7 +27,7 @@ const AppCardMusic = () => {
 
   return (
     <>
-      <CardBase title="🎧 Recently listening">
+      <AppCardBase title="🎧 Recently listening">
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 items-center justify-center">
           {!data ? (
             <>
@@ -69,7 +69,7 @@ const AppCardMusic = () => {
             ))
           )}
         </div>
-        </CardBase>
+        </AppCardBase>
     </>
   );
 };

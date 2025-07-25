@@ -5,7 +5,7 @@ import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardBase from "@/components/CardBase";
+import AppCardBase from "@/components/AppCardBase";
 
 const AppCardTopTracks = () => {
   const { data } = useSWR("/api/top-tracks", fetcher, {
@@ -17,7 +17,7 @@ const AppCardTopTracks = () => {
 
   return (
     <>
-      <CardBase title="🎵 Top tracks">
+      <AppCardBase title="🎵 Top tracks">
         <div className="flex flex-col space-y-3">
           {!data ? (
             <>
@@ -51,7 +51,7 @@ const AppCardTopTracks = () => {
             ))
           )}
         </div>
-      </CardBase>
+      </AppCardBase>
     </>
   );
 };

@@ -2,7 +2,7 @@
 
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
-import CardBase from "@/components/CardBase"
+import AppCardBase from "@/components/AppCardBase"
 import "react-loading-skeleton/dist/skeleton.css";
 
 const AppCardCurrentlyPlaying = () => {
@@ -21,7 +21,7 @@ const AppCardCurrentlyPlaying = () => {
   });
 
   return (dynamicData as any)?.isPlaying ? (
-   <CardBase title="🎧 Currently playing">
+   <AppCardBase title="🎧 Currently playing">
       <h2 className="leading-tight my-0 text-5xl inline-block">{(dynamicData as any).title}</h2>
       <div className="inline-block ml-4 relative w-12 h-12">
         <div className="relative flex justify-between w-6 h-6">
@@ -32,16 +32,16 @@ const AppCardCurrentlyPlaying = () => {
         </div>
       </div>
       <p className="font-heading">{(dynamicData as any).artist}</p>
-   </CardBase>
+   </AppCardBase>
   ) : (
-   <CardBase title="🎧 Last played">
+   <AppCardBase title="🎧 Last played">
       {(staticData as any[])?.map((song: any, i: number) => (
         <div key={i}>
           <h2 className="leading-tight my-0 text-5xl">{song.title}</h2>
           <p className="font-heading">{song.artist}</p>
         </div>
       ))}
-    </CardBase>
+    </AppCardBase>
   );
 };
 
