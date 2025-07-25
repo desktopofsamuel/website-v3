@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import RSS from "rss";
-import { allPosts } from "contentlayer/generated";
+import { filteredPosts } from "@/lib/content";
 import { sortByDate } from "../../utils";
 import CONFIG from "../../config.js";
 
@@ -18,7 +18,7 @@ export async function GET() {
     ttl: 60,
   });
 
-  allPosts
+  filteredPosts
     .sort(sortByDate)
     .forEach((post) => {
       feed.item({

@@ -6,7 +6,7 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import AppCardBase from "@/components/CardBase";
+import AppCardBase from "@/components/AppCardBase";
 
 const AppCardMusic = () => {
   const { data } = useSWR("/api/top-artists", fetcher, {
@@ -20,7 +20,7 @@ const AppCardMusic = () => {
     return (
       <div className="text-center flex flex-col items-center">
         <Skeleton width="80px" height="80px" circle />
-        <Skeleton width="120px" height="20px"/>
+        <Skeleton width="120px" height="20px" />
       </div>
     );
   }
@@ -45,10 +45,22 @@ const AppCardMusic = () => {
                   <div className="w-20 h-20 group rounded-full relative bg-transparent transition-all duration-500 hover:bg-black">
                     <div className="absolute z-[100] top-[26px] left-[26px] opacity-0 w-[25px] h-[25px] text-white transition-all duration-500 group-hover:opacity-100">
                       <div className="relative flex justify-between w-[30px] h-[30px]">
-                        <div className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '0s' }} />
-                        <div className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-2.2s' }} />
-                        <div className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-3.7s' }} />
-                        <div className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-4.2s' }} />
+                        <div
+                          className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom"
+                          style={{ animationDelay: "0s" }}
+                        />
+                        <div
+                          className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom"
+                          style={{ animationDelay: "-2.2s" }}
+                        />
+                        <div
+                          className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom"
+                          style={{ animationDelay: "-3.7s" }}
+                        />
+                        <div
+                          className="bg-white w-1 h-full rounded-md animate-bounce origin-bottom"
+                          style={{ animationDelay: "-4.2s" }}
+                        />
                       </div>
                     </div>
                     <div className="absolute overflow-hidden top-0 left-0 z-[1] w-20 h-20 rounded-full group-hover:opacity-80">
@@ -69,7 +81,7 @@ const AppCardMusic = () => {
             ))
           )}
         </div>
-        </AppCardBase>
+      </AppCardBase>
     </>
   );
 };

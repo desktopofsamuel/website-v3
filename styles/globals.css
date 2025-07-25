@@ -126,4 +126,16 @@
   .font-heading {
     @apply tracking-tight;
   }
+
+  .diagonal {
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+      -45deg,            /* Diagonal angle */
+      var(--color-yellow-300),          /* Line color */
+      var(--color-yellow-300) 1px,      /* Line color end, defines thickness */
+      transparent 1px,  /* Transparent start immediately after */
+      transparent 6px   /* Space between lines */
+    );
+  }
 }

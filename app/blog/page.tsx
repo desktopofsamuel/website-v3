@@ -2,14 +2,14 @@ import AppLink from "@/components/AppLink";
 import AppListBlog from "@/components/AppListBlog";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
 import AppLayout from "@/components/AppLayout";
-import { allPosts, Post } from "contentlayer/generated";
+import { filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
 import { Button } from "@/components/ui/button"
 
 // This would be the equivalent of getStaticProps in App Router
 async function getData() {
   return {
-    posts: allPosts,
+    posts: filteredPosts,
   };
 }
 

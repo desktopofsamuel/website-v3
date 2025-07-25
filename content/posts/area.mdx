@@ -1,0 +1,109 @@
+---
+title: "Area Page"
+description: "A demonstration page showing MDX capabilities with PageLayout"
+date: "2025-01-23"
+tags: ["demo", "mdx"]
+category: "Design Journal"
+page: true
+path: "area"
+---
+
+# Area Page
+
+This is an example area page created using MDX with the new PageLayout system. It demonstrates the full capabilities of the MDX system integrated with Next.js App Router.
+
+## Features Available
+
+This page has access to all the custom MDX components:
+
+### Grid Layouts
+
+<SimpleGrid columns={2} gap={4}>
+  <div className="p-4 bg-blue-50 rounded-lg">
+    <h4 className="font-semibold">Grid Item 1</h4>
+    <p>This is a responsive grid using the SimpleGrid component.</p>
+  </div>
+  <div className="p-4 bg-green-50 rounded-lg">
+    <h4 className="font-semibold">Grid Item 2</h4>
+    <p>It automatically adapts to different screen sizes.</p>
+  </div>
+</SimpleGrid>
+
+### Three Column Layout
+
+<SimpleGrid columns={3} gap={6}>
+  <div className="text-center p-4 border rounded-lg">
+    <h5 className="font-bold text-lg">Column 1</h5>
+    <p>First column content</p>
+  </div>
+  <div className="text-center p-4 border rounded-lg">
+    <h5 className="font-bold text-lg">Column 2</h5>
+    <p>Second column content</p>
+  </div>
+  <div className="text-center p-4 border rounded-lg">
+    <h5 className="font-bold text-lg">Column 3</h5>
+    <p>Third column content</p>
+  </div>
+</SimpleGrid>
+
+## Custom Components
+
+### Buttons
+
+You can use custom Button components:
+
+<Button>Click Me</Button>
+
+### Code Blocks
+
+Here's some JavaScript code with syntax highlighting:
+
+```javascript
+function greetUser(name) {
+  console.log(`Welcome to the area page, ${name}!`);
+  return {
+    message: `Hello ${name}`,
+    timestamp: new Date().toISOString()
+  };
+}
+
+// Usage
+const greeting = greetUser("Samuel");
+```
+
+### Lists and Typography
+
+The area page supports all standard markdown features:
+
+- **Bold text** and *italic text*
+- Ordered and unordered lists
+- Links to [external sites](https://example.com)
+- Blockquotes (see below)
+
+> This is a blockquote showing how markdown content is styled consistently with the rest of the website.
+
+## Technical Notes
+
+This page demonstrates:
+
+1. **PageLayout usage** - Uses the simplified page layout instead of blog layout
+2. **Custom component integration** - All MDX components work seamlessly
+3. **Responsive design** - Uses Tailwind CSS for styling
+4. **SEO optimization** - Metadata from frontmatter
+5. **Fast loading** - Statically optimized by Next.js
+
+## Layout Differences
+
+The **PageLayout** differs from **BlogLayout** in several ways:
+
+- **No category badge** - Pages don't show category information
+- **No reading time** - Pages don't show estimated reading time
+- **No related posts** - Pages don't show related content
+- **No tags section** - Pages don't display tags at the bottom
+- **No "Back to Blog" button** - Pages don't include blog navigation
+- **Simplified header** - Centered title instead of left-aligned with metadata
+- **Clean footer** - Simple last updated date instead of detailed metadata
+
+## Conclusion
+
+Creating an `/area` page with the PageLayout system provides a clean, focused presentation perfect for standalone content pages while maintaining full MDX capabilities and component access.

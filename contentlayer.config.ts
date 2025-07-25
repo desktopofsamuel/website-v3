@@ -56,6 +56,10 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       required: false,
     },
+    page: {
+      type: "boolean",
+      required: false,
+    }
   },
   computedFields: {
     slug: {

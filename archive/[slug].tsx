@@ -48,7 +48,7 @@ const Img = (props: any) => {
         position: "relative",
       }}
     >
-      <Image src={props.src} alt={props.alt} style={{ objectFit: "contain" }} />
+    <Image src={props.src} alt={props.alt} style={{ objectFit: "contain" }} />
     </div>
   );
 };

@@ -58,7 +58,7 @@ const career = [
     small: "2022 - 2024",
     cta: "Coming soon",
     href: "",
-    color: "bg-black",
+    color: "#000000",
   },
   {
     title: "UX/UI Consultant",
@@ -66,7 +66,7 @@ const career = [
     text: "Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience for Asia market.",
     small: "2021 - 2022",
     image: Hsbclogo,
-    color: "bg-[#DB0011]",
+    color: "#DB0011",
     cta: "View Work",
     href: "/work/hsbc",
   },
@@ -78,7 +78,7 @@ const career = [
     image: Hyperairlogo,
     cta: "View Work",
     href: "/work/hyperair-fx",
-    color: "bg-[#0176ee]",
+    color: "#0176ee",
   },
   {
     image: Playalogo,
@@ -86,7 +86,7 @@ const career = [
     subtitle: "Playa",
     text: "Co-founder of a bootstrapped digital agency, shipped award-winning web and app projects from concept to delivery for SMB and start-up clients.",
     small: "2015 - 2019",
-    color: "bg-[#49CC74]",
+    color: "#49CC74",
     cta: "View Work",
     href: "https://playa.hk/portfolio.html",
   },
@@ -96,7 +96,7 @@ const career = [
     small: "2012 - 2013",
     text: "Deferred from university for 1-year full-time internship at iTunes & App Store team to curate APAC editorial content for apps, films, music and books.",
     image: Applelogo,
-    color: "bg-[#86868B]",
+    color: "#86868B",
   },
 ];
 
@@ -132,13 +132,27 @@ const engagements = [
     small: "2022 Sep",
     noAnimation: true,
   },
+  {
+    image: Ama,
+    subtitle: "Host of Friends of Figma HK",
+    title: "Architecting design for scale ",
+    small: "2025 July",
+    noAnimation: true,
+  },
+  {
+    image: Ama,
+    subtitle: "Host of Friends of Figma HK",
+    title: "Into Design System",
+    small: "2025 July",
+    noAnimation: true,
+  }
 ];
 
 const community = [
   {
-    title: "Community Moderator",
+    title: "Community Leader",
     subtitle: "Friends of Figma, Hong Kong",
-    text: "2022 - Now",
+    text: "",
     image: Figma,
     cta: "Join upcoming events",
     href: "https://friends.figma.com/hong-kong",
@@ -146,9 +160,9 @@ const community = [
   {
     title: "Mentor",
     subtitle: "ADPList",
-    text: "2023 - Now",
+    text: "",
     image: Adplist,
-    cta: "Schedule a session",
+    cta: "Schedule session",
     href: "https://adplist.org/mentors/samuel-wong",
   },
 ];
@@ -203,7 +217,10 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 items-center group">
       <div className="h-full">
         <div
-          className={`w-full h-full min-h-[200px] md:min-h-[250px] rounded-2xl flex items-center justify-center bg-border transition-all duration-600 ease-in-out group-hover:${color}`}
+          className="w-full h-full min-h-[200px] md:min-h-[250px] rounded-2xl flex items-center justify-center bg-border transition-all duration-600 ease-in-out group-hover:[background-color:var(--hover-color)]"
+          style={{
+            '--hover-color': color,
+          } as React.CSSProperties}
         >
           <div
             className={`transition-all duration-250 ease-in delay-200 ${
@@ -266,14 +283,14 @@ const EntryCard: React.FC<EntryCardProps> = ({
       <div className="grid grid-cols-1 w-full items-center">
         <div className="flex flex-col gap-2">
           <h3 className="text-xl md:text-2xl font-bold">{title}</h3>
-          <p className="font-heading text-md leading-tight my-0">{subtitle}</p>
+          <p className="font-heading text-md text-secondarytext my-0">{subtitle}</p>
           <p className="text-sm my-0 text-secondarytext font-heading">{text}</p>
         </div>
         <div className="" />
         <div>
           {cta && href && (
             <Button asChild variant="outline" size="sm">
-              <Link href={href} className="no-underline">
+              <Link href={href} className="" target="_blank">
                 {cta}
               </Link>
             </Button>
@@ -319,7 +336,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+      <span className="block diagonal border-gray-300 mt-2 w-full"></span>
+     
       <section className="py-16">
         <h2 className="text-3xl font-bold my-10 font-heading">My Journey</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

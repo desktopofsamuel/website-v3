@@ -2,7 +2,8 @@ import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppLink from "@/components/AppLink";
 import Pagination from "@/components/AppPagination";
-import { allPosts, Post } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
+import { filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
 import { Metadata } from "next";
 import { POSTS_PER_PAGE } from "@/config";
@@ -15,7 +16,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { page } = await params;
   const pageNum = parseInt(page);
-  const numPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const numPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
   return {
     title: `All blog posts - ${pageNum} of ${numPages}`,
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Generate static params for all pages
 export async function generateStaticParams() {
-  const numPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const numPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
   return Array.from({ length: numPages }, (_, i) => ({
     page: (i + 1).toString(),
@@ -35,10 +36,10 @@ export async function generateStaticParams() {
 // Get data for the specific page
 async function getData(page: number) {
   const pageIndex = page - 1;
-  const posts = allPosts
+  const posts = filteredPosts
     .sort(sortByDate)
     .slice(pageIndex * POSTS_PER_PAGE, (pageIndex + 1) * POSTS_PER_PAGE);
-  const numPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const numPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
 
   return {
     posts,
