@@ -88,9 +88,14 @@ const uses = [
 export default function UsesPage() {
   return (
     <AppLayout>
-      <h1 className="text-4xl font-bold mb-4">Uses</h1>
-      <p className="text-secondarytext mb-8">Tools that I love to use everyday</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10 md:pb-40">
+       <div className="py-8">
+        <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
+          Uses
+        </h1>
+        <p className="text-lg text-secondarytext leading-normal">
+        Tools that I love to use everyday
+        </p></div>
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10 md:pb-40">
         {uses.map((item) => {
           const Icon = item.icon;
           return (

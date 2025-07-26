@@ -18,10 +18,10 @@ export default async function BlogPage() {
 
   return (
     <AppLayout>
-      <div className="py-8 font-body">
+      <div className="py-8">
         {/* Header Section */}
         <div className="mb-8 flex flex-col">
-          <h1 className="mb-4 text-6xl font-bold leading-tight font-heading">
+          <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
             Blog
           </h1>
           <p className="text-lg text-secondarytext leading-normal">

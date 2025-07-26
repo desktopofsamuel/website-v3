@@ -36,7 +36,7 @@ export default function AppListBlogDetail({ data }: AppListBlogDetailProps) {
           <p className="font-heading font-bold text-sm text-gray-600 mb-2 uppercase tracking-wider">
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </p>
-          <h3 className="text-3xl font-heading font-bold mb-4 leading-snug">
+          <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 leading-snug">
             {post.title}
           </h3>
           <p className="text-base text-gray-600 m-0 leading-relaxed line-clamp-3">

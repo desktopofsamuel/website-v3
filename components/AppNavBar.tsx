@@ -1,95 +1,116 @@
-// import React, { useState } from "react";
 import React from "react";
 
 import Link from "@/components/AppLink";
+import { TbMenu2 } from "react-icons/tb";
 
+// Mobile menu restored using a hidden checkbox hack (no state)
+// Scrolling is disabled when the mobile menu overlay is open using a <style> tag and the :has() CSS selector
 export default function AppNavBar() {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
   return (
     <>
-      <header style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 20px" }}>
-        <nav style={{ 
-          display: "flex", 
-          alignItems: "center", 
-          justifyContent: "space-between",
-          padding: "32px 0"
-        }}>
-          <Link href="/" style={{ 
-            fontSize: "24px", 
-            fontWeight: "bold", 
-            textDecoration: "none",
-            color: "inherit"
-          }}>
+      {/* Disable scrolling on body when mobile menu is open */}
+      <style>{`
+        body:has(#mobile-menu-toggle:checked) {
+          overflow: hidden !important;
+          touch-action: none;
+        }
+      `}</style>
+      <header className="max-w-[1080px] mx-auto px-5">
+        <nav className="flex items-center justify-between py-8">
+          <Link
+            href="/"
+            className="text-md font-heading font-bold no-underline text-inherit"
+          >
             Desktop of Samuel
           </Link>
-          
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-4">
             <div className="flex gap-x-4 font-heading">
-              <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>Home</Link>
-              <Link href="/about" style={{ textDecoration: "none", color: "inherit" }}>About</Link>
-              <Link href="/blog" style={{ textDecoration: "none", color: "inherit" }}>Blog</Link>
-              <Link href="/work" style={{ textDecoration: "none", color: "inherit" }}>Work</Link>
+              <Link
+                href="/"
+                className="no-underline text-inherit transition-colors hover:text-blue-600"
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="no-underline text-inherit transition-colors hover:text-blue-600"
+              >
+                About
+              </Link>
+              <Link
+                href="/blog"
+                className="no-underline text-inherit transition-colors hover:text-blue-600"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/work"
+                className="no-underline text-inherit transition-colors hover:text-blue-600"
+              >
+                Work
+              </Link>
             </div>
-            
-            <button 
-              // onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{
-                display: "none",
-                background: "none",
-                border: "none",
-                fontSize: "24px",
-                cursor: "pointer"
-              }}
+          </div>
+
+          {/* Hamburger for mobile */}
+          <div className="md:hidden flex items-center">
+            {/* Hidden checkbox controls menu open/close */}
+            <input
+              type="checkbox"
+              id="mobile-menu-toggle"
+              className="peer hidden"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+            <label
+              htmlFor="mobile-menu-toggle"
+              className="bg-none border-none text-2xl cursor-pointer select-none"
+              aria-label="Open menu"
             >
-              ☰
-            </button>
+              <TbMenu2 />
+            </label>
+            {/* Mobile menu overlay */}
+            <div className="fixed inset-0 z-[1000] bg-black bg-opacity-80 hidden peer-checked:flex flex-col items-start p-8 transition-all">
+              {/* Close button */}
+              <label
+                htmlFor="mobile-menu-toggle"
+                className="mb-8 bg-none border-none text-2xl cursor-pointer select-none self-end"
+                aria-label="Close menu"
+              >
+                ✕
+              </label>
+              <nav className="flex flex-col gap-y-8 font-heading text-white w-full">
+                <Link
+                  href="/"
+                  className="no-underline text-inherit text-2xl text-left"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  className="no-underline text-inherit text-2xl text-left"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/blog"
+                  className="no-underline text-inherit text-2xl text-left"
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="/work"
+                  className="no-underline text-inherit text-2xl text-left"
+                >
+                  Work
+                </Link>
+              </nav>
+            </div>
           </div>
         </nav>
       </header>
-      
-      {/* {isMenuOpen && (
-        <div style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: "rgba(0,0,0,0.8)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1000
-        }}>
-          <div style={{
-            background: "white",
-            padding: "40px",
-            borderRadius: "8px",
-            textAlign: "center"
-          }}>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              style={{
-                position: "absolute",
-                top: "16px",
-                right: "16px",
-                background: "none",
-                border: "none",
-                fontSize: "24px",
-                cursor: "pointer"
-              }}
-            >
-              ✕
-            </button>
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              <AppLink href="/" style={{ textDecoration: "none", color: "inherit", fontSize: "24px" }}>Home</AppLink>
-              <AppLink href="/about" style={{ textDecoration: "none", color: "inherit", fontSize: "24px" }}>About</AppLink>
-              <AppLink href="/blog" style={{ textDecoration: "none", color: "inherit", fontSize: "24px" }}>Blog</AppLink>
-              <AppLink href="/work" style={{ textDecoration: "none", color: "inherit", fontSize: "24px" }}>Work</AppLink>
-            </div>
-          </div>
-        </div>
-      )} */}
     </>
   );
-} 
+}

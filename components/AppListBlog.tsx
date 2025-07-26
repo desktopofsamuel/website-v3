@@ -19,11 +19,8 @@ export default function AppListBlog({ data, small = false }: AppListBlogProps) {
   return (
     <Link href={`/${post.slug}/`} className="no-underline text-inherit block">
       <div className="my-4 cursor-pointer group">
-        {post.cover && (
-          <div className={cn("w-full rounded-lg overflow-hidden mb-4", {
-            "h-[200px]": small,
-            "h-[300px]": !small
-          })}>
+      {post.cover && (
+          <div className="w-full rounded-lg overflow-hidden mb-4">
             <Image
               src={post.cover}
               alt={post.title}
