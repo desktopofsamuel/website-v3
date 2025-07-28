@@ -1,10 +1,16 @@
-import { allPosts, Post } from "contentlayer/generated";
+import { allPosts, allWorks, allPhotos, Post, Work, Photo } from "contentlayer/generated";
 import { unique } from "typescript-array-utils";
 import kebabCase from "lodash.kebabcase";
 import { sortByDate } from "@/utils";
 
 // Filter out posts where page === true (these are page content, not blog posts)
 const filteredPosts = allPosts.filter((post) => post.page !== true).sort(sortByDate);
+
+// Filter and sort work projects
+const filteredWorks = allWorks.filter((work) => !work.draft).sort(sortByDate);
+
+// Filter and sort photos
+const filteredPhotos = allPhotos.filter((photo) => !photo.draft).sort(sortByDate);
 
 // All tags used by blog posts
 const listOfTags = unique(filteredPosts.flatMap((post) => post.tags));
@@ -50,4 +56,4 @@ const postsWithTag = (tag: string): any => {
   return results;
 };
 
-export { allTags, postsWithTag, allPostsList, filteredPosts };
+export { allTags, postsWithTag, allPostsList, filteredPosts, filteredWorks, filteredPhotos };

@@ -138,4 +138,100 @@
       transparent 6px   /* Space between lines */
     );
   }
+
+  /* Bento Grid Styles */
+  .bento-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-areas:
+      "intro intro music book"
+      "intro intro music book"
+      "posts posts work work"
+      "photos photos links links";
+  }
+
+  .bento-card {
+    @apply border border-border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+    backdrop-filter: blur(10px);
+  }
+
+  .dark .bento-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .intro-card {
+    grid-area: intro;
+  }
+
+  .work-card {
+    grid-area: work;
+  }
+
+  .posts-card {
+    grid-area: posts;
+  }
+
+  .music-card {
+    grid-area: music;
+  }
+
+  .book-card {
+    grid-area: book;
+  }
+
+  .photo-card {
+    grid-area: photos;
+  }
+
+  .links-card {
+    grid-area: links;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 inline-block text-center;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Responsive Bento Grid */
+  @media (max-width: 1024px) {
+    .bento-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "intro intro intro"
+        "work work work"
+        "posts posts music"
+        "photos book links";
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bento-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "intro"
+        "work"
+        "posts"
+        "music"
+        "book"
+        "photos"
+        "links";
+    }
+
+    .bento-card {
+      @apply p-4;
+    }
+  }
 }

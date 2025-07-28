@@ -27,7 +27,7 @@ export default function AppListBlog({ data, small = false }: AppListBlogProps) {
               className="w-full h-full group-hover:scale-[1.02] group-hover:opacity-90 transition-all ease-in-out duration-500 object-cover  aspect-[1.9/1] rounded-sm"
               width={1200}
               height={630}
-              priority
+              priority       
             />
           </div>
         )}

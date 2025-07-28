@@ -18,19 +18,20 @@ export default function PageLayout({ post }: PageLayoutProps) {
       <div className="min-h-screen">
         <div className="max-w-4xl mx-auto px-4 py-8">
           {/* Page Header - Simplified compared to blog layout */}
-          <header className="mb-8 text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <header className="my-8 text-center">
+            <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
               {post.title}
             </h1>
+
             {post.tldr && (
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-secondarytext leading-normal">
                 {post.tldr}
               </p>
             )}
           </header>
 
           {/* Page Content */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg">
             <MDXContent code={post.body.code} />
           </div>
 
@@ -39,7 +40,7 @@ export default function PageLayout({ post }: PageLayoutProps) {
 
           {/* Optional footer info for pages */}
           {post.date && (
-            <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+            <div className="mt-12 pt-8 border-t border-gray-200 text-sm font-heading text-secondarytext">
               Last updated on {dayjs(post.date).format("MMMM DD, YYYY")}
             </div>
           )}

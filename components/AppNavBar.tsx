@@ -2,6 +2,7 @@ import React from "react";
 
 import Link from "@/components/AppLink";
 import { TbMenu2 } from "react-icons/tb";
+import { MENU_ITEMS } from "@/config";
 
 // Mobile menu restored using a hidden checkbox hack (no state)
 // Scrolling is disabled when the mobile menu overlay is open using a <style> tag and the :has() CSS selector
@@ -27,30 +28,15 @@ export default function AppNavBar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-4">
             <div className="flex gap-x-4 font-heading">
-              <Link
-                href="/"
-                className="no-underline text-inherit transition-colors hover:text-blue-600"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="no-underline text-inherit transition-colors hover:text-blue-600"
-              >
-                About
-              </Link>
-              <Link
-                href="/blog"
-                className="no-underline text-inherit transition-colors hover:text-blue-600"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/work"
-                className="no-underline text-inherit transition-colors hover:text-blue-600"
-              >
-                Work
-              </Link>
+              {MENU_ITEMS.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="no-underline text-inherit transition-colors border-b-2 border-b-transparent hover:text-primary-500 hover:border-b-2 hover:border-primary-500"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -82,32 +68,17 @@ export default function AppNavBar() {
                 ✕
               </label>
               <nav className="flex flex-col gap-y-8 font-heading text-white w-full">
-                <Link
-                  href="/"
-                  className="no-underline text-inherit text-2xl text-left"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  className="no-underline text-inherit text-2xl text-left"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/blog"
-                  className="no-underline text-inherit text-2xl text-left"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/work"
-                  className="no-underline text-inherit text-2xl text-left"
-                >
-                  Work
-                </Link>
+                {MENU_ITEMS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="no-underline text-inherit transition-colors hover:text-primary-500 hover:border-b-2 hover:border-primary-500"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
-            </div>
+            </div>  
           </div>
         </nav>
       </header>
