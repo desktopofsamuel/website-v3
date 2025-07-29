@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AppLink from "@/components/AppLink";
+import Link  from "@/components/AppLink";
 import { filteredPosts, filteredWorks, filteredPhotos } from "@/lib/content";
-import Profile from "../public/static/samuel-profile-2022.jpeg"
-import Image from "next/image"
+import Profile from "../public/static/samuel-profile-2022.jpeg";
+import Image from "next/image";
 
 // Individual Bento Cards
 const IntroCard = () => (
@@ -17,17 +17,17 @@ const IntroCard = () => (
           className="w-16 h-16 rounded-full object-cover"
         />
       </div>
-      <h1 className="text-3xl font-bold mb-2 font-heading">Hi, I'm Samuel</h1>
+      <h1 className="text-3xl font-bold mb-2 font-heading">Hi, I&apos;m Samuel</h1>
       <p className="text-lg text-muted-foreground mb-4">
         UI/UX Designer based in Hong Kong, crafting digital experiences that matter.
       </p>
       <div className="flex gap-2">
-        <AppLink href="/work" className="btn btn-primary">
+        <Link href="/work" className="btn btn-primary">
           View Work
-        </AppLink>
-        <AppLink href="/about" className="btn btn-secondary">
+        </Link>
+        <Link href="/about" className="btn btn-secondary">
           About Me
-        </AppLink>
+        </Link>
       </div>
     </div>
   </div>
@@ -111,12 +111,12 @@ const MusicCard = () => {
         </div>
       )}
       <div className="mt-3">
-        <AppLink
+        <Link
           href="https://open.spotify.com/user/desktopofsamuel"
           className="text-xs text-green-600 hover:text-green-800"
         >
-          View my Spotify →
-        </AppLink>
+          View my Spotify &rarr;
+        </Link>
       </div>
     </div>
   );
@@ -159,9 +159,9 @@ const BookCard = () => {
         <div>
           <p className="font-medium text-sm truncate">{books[0].name}</p>
           <p className="text-xs text-muted-foreground truncate">by {books[0].author}</p>
-          <AppLink href={books[0].link} className="text-xs text-orange-600 hover:text-orange-800 mt-2 inline-block">
-            View on Oku →
-          </AppLink>
+          <Link href={books[0].link} className="text-xs text-orange-600 hover:text-orange-800 mt-2 inline-block">
+            View on Oku &rarr;
+          </Link>
         </div>
       ) : (
         <p className="text-sm text-muted-foreground">No recent reads</p>
@@ -173,7 +173,7 @@ const BookCard = () => {
 const FeaturedWorkCard = () => {
   const featuredWork = filteredWorks.filter((work) => work.feature).slice(0, 4);
   const latestWork = featuredWork.length > 0 ? featuredWork : filteredWorks.slice(0, 1);
-  
+
   return (
     <div className="bento-card work-card">
       <div className="mb-4">
@@ -181,16 +181,16 @@ const FeaturedWorkCard = () => {
         <div className="space-y-3">
           {latestWork.map((work) => (
             <div key={work.slug} className="work-item">
-              <AppLink href={`/work/${work.slug}`} className="block hover:opacity-80">
-                <div 
+              <Link href={`/work/${work.slug}`} className="block hover:opacity-80">
+                <div
                   className="w-full h-24 rounded-lg mb-2 flex items-center justify-center relative overflow-hidden"
                   style={{
                     background: work.color ? work.color : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
                   }}
                 >
                   {work.cover ? (
-                    <img 
-                      src={work.cover} 
+                    <img
+                      src={work.cover}
                       alt={work.title}
                       className="w-full h-full object-cover"
                     />
@@ -201,14 +201,14 @@ const FeaturedWorkCard = () => {
                   )}
                 </div>
                 <p className="text-sm font-medium truncate">{work.title}</p>
-                <p className="text-xs text-muted-foreground">{work.category} • {work.year}</p>
-              </AppLink>
+                <p className="text-xs text-muted-foreground">{work.category} &bull; {work.year}</p>
+              </Link>
             </div>
           ))}
         </div>
-        <AppLink href="/work" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
-          View all projects →
-        </AppLink>
+        <Link href="/work" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
+          View all projects &rarr;
+        </Link>
       </div>
     </div>
   );
@@ -216,7 +216,7 @@ const FeaturedWorkCard = () => {
 
 const RecentPostsCard = () => {
   const recentPosts = filteredPosts.slice(0, 4);
-  
+
   return (
     <div className="bento-card posts-card">
       <div className="mb-4">
@@ -224,19 +224,19 @@ const RecentPostsCard = () => {
         <div className="space-y-3">
           {recentPosts.map((post) => (
             <div key={post.slug} className="post-item">
-              <AppLink href={`/blog/${post.slug}`} className="block hover:opacity-80">
+              <Link href={`/blog/${post.slug}`} className="block hover:opacity-80">
                 <p className="text-lg font-bold font-heading mb-1 truncate">{post.title}</p>
                 <p className="text-sm text-secondarytext">{post.excerpt}</p>
                 {/* <p className="text-xs text-muted-foreground">
                   {post.category} • {new Date(post.date).toLocaleDateString()}
                 </p> */}
-              </AppLink>
+              </Link>
             </div>
           ))}
         </div>
-        <AppLink href="/blog" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
-          Read more →
-        </AppLink>
+        <Link href="/blog" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
+          Read more &rarr;
+        </Link>
       </div>
     </div>
   );
@@ -244,23 +244,23 @@ const RecentPostsCard = () => {
 
 const PhotoGalleryCard = () => {
   const recentPhotos = filteredPhotos.slice(0, 4);
-  
+
   return (
     <div className="bento-card photo-card">
       <div className="mb-3">
         <h3 className="font-semibold mb-3">Recent Photos</h3>
         <div className="grid grid-cols-2 gap-2">
           {recentPhotos.length > 0 ? recentPhotos.map((photo, index) => (
-            <AppLink key={photo.slug} href={`/photo/${photo.slug}`} className="block hover:opacity-80">
+            <Link key={photo.slug} href={`/photo/${photo.slug}`} className="block hover:opacity-80">
               <div className="aspect-square rounded-lg overflow-hidden relative">
                 {photo.cover ? (
-                  <img 
-                    src={photo.cover} 
+                  <img
+                    src={photo.cover}
                     alt={photo.title}
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div 
+                  <div
                     className={`w-full h-full bg-gradient-to-br rounded-lg flex items-center justify-center ${
                       index === 0 ? 'from-green-400 to-blue-500' :
                       index === 1 ? 'from-purple-400 to-pink-500' :
@@ -274,11 +274,11 @@ const PhotoGalleryCard = () => {
                   </div>
                 )}
               </div>
-            </AppLink>
+            </Link>
           )) : (
             // Fallback gradients if no photos
             Array.from({ length: 4 }, (_, index) => (
-              <div 
+              <div
                 key={index}
                 className={`aspect-square rounded-lg bg-gradient-to-br ${
                   index === 0 ? 'from-green-400 to-blue-500' :
@@ -290,9 +290,9 @@ const PhotoGalleryCard = () => {
             ))
           )}
         </div>
-        <AppLink href="/photo" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
-          View gallery →
-        </AppLink>
+        <Link href="/photo" className="text-sm text-blue-600 hover:text-blue-800 mt-3 inline-block">
+          View gallery &rarr;
+        </Link>
       </div>
     </div>
   );
@@ -302,15 +302,15 @@ const QuickLinksCard = () => (
   <div className="bento-card links-card">
     <h3 className="font-semibold mb-3">Quick Links</h3>
     <div className="space-y-2">
-      <AppLink href="/about" className="block text-sm text-secondarytext hover:text-primary">
+      <Link href="/about" className="block text-sm text-secondarytext hover:text-primary">
         About
-      </AppLink>
-      <AppLink href="/uses" className="block text-sm text-secondarytext hover:text-primary">
+      </Link>
+      <Link href="/uses" className="block text-sm text-secondarytext hover:text-primary">
         Uses
-      </AppLink>
-      <AppLink href="/resources" className="block text-sm text-secondarytext hover:text-primary">
+      </Link>
+      <Link href="/resources" className="block text-sm text-secondarytext hover:text-primary">
         Resources
-      </AppLink>
+      </Link>
     </div>
     <div className="mt-4 pt-4 border-t border-gray-200">
       <p className="text-xs text-secondarytext mb-2">Get in touch</p>
