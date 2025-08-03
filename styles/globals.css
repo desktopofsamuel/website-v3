@@ -139,57 +139,46 @@
     );
   }
 
-  /* Bento Grid Styles */
+  /* Bento Grid Styles - CSS Grid for Swapy */
   .bento-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, auto);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
-    grid-template-areas:
-      "intro intro music book"
-      "intro intro music book"
-      "posts posts work work"
-      "photos photos links links";
+  }
+
+  @media (max-width: 768px) {
+    .bento-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 
   .bento-card {
-    @apply border border-border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+    @apply border border-border rounded-lg p-6;
     backdrop-filter: blur(10px);
+    min-height: 200px;
+    cursor: grab;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .bento-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .bento-card:active {
+    cursor: grabbing;
+  }
+
+  .bento-card[data-swapy-dragging] {
+    transition: none !important;
+    transform: none !important;
   }
 
   .dark .bento-card {
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .intro-card {
-    grid-area: intro;
-  }
-
-  .work-card {
-    grid-area: work;
-  }
-
-  .posts-card {
-    grid-area: posts;
-  }
-
-  .music-card {
-    grid-area: music;
-  }
-
-  .book-card {
-    grid-area: book;
-  }
-
-  .photo-card {
-    grid-area: photos;
-  }
-
-  .links-card {
-    grid-area: links;
   }
 
   /* Button styles */
@@ -206,32 +195,14 @@
   }
 
   /* Responsive Bento Grid */
-  @media (max-width: 1024px) {
-    .bento-container {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-areas:
-        "intro intro intro"
-        "work work work"
-        "posts posts music"
-        "photos book links";
-    }
-  }
-
   @media (max-width: 768px) {
     .bento-container {
       grid-template-columns: 1fr;
-      grid-template-areas:
-        "intro"
-        "work"
-        "posts"
-        "music"
-        "book"
-        "photos"
-        "links";
     }
 
     .bento-card {
       @apply p-4;
+      min-height: 150px;
     }
   }
 }

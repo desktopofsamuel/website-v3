@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link  from "@/components/AppLink";
 import { filteredPosts, filteredWorks, filteredPhotos } from "@/lib/content";
 import Profile from "../public/static/samuel-profile-2022.jpeg";
 import Image from "next/image";
+import { createSwapy } from "swapy";
 
 // Individual Bento Cards
 const IntroCard = () => (
-  <div className="bento-card intro-card">
+  <div className="bento-card intro-card" data-swapy-item="intro">
     <div className="mb-4">
       <div className="avatar-container mb-4">
         <Image
@@ -78,7 +79,7 @@ const MusicCard = () => {
   }, []);
 
   return (
-    <div className="bento-card music-card">
+    <div className="bento-card music-card" data-swapy-item="music">
       <div className="flex items-center gap-3 mb-3">
         <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
           <span className="text-white text-sm">♪</span>
@@ -143,7 +144,7 @@ const BookCard = () => {
   }, []);
 
   return (
-    <div className="bento-card book-card">
+    <div className="bento-card book-card" data-swapy-item="books">
       <div className="flex items-center gap-3 mb-3">
         <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
           <span className="text-white text-sm">📚</span>
@@ -175,7 +176,7 @@ const FeaturedWorkCard = () => {
   const latestWork = featuredWork.length > 0 ? featuredWork : filteredWorks.slice(0, 1);
 
   return (
-    <div className="bento-card work-card">
+    <div className="bento-card work-card" data-swapy-item="work">
       <div className="mb-4">
         <h3 className="font-semibold mb-3">Featured Work</h3>
         <div className="space-y-3">
@@ -218,7 +219,7 @@ const RecentPostsCard = () => {
   const recentPosts = filteredPosts.slice(0, 4);
 
   return (
-    <div className="bento-card posts-card">
+    <div className="bento-card posts-card" data-swapy-item="posts">
       <div className="mb-4">
         <h3 className="font-semibold mb-3">Recent Posts</h3>
         <div className="space-y-3">
@@ -246,7 +247,7 @@ const PhotoGalleryCard = () => {
   const recentPhotos = filteredPhotos.slice(0, 4);
 
   return (
-    <div className="bento-card photo-card">
+    <div className="bento-card photo-card" data-swapy-item="photos">
       <div className="mb-3">
         <h3 className="font-semibold mb-3">Recent Photos</h3>
         <div className="grid grid-cols-2 gap-2">
@@ -299,7 +300,7 @@ const PhotoGalleryCard = () => {
 };
 
 const QuickLinksCard = () => (
-  <div className="bento-card links-card">
+  <div className="bento-card links-card" data-swapy-item="links">
     <h3 className="font-semibold mb-3">Quick Links</h3>
     <div className="space-y-2">
       <Link href="/about" className="block text-sm text-secondarytext hover:text-primary">
@@ -327,16 +328,53 @@ const QuickLinksCard = () => (
 );
 
 export default function BentoGrid() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const swapyRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (containerRef.current && !swapyRef.current) {
+      swapyRef.current = createSwapy(containerRef.current, {
+        animation: 'spring'
+      });
+
+      // Optional: Listen to swap events
+      swapyRef.current.onSwap((event: any) => {
+        console.log('Swapped:', event);
+      });
+    }
+
+    return () => {
+      if (swapyRef.current) {
+        swapyRef.current.destroy();
+        swapyRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <div className="py-8">
-      <div className="bento-container">
-        <IntroCard />
-        <MusicCard />
-        <FeaturedWorkCard />
-        <RecentPostsCard />
-        <BookCard />
-        <PhotoGalleryCard />
-        <QuickLinksCard />
+      <div className="bento-container" ref={containerRef}>
+        <div data-swapy-slot="intro">
+          <IntroCard />
+        </div>
+        <div data-swapy-slot="music">
+          <MusicCard />
+        </div>
+        <div data-swapy-slot="work">
+          <FeaturedWorkCard />
+        </div>
+        <div data-swapy-slot="posts">
+          <RecentPostsCard />
+        </div>
+        <div data-swapy-slot="books">
+          <BookCard />
+        </div>
+        <div data-swapy-slot="photos">
+          <PhotoGalleryCard />
+        </div>
+        <div data-swapy-slot="links">
+          <QuickLinksCard />
+        </div>
       </div>
     </div>
   );
