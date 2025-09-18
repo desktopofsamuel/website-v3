@@ -68,8 +68,8 @@ const MusicCard = () => {
     fetchRecentTracks();
 
     // Refresh every 10 seconds for current track, 30 seconds for recent tracks
-    const currentInterval = setInterval(fetchCurrentTrack, 10000);
-    const recentInterval = setInterval(fetchRecentTracks, 30000);
+    const currentInterval = setInterval(fetchCurrentTrack, 30000);
+    const recentInterval = setInterval(fetchRecentTracks, 60000);
 
     return () => {
       isMounted = false;
@@ -111,14 +111,6 @@ const MusicCard = () => {
           <p className="text-sm text-muted-foreground">Not currently playing</p>
         </div>
       )}
-      <div className="mt-3">
-        <Link
-          href="https://open.spotify.com/user/desktopofsamuel"
-          className="text-xs text-green-600 hover:text-green-800"
-        >
-          View my Spotify &rarr;
-        </Link>
-      </div>
     </div>
   );
 };
@@ -132,7 +124,7 @@ const BookCard = () => {
       try {
         const response = await fetch('/api/books');
         const data = await response.json();
-        setBooks(data.slice(0, 3)); // Get just the first book
+        setBooks(data.slice(0, 4)); // Get just the first book
       } catch (error) {
         console.error('Failed to fetch books:', error);
       } finally {

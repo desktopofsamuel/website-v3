@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import NextLink from "./NextLink";
+import AppLink from "@/components/AppLink";
 import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
@@ -36,11 +36,10 @@ const AppCardMusic = () => {
           ) : (
             (data as any[])?.map((artist: any, i: number) => (
               <div key={i} className="text-center flex flex-col items-center">
-                <NextLink
+                <AppLink
                   title={`Listen to ${artist.name} now on Spotify`}
                   target="_blank"
                   href={artist.link}
-                  variant="noeffect"
                 >
                   <div className="w-20 h-20 group rounded-full relative bg-transparent transition-all duration-500 hover:bg-black">
                     <div className="absolute z-[100] top-[26px] left-[26px] opacity-0 w-[25px] h-[25px] text-white transition-all duration-500 group-hover:opacity-100">
@@ -73,7 +72,7 @@ const AppCardMusic = () => {
                       />
                     </div>
                   </div>
-                </NextLink>
+                </AppLink>
                 <h3 className="my-2 text-sm leading-tight font-semibold">
                   {artist.name}
                 </h3>

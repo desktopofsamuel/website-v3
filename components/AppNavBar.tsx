@@ -1,12 +1,27 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 import Link from "@/components/AppLink";
-import { TbMenu2 } from "react-icons/tb";
+import { TbMenu2, TbSun, TbMoon } from "react-icons/tb";
 import { MENU_ITEMS } from "@/config";
 
 // Mobile menu restored using a hidden checkbox hack (no state)
 // Scrolling is disabled when the mobile menu overlay is open using a <style> tag and the :has() CSS selector
 export default function AppNavBar() {
+  const [theme, setTheme] = useState<string>('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
   return (
     <>
       {/* Disable scrolling on body when mobile menu is open */}
@@ -32,12 +47,19 @@ export default function AppNavBar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="no-underline text-inherit transition-colors border-b-2 border-b-transparent hover:text-primary-500 hover:border-b-2 hover:border-primary-500"
+                  className="no-underline text-inherit transition-colors inline-block border-b-2 border-b-transparent hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400"
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-primary-800 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <TbMoon className="w-5 h-5" /> : <TbSun className="w-5 h-5" />}
+            </button>
           </div>
 
           {/* Hamburger for mobile */}
@@ -77,6 +99,14 @@ export default function AppNavBar() {
                     {item.label}
                   </Link>
                 ))}
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 p-2 rounded-md hover:bg-white/10 transition-colors text-white self-start"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'light' ? <TbMoon className="w-5 h-5" /> : <TbSun className="w-5 h-5" />}
+                  <span>Toggle Theme</span>
+                </button>
               </nav>
             </div>  
           </div>

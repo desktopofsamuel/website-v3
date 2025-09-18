@@ -5,7 +5,7 @@ import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardBase from "@/components/CardBase";
+import AppCardBase from "@/components/AppCardBase";
 
 const AppCardResources = () => {
   const { data } = useSWR("/api/resources-career", fetcher, {
@@ -17,7 +17,7 @@ const AppCardResources = () => {
 
   return (
     <>
-      <CardBase title="💼 Career resources">
+      <AppCardBase title="💼 Career resources">
         <div className="flex flex-col space-y-3">
           {!data ? (
             <>
@@ -63,7 +63,7 @@ const AppCardResources = () => {
             ))
           )}
         </div>
-      </CardBase>
+      </AppCardBase>
     </>
   );
 };

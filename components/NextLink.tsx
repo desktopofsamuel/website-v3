@@ -28,17 +28,16 @@ export default function NextLink({
       </ChakraLink>
     );
   return (
-    <ChakraLink
-      isExternal
+    <Link
       href={href}
       className={className}
       rel="noreferrer noopener"
-      variant={variant}
-      fontFamily="heading"
+      // variant={variant}
+      // fontFamily="heading"
       {...rest}
     >
       {children}
-    </ChakraLink>
+    </Link>
   );
 }
 

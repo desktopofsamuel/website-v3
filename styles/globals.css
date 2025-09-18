@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./theme.css";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -120,7 +119,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-yellow-100 text-foreground font-body;
+    @apply bg-background text-foreground font-body;
+  }
+
+  /* Minimal cross-browser fixes */
+  .dark {
+    color-scheme: dark;
   }
 
   .font-heading {
@@ -131,11 +135,11 @@
     width: 100%;
     height: 8px;
     background: repeating-linear-gradient(
-      -45deg,            /* Diagonal angle */
-      var(--color-yellow-300),          /* Line color */
-      var(--color-yellow-300) 1px,      /* Line color end, defines thickness */
-      transparent 1px,  /* Transparent start immediately after */
-      transparent 6px   /* Space between lines */
+      -45deg,
+      var(--color-yellow-300),
+      var(--color-yellow-300) 1px,
+      transparent 1px,
+      transparent 6px
     );
   }
 
@@ -191,7 +195,18 @@
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    @apply border border-primary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Minimal cross-browser button resets */
+  button[data-slot="button"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Responsive Bento Grid */

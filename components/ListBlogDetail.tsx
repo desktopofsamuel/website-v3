@@ -13,7 +13,7 @@ export default function ListBlogDetail({ data }: any) {
           <NextImage src={post.cover} alt={post.title} />
         </Box>
         <Box>
-          <Text variant="small">
+          <Text>
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </Text>
           <Heading variant="heading">{post.title}</Heading>

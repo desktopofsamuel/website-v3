@@ -2,7 +2,7 @@
 
 import React from "react";
 import useSWR from "swr";
-import NextLink from "./NextLink";
+import AppLink from "./AppLink";
 import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
@@ -48,9 +48,9 @@ const AppCardFilms = () => {
                 title={item.name}
                 className={`w-full rounded overflow-hidden transition-all duration-100 ease-in-out scale-90 shadow-[2px_0_7px_rgba(0,0,0,0.2)] hover:z-[100] hover:rotate-1 hover:scale-100 hover:shadow-[6px_0_7px_rgba(0,0,0,0.5)] ${i > 0 ? '-ml-[30px]' : ''}`}
               >
-                <NextLink href={item.link} target="_blank" variant="noeffect">
+                <AppLink href={item.link} target="_blank">
                   <CustomCard src={item.image} alt={item.name} />
-                </NextLink>
+                </AppLink>
               </div>
             ))
           )}

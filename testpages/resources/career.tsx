@@ -1,184 +1,182 @@
-import { NextPage } from "next";
-import Layout from "@/components/Layout";
-import Skeleton from "react-loading-skeleton";
-import useSWR from "swr";
-import { SimpleGrid, Text, Box, Grid, Button, Heading } from "@chakra-ui/react";
-import fetcher from "@/lib/fetcher";
-import CardResources from "@/components/CardResources";
-import NextLink from "@/components/NextLink";
-import NextImage from "@/components/NextImage";
-import "react-loading-skeleton/dist/skeleton.css";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from "@chakra-ui/react";
+// import { NextPage } from "next";
+// import AppLayout from "@/components/AppLayout";
+// import Skeleton from "react-loading-skeleton";
+// import useSWR from "swr";
+// import { SimpleGrid, Text, Box, Grid, Button, Heading } from "@chakra-ui/react";
+// import fetcher from "@/lib/fetcher";
+// import AppCardResources from "@/components/AppCardResources";
+// import "react-loading-skeleton/dist/skeleton.css";
+// import {
+//   Breadcrumb,
+//   BreadcrumbItem,
+//   BreadcrumbLink,
+//   BreadcrumbSeparator,
+// } from "@chakra-ui/react";
 
-type Props = [
-  fields: {
-    fields: any;
-    Name: string;
-    Description: string;
-    Category: string;
-    Stage: string;
-    Images: any;
-    Tag: string;
-  }
-];
+// type Props = [
+//   fields: {
+//     fields: any;
+//     Name: string;
+//     Description: string;
+//     Category: string;
+//     Stage: string;
+//     Images: any;
+//     Tag: string;
+//   }
+// ];
 
-const UsesPage: NextPage = () => {
-  const { data: careerData } = useSWR<Props>("/api/resources-career", fetcher);
+// const UsesPage: NextPage = () => {
+//   const { data: careerData } = useSWR<Props>("/api/resources-career", fetcher);
 
-  return (
-    <Layout
-      title="UX Design Career Kit"
-      description="A list of helpful resources to kickstart your UX design career"
-    >
-      <Heading variant="pagetitle">UX Design Career Kit</Heading>
-      <Breadcrumb>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href="/resources/career">
-            UX Career Kit
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-      </Breadcrumb>
-      <Text>
-        A list of helpful resources to kickstart your UX design career
-      </Text>
-      <Heading fontSize="2xl" mt="8">
-        Search
-      </Heading>
-      {!careerData ? (
-        <SimpleGrid gap="4" columns={3}>
-          <Skeleton height="100px" />
-          <Skeleton height="100px" /> <Skeleton height="100px" />
-        </SimpleGrid>
-      ) : (
-        <Grid
-          gap="4"
-          gridTemplateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-          }}
-          alignItems="stretch"
-        >
-          {careerData
-            .filter((item) => item.fields.Stage === "Search")
-            .map((item: any, i: number) => (
-              <CardResources
-                title={item.fields.Name}
-                description={item.fields.Text}
-                url={item.fields.Link}
-                tag={item.fields.Tag}
-                key={i}
-              />
-            ))}
-        </Grid>
-      )}
+//   return (
+//     <AppLayout
+//       // title="UX Design Career Kit"
+//       // description="A list of helpful resources to kickstart your UX design career"
+//     >
+//       <Heading variant="pagetitle">UX Design Career Kit</Heading>
+//       <Breadcrumb>
+//         <BreadcrumbItem>
+//           <BreadcrumbLink href="/resources">Resources</BreadcrumbLink>
+//         </BreadcrumbItem>
+//         <BreadcrumbItem isCurrentPage>
+//           <BreadcrumbLink href="/resources/career">
+//             UX Career Kit
+//           </BreadcrumbLink>
+//         </BreadcrumbItem>
+//       </Breadcrumb>
+//       <Text>
+//         A list of helpful resources to kickstart your UX design career
+//       </Text>
+//       <Heading fontSize="2xl" mt="8">
+//         Search
+//       </Heading>
+//       {!careerData ? (
+//         <SimpleGrid gap="4" columns={3}>
+//           <Skeleton height="100px" />
+//           <Skeleton height="100px" /> <Skeleton height="100px" />
+//         </SimpleGrid>
+//       ) : (
+//         <Grid
+//           gap="4"
+//           gridTemplateColumns={{
+//             base: "1fr",
+//             md: "1fr 1fr",
+//             lg: "1fr 1fr 1fr",
+//           }}
+//           alignItems="stretch"
+//         >
+//           {careerData
+//             .filter((item) => item.fields.Stage === "Search")
+//             .map((item: any, i: number) => (
+//               <AppCardResources
+//                 title={item.fields.Name}
+//                 description={item.fields.Text}
+//                 url={item.fields.Link}
+//                 tag={item.fields.Tag}
+//                 key={i}
+//               />
+//             ))}
+//         </Grid>
+//       )}
 
-      <Heading fontSize="2xl" mt="8">
-        Prepare
-      </Heading>
-      {!careerData ? (
-        <SimpleGrid gap="4" columns={3}>
-          <Skeleton height="100px" />
-          <Skeleton height="100px" /> <Skeleton height="100px" />
-        </SimpleGrid>
-      ) : (
-        <Grid
-          gap="4"
-          gridTemplateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-          }}
-        >
-          {careerData
-            .filter((item) => item.fields.Stage === "Prepare")
-            .map((item: any, i: number) => (
-              <CardResources
-                title={item.fields.Name}
-                description={item.fields.Text}
-                url={item.fields.Link}
-                tag={item.fields.Tag}
-                key={i}
-              />
-            ))}
-        </Grid>
-      )}
+//       <Heading fontSize="2xl" mt="8">
+//         Prepare
+//       </Heading>
+//       {!careerData ? (
+//         <SimpleGrid gap="4" columns={3}>
+//           <Skeleton height="100px" />
+//           <Skeleton height="100px" /> <Skeleton height="100px" />
+//         </SimpleGrid>
+//       ) : (
+//         <Grid
+//           gap="4"
+//           gridTemplateColumns={{
+//             base: "1fr",
+//             md: "1fr 1fr",
+//             lg: "1fr 1fr 1fr",
+//           }}
+//         >
+//           {careerData
+//             .filter((item) => item.fields.Stage === "Prepare")
+//             .map((item: any, i: number) => (
+//               <AppCardResources
+//                 title={item.fields.Name}
+//                 description={item.fields.Text}
+//                 url={item.fields.Link}
+//                 tag={item.fields.Tag}
+//                 key={i}
+//               />
+//             ))}
+//         </Grid>
+//       )}
 
      
-<Heading fontSize="2xl" mt="8">
-     Interview
-      </Heading>
-      {!careerData ? (
-        <SimpleGrid gap="4" columns={3}>
-          <Skeleton height="100px" />
-          <Skeleton height="100px" /> <Skeleton height="100px" />
-        </SimpleGrid>
-      ) : (
-        <Grid
-          gap="4"
-          gridTemplateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-          }}
-        >
-          {careerData
-            .filter((item) => item.fields.Stage === "Interview")
-            .map((item: any, i: number) => (
-              <CardResources
-                title={item.fields.Name}
-                description={item.fields.Text}
-                url={item.fields.Link}
-                tag={item.fields.Tag}
-                key={i}
-              />
-            ))}
-        </Grid>
-      )}
+// <Heading fontSize="2xl" mt="8">
+//      Interview
+//       </Heading>
+//       {!careerData ? (
+//         <SimpleGrid gap="4" columns={3}>
+//           <Skeleton height="100px" />
+//           <Skeleton height="100px" /> <Skeleton height="100px" />
+//         </SimpleGrid>
+//       ) : (
+//         <Grid
+//           gap="4"
+//           gridTemplateColumns={{
+//             base: "1fr",
+//             md: "1fr 1fr",
+//             lg: "1fr 1fr 1fr",
+//           }}
+//         >
+//           {careerData
+//             .filter((item) => item.fields.Stage === "Interview")
+//             .map((item: any, i: number) => (
+//               <AppCardResources
+//                 title={item.fields.Name}
+//                 description={item.fields.Text}
+//                 url={item.fields.Link}
+//                 tag={item.fields.Tag}
+//                 key={i}
+//               />
+//             ))}
+//         </Grid>
+//       )}
 
 
-<Heading fontSize="2xl" mt="8">
-      Career
-      </Heading>
-      {!careerData ? (
-        <SimpleGrid gap="4" columns={3}>
-          <Skeleton height="100px" />
-          <Skeleton height="100px" /> <Skeleton height="100px" />
-        </SimpleGrid>
-      ) : (
-        <Grid
-          gap="4"
-          gridTemplateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-          }}
-        >
-          {careerData
-            .filter((item) => item.fields.Stage === "Career")
-            .map((item: any, i: number) => (
-              <CardResources
-                title={item.fields.Name}
-                description={item.fields.Text}
-                url={item.fields.Link}
-                tag={item.fields.Tag}
-                key={i}
-              />
-            ))}
-        </Grid>
-      )}
+// <Heading fontSize="2xl" mt="8">
+//       Career
+//       </Heading>
+//       {!careerData ? (
+//         <SimpleGrid gap="4" columns={3}>
+//           <Skeleton height="100px" />
+//           <Skeleton height="100px" /> <Skeleton height="100px" />
+//         </SimpleGrid>
+//       ) : (
+//         <Grid
+//           gap="4"
+//           gridTemplateColumns={{
+//             base: "1fr",
+//             md: "1fr 1fr",
+//             lg: "1fr 1fr 1fr",
+//           }}
+//         >
+//           {careerData
+//             .filter((item) => item.fields.Stage === "Career")
+//             .map((item: any, i: number) => (
+//               <CardResources
+//                 title={item.fields.Name}
+//                 description={item.fields.Text}
+//                 url={item.fields.Link}
+//                 tag={item.fields.Tag}
+//                 key={i}
+//               />
+//             ))}
+//         </Grid>
+//       )}
 
 
-    </Layout>
-  );
-};
+//     </AppLayout>
+//   );
+// };
 
-export default UsesPage;
+// export default UsesPage;

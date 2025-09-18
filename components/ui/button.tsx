@@ -10,17 +10,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary-100 text-primary-500 shadow-xs hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700",
+          "bg-primary-100 text-primary-500 shadow-xs hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400",
         ghost:
-          "bg-transparent text-primary-500 hover:bg-primary-100 hover:text-primary-500 dark:text-white dark:hover:bg-white/20 dark:hover:text-white",
+          "bg-transparent text-primary-500 hover:bg-primary-100 hover:text-primary-500 dark:text-primary-400 dark:hover:bg-white/20 dark:hover:text-primary-300",
         outline:
-          "bg-transparent border border-primary-200 text-primary-500 hover:border-primary-200 hover:text-primary-500 dark:border-primary-700 dark:text-primary-400 dark:hover:border-primary-600",
+          "bg-transparent border border-primary-200 text-primary-500 hover:border-primary-200 hover:text-primary-500 dark:border-primary-700 dark:text-primary-400 dark:hover:border-primary-600 dark:hover:text-primary-300",
         icon:
-          "bg-primary-100 text-primary-500 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-400 dark:hover:bg-primary-500 dark:hover:text-white",
+          "bg-primary-100 text-primary-500 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-400 dark:hover:bg-primary-500 dark:hover:text-primary-300",
         brand:
-          "bg-primary-500 text-white dark:bg-primary-400",
+          "bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-400 dark:hover:bg-primary-300 dark:text-primary-900",
         disabled:
-          "border border-yellow-200 text-gray-300 dark:border-primary-700 cursor-not-allowed",
+          "border border-yellow-200 text-gray-300 dark:border-primary-700 dark:text-primary-600 cursor-not-allowed",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

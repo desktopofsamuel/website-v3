@@ -8,6 +8,7 @@ const filteredPosts = allPosts.filter((post) => post.page !== true).sort(sortByD
 
 // Filter and sort work projects
 const filteredWorks = allWorks.filter((work) => !work.draft).sort(sortByDate);
+const filteredFeaturedWorks = allWorks.filter((work) => work.feature === true && work.draft !== true).sort(sortByDate);
 
 // Filter and sort photos
 const filteredPhotos = allPhotos.filter((photo) => !photo.draft).sort(sortByDate);
@@ -56,4 +57,4 @@ const postsWithTag = (tag: string): any => {
   return results;
 };
 
-export { allTags, postsWithTag, allPostsList, filteredPosts, filteredWorks, filteredPhotos };
+export { allTags, postsWithTag, allPostsList, filteredPosts, filteredWorks, filteredFeaturedWorks, filteredPhotos };

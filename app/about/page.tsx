@@ -11,6 +11,7 @@ import Hyperairlogo from "../../public/about/hyperair-logo.svg";
 import Playalogo from "../../public/about/playa-logo.svg";
 import Applelogo from "../../public/about/apple-logo.svg";
 import Okxlogo from "../../public/about/okx-logo.svg";
+import Pepperstonelogo from "../../public/about/pepperstone-logo.svg";
 import Figma from "../../public/about/figma.svg";
 import Adplist from "../../public/about/adplist.svg";
 import Ama from "../../public/about/Design System AMA2.jpg";
@@ -51,10 +52,20 @@ const journey = [
 
 const career = [
   {
+    image: Pepperstonelogo,
+    title: "Senior UX Designer",
+    subtitle: "Pepperstone",
+    text: "Build a crypto exchange ",
+    small: "2022 - 2024",
+    cta: "Coming soon",
+    href: "",
+    color: "#FF5000",
+  },
+  {
     image: Okxlogo,
     title: "Senior Product Designer",
     subtitle: "OKX",
-    text: "Currently leading a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023.",
+    text: "Lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023.",
     small: "2022 - 2024",
     cta: "Coming soon",
     href: "",

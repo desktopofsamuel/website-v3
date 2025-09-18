@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import NextLink from "@/components/NextLink";
+import AppLink from "@/components/AppLink"
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -29,7 +29,7 @@ const AppCardBook = () => {
           (data as any[])?.map((item: any, i: number) => (
             <div key={i} className="mb-2 rounded-2xl gap-2 grid">
               <div>
-                <NextLink
+                <AppLink
                   href={item.link}
                   title={`Read more about ${item.name} on Oku`}
                   target="_blank"
@@ -42,7 +42,7 @@ const AppCardBook = () => {
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
                   </div>
-                </NextLink>
+                </AppLink>
                 <p className="m-0 text-xs text-gray-500 uppercase">
                   {`by ${item.author}` || <Skeleton />}
                 </p>
