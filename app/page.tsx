@@ -66,7 +66,7 @@ export default function IndexPage() {
 
       {/* Blog Section */}
       <div className="border-t border-muted pt-12 mt-12">
-        <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold font-heading leading-tight mb-4">
           Notes on Design & Technology
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-8 max-w-prose">
@@ -98,7 +98,7 @@ export default function IndexPage() {
 
       {/* Photo Gallery Section */}
       <div className="border-t border-muted pt-12 mt-12 relative w-full overflow-hidden">
-        <h2 className="text-2xl md:text-3xl font-heading font-bold leading-tight mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold font-heading leading-tight mb-4">
           Through the lens
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-8 max-w-prose">
@@ -108,8 +108,7 @@ export default function IndexPage() {
           href="/photo"
           className="btn btn-primary mb-6 inline-flex items-center gap-2"
         >
-          View all photos
-          <ArrowRight className="w-4 h-4" />
+          View all journeys
         </AppLink>
         <div className="rounded-xl overflow-hidden shadow-lg">
           <PhotoScrollGallery photos={photos} />

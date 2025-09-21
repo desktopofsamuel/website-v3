@@ -7,9 +7,9 @@ export default function AppListPortfolio({ data }: any) {
 
   return (
     <div role="group" className="grid grid-cols-2 gap-16 my-10 border border-border p-8 rounded-2xl">
-      <div className="flex flex-col justify-center items-start  gap-4 flex-1">
+      <div className="flex flex-col justify-center items-start gap-2 flex-1">
         <p className="text-sm text-secondarytext font-heading mb-0">{post.subtitle}</p>
-        <h2 className="text-3xl md:text-4xl font-bold font-heading mb-2">{post.title}</h2>
+        <h2 className="text-3xl font-bold font-heading mb-2">{post.title}</h2>
         <p className="text-base text-secondarytext mb-6">{post.description}</p>
         <Button asChild>
           <Link href={`/work/${post.slug}/`}>View Process</Link>

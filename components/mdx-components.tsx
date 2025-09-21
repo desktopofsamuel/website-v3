@@ -64,7 +64,7 @@ const mdxComponents = {
     <pre {...props} className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto my-4" />
   ),
   a: (props: any) => (
-    <a {...props} className="text-primary-500 hover:text-primary-600 no-underline border-b-2 border-primary-500" />
+    <a {...props} className="text-primary-500 hover:text-primary-600 no-underline border-b-1 pb-0.5 border-primary-500" />
   ),
   strong: (props: any) => (
     <strong {...props} className="font-bold" />

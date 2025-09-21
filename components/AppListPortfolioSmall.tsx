@@ -22,7 +22,7 @@ export default function AppListPortfolioSmall({ data }: any) {
           {post.tags.map((tag: string, index: React.Key | null | undefined) => (
             <p
               key={index}
-              className="font-heading text-md text-yellow-500 font-bold mr-2"
+              className="font-heading text-md text-secondarytext mr-2"
             >
               {tag}
             </p>

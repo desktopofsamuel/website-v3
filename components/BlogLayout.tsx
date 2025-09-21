@@ -27,17 +27,17 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
           <article className="prose prose-lg max-w-none">
             <div className="mb-8">
               <div className="inline-block">
-                <span className="text-sm font-medium text-blue-600">
+                <span className="text-sm font-heading font-medium text-secondarytext">
                   {post.category}
                 </span>
               </div>
-              <h1 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
+              <h1 className="text-6xl font-bold font-heading leading-loose text-foreground mt-2 mb-4">
                 {post.title}
               </h1>
-              <p className="text-lg text-gray-600 mb-4">
+              <p className="text-lg text-secondarytext mb-4">
                 {post.tldr}
               </p>
-              <div className="flex items-center gap-2 text-sm text-gray-500 border-t border-gray-200 pt-4">
+              <div className="flex items-center font-heading gap-2 text-sm text-gray-500">
                 <span>{dayjs(post.date).format("MMMM DD, YYYY")}</span>
                 <span>·</span>
                 <span>{post.timetoread} min read</span>
@@ -80,8 +80,8 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Read more</h2>
+            <div className="mt-12 pt-8 border-t border-border ">
+              <h2 className="text-2xl font-bold text-foreground font-heading mb-6">Read more</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {relatedPosts.map((relatedPost) => (
                   <AppListBlog key={relatedPost.slug} data={relatedPost} small />

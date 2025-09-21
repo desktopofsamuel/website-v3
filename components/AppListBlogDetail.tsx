@@ -33,13 +33,13 @@ export default function AppListBlogDetail({ data }: AppListBlogDetailProps) {
           </div>
         )}
         <div>
-          <p className="font-heading font-bold text-sm text-gray-600 mb-2 uppercase tracking-wider">
+          <p className="font-heading text-sm text-secondarytext mb-2 uppercase tracking-wider">
             {post.category} - {dayjs(post.date).format("MMM DD, YYYY")}
           </p>
-          <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 leading-snug">
+          <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
             {post.title}
           </h3>
-          <p className="text-base text-gray-600 m-0 leading-relaxed line-clamp-3">
+          <p className="text-base text-secondarytext m-0 leading-relaxed line-clamp-3">
             {post.description}
           </p>
         </div>

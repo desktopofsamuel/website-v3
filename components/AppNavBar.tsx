@@ -31,8 +31,8 @@ export default function AppNavBar() {
           touch-action: none;
         }
       `}</style>
-      <header className="max-w-[1080px] mx-auto px-5">
-        <nav className="flex items-center justify-between py-8">
+      <header className="w-full px-5">
+        <nav className="flex items-center justify-between py-4">
           <Link
             href="/"
             className="text-md font-heading font-bold no-underline text-inherit"
@@ -41,13 +41,13 @@ export default function AppNavBar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex gap-4 justify-center items-center ">
             <div className="flex gap-x-4 font-heading">
               {MENU_ITEMS.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="no-underline text-inherit transition-colors inline-block border-b-2 border-b-transparent hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400"
+                  className="no-underline text-inherit transition-colors inline-block border-b-2 border-b-transparent hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400 "
                 >
                   {item.label}
                 </Link>
@@ -84,7 +84,7 @@ export default function AppNavBar() {
               {/* Close button */}
               <label
                 htmlFor="mobile-menu-toggle"
-                className="mb-8 bg-none border-none text-2xl cursor-pointer select-none self-end"
+                className="mb-8 bg-none border-none text-2xl cursor-pointer select-none self-end text-white dark:text-white"
                 aria-label="Close menu"
               >
                 ✕
@@ -94,9 +94,10 @@ export default function AppNavBar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="no-underline text-inherit transition-colors hover:text-primary-500 hover:border-b-2 hover:border-primary-500"
+                    className="no-underline text-inherit w-full transition-colors group"
                   >
-                    {item.label}
+                    <span className="group-hover:text-primary-500 group-hover:border-b-2 group-hover:border-primary-500">
+                    {item.label}</span>
                   </Link>
                 ))}
                 <button

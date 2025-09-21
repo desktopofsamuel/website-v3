@@ -10,12 +10,12 @@ export default function AppLayout({
   children,
 }: AppLayoutProps) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <AppNavBar />
-      <main style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 20px" }}>
+      <main className="max-w-[1080px] mx-auto px-5">
         {children}
       </main>
       <AppFooter/>
-    </>
+    </div>
   );
 } 

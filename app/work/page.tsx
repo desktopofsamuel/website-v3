@@ -23,7 +23,7 @@ export default function WorkListPage() {
         .map((post) => (
           <AppListPortfolio key={post.slug} data={post} />
         ))}
-      <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">
+      <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext mb-4">
         Side Projects
       </h2>
 

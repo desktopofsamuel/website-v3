@@ -37,7 +37,7 @@ export default function AppListBlog({ data, small = false }: AppListBlogProps) {
         })}>
           {post.title}
         </h3>
-        <p className={cn("font-body text-secondarytext leading-relaxed", {
+        <p className={cn("font-body text-secondarytext", {
           "text-sm line-clamp-2": small,
           "text-base line-clamp-3": !small
         })}>

@@ -22,22 +22,26 @@ const AppCardCurrentlyPlaying = () => {
 
   return (dynamicData as any)?.isPlaying ? (
    <AppCardBase title="🎧 Currently playing">
-      <h2 className="leading-tight my-0 text-5xl inline-block">{(dynamicData as any).title}</h2>
-      <div className="inline-block ml-4 relative w-12 h-12">
-        <div className="relative flex justify-between w-6 h-6">
-          <div className="bg-gray-300 w-1 h-full rounded-md animate-bounce origin-bottom" />
-          <div className="bg-gray-300 w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-2.2s' }} />
-          <div className="bg-gray-300 w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-3.7s' }} />
-          <div className="bg-gray-300 w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-4.2s' }} />
-        </div>
-      </div>
-      <p className="font-heading">{(dynamicData as any).artist}</p>
+    <div className="flex items-center gap-2">
+      <h2 className="font-heading font-bold leading-tight my-0 text-4xl items-center">
+        {(dynamicData as any).title}
+        <span className="ml-4 relative align-middle inline-block">
+          <span className="relative flex justify-between w-6 h-6">
+            <span className="bg-muted-foreground w-1 h-full rounded-md animate-bounce origin-bottom" />
+            <span className="bg-muted-foreground w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-2.2s' }} />
+            <span className="bg-muted-foreground w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-3.7s' }} />
+            <span className="bg-muted-foreground w-1 h-full rounded-md animate-bounce origin-bottom" style={{ animationDelay: '-4.2s' }} />
+          </span>
+        </span>
+      </h2>
+    </div>
+      <p className="font-heading text-muted-foreground">{(dynamicData as any).artist}</p>
    </AppCardBase>
   ) : (
    <AppCardBase title="🎧 Last played">
       {(staticData as any[])?.map((song: any, i: number) => (
         <div key={i}>
-          <h2 className="font-bold leading-tight my-0 text-5xl mb-4">{song.title}</h2>
+          <h2 className="font-heading font-bold leading-tight my-0 text-5xl mb-4">{song.title}</h2>
           <p className="text-muted-foreground font-heading">{song.artist}</p>
         </div>
       ))}

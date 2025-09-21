@@ -16,6 +16,9 @@ import Figma from "../../public/about/figma.svg";
 import Adplist from "../../public/about/adplist.svg";
 import Ama from "../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../public/about/Firm Visit.jpeg";
+import WorldTour from "../../public/about/architecting-design-for-scale.png";
+import IntoDesignSystem from "../../public/about/into-design-system.png";
+import AppLink from "@/components/AppLink";
 
 const socials = [
   {
@@ -51,16 +54,16 @@ const journey = [
 ]
 
 const career = [
-  {
-    image: Pepperstonelogo,
-    title: "Senior UX Designer",
-    subtitle: "Pepperstone",
-    text: "Build a crypto exchange ",
-    small: "2022 - 2024",
-    cta: "Coming soon",
-    href: "",
-    color: "#FF5000",
-  },
+  // {
+  //   image: Pepperstonelogo,
+  //   title: "Senior UX Designer",
+  //   subtitle: "Pepperstone",
+  //   text: "Build a crypto exchange ",
+  //   small: "2022 - 2024",
+  //   cta: "Coming soon",
+  //   href: "",
+  //   color: "#FF5000",
+  // },
   {
     image: Okxlogo,
     title: "Senior Product Designer",
@@ -130,6 +133,20 @@ const education = [
 
 const engagements = [
   {
+    image: IntoDesignSystem,
+    subtitle: "Host and Organiser",
+    title: "Into Design System",
+    small: "2025 July",
+    noAnimation: true,
+  },
+  {
+    image: WorldTour,
+    subtitle: "Host of Friends of Figma World Tour",
+    title: "Architecting design for scale ",
+    small: "2025 July",
+    noAnimation: true,
+  },
+  {
     image: FirmVisit,
     subtitle: "OKX Product Design Team Representative",
     title: "Campus Recruitment: HKUST Firm Visit",
@@ -143,20 +160,6 @@ const engagements = [
     small: "2022 Sep",
     noAnimation: true,
   },
-  {
-    image: Ama,
-    subtitle: "Host of Friends of Figma HK",
-    title: "Architecting design for scale ",
-    small: "2025 July",
-    noAnimation: true,
-  },
-  {
-    image: Ama,
-    subtitle: "Host of Friends of Figma HK",
-    title: "Into Design System",
-    small: "2025 July",
-    noAnimation: true,
-  }
 ];
 
 const community = [
@@ -249,7 +252,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
           <p className="mx-2"> | </p>
           <p className="">{small}</p>
         </div>
-        <p className="my-2 md:my-4">{text}</p>
+        <p className="my-2 md:my-4 text-secondarytext">{text}</p>
         {cta &&
           (href === "" ? (
             <Button variant="disabled" className="w-min" aria-disabled>
@@ -293,18 +296,14 @@ const EntryCard: React.FC<EntryCardProps> = ({
       )}
       <div className="grid grid-cols-1 w-full items-center">
         <div className="flex flex-col gap-2">
-          <h3 className="text-xl md:text-2xl font-bold">{title}</h3>
+          <h3 className="text-xl md:text-2xl font-bold font-heading">{title}</h3>
           <p className="font-heading text-md text-secondarytext my-0">{subtitle}</p>
           <p className="text-sm my-0 text-secondarytext font-heading">{text}</p>
         </div>
         <div className="" />
         <div>
           {cta && href && (
-            <Button asChild variant="outline" size="sm">
-              <Link href={href} className="" target="_blank">
-                {cta}
-              </Link>
-            </Button>
+            <Button variant="outline"asChild><AppLink href={href} target="_blank">{cta}</AppLink></Button>
           )}
         </div>
       </div>
@@ -318,7 +317,7 @@ export default function AboutPage() {
   const experienceYears = currentYear - startYear;
   return (
     <AppLayout>
-      <section className="grid grid-cols-1 gap-4 md:gap-16 items-center py-4 md:py-16 mt-4 md:mt-16">
+      <section className="flex-1 grid grid-cols-1 gap-4 md:gap-16 py-8 items-center">
         <Image
           src={Profile2022}
           alt="Portrait of Samuel Wong"
@@ -328,7 +327,7 @@ export default function AboutPage() {
           className="rounded-full"
         />
         <div className="max-w-prose flex flex-col gap-8">
-          <h1 className="text-4xl font-bold leading-tight">
+          <h1 className="text-4xl font-heading font-bold leading-tight">
             Hello, my name is Samuel.
           </h1>
           <p className="text-secondarytext leading-relaxed">
@@ -422,8 +421,8 @@ export default function AboutPage() {
       </section>
 
       <section className="py-36 text-center" id="contact">
-        <h2 className="text-3xl font-bold">Let&apos;s connect</h2>
-        <p>
+        <h2 className="text-2xl md:text-3xl font-heading font-bold leading-tight mb-4">Let&apos;s connect</h2>
+        <p className="text-secondarytext">
           Drop me a line if you want to say hi, or share your thoughts on my
           writings.
         </p>
