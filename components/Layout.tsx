@@ -1,30 +1,30 @@
-import { Container } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-import { MetaTag } from "next-seo/lib/types";
+// import { Container } from "@chakra-ui/react";
+// import { NextSeo } from "next-seo";
+// import NavBar from "@/components/NavBar";
+// import Footer from "@/components/Footer";
+// import { MetaTag } from "next-seo/lib/types";
 
-type LayoutProps = {
-  title?: string;
-  description?: string;
-  keywords?: string[],
-  children: React.ReactNode;
-};
+// type LayoutProps = {
+//   title?: string;
+//   description?: string;
+//   keywords?: string[],
+//   children: React.ReactNode;
+// };
 
-export default function Layout({
-  title,
-  description,
-  keywords,
-  children,
-}: LayoutProps) {
-  return (
-    <>
-      <NextSeo title={title} description={description} />
-      <NavBar />
-      <Container as="main" maxW="1080px">
-        {children}
-      </Container>
-      <Footer/>
-    </>
-  );
-}
+// export default function Layout({
+//   title,
+//   description,
+//   keywords,
+//   children,
+// }: LayoutProps) {
+//   return (
+//     <>
+//       <NextSeo title={title} description={description} />
+//       <NavBar />
+//       <Container as="main" maxW="1080px">
+//         {children}
+//       </Container>
+//       <Footer/>
+//     </>
+//   );
+// }

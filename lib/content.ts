@@ -1,9 +1,20 @@
-import { allPosts, Post } from "contentlayer/generated";
+import { allPosts, allWorks, allPhotos, Post, Work, Photo } from "contentlayer/generated";
 import { unique } from "typescript-array-utils";
 import kebabCase from "lodash.kebabcase";
+import { sortByDate } from "@/utils";
+
+// Filter out posts where page === true (these are page content, not blog posts)
+const filteredPosts = allPosts.filter((post) => post.page !== true).sort(sortByDate);
+
+// Filter and sort work projects
+const filteredWorks = allWorks.filter((work) => !work.draft).sort(sortByDate);
+const filteredFeaturedWorks = allWorks.filter((work) => work.feature === true && work.draft !== true).sort(sortByDate);
+
+// Filter and sort photos
+const filteredPhotos = allPhotos.filter((photo) => !photo.draft).sort(sortByDate);
 
 // All tags used by blog posts
-const listOfTags = unique(allPosts.flatMap((post) => post.tags));
+const listOfTags = unique(filteredPosts.flatMap((post) => post.tags));
 
 type answerProps = {
   name: string;
@@ -14,10 +25,10 @@ type answerProps = {
 const allTags = listOfTags.map((tag) => ({
   name: tag,
   path: `/tags/${kebabCase(tag)}`,
-  count: allPosts.reduce((count, post) => count + (post.tags.includes(tag) ? 1 : 0), 0)
+  count: filteredPosts.reduce((count, post) => count + (post.tags.includes(tag) ? 1 : 0), 0)
 }));
 
-const allPostsList = allPosts.map((post) => ({
+const allPostsList = filteredPosts.map((post) => ({
   slug: post.slug,
   title: post.title,
   tags: post.tags,
@@ -46,4 +57,4 @@ const postsWithTag = (tag: string): any => {
   return results;
 };
 
-export { allTags, postsWithTag, allPostsList };
+export { allTags, postsWithTag, allPostsList, filteredPosts, filteredWorks, filteredFeaturedWorks, filteredPhotos };

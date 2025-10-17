@@ -18,8 +18,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import Link from "next/link";
-import NextLink from "@/components/NextLink";
+import Link from "@/components/NextLink";
 
 export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,7 +27,7 @@ export default function NavBar() {
     <>
       <Container as="header" maxW="1080px">
         <Flex as="nav" alignItems="center" my="8">
-          <NextLink href="/">Desktop of Samuel </NextLink>
+          <Link href="/" className="font-heading text-md">Desktop of Samuel </Link>
           <Spacer />
           <List
             as="nav"

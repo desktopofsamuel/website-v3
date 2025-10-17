@@ -1,7 +1,6 @@
-import { Box, LinkBox, Text } from "@chakra-ui/react";
 import { Work } from "contentlayer/generated";
 import React from "react";
-import NextLink from "@/components/NextLink";
+import AppLink from "@/components/AppLink";
 
 const NextPrev = ({
   prevPost,
@@ -11,26 +10,21 @@ const NextPrev = ({
   prevPost: Work;
 }) => {
   return (
-    <Box my="16">
+    <div className="my-16">
       {/* {prevPost && (
-                <Link href={`/work/${prevPost.slug}`}>
-                    <button>Previous: {prevPost.title}</button>
-                </Link>
-            )} */}
-
+        <AppLink href={`/work/${prevPost.slug}`}>
+          <button>Previous: {prevPost.title}</button>
+        </AppLink>
+      )} */}
       {nextPost && (
-        
-          <Box border="1px solid" borderColor="border" px="8" py="6" rounded="md" ><NextLink href={`/work/${nextPost.slug}`}>
-            <Text variant="small" color="secondarytext" my="0">
-              Read next →
-            </Text>
-            <Text fontSize="lg" my="0">
-              {nextPost.title}
-            </Text>  </NextLink>
-          </Box>
-      
+        <div className="border border-border px-8 py-6 rounded-md">
+          <AppLink href={`/work/${nextPost.slug}`} className="no-underline">
+            <div className="text-secondarytext text-sm mb-1">Read next →</div>
+            <div className="text-lg font-bold">{nextPost.title}</div>
+          </AppLink>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 
