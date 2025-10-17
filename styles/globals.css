@@ -220,4 +220,8 @@
       min-height: 150px;
     }
   }
+
+  .prose > video {
+    @apply w-full h-auto rounded-lg my-4;
+  }
 }

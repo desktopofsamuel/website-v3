@@ -15,7 +15,7 @@ export default function PhotoListPage() {
         <h1 className="mb-4 text-5xl md:text-6xl font-bold font-heading">
           Photography
         </h1>
-        <p className="text-lg mb-8" style={{ color: "var(--color-secondarytext)", fontFamily: "var(--font-body)" }}>
+        <p className="text-lg mb-8 text-secondarytext">
           I’m greatly inspired by cities and stories within. Therefore I publish sets of photos according to cities that I have visited. More photos on my Instagram.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
