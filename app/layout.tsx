@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Instrument_Sans } from 'next/font/google'
 import '../styles/globals.css'
+import { Analytics } from '@vercel/analytics/next';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
@@ -101,6 +103,8 @@ export default function RootLayout({
         MozOsxFontSmoothing: 'grayscale',
       }}>
         {children}
+        <Analytics />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
       </body>
     </html>
   )
