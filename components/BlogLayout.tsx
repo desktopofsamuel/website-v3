@@ -31,7 +31,7 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
                   {post.category}
                 </span>
               </div>
-              <h1 className="text-6xl font-bold font-heading leading-normal text-foreground mt-2 mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold font-heading leading-tight text-foreground mt-2 mb-4">
                 {post.title}
               </h1>
               <p className="text-lg text-secondarytext mb-4">
