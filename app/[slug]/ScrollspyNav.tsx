@@ -26,7 +26,9 @@ export default function ScrollspyNav({ headings }: ScrollspyNavProps) {
         });
       },
       {
-        rootMargin: "-20% 0px -80% 0px",
+        // To account for a 68px header and trigger when the heading is near the center of the viewport,
+        // set rootMargin so the observed point is the center minus header height.
+        rootMargin: `-${(window.innerHeight / 2) - 68}px 0px -${(window.innerHeight / 2) - 68}px 0px`,
       }
     );
 
@@ -54,16 +56,16 @@ export default function ScrollspyNav({ headings }: ScrollspyNavProps) {
           {headings.map((heading, index) => (
             <li
               key={index}
-              className={`border-l border-gray-200 pl-2 transition-colors ${
+              className={`border-l border-gray-200 dark:border-gray-600 pl-2 py-1 transition-colors ${
                 activeId === heading.id
-                  ? "border-primary-500 text-primary-500 font-bold"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "border-primary-500 dark:border-primary-500 text-primary-500 font-bold"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               }`}
               style={{ paddingLeft: `${8 + (heading.level - 1) * 8}px` }}
             >
               <Link
                 href={`#${heading.id}`}
-                className="block py-1 hover:text-primary-500 transition-colors"
+                className="block hover:text-primary-500 transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   const element = document.getElementById(heading.id);
