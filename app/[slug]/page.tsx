@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = allPosts.find((post) => post.slug === slug);
 
-  if (!post) {
+  if (!post || post.draft) {
     return {
       title: "Post Not Found",
       description: "The requested post could not be found.",
@@ -34,18 +34,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Generate static params for all posts
+// Generate static params for all posts (excluding drafts)
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
+  return allPosts
+    .filter((post) => !post.draft)
+    .map((post) => ({
+      slug: post.slug,
+    }));
 }
 
 // Get data for the specific post
 async function getData(slug: string) {
   const post = allPosts.find((post) => post.slug === slug);
 
-  if (!post) {
+  if (!post || post.draft) {
     notFound();
   }
 
@@ -57,7 +59,7 @@ async function getData(slug: string) {
     relatedPosts = allPosts
       .filter((p) => {
         const hasSharedTag = p.tags.some((tag) => post.tags.includes(tag));
-        return hasSharedTag && p.slug !== post.slug && !p.page; // Exclude pages from related posts
+        return hasSharedTag && p.slug !== post.slug && !p.page && !p.draft; // Exclude pages and drafts from related posts
       })
       .sort((a, b) => {
         // Sort related posts by the order of the tags in the current post
@@ -70,7 +72,7 @@ async function getData(slug: string) {
     // If no related posts found, then find posts in the same category
     if (relatedPosts.length === 0) {
       relatedPosts = allPosts
-        .filter((p) => p.category === post.category && p.slug !== post.slug && !p.page)
+        .filter((p) => p.category === post.category && p.slug !== post.slug && !p.page && !p.draft)
         .slice(0, 2);
     }
   }

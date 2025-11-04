@@ -3,8 +3,8 @@ import { unique } from "typescript-array-utils";
 import kebabCase from "lodash.kebabcase";
 import { sortByDate } from "@/utils";
 
-// Filter out posts where page === true (these are page content, not blog posts)
-const filteredPosts = allPosts.filter((post) => post.page !== true).sort(sortByDate);
+// Filter out posts where page === true (these are page content, not blog posts) and draft posts
+const filteredPosts = allPosts.filter((post) => post.page !== true && !post.draft).sort(sortByDate);
 
 // Filter and sort work projects
 const filteredWorks = allWorks.filter((work) => !work.draft).sort(sortByDate);
