@@ -372,8 +372,6 @@ export default function AboutPage() {
   const journeyLineRef = useRef<HTMLSpanElement | null>(null);
   const journeyCardsRef = useRef<HTMLDivElement[]>([]);
   const stageLogoRef = useRef<HTMLDivElement | null>(null);
-  const marqueeRef = useRef<HTMLElement | null>(null);
-  const marqueeItemsRef = useRef<HTMLDivElement[]>([]);
 
   const stats = [
     {
@@ -526,43 +524,11 @@ export default function AboutPage() {
         });
       }
 
-      marqueeItemsRef.current.forEach((item, index) => {
-        if (!item) return;
-
-        gsap.set(item, { xPercent: index % 2 === 0 ? 0 : -50 });
-
-        gsap.to(item, {
-          xPercent: (index % 2 === 0 ? -150 : -50),
-          repeat: -1,
-          duration: 18,
-          ease: "none",
-          modifiers: {
-            xPercent: (value) => {
-              const parsed = parseFloat(value);
-              if (Number.isNaN(parsed)) return value;
-              return (parsed % 100).toString();
-            },
-          },
-        });
-      });
-
-      if (marqueeRef.current) {
-        gsap.to(marqueeRef.current, {
-          yPercent: -20,
-          scrollTrigger: {
-            trigger: marqueeRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
-  marqueeItemsRef.current = [];
   journeyCardsRef.current = [];
 
   return (
@@ -636,34 +602,6 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section
-          ref={marqueeRef}
-          className="relative mt-12 overflow-hidden rounded-full border border-border bg-background/80 py-4 shadow-inner backdrop-blur"
-          aria-hidden
-        >
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background via-background/90 to-transparent" />
-          <div className="flex gap-10">
-            {[0, 1].map((groupIndex) => (
-              <div
-                key={groupIndex}
-                ref={(element) => {
-                  if (element) {
-                    marqueeItemsRef.current[groupIndex] = element;
-                  }
-                }}
-                className="flex min-w-full shrink-0 items-center gap-10 text-sm font-heading uppercase tracking-[0.7em] text-secondarytext md:text-base"
-              >
-                {Array.from({ length: 8 }).map((_, copyIndex) => (
-                  <span key={`${groupIndex}-${copyIndex}`} className="whitespace-nowrap">
-                    Product design lead
-                  </span>
-                ))}
-              </div>
-            ))}
           </div>
         </section>
 
