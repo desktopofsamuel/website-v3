@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Image, { StaticImageData } from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -43,19 +43,25 @@ const socials = [
 ];
 
 const journey = [
-    {
-        title: "Interned at Apple",
-        description: "Majoring in Arts in college, I took a gap year working for Apple's iTunes & App Store team. This valuable experience cultivated my interest and knowledge in digital products."
-    },
-    {
-        title: "Co-founding an agency",
-        description: "With growing freelance web & design projects, I co-founded a digital agency after graduation. Me and my team helped small businesses, entrepreneurs, and non-profits launching their projects."
-    },
-    {
-        title: "Lead product design",
-        description: "After that, I transitioned to start-up & corporations as a prdouct designer to lead design projects in travel, banking and crypto industries."
-    }
-]
+  {
+    year: "2012",
+    title: "Interned at Apple",
+    description:
+      "Majoring in Arts in college, I took a gap year with Apple\'s iTunes & App Store team. The experience grounded my love for digital products and the pace of shipping at scale.",
+  },
+  {
+    year: "2015",
+    title: "Co-founding an agency",
+    description:
+      "With growing freelance projects, I co-founded a digital agency to help small businesses, entrepreneurs, and non-profits launch their products from strategy to delivery.",
+  },
+  {
+    year: "2019",
+    title: "Leading product design",
+    description:
+      "I moved into start-ups and corporations as a product designer, leading multi-disciplinary teams across travel, banking, and crypto to ship outcomes that scale.",
+  },
+];
 
 const career = [
   {
@@ -221,27 +227,77 @@ function CompanyCard({
   href = "",
   noAnimation = false,
 }: CompanyCardProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+
+  const hasImage = Boolean(image);
+  const showHoverImage = !noAnimation && hasImage;
+
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setCursor({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+  };
+
+  const hoverHandlers = showHoverImage
+    ? {
+        onMouseEnter: () => setIsHovering(true),
+        onMouseLeave: () => setIsHovering(false),
+        onMouseMove: (event: MouseEvent<HTMLDivElement>) => handleMouseMove(event),
+      }
+    : {};
+
   return (
-    <div className="group grid grid-cols-1 items-center gap-6 rounded-3xl border border-border bg-background px-6 py-8 shadow-sm transition-all duration-500 md:grid-cols-2 md:gap-10">
-      <div className="flex h-full items-center justify-center">
+    <div
+      ref={containerRef}
+      className="group relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-sm transition-colors duration-500 hover:border-primary-500/60"
+      style={{
+        "--accent-color": color ?? "var(--primary-500)",
+      } as CSSProperties}
+      {...hoverHandlers}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(circle at 20% 20%, var(--accent-color) 0%, transparent 55%)",
+        }}
+        aria-hidden
+      />
+
+      {showHoverImage && (
         <div
-          className="flex h-full min-h-[200px] w-full items-center justify-center rounded-2xl bg-border p-8 transition-all duration-700 ease-out group-hover:[background-color:var(--hover-color)]"
+          className={`pointer-events-none absolute z-20 hidden md:block transition-opacity duration-200 ${isHovering ? "opacity-100" : "opacity-0"}`}
           style={{
-            "--hover-color": color,
-          } as CSSProperties}
+            top: cursor.y,
+            left: cursor.x,
+            transform: "translate(-50%, -50%)",
+          }}
         >
-          <div
-            className={`transition-transform duration-500 ease-out ${
-              !noAnimation ? "group-hover:scale-105" : ""
-            }`}
-          >
-            <Image src={image} alt={`${title}`} />
+          <div className="relative aspect-square w-32 rounded-2xl border border-border/40 bg-background/90 p-4 shadow-2xl backdrop-blur-md">
+            <Image src={image} alt={`${title}`} fill className="object-contain" sizes="128px" />
           </div>
         </div>
-      </div>
-      <div className="space-y-4">
+      )}
+
+      <div className="relative z-10 space-y-4">
+        {!showHoverImage && hasImage && (
+          <div className="relative h-32 w-full overflow-hidden rounded-2xl border border-border/60 bg-border/30">
+            <Image
+              src={image}
+              alt={`${title}`}
+              fill
+              className="object-contain p-6"
+              sizes="(min-width: 1024px) 320px, 100vw"
+            />
+          </div>
+        )}
         <div className="space-y-2">
-          <span className="text-xs font-heading uppercase tracking-[0.2em] text-secondarytext">
+          <span className="text-xs font-heading uppercase tracking-[0.3em] text-secondarytext">
             {subtitle}
             {small ? ` · ${small}` : ""}
           </span>
@@ -315,6 +371,9 @@ export default function AboutPage() {
   const journeySectionRef = useRef<HTMLElement | null>(null);
   const journeyLineRef = useRef<HTMLSpanElement | null>(null);
   const journeyCardsRef = useRef<HTMLDivElement[]>([]);
+  const stageLogoRef = useRef<HTMLDivElement | null>(null);
+  const marqueeRef = useRef<HTMLElement | null>(null);
+  const marqueeItemsRef = useRef<HTMLDivElement[]>([]);
 
   const stats = [
     {
@@ -425,18 +484,99 @@ export default function AboutPage() {
             }),
         });
       });
+
+      if (stageLogoRef.current) {
+        gsap.set(stageLogoRef.current, {
+          top: "50%",
+          left: "50%",
+          xPercent: -50,
+          yPercent: -50,
+          scale: 1.1,
+          autoAlpha: 0,
+        });
+
+        gsap
+          .timeline()
+          .to(stageLogoRef.current, {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          })
+          .to(
+            stageLogoRef.current,
+            {
+              top: "18%",
+              left: "18%",
+              scale: 0.7,
+              duration: 1.1,
+              ease: "power3.inOut",
+            },
+            "-=0.2"
+          );
+
+        gsap.to(stageLogoRef.current, {
+          yPercent: -20,
+          scrollTrigger: {
+            trigger: pageRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      marqueeItemsRef.current.forEach((item, index) => {
+        if (!item) return;
+
+        gsap.set(item, { xPercent: index % 2 === 0 ? 0 : -50 });
+
+        gsap.to(item, {
+          xPercent: (index % 2 === 0 ? -150 : -50),
+          repeat: -1,
+          duration: 18,
+          ease: "none",
+          modifiers: {
+            xPercent: (value) => {
+              const parsed = parseFloat(value);
+              if (Number.isNaN(parsed)) return value;
+              return (parsed % 100).toString();
+            },
+          },
+        });
+      });
+
+      if (marqueeRef.current) {
+        gsap.to(marqueeRef.current, {
+          yPercent: -20,
+          scrollTrigger: {
+            trigger: marqueeRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
+  marqueeItemsRef.current = [];
   journeyCardsRef.current = [];
 
   return (
     <AppLayout>
       <div ref={pageRef} className="flex-1 pb-24">
-        <section className="pt-16 md:pt-24" data-gsap="fade-up">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <section className="relative isolate overflow-visible pt-16 md:pt-24" data-gsap="fade-up">
+          <div
+            ref={stageLogoRef}
+            className="pointer-events-none absolute z-0 font-heading text-[18vw] font-black uppercase leading-none tracking-[-0.06em] text-primary-500/12 md:text-[14vw]"
+            aria-hidden
+          >
+            Samuel
+          </div>
+          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-3 text-sm font-heading uppercase tracking-[0.25em] text-secondarytext">
                 <span className="h-2 w-2 rounded-full bg-primary-500" aria-hidden />
@@ -500,6 +640,34 @@ export default function AboutPage() {
         </section>
 
         <section
+          ref={marqueeRef}
+          className="relative mt-12 overflow-hidden rounded-full border border-border bg-background/80 py-4 shadow-inner backdrop-blur"
+          aria-hidden
+        >
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background via-background/90 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background via-background/90 to-transparent" />
+          <div className="flex gap-10">
+            {[0, 1].map((groupIndex) => (
+              <div
+                key={groupIndex}
+                ref={(element) => {
+                  if (element) {
+                    marqueeItemsRef.current[groupIndex] = element;
+                  }
+                }}
+                className="flex min-w-full shrink-0 items-center gap-10 text-sm font-heading uppercase tracking-[0.7em] text-secondarytext md:text-base"
+              >
+                {Array.from({ length: 8 }).map((_, copyIndex) => (
+                  <span key={`${groupIndex}-${copyIndex}`} className="whitespace-nowrap">
+                    Product design lead
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
           id="journey"
           ref={journeySectionRef}
           className="py-20 md:py-28"
@@ -511,35 +679,41 @@ export default function AboutPage() {
                 From a gap year immersed in Apple&apos;s iTunes & App Store team to co-founding a digital agency and leading product design across web3, finance, and travel, each chapter sharpened how I blend craft, strategy, and empathy.
               </p>
               <p className="text-secondarytext md:text-lg">
-                Scroll to trace the moments that shaped my practice.
+                Scroll to trace the milestones that anchor my practice.
               </p>
             </div>
-            <div className="relative pl-6 lg:pl-10">
+            <div className="relative border-l border-border pl-12 lg:pl-16">
               <span
                 ref={journeyLineRef}
                 className="absolute left-0 top-0 h-full w-px origin-top bg-primary-500/60"
                 aria-hidden
               />
-              <div className="space-y-8">
+              <div className="space-y-14">
                 {journey.map((item, index) => (
                   <div
                     key={item.title}
-                    ref={(element) => {
-                      if (element) {
-                        journeyCardsRef.current[index] = element;
-                      }
-                    }}
-                    className="relative rounded-2xl border border-border bg-background px-6 py-8 shadow-sm"
+                    className="relative grid gap-6 md:grid-cols-[minmax(0,0.25fr)_minmax(0,1fr)]"
                   >
-                      <span className="absolute -left-6 top-8 flex h-6 w-6 items-center justify-center rounded-full border border-primary-500 bg-background font-heading text-xs font-semibold text-primary-500 lg:-left-8">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </span>
-                    <h3 className="text-2xl font-heading font-semibold md:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-secondarytext md:text-base">
-                      {item.description}
-                    </p>
+                    <div className="relative">
+                      <span className="pointer-events-none block font-heading text-5xl uppercase tracking-tight text-primary-500/80 md:text-7xl">
+                        {item.year}
+                      </span>
+                    </div>
+                    <div
+                      ref={(element) => {
+                        if (element) {
+                          journeyCardsRef.current[index] = element;
+                        }
+                      }}
+                      className="relative rounded-2xl border border-border bg-background px-6 py-8 shadow-sm"
+                    >
+                      <p className="text-sm font-heading uppercase tracking-[0.3em] text-secondarytext">
+                        {item.title}
+                      </p>
+                      <p className="mt-3 text-secondarytext md:text-base">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
