@@ -66,10 +66,20 @@ const journey = [
 const career = [
   {
     image: Okxlogo,
+    title: "Product Design Lead",
+    subtitle: "Pepperstone",
+    text: "Lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023.",
+    small: "2025",
+    cta: "Coming soon",
+    href: "",
+    color: "#000000",
+  },
+  {
+    image: Okxlogo,
     title: "Senior Product Designer",
     subtitle: "OKX",
     text: "Lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023.",
-    small: "2022 - 2024",
+    small: "2022",
     cta: "Coming soon",
     href: "",
     color: "#000000",
@@ -78,7 +88,7 @@ const career = [
     title: "UX/UI Consultant",
     subtitle: "HSBC via Protiviti",
     text: "Consultant placed in HSBC Wealth team, designed end-to-end browser & app journeys to enhance stock trading and analysis experience for Asia market.",
-    small: "2021 - 2022",
+    small: "2021",
     image: Hsbclogo,
     color: "#DB0011",
     cta: "View Work",
@@ -87,7 +97,7 @@ const career = [
   {
     title: "Principal Designer",
     subtitle: "HyperAir",
-    small: "2019 - 2021",
+    small: "2019",
     text: "First design hire and design team of one, scaled product offering from prototype to multiple pillars with B2C & B2B platforms. Shipped data-driven design & feature enhancement for scale.",
     image: Hyperairlogo,
     cta: "View Work",
@@ -99,7 +109,7 @@ const career = [
     title: "Co-founder & Design Lead",
     subtitle: "Playa",
     text: "Co-founder of a bootstrapped digital agency, shipped award-winning web and app projects from concept to delivery for SMB and start-up clients.",
-    small: "2015 - 2019",
+    small: "2015",
     color: "#49CC74",
     cta: "View Work",
     href: "https://playa.hk/portfolio.html",
@@ -107,7 +117,7 @@ const career = [
   {
     title: "Cross Content Intern",
     subtitle: "Apple",
-    small: "2012 - 2013",
+    small: "2012",
     text: "Deferred from university for 1-year full-time internship at iTunes & App Store team to curate APAC editorial content for apps, films, music and books.",
     image: Applelogo,
     color: "#86868B",
@@ -202,6 +212,11 @@ const awards = [
     title: "Cyberport",
     text: "2016",
   },
+  {
+    title: "OGCIO",
+    subtitle: "Web Accessibility Recognition Scheme Triple Gold Award",
+    text: "2016",
+  },
 ];
 
 type CompanyCardProps = {
@@ -265,6 +280,8 @@ function CompanyCard({
         style={{
           background:
             "radial-gradient(circle at 20% 20%, var(--accent-color) 0%, transparent 55%)",
+          transformOrigin: "20% 20%",
+          willChange: "transform, opacity",
         }}
         aria-hidden
       />
@@ -291,13 +308,13 @@ function CompanyCard({
               src={image}
               alt={`${title}`}
               fill
-              className="object-contain p-6"
+              className="object-cover"
               sizes="(min-width: 1024px) 320px, 100vw"
             />
           </div>
         )}
         <div className="space-y-2">
-          <span className="text-xs font-heading uppercase tracking-[0.3em] text-secondarytext">
+          <span className="text-xs font-heading uppercase tracking-wide text-secondarytext">
             {subtitle}
             {small ? ` · ${small}` : ""}
           </span>
@@ -319,6 +336,91 @@ function CompanyCard({
             </Button>
           )
         )}
+      </div>
+    </div>
+  );
+}
+
+type TimelineCardProps = {
+  title: string;
+  subtitle?: string;
+  text?: string;
+  image?: string | StaticImageData;
+  small?: string;
+  color?: string;
+  cta?: string;
+  href?: string;
+};
+
+function TimelineCard({
+  title,
+  subtitle,
+  small,
+  text,
+  image,
+  cta,
+  color,
+  href = "",
+}: TimelineCardProps) {
+  return (
+    <div className="group relative w-full border-b border-border py-8">
+      {/* Full-width hover background that breaks out of container */}
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 bg-primary-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
+      
+      {/* Background image at bottom right - only visible on hover with gradient overlay */}
+      {image && (
+        <div className="pointer-events-none absolute bottom-0 right-0 overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div className="relative h-48 w-48 md:h-64 md:w-64">
+            <Image
+              src={image}
+              alt={`${subtitle ?? title} logo`}
+              fill
+              className="object-contain opacity-30"
+              sizes="(max-width: 768px) 192px, 256px"
+            />
+            {/* Gradient overlay from bottom to top for additional fade effect */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" aria-hidden />
+          </div>
+        </div>
+      )}
+      
+      <div className="relative grid grid-cols-1 gap-8 md:grid-cols-[30%_1fr]">
+        {/* Year on left - 30% width */}
+        <div className="flex flex-col items-start">
+          <span className="text-4xl font-heading font-bold uppercase tracking-tight transition-colors duration-300 group-hover:text-primary-500 md:text-4xl lg:text-8xl">
+            {small || ""}
+          </span>
+          {subtitle && (
+              <h4 className="text-2xl font-heading md:text-3xl text-secondarytext">
+                {subtitle}
+              </h4>)}
+
+        </div>
+        
+        {/* Content on right */}
+        <div className="flex flex-col gap-4">
+          <div className="space-y-2">
+          
+          
+            <h3 className="text-2xl font-heading font-semibold leading-tight md:text-3xl">
+              {title}
+            </h3>
+          </div>
+          {text && <p className="text-secondarytext">{text}</p>}
+          {cta && (
+            href === "" ? (
+              <Button variant="disabled" className="w-min" aria-disabled>
+                {cta}
+              </Button>
+            ) : (
+              <Button asChild variant="outline" className="w-min">
+                <Link href={href} className="no-underline">
+                  {cta}
+                </Link>
+              </Button>
+            )
+          )}
+        </div>
       </div>
     </div>
   );
@@ -371,22 +473,8 @@ export default function AboutPage() {
   const journeySectionRef = useRef<HTMLElement | null>(null);
   const journeyLineRef = useRef<HTMLSpanElement | null>(null);
   const journeyCardsRef = useRef<HTMLDivElement[]>([]);
-  const stageLogoRef = useRef<HTMLDivElement | null>(null);
-
-  const stats = [
-    {
-      value: `${experienceYears}+`,
-      label: "Years designing digital products",
-    },
-    {
-      value: `${career.length}`,
-      label: "Leadership roles across web3, finance, and travel",
-    },
-    {
-      value: `${community.length + engagements.length}`,
-      label: "Community programs, mentorships, and talks hosted",
-    },
-  ];
+  const samuelNameRef = useRef<HTMLSpanElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -483,44 +571,97 @@ export default function AboutPage() {
         });
       });
 
-      if (stageLogoRef.current) {
-        gsap.set(stageLogoRef.current, {
-          top: "50%",
-          left: "50%",
-          xPercent: -50,
-          yPercent: -50,
-          scale: 1.1,
+      // Set overlay initial state
+      if (overlayRef.current) {
+        gsap.set(overlayRef.current, {
           autoAlpha: 0,
         });
+      }
 
-        gsap
-          .timeline()
-          .to(stageLogoRef.current, {
-            autoAlpha: 1,
-            scale: 1,
-            duration: 0.8,
-            ease: "power3.out",
-          })
-          .to(
-            stageLogoRef.current,
-            {
-              top: "18%",
-              left: "18%",
-              scale: 0.7,
-              duration: 1.1,
-              ease: "power3.inOut",
-            },
-            "-=0.2"
-          );
+      if (samuelNameRef.current) {
+        const nameElement = samuelNameRef.current;
+        
+        // Immediately hide the element to prevent any flash
+        // Use will-change to optimize for transforms
+        gsap.set(nameElement, {
+          autoAlpha: 0,
+          scale: 3,
+          willChange: "transform, opacity",
+        });
 
-        gsap.to(stageLogoRef.current, {
-          yPercent: -20,
-          scrollTrigger: {
-            trigger: pageRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
+        // Calculate and set initial transform position after layout is ready
+        // Using double RAF to ensure layout is complete
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (!samuelNameRef.current) return;
+            
+            const nameRect = samuelNameRef.current.getBoundingClientRect();
+            const viewportCenterX = window.innerWidth / 2;
+            const viewportCenterY = window.innerHeight / 2;
+            
+            // Calculate transform offset to center the element on screen
+            const nameCenterX = nameRect.left + nameRect.width / 2;
+            const nameCenterY = nameRect.top + nameRect.height / 2;
+            const offsetX = viewportCenterX - nameCenterX;
+            const offsetY = viewportCenterY - nameCenterY;
+            
+            // Set transform instantly (element remains in normal flow, no layout shift)
+            // Ensure z-index is maintained during animation
+            gsap.set(samuelNameRef.current, {
+              x: offsetX,
+              y: offsetY,
+              zIndex: 100,
+            });
+
+            // Animate to natural position with overlay
+            const timeline = gsap.timeline();
+            
+            // Fade in overlay
+            if (overlayRef.current) {
+              timeline.to(overlayRef.current, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }
+            
+            // Fade in and scale down name
+            timeline.to(samuelNameRef.current, {
+              autoAlpha: 1,
+              scale: 2.5,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+            
+            // Move name to position and fade out overlay simultaneously
+            timeline.to(
+              samuelNameRef.current,
+              {
+                x: 0,
+                y: 0,
+                scale: 1,
+                duration: 1.1,
+                ease: "power3.inOut",
+              },
+              "-=0.2"
+            );
+            
+            if (overlayRef.current) {
+              timeline.to(
+                overlayRef.current,
+                {
+                  autoAlpha: 0,
+                  duration: 0.6,
+                  ease: "power2.in",
+                },
+                "-=0.8"
+              );
+            }
+            
+            timeline.set(samuelNameRef.current, {
+              willChange: "auto",
+            });
+          });
         });
       }
 
@@ -534,22 +675,20 @@ export default function AboutPage() {
   return (
     <AppLayout>
       <div ref={pageRef} className="flex-1 pb-24">
-        <section className="relative isolate overflow-visible pt-16 md:pt-24" data-gsap="fade-up">
-          <div
-            ref={stageLogoRef}
-            className="pointer-events-none absolute z-0 font-heading text-[18vw] font-black uppercase leading-none tracking-[-0.06em] text-primary-500/12 md:text-[14vw]"
-            aria-hidden
-          >
-            Samuel
-          </div>
-          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div
+          ref={overlayRef}
+          className="pointer-events-none fixed inset-0 z-40 bg-background/80"
+          aria-hidden
+        />
+        <section className="relative z-20 isolate flex min-h-[70svh] items-center overflow-visible pt-16 md:pt-24" data-gsap="fade-up">
+          <div className="relative z-10 grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-3 text-sm font-heading uppercase tracking-[0.25em] text-secondarytext">
                 <span className="h-2 w-2 rounded-full bg-primary-500" aria-hidden />
                 <span>About</span>
               </div>
-              <h1 className="text-4xl font-heading font-bold leading-tight md:text-5xl">
-                Hello, my name is Samuel.
+              <h1 className="relative text-4xl font-heading font-bold leading-tight md:text-5xl">
+                Hello, my name is <span ref={samuelNameRef} className="relative z-[100] inline-block">Samuel</span>.
               </h1>
               <p className="text-base leading-relaxed text-secondarytext md:text-lg">
                 I got into product design because I&apos;m deeply passionate about technology and how it profoundly changes our way of living. For the past {experienceYears} years, I have been solving users and business problems and delivering delightful interfaces & experiences across domains like web3, finance, and travel industries.
@@ -588,19 +727,31 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="mt-16 md:mt-20" data-gsap="fade-up">
-          <div className="rounded-3xl border border-border bg-background px-6 py-10 md:px-12 md:py-14">
-            <div className="grid gap-8 md:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="space-y-4">
-                  <p className="text-3xl font-heading font-semibold md:text-4xl">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm leading-relaxed text-secondarytext md:text-base">
-                    {stat.label}
-                  </p>
+        <section id="experience" className="py-20 md:py-28" data-gsap="fade-up">
+          <div className="space-y-10">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-heading font-bold md:text-4xl">
+                Experience
+              </h2>
+              <p className="text-secondarytext md:text-lg">
+                Leading cross-functional teams to ship accessible, data-informed experiences across highly regulated and fast-moving environments.
+              </p>
+            </div>
+            <div className="relative">
+              {/* All career items as TimelineCard */}
+              {career.map((job, i) => (
+                <div key={`${job.title}-timeline-${i}`} data-gsap="fade-up">
+                  <TimelineCard {...job} />
                 </div>
               ))}
+              {/* 
+              // Existing CompanyCard components hidden for now.
+              {career.slice(1).map((job) => (
+                <div key={job.title} data-gsap="fade-up">
+                  <CompanyCard {...job} />
+                </div>
+              ))}
+              */}
             </div>
           </div>
         </section>
@@ -630,28 +781,22 @@ export default function AboutPage() {
                 {journey.map((item, index) => (
                   <div
                     key={item.title}
-                    className="relative grid gap-6 md:grid-cols-[minmax(0,0.25fr)_minmax(0,1fr)]"
+                    ref={(element) => {
+                      if (element) {
+                        journeyCardsRef.current[index] = element;
+                      }
+                    }}
+                    className="relative flex flex-col gap-4"
                   >
-                    <div className="relative">
-                      <span className="pointer-events-none block font-heading text-5xl uppercase tracking-tight text-primary-500/80 md:text-7xl">
-                        {item.year}
-                      </span>
-                    </div>
-                    <div
-                      ref={(element) => {
-                        if (element) {
-                          journeyCardsRef.current[index] = element;
-                        }
-                      }}
-                      className="relative rounded-2xl border border-border bg-background px-6 py-8 shadow-sm"
-                    >
-                      <p className="text-sm font-heading uppercase tracking-[0.3em] text-secondarytext">
-                        {item.title}
-                      </p>
-                      <p className="mt-3 text-secondarytext md:text-base">
-                        {item.description}
-                      </p>
-                    </div>
+                    <span className="pointer-events-none block font-heading text-5xl uppercase tracking-tight text-primary-500/80 md:text-7xl">
+                      {item.year}
+                    </span>
+                    <p className="text-sm font-heading uppercase tracking-[0.3em] text-secondarytext">
+                      {item.title}
+                    </p>
+                    <p className="text-secondarytext md:text-base">
+                      {item.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -684,26 +829,6 @@ export default function AboutPage() {
                 height={1280}
                 className="h-full w-full object-cover"
               />
-            </div>
-          </div>
-        </section>
-
-        <section id="experience" className="py-20 md:py-28" data-gsap="fade-up">
-          <div className="space-y-10">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-heading font-bold md:text-4xl">
-                Experience
-              </h2>
-              <p className="text-secondarytext md:text-lg">
-                Leading cross-functional teams to ship accessible, data-informed experiences across highly regulated and fast-moving environments.
-              </p>
-            </div>
-            <div className="space-y-8">
-              {career.map((job) => (
-                <div key={job.title} data-gsap="fade-up">
-                  <CompanyCard {...job} />
-                </div>
-              ))}
             </div>
           </div>
         </section>
