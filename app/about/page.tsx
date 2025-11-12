@@ -49,7 +49,7 @@ const journey = [
     },
     {
         title: "Lead product design",
-        description: "After that, I transitioned to start-up & corporations as a prdouct designer to lead design projects in travel, banking and crypto industries."
+        description: "After that, I transitioned to start-up & corporations as a product designer to lead design projects in travel, banking and crypto industries."
     }
 ]
 
