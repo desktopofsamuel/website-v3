@@ -17,12 +17,12 @@ export default function WorkListPage() {
         </p>
       </div>
 
-      {works
-        .filter((post) => post.feature === true && post.draft !== true)
-        .sort(sortByDate)
-        .map((post) => (
-          <AppListPortfolio key={post.slug} data={post} />
-        ))}
+        {works
+          .filter((post) => post.feature === true && post.draft !== true)
+          .sort(sortByDate)
+          .map((post) => (
+            <AppListPortfolio key={post.slug} data={post} />
+          ))}
       <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext mb-4">
         Side Projects
       </h2>
