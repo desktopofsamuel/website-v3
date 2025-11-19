@@ -59,9 +59,12 @@ export default function IndexPage() {
         <AppLink href="/work" className="btn btn-primary mb-8">
           View Process
         </AppLink>
-        {works.map((post) => (
-          <AppListPortfolio key={post.slug} data={post} />
-        ))}
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {works.map((post) => (
+            <AppListPortfolio key={post.slug} data={post} />
+          ))}
+        </div>
       </div>
 
       {/* Blog Section */}
