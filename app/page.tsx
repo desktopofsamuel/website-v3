@@ -26,26 +26,26 @@ export default function IndexPage() {
         />
       </Head>
 
-      {/* Hero Section */}
-      <section className="h-screen place-content-center">
-      <div className="flex flex-col md:flex-row justify-between items-baseline">
-        <h1 className="text-4xl md:text-6xl font-bold font-heading tracking-tight leading-tight mb-6">
-          Desktop of Samuel
-        </h1>
-      </div>
-      <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-        Full-stack UI/UX designer crafting websites & mobile applications with
-        bespoke experience.
-      </p>
+        {/* Hero Section */}
+        <section className="grid min-h-[100dvh] place-content-center gap-10 py-12">
+          <div className="flex flex-col md:flex-row justify-between items-baseline">
+            <h1 className="text-4xl md:text-6xl font-bold font-heading tracking-tight leading-tight mb-6">
+              Desktop of Samuel
+            </h1>
+          </div>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Full-stack UI/UX designer crafting websites & mobile applications with
+            bespoke experience.
+          </p>
 
-      {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        <AppCardBook />
-        <AppCardMusic />
-        <AppCardCurrentlyPlaying />
-        <AppCardFilms />
-      </div>
-      </section>
+          {/* Cards Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <AppCardBook />
+            <AppCardMusic />
+            <AppCardCurrentlyPlaying />
+            <AppCardFilms />
+          </div>
+        </section>
 
       {/* Portfolio Section */}
       <div className="border-t border-muted pt-12 mt-12">
