@@ -56,6 +56,13 @@
     "height": 350
   },
   {
+    "id": "wisperflow",
+    "src": "/static/wisperflow.png",
+    "title": "Wisperflow",
+    "width": 800,
+    "height": 600
+  },
+  {
     "id": "local-example",
     "src": "/about/architecting-design-for-scale.png",
     "title": "Local Image Example",
