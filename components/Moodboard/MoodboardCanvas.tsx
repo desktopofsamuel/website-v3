@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import useSWR from "swr";
 import Link from "next/link";
 import { MoodboardItem } from "./MoodboardItem";
@@ -24,16 +24,18 @@ export const MoodboardCanvas = () => {
   const [items, setItems] = useState<MoodboardData[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Motion values for the canvas position
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  
+  // Create smooth springs for the camera movement
+  const springConfig = { damping: 20, stiffness: 100 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
   useEffect(() => {
     if (data) {
-      // Randomize positions if not provided
-      // Distribute them somewhat grid-like but with randomness?
-      // Or pure random? Prompt says "randomly rotated and placed".
-      // Let's do a spread out random placement.
-      
       const randomizedItems = data.map((item, index) => {
-         // Create a rough grid or spiral to avoid complete overlap stacking if random range is small?
-         // Let's just use a large area.
          const spreadX = 2000;
          const spreadY = 1500;
          
@@ -48,6 +50,14 @@ export const MoodboardCanvas = () => {
     }
   }, [data]);
 
+  const snapToItem = (itemX: number, itemY: number) => {
+    // Calculate the offset needed to center the item
+    // We want the item's position + canvas position = 0 (center of screen)
+    // So canvas position = -item's position
+    x.set(-itemX);
+    y.set(-itemY);
+  };
+
   if (error) return <div className="flex items-center justify-center h-screen">Failed to load moodboard data</div>;
   if (!data) return <div className="flex items-center justify-center h-screen">Loading moodboard...</div>;
 
@@ -55,15 +65,20 @@ export const MoodboardCanvas = () => {
     <div 
         ref={containerRef}
         className="relative w-full h-screen overflow-hidden bg-[#e5e5e5] cursor-grab active:cursor-grabbing"
+        style={{
+            backgroundImage: "linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+            backgroundPosition: "center center"
+        }}
     >
-      {/* 
-        The "Canvas" itself. 
-        We center it initially.
-        Using a very large drag constraint area to simulate "infinite".
-      */}
       <motion.div
         drag
-        dragMomentum={false} // Canvas panning usually feels better without momentum or with very low momentum
+        dragMomentum={false}
+        style={{ x: springX, y: springY }}
+        onDrag={(event, info) => {
+            x.set(x.get() + info.delta.x);
+            y.set(y.get() + info.delta.y);
+        }}
         className="absolute left-1/2 top-1/2 w-0 h-0" // Origin at center of screen
       >
         {items.map((item) => (
@@ -73,6 +88,7 @@ export const MoodboardCanvas = () => {
             initialX={item.initialX!}
             initialY={item.initialY!}
             initialRotation={item.rotation!}
+            onSnapToCenter={() => snapToItem(item.initialX!, item.initialY!)}
           />
         ))}
       </motion.div>
