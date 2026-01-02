@@ -15,7 +15,7 @@ export default function CameraPage() {
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">Camera Collection</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            A curated view of the cameras I've used over the years, and the moments captured through their lenses.
+            A curated view of the cameras I&apos;ve used over the years, and the moments captured through their lenses.
           </p>
         </div>
         
