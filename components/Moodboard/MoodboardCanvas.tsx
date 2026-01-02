@@ -27,6 +27,7 @@ export const MoodboardCanvas = () => {
   const { data, error } = useSWR<MoodboardData[]>("/moodboard-data.json", fetcher);
   const [items, setItems] = useState<MoodboardData[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const boundaryRef = useRef<HTMLDivElement>(null);
 
   // Motion values for the canvas position
   const x = useMotionValue(0);
@@ -85,6 +86,7 @@ export const MoodboardCanvas = () => {
       >
         {/* Boundary Border Visualization (Optional - helps to see the limit) */}
         <div 
+            ref={boundaryRef}
             className="absolute border-2 border-dashed border-gray-400 pointer-events-none opacity-30"
             style={{
                 width: CANVAS_SIZE,
@@ -102,12 +104,7 @@ export const MoodboardCanvas = () => {
             initialY={item.initialY!}
             initialRotation={item.rotation!}
             onSnapToCenter={() => snapToItem(item.initialX!, item.initialY!)}
-            dragConstraints={{
-                left: -CANVAS_SIZE/2 + (item.width || 300)/2,
-                right: CANVAS_SIZE/2 - (item.width || 300)/2,
-                top: -CANVAS_SIZE/2 + (item.height || 400)/2,
-                bottom: CANVAS_SIZE/2 - (item.height || 400)/2,
-            }}
+            dragConstraints={boundaryRef}
           />
         ))}
       </motion.div>
