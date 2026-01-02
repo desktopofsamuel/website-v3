@@ -20,8 +20,8 @@ interface MoodboardData {
 }
 
 // Define the boundaries of our infinite canvas
-const CANVAS_SIZE = 4000;
-const BOUNDARY_PADDING = 500; // Extra padding before hitting the wall
+const CANVAS_SIZE = 1500;
+const BOUNDARY_PADDING = 100; // Extra padding before hitting the wall
 
 export const MoodboardCanvas = () => {
   const { data, error } = useSWR<MoodboardData[]>("/moodboard-data.json", fetcher);
