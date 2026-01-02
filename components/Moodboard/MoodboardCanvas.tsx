@@ -19,6 +19,10 @@ interface MoodboardData {
   rotation?: number;
 }
 
+// Define the boundaries of our infinite canvas
+const CANVAS_SIZE = 4000;
+const BOUNDARY_PADDING = 500; // Extra padding before hitting the wall
+
 export const MoodboardCanvas = () => {
   const { data, error } = useSWR<MoodboardData[]>("/moodboard-data.json", fetcher);
   const [items, setItems] = useState<MoodboardData[]>([]);
@@ -36,8 +40,9 @@ export const MoodboardCanvas = () => {
   useEffect(() => {
     if (data) {
       const randomizedItems = data.map((item, index) => {
-         const spreadX = 2000;
-         const spreadY = 1500;
+         // Distribute within a safe area
+         const spreadX = CANVAS_SIZE - 1000;
+         const spreadY = CANVAS_SIZE - 1000;
          
          return {
             ...item,
@@ -51,9 +56,6 @@ export const MoodboardCanvas = () => {
   }, [data]);
 
   const snapToItem = (itemX: number, itemY: number) => {
-    // Calculate the offset needed to center the item
-    // We want the item's position + canvas position = 0 (center of screen)
-    // So canvas position = -item's position
     x.set(-itemX);
     y.set(-itemY);
   };
@@ -81,6 +83,17 @@ export const MoodboardCanvas = () => {
         }}
         className="absolute left-1/2 top-1/2 w-0 h-0" // Origin at center of screen
       >
+        {/* Boundary Border Visualization (Optional - helps to see the limit) */}
+        <div 
+            className="absolute border-2 border-dashed border-gray-400 pointer-events-none opacity-30"
+            style={{
+                width: CANVAS_SIZE,
+                height: CANVAS_SIZE,
+                left: -CANVAS_SIZE/2,
+                top: -CANVAS_SIZE/2,
+            }}
+        />
+
         {items.map((item) => (
           <MoodboardItem
             key={item.id}
@@ -89,6 +102,12 @@ export const MoodboardCanvas = () => {
             initialY={item.initialY!}
             initialRotation={item.rotation!}
             onSnapToCenter={() => snapToItem(item.initialX!, item.initialY!)}
+            dragConstraints={{
+                left: -CANVAS_SIZE/2 + (item.width || 300)/2,
+                right: CANVAS_SIZE/2 - (item.width || 300)/2,
+                top: -CANVAS_SIZE/2 + (item.height || 400)/2,
+                bottom: CANVAS_SIZE/2 - (item.height || 400)/2,
+            }}
           />
         ))}
       </motion.div>

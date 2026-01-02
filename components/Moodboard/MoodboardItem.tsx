@@ -14,6 +14,7 @@ interface MoodboardItemProps {
   width?: number;
   height?: number;
   onSnapToCenter?: () => void;
+  dragConstraints?: React.RefObject<Element> | { top?: number; right?: number; bottom?: number; left?: number };
 }
 
 export const MoodboardItem = ({
@@ -26,6 +27,7 @@ export const MoodboardItem = ({
   width = 300,
   height = 400,
   onSnapToCenter,
+  dragConstraints,
 }: MoodboardItemProps) => {
   const [zIndex, setZIndex] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
@@ -35,6 +37,8 @@ export const MoodboardItem = ({
     <motion.div
       drag
       dragMomentum={true}
+      dragConstraints={dragConstraints}
+      dragElastic={0.1} // Adds a little resistance when hitting the edge
       initial={{
         x: initialX,
         y: initialY,
