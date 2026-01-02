@@ -54,5 +54,12 @@
     "title": "Abstract Art 8",
     "width": 350,
     "height": 350
+  },
+  {
+    "id": "local-example",
+    "src": "/about/architecting-design-for-scale.png",
+    "title": "Local Image Example",
+    "width": 600,
+    "height": 400
   }
 ]
