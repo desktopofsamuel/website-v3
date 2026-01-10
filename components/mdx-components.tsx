@@ -46,13 +46,13 @@ const mdxComponents = {
     <p {...props} className="text-lg mb-8 leading-loose tracking-normal text-secondarytext" />
   ),
   ul: (props: any) => (
-    <ul {...props} className="list-disc list-inside mb-4 space-y-1" />
+    <ul {...props} className="list-disc list-inside mb-8 space-y-1" />
   ),
   ol: (props: any) => (
-    <ol {...props} className="list-decimal list-inside mb-4 space-y-1" />
+    <ol {...props} className="list-decimal list-inside mb-8 space-y-1" />
   ),
   li: (props: any) => (
-    <li {...props} className="text-lg mb-8 leading-loose tracking-normal text-secondarytext" />
+    <li {...props} className="text-lg mb-2 leading-loose tracking-normal text-secondarytext" />
   ),
   blockquote: (props: any) => (
     <blockquote {...props} className="border-l-4 border-gray-300 pl-4 italic my-4" />
