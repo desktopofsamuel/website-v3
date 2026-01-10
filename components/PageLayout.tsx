@@ -19,7 +19,7 @@ export default function PageLayout({ post }: PageLayoutProps) {
         <div className="max-w-4xl mx-auto px-4 py-8">
           {/* Page Header - Simplified compared to blog layout */}
           <header className="my-8 text-center">
-            <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
+            <h1 className="mb-4 text-4xl md:text-5xl font-bold leading-tight font-heading">
               {post.title}
             </h1>
 

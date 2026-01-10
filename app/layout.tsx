@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Instrument_Sans } from 'next/font/google'
+import { Space_Grotesk, Manrope } from 'next/font/google'
+import localFont from 'next/font/local'
 import '../styles/globals.css'
 import { Analytics } from '@vercel/analytics/next';
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -10,11 +11,18 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
 })
 
-const instrumentSans = Instrument_Sans({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-instrument-sans',
+// const publicSans = Manrope({ 
+//   subsets: ['latin'],
+//   display: 'swap',
+//   weight: [ "500", "800"],
+//   variable: '--font-public-sans',
+// })
+
+const publicSans = localFont({
+  src: '../public/fonts/Switzer-Variable.woff2',
+  variable: '--font-public-sans',
 })
+
 
 export const metadata: Metadata = {
   title: {
@@ -93,15 +101,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${instrumentSans.variable}`}>
-      <body className={`${spaceGrotesk.className} ${instrumentSans.className}`} style={{
-        margin: 0,
-        padding: 0,
-        fontFamily: `var(--font-body) -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`,
-        lineHeight: '1.6',
-        WebkitFontSmoothing: 'antialiased',
-        MozOsxFontSmoothing: 'grayscale',
-      }}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
+      <body className={`${spaceGrotesk.className} ${publicSans.className}`}>
         {children}
         <Analytics />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
