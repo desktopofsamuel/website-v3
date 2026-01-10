@@ -22,19 +22,19 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
     <AppLayout>
       <div className="min-h-screen">
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-3xl mx-auto px-4 py-8">
           {/* Article Header */}
-          <article className="prose prose-lg max-w-none">
+          <article className="prose max-w-none">
             <div className="mb-8">
               <div className="inline-block">
-                <span className="text-sm font-heading font-medium text-secondarytext">
+                <span className="text-sm font-heading font-medium text-slate-400">
                   {post.category}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold font-heading leading-tight text-foreground mt-2 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold font-heading leading-tight text-foreground mt-2 mb-4">
                 {post.title}
               </h1>
-              <p className="text-lg text-secondarytext mb-4">
+              <p className="text-xl leading-relaxed text-secondarytext mb-6">
                 {post.tldr}
               </p>
               <div className="flex items-center font-heading gap-2 text-sm text-gray-500">
@@ -94,9 +94,9 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
           <div className="mt-8 text-center">
             <Link
               href="/blog"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              className="inline-block text-black px-6 py-3 rounded-lg font-medium transition-colors"
             >
-              Back to Blog
+              ↖ More articles
             </Link>
           </div>
         </div>

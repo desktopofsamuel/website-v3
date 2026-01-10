@@ -1,0 +1,75 @@
+---
+title: "Things I Built 2025"
+date: "2026-01-11"
+tags: 
+  - Productivity
+  - Year Review
+cover: "/static/things-i-built-20252.png"
+---
+# Things I built 2025
+
+## Epilogue
+
+The 2025 *State of AI Tools* survey by [Lenny Rachitsky](https://www.lennysnewsletter.com/p/ai-tools-are-overdelivering-results) is full of fascinating insights—but one thing stood out to me: designers remain the least represented group in AI adoption.
+While PMs are using AI to automate documentation, and developers rely on it to speed up coding, designers’ use of AI still feels… ambiguous. I've joked about losing my job to AI for a while. But honestly? The real question is: how do we co-exist and leverage AI for design and how would the paradigm shift in product world? Each project I built this year taught me something about this balance. 
+
+For that, I really dive in to the vibe code world, I tried Cursor, Replit, Lovable, Claude Code, ChatGPT and more. Majority of the projects I would like to be able to built and solve problems I encountered in my daily life, Here’s what I built in 2025:
+
+## Agewhale CRM (Built with Cursor, Web)
+
+As Chief Volunteer Officer of my wife's social enterprise, one of my main responsibilities is streamlining workflows into easier ways via technology. With vibe coding, agencies or third-party tools simply do not exist anymore in the exploration phase. As long as the business goal and problem statement are clear, you can vibe code your way through to validate your solution.
+
+I helped create a simple CRM that connects Google Sheets to generate and export a PDF report to send back to clients. A straightforward web app using Firebase as a backend to restrict access. A deliberate choice was made not to build an entire CRM nor replace Google Sheet but just to replace the most time-consuming part (which is report generation). In a start-up world, if it ain't broken, don't change it.
+
+## Zonepal (Built with Cursor, Web)
+
+https://zonepal.altwld.com
+
+Outlook sucked at scheduling across timezones until they fixed it a few months ago. Zonepal lets you see everyone's time at once, even with weather icons for small talk. I even added block hours to avoid lunch time and off-hours.
+
+The plot twist: It was one of my earliest vibe coding attempts. I was so obsessed with my own creation that I even spent a week building a version with a login system. But later I realized it was pointless. URL parameters do 99% of the work when users can just bookmark the list of cities and block hours they want to set. I guess the lesson is sometimes shipping less is shipping better.![](/static/20260110-things-i-built-2025-1.jpeg)
+
+## Vizflow (Built with Replit, maintain by Cursor, Web)
+
+https://vizflow.altwld.com
+
+What started as a quick calculation for my expense tracking has become a universal tool. A Sankey diagram is a standard syntax to compare categories of amounts or stages of flow—extremely effective for budgeting. There has been a trend for investment and finance-savvy people to share their income breakdowns publicly.
+
+A deliberate choice I made was to avoid building a backend entirely. No storing your financial data on my servers. Instead, users work with the Sankey diagram directly—a universal standard that works anywhere, even with my competitors. This means Vizflow can integrate with other tools without me bearing the infrastructure burden or controlling your information.![](/static/20260110-things-i-built-2025-2.jpeg)
+
+
+## Day & Life (Built with Speckit + Cursor, React Native App)
+
+*Closed Beta*
+
+Currently I use simple to-do apps and Notion to track my yearly resolutions and goals. But I had this idea last year: what if I could visualize my progress across multiple years? Often when relying on sheets or Notion, I'm bound by the year view and usually can't see year-spanning goals and progress.
+
+Building a native app turned out to be much harder than a web app. Different tech stacks, various workarounds, and what LLMs know tends to be outdated given annual framework updates. I haven't even reached store submission yet. It's still a work in progress and currently for personal use only.![](/static/20260110-things-i-built-2025-3.png)
+
+## Bear Export Markdown (Built with Cursor, Script)
+I host my blogs myself using markdown files deployed to Vercel. The biggest advantage is ownership of files, but there are some aspects lacking behind, especially when I want to edit or write on the go. Image hosting is also tricky and a manual process. Usually I started writing and editing on Bear, then at some point I would export it as markdown, draft all the frontmatter, resize, rename and move images to the repo. But I upgraded my workflow this year.
+
+I vibe coded a Python script that turns Bear export textbundle files (which support bundling images) into properly formatted markdown. It drafts the frontmatter using my own template, copies image files, and properly imports them into the assigned folders. Now publishing a blog article is just one click away. This blog post was also published using the very same script.
+
+## Obsidian Web Clipper Templates (JSON Template)
+
+https://github.com/desktopofsamuel/obsidian
+
+Obsidian became more powerful this year with Base, and the newly released Web Clipper extension allows you to add reference entries more easily than before. One of the best features is that the clipper extension supports clipper templates, which means you can customize each clip to your own setup. I have open sourced my templates here, including:
+
+* Games from IGN
+* Goodreads
+
+### Afterthoughts
+
+These projects—from automating reports to visualizing years of progress—all share one thing: they solved real problems without unnecessary complexity. AI accelerated my ability to build, but clarity about *what* to build and *why* still comes from human judgment.
+
+With the cost of building dropping fast, we're heading toward a new Web 2.0   —less reliance on vendors and agencies, more custom solutions built by people who actually understand the problem.
+
+The future isn't about who can code fastest. It's about who can think clearest. 🧠
+
+Attached my Cursor 2025 Wrapped
+
+![](/static/20260110-things-i-built-2025-4.png)
+
+#Blog
