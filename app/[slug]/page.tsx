@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import BlogLayout from "@/components/BlogLayout";
 import PageLayout from "@/components/PageLayout";
+import { sortByDate } from "@/utils";
+import config from "@/config";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -23,12 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: post.tags ? post.tags : "",
+    alternates: {
+      canonical: config.URL + `/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: config.URL + `/${post.slug}`,
       type: "article",
       publishedTime: post.date,
-      authors: ["Samuel W."],
+      authors: config.AUTHOR_NAME,
       images: post.cover ? [post.cover] : [],
     },
   };
@@ -53,7 +60,7 @@ async function getData(slug: string) {
 
   // Only get related posts for blog posts (not pages)
   let relatedPosts: Post[] = [];
-  
+
   if (!post.page) {
     // Get up to 2 posts that share the same tag as the current post
     relatedPosts = allPosts
@@ -61,18 +68,20 @@ async function getData(slug: string) {
         const hasSharedTag = p.tags.some((tag) => post.tags.includes(tag));
         return hasSharedTag && p.slug !== post.slug && !p.page && !p.draft; // Exclude pages and drafts from related posts
       })
-      .sort((a, b) => {
-        // Sort related posts by the order of the tags in the current post
-        const aIndex = post.tags.findIndex((tag) => a.tags.includes(tag));
-        const bIndex = post.tags.findIndex((tag) => b.tags.includes(tag));
-        return aIndex - bIndex;
-      })
+      .sort(sortByDate)
       .slice(0, 2);
 
     // If no related posts found, then find posts in the same category
     if (relatedPosts.length === 0) {
       relatedPosts = allPosts
-        .filter((p) => p.category === post.category && p.slug !== post.slug && !p.page && !p.draft)
+        .filter(
+          (p) =>
+            p.category === post.category &&
+            p.slug !== post.slug &&
+            !p.page &&
+            !p.draft
+        )
+        .sort(sortByDate)
         .slice(0, 2);
     }
   }

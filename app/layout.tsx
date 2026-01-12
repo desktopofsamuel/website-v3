@@ -40,9 +40,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://desktopofsamuel.com'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'Desktop of Samuel',
     description: 'UI/UX 設計師，談談科技、Gadget心得。',

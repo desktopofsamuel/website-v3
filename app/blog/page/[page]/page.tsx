@@ -98,20 +98,12 @@ export default async function BlogPaginatedPage({ params }: Props) {
           textAlign: "center",
           marginTop: "32px"
         }}>
-          <AppLink 
-            href="/blog"
-            style={{
-              display: "inline-block",
-              background: "#0070f3",
-              color: "white",
-              padding: "12px 24px",
-              borderRadius: "6px",
-              textDecoration: "none",
-              fontWeight: "bold"
-            }}
-          >
-            Back to Blog
-          </AppLink>
+          <AppLink
+              href="/blog"
+              className="inline-block text-black dark:text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              ↖ Back to blog
+            </AppLink>
         </div>
       </div>
     </AppLayout>
