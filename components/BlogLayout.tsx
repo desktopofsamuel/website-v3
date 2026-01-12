@@ -94,7 +94,7 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
           <div className="mt-8 text-center">
             <Link
               href="/blog"
-              className="inline-block text-black px-6 py-3 rounded-lg font-medium transition-colors"
+              className="inline-block text-foreground px-6 py-3 rounded-lg font-medium transition-colors"
             >
               ↖ More articles
             </Link>
