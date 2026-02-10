@@ -5,6 +5,8 @@ import { sortByDate } from "../../utils";
 import CONFIG from "../../config.js";
 
 export async function GET() {
+  const sorted = [...filteredPosts].sort(sortByDate);
+  const latestPostDate = sorted[0]?.date ? new Date(sorted[0].date) : new Date(0);
   const feed = new RSS({
     title: CONFIG.TITLE,
     description: CONFIG.DESCRIPTION,
@@ -14,13 +16,11 @@ export async function GET() {
     webMaster: CONFIG.AUTHOR_NAME,
     copyright: CONFIG.COPYRIGHT,
     language: CONFIG.LOCALE,
-    pubDate: new Date().toLocaleString(),
+    pubDate: latestPostDate,
     ttl: 60,
   });
 
-  filteredPosts
-    .sort(sortByDate)
-    .forEach((post) => {
+  sorted.forEach((post) => {
       feed.item({
         title: post.title,
         description: post.body.raw,
