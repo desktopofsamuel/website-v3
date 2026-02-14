@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Space_Grotesk, Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
 import '../styles/globals.css'
-import { Analytics } from '@vercel/analytics/next';
-import { GoogleAnalytics } from '@next/third-parties/google'
+import AnalyticsProvider from '@/components/AnalyticsProvider'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
@@ -101,8 +100,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
       <body className={`${spaceGrotesk.className} ${publicSans.className}`}>
         {children}
-        <Analytics />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
+        <AnalyticsProvider gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
       </body>
     </html>
   )

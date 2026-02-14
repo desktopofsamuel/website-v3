@@ -45,8 +45,8 @@ export default function PhotoScrollGallery({ photos }: PhotoScrollGalleryProps) 
       }
     };
 
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    // Add scroll event listener (passive for scroll performance)
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Initial call to position elements
     handleScroll();
