@@ -1,5 +1,4 @@
 import AppLayout from "@/components/AppLayout";
-import Head from "next/head";
 import AppListBlog from "@/components/AppListBlog";
 import AppListPortfolio from "@/components/AppListPortfolio";
 import AppCardBook from "@/components/AppCardBook";
@@ -7,9 +6,14 @@ import AppCardCurrentlyPlaying from "@/components/AppCardCurrentlyPlaying";
 import AppCardMusic from "@/components/AppCardMusic";
 import AppCardFilms from "@/components/AppCardFilms";
 import AppLink from "@/components/AppLink";
-import { ArrowRight } from "lucide-react";
 import PhotoScrollGallery from "@/components/PhotoScrollGallery";
 import { filteredPosts, filteredFeaturedWorks, filteredPhotos } from "@/lib/content";
+
+export const metadata = {
+  other: {
+    "follow.it-verification-code": "aYHmMlGswgxauPT7REPs",
+  },
+};
 
 export default function IndexPage() {
   // Get data directly in server component
@@ -19,13 +23,6 @@ export default function IndexPage() {
 
   return (
     <AppLayout>
-      <Head>
-        <meta
-          name="follow.it-verification-code"
-          content="aYHmMlGswgxauPT7REPs"
-        />
-      </Head>
-
         {/* Hero Section */}
         <section className="grid min-h-[100dvh] place-content-center gap-10 py-12">
           <div className="flex flex-col md:flex-row justify-between items-baseline">

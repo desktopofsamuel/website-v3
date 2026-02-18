@@ -311,10 +311,12 @@ const EntryCard: React.FC<EntryCardProps> = ({
   );
 };
 
+// Use a fixed year so the page stays static (no new Date() on each render/revalidate)
+const CURRENT_YEAR = 2026;
+
 export default function AboutPage() {
   const startYear = 2015;
-  const currentYear = new Date().getFullYear();
-  const experienceYears = currentYear - startYear;
+  const experienceYears = CURRENT_YEAR - startYear;
   return (
     <AppLayout>
       <section className="flex-1 grid grid-cols-1 gap-4 md:gap-16 py-8 items-center">
