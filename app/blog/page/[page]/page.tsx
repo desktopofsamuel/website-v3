@@ -2,6 +2,7 @@ import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppLink from "@/components/AppLink";
 import Pagination from "@/components/AppPagination";
+import AppAuthorBox from "@/components/AppAuthorBox";
 import { Post } from "contentlayer/generated";
 import { filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
@@ -105,6 +106,8 @@ export default async function BlogPaginatedPage({ params }: Props) {
               ↖ Back to blog
             </AppLink>
         </div>
+
+        <AppAuthorBox />
       </div>
     </AppLayout>
   );

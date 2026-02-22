@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Image, { StaticImageData } from "next/image";
 import AppLayout from "@/components/AppLayout";
 import { Link } from "@/components/AppLink";
 import { Button } from "@/components/ui/button";
 import { TbBrandGithub, TbBrandLinkedin, TbMail } from "react-icons/tb";
+import config from "@/../config";
 
 import Profile2022 from "../../public/static/samuel-profile-2022.jpeg";
 import Profile from "../../public/static/profile-2014.jpeg";
@@ -54,16 +56,16 @@ const journey = [
 ]
 
 const career = [
-  // {
-  //   image: Pepperstonelogo,
-  //   title: "Senior UX Designer",
-  //   subtitle: "Pepperstone",
-  //   text: "Build a crypto exchange ",
-  //   small: "2022 - 2024",
-  //   cta: "Coming soon",
-  //   href: "",
-  //   color: "#FF5000",
-  // },
+  {
+    image: Pepperstonelogo,
+    title: "Product Design Lead",
+    subtitle: "Pepperstone",
+    text: "Build a crypto exchange from ground-up, lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Senior Product Designer in 2025.",
+    small: "2025 - Now",
+    cta: "Coming soon",
+    href: "",
+    color: "#FF5000",
+  },
   {
     image: Okxlogo,
     title: "Senior Product Designer",
@@ -313,6 +315,18 @@ const EntryCard: React.FC<EntryCardProps> = ({
 
 // Use a fixed year so the page stays static (no new Date() on each render/revalidate)
 const CURRENT_YEAR = 2026;
+
+export const metadata: Metadata = {
+  title: "About | Desktop of Samuel",
+  description:
+    "Samuel Wong — Hong Kong based UI/UX Designer. User Interface Design, User Experience Design, Product Design.",
+  openGraph: {
+    title: "About | Desktop of Samuel",
+    description:
+      "Samuel Wong — Hong Kong based UI/UX Designer. User Interface Design, User Experience Design, Product Design.",
+    url: `${config.URL}/about`,
+  },
+};
 
 export default function AboutPage() {
   const startYear = 2015;
