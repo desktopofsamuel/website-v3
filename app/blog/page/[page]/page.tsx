@@ -3,20 +3,30 @@ import AppListBlog from "@/components/AppListBlog";
 import AppLink from "@/components/AppLink";
 import Pagination from "@/components/AppPagination";
 import AppAuthorBox from "@/components/AppAuthorBox";
-import { Post } from "contentlayer/generated";
 import { filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { POSTS_PER_PAGE } from "@/config";
+
+export const dynamicParams = false;
 
 type Props = {
   params: Promise<{ page: string }>;
 };
 
+function assertValidBlogPageParam(page: string): number {
+  if (!/^\d+$/.test(page)) notFound();
+  const pageNum = parseInt(page, 10);
+  const numPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  if (numPages === 0 || pageNum < 1 || pageNum > numPages) notFound();
+  return pageNum;
+}
+
 // Generate metadata for each page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { page } = await params;
-  const pageNum = parseInt(page);
+  const pageNum = assertValidBlogPageParam(page);
   const numPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
   return {
@@ -51,7 +61,7 @@ async function getData(page: number) {
 
 export default async function BlogPaginatedPage({ params }: Props) {
   const { page } = await params;
-  const pageNum = parseInt(page);
+  const pageNum = assertValidBlogPageParam(page);
   const { posts, numPages, currentPage } = await getData(pageNum);
 
   return (
