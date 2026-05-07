@@ -7,7 +7,7 @@ import Image from "next/image";
 const FALLBACK_IMAGE = "/static/2024-photo-of-year.jpg";
 
 export default function PhotoListPage() {
-  const photos = allPhotos.sort(sortByDate);
+  const photos = allPhotos.filter((p) => !p.draft).sort(sortByDate);
 
   return (
     <AppLayout>

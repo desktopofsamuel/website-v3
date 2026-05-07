@@ -13,7 +13,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = allWorks.find((p) => p.slug === slug);
-  if (!post) return { title: "Work Not Found" };
+  if (!post || post.draft) return { title: "Work Not Found" };
   return {
     title: `${post.title} | Desktop of Samuel`,
     description: post.description,
@@ -27,13 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return allWorks.map((post) => ({ slug: post.slug }));
+  return allWorks.filter((post) => !post.draft).map((post) => ({ slug: post.slug }));
 }
 
 export default async function WorkDetailPage({ params }: Props) {
   const { slug } = await params;
   const post = allWorks.find((post) => post.slug === slug);
-  if (!post) return notFound();
+  if (!post || post.draft) return notFound();
 
   // Only featured, non-draft works for prev/next
   const filteredWorks = allWorks

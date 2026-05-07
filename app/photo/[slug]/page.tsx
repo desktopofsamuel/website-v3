@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = allPhotos.find((post) => post.slug === slug);
 
-  if (!post) {
+  if (!post || post.draft) {
     return {
       title: "Photo Not Found",
       description: "The requested photo could not be found.",
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Generate static params for all photos
 export async function generateStaticParams() {
-  return allPhotos.map((post) => ({
+  return allPhotos.filter((post) => !post.draft).map((post) => ({
     slug: post.slug,
   }));
 }
@@ -47,7 +47,7 @@ export default async function SinglePhotoPage({ params }: Props) {
   const { slug } = await params;
   const post = allPhotos.find((post) => post.slug === slug);
 
-  if (!post) {
+  if (!post || post.draft) {
     notFound();
   }
 
