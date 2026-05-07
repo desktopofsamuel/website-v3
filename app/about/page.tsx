@@ -15,7 +15,6 @@ import Applelogo from "../../public/about/apple-logo.svg";
 import Okxlogo from "../../public/about/okx-logo.svg";
 import Pepperstonelogo from "../../public/about/pepperstone-logo.svg";
 import Figma from "../../public/about/figma.svg";
-import Adplist from "../../public/about/adplist.svg";
 import Ama from "../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../public/about/architecting-design-for-scale.png";
@@ -172,14 +171,6 @@ const community = [
     image: Figma,
     cta: "Join upcoming events",
     href: "https://friends.figma.com/hong-kong",
-  },
-  {
-    title: "Mentor",
-    subtitle: "ADPList",
-    text: "",
-    image: Adplist,
-    cta: "Schedule session",
-    href: "https://adplist.org/mentors/samuel-wong",
   },
 ];
 
