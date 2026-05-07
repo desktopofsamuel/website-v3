@@ -4,6 +4,9 @@ import { useMDXComponent } from "next-contentlayer2/hooks";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/components/lib/utils";
+import SectionTitle from "@/components/mdx/SectionTitle";
+import TestimonialBox from "@/components/mdx/TestimonialBox";
+import LightboxImagePair from "@/components/mdx/LightboxImagePair";
 
 const mdxComponents = {
   Image: (props: any) => (
@@ -73,6 +76,9 @@ const mdxComponents = {
     <em {...props} className="italic" />
   ),
   Button: (props: any) => <Button {...props} />,
+  SectionTitle,
+  TestimonialBox,
+  LightboxImagePair,
   // Photo gallery components
   SimpleGrid: ({ children, columns = 1, col, gap = 4, ...props }: { 
     children: React.ReactNode; 
