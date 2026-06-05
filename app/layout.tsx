@@ -1,13 +1,20 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Manrope } from 'next/font/google'
+import { Space_Grotesk, Manrope, Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import '../styles/globals.css'
 import AnalyticsProvider from '@/components/AnalyticsProvider'
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
+})
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
 })
 
 // const publicSans = Manrope({ 
@@ -97,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${publicSans.variable} ${spaceMono.variable}`}>
       <body className={`${spaceGrotesk.className} ${publicSans.className}`}>
         {children}
         <AnalyticsProvider gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
