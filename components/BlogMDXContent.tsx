@@ -99,32 +99,35 @@ export default function BlogMDXContent({ code }: BlogMDXContentProps) {
   const MDXComponent = useMDXComponent(code);
 
   return (
-    <article className={cn(
-      "prose max-w-none",
-      // Headings
-      "prose-headings:font-heading prose-headings:text-foreground prose-headings:font-bold",
-      "prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg",
-      "prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3",
-      // Body text — [&_p]/[&_li] have explicit specificity, overriding prose's inherited 1.75
-      "prose-p:text-secondarytext [&_p]:leading-[2] prose-a:text-primary-500",
-      // Links
-      "prose-a:no-underline prose-a:border-b prose-a:border-primary-500 hover:prose-a:text-primary-600",
-      // Lists
-      "prose-li:text-secondarytext [&_li]:leading-[2]",
-      // Blockquote
-      "prose-blockquote:border-l-2 prose-blockquote:border-border prose-blockquote:text-secondarytext prose-blockquote:not-italic",
-      // Code
-      "prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none",
-      "prose-pre:bg-card prose-pre:border prose-pre:border-border",
-      // Images — handled by custom component above (not-prose)
-      "prose-img:rounded-md",
-      // Strong/em
-      "prose-strong:text-foreground prose-strong:font-semibold",
-      // HR
-      "prose-hr:border-border",
-      // Dark mode
-      "dark:prose-invert",
-    )}>
+    <article
+      data-scroll-content
+      className={cn(
+        "prose max-w-none",
+        // Headings
+        "prose-headings:font-heading prose-headings:text-foreground prose-headings:font-bold",
+        "prose-h2:text-xl prose-h3:text-lg",
+        "prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3",
+        // Body text — [&_p]/[&_li] have explicit specificity, overriding prose's inherited 1.75
+        "prose-p:text-secondarytext [&_p]:leading-[2] prose-a:text-primary-500",
+        // Links
+        "prose-a:no-underline prose-a:border-b prose-a:border-primary-500 hover:prose-a:text-primary-600",
+        // Lists
+        "prose-li:text-secondarytext [&_li]:leading-[2]",
+        // Blockquote
+        "prose-blockquote:border-l-2 prose-blockquote:border-border prose-blockquote:text-secondarytext prose-blockquote:not-italic",
+        // Code
+        "prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none",
+        "prose-pre:bg-card prose-pre:border prose-pre:border-border",
+        // Images — handled by custom component above (not-prose)
+        "prose-img:rounded-md",
+        // Strong/em
+        "prose-strong:text-foreground prose-strong:font-semibold",
+        // HR
+        "prose-hr:border-border",
+        // Dark mode
+        "dark:prose-invert",
+      )}
+    >
       <MDXComponent components={blogMdxComponents} />
     </article>
   );

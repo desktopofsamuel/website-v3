@@ -5,7 +5,6 @@ import Link from "next/link";
 import AppListBlog from "@/components/AppListBlog";
 import AppNavBar from "@/components/AppNavBar";
 import AppFooter from "@/components/AppFooter";
-import { getHeadings } from "../utils/getHeadings";
 import ScrollspyNav from "../app/[slug]/ScrollspyNav";
 import ScrollToTop from "../app/[slug]/ScrollToTop";
 import kebabCase from "lodash.kebabcase";
@@ -17,8 +16,6 @@ interface BlogLayoutProps {
 }
 
 export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
-  const headings = getHeadings(post.body.raw);
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <AppNavBar />
@@ -64,8 +61,6 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
 
           {/* MDX body */}
           <BlogMDXContent code={post.body.code} />
-
-          {/* Tags */}
           {post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-border">
               {post.tags.map((tag) => (
@@ -106,7 +101,7 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
 
       <AppFooter />
 
-      {headings.length > 0 && <ScrollspyNav headings={headings} />}
+      <ScrollspyNav />
       <ScrollToTop />
     </div>
   );
