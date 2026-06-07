@@ -7,6 +7,12 @@ import {
 export const FIXTURE_PATH =
   "/how-to-create-a-scroll-tracking-table-of-content-in-gatsby";
 
+/** Primary regression article — long post with many headings and edge cases. */
+export const CI_ARTICLE = {
+  path: FIXTURE_PATH,
+  label: "long",
+} as const;
+
 export const ARTICLE_FIXTURES = [
   {
     path: "/learn-from-building-a-second-brain",
@@ -41,6 +47,10 @@ export type TocHeading = {
   id: string;
   text: string;
 };
+
+export function ciTag(articlePath: string): string {
+  return articlePath === CI_ARTICLE.path ? " @ci" : "";
+}
 
 type ScrollTarget = {
   offsetTop: number;

@@ -12,7 +12,8 @@
     "postbuild": "next-sitemap",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:smoke": "playwright test --grep @smoke"
+    "test:e2e:smoke": "playwright test --grep @smoke",
+    "test:e2e:ci": "playwright test --grep @ci"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",

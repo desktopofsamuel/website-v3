@@ -26,5 +26,5 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install chromium --with-deps
 
-      - name: Run scrollspy smoke tests
-        run: pnpm test:e2e:smoke
+      - name: Run scrollspy CI smoke tests
+        run: pnpm test:e2e:ci

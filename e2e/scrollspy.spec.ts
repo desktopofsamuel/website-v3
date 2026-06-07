@@ -7,6 +7,7 @@ import {
   assertClickHighlightsTargetNotPrevious,
   assertHeadingAtReadingLine,
   assertScrollTargetMath,
+  ciTag,
   clickTocLink,
   headingDocTop,
   loadFixture,
@@ -32,7 +33,7 @@ for (const article of ARTICLE_FIXTURES) {
         expect(headings.length).toBeGreaterThanOrEqual(3);
       });
 
-      test("1.1 @smoke click middle section lands heading at reading line", async ({
+      test(`1.1 @smoke${ciTag(article.path)} click middle section lands heading at reading line`, async ({
         page,
       }) => {
         const target = thirdHeading(headings);
@@ -115,7 +116,7 @@ for (const article of ARTICLE_FIXTURES) {
         headings = await loadFixture(page, article.path);
       });
 
-      test("2.1 @smoke click middle section highlights correctly", async ({
+      test(`2.1 @smoke${ciTag(article.path)} click middle section highlights correctly`, async ({
         page,
       }) => {
         const target = thirdHeading(headings);
@@ -123,7 +124,7 @@ for (const article of ARTICLE_FIXTURES) {
         expect(await activeTocText(page)).toBe(target.text);
       });
 
-      test("2.R1 @smoke @regression click third heading scrolls and highlights third not second", async ({
+      test(`2.R1 @smoke @regression${ciTag(article.path)} click third heading scrolls and highlights third not second`, async ({
         page,
       }) => {
         test.skip(
@@ -173,7 +174,7 @@ for (const article of ARTICLE_FIXTURES) {
         await expect(activeTocItem(page)).toHaveCount(1);
       });
 
-      test("2.T1 @smoke highlight is correct only after scroll settles", async ({
+      test(`2.T1 @smoke${ciTag(article.path)} highlight is correct only after scroll settles`, async ({
         page,
       }) => {
         const target = thirdHeading(headings);
@@ -197,7 +198,7 @@ for (const article of ARTICLE_FIXTURES) {
         headings = await loadFixture(page, article.path);
       });
 
-      test("3.1 @smoke initial load highlights first section", async ({
+      test(`3.1 @smoke${ciTag(article.path)} initial load highlights first section`, async ({
         page,
       }) => {
         expect(await activeTocText(page)).toBe(headings[0].text);
@@ -285,7 +286,7 @@ for (const article of ARTICLE_FIXTURES) {
         expect(observedIndexes.length).toBeGreaterThan(0);
       });
 
-      test("3.P1 @smoke programmatic scroll highlights matching section", async ({
+      test(`3.P1 @smoke${ciTag(article.path)} programmatic scroll highlights matching section`, async ({
         page,
       }) => {
         for (const heading of headings) {
