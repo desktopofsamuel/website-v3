@@ -1,9 +1,169 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "./theme.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────────────────────────
+ * Design Tokens (Tailwind v4 @theme)
+ * Single source of truth. Pages and components consume these via
+ * Tailwind utilities only (font-heading, bg-background, text-foreground,
+ * etc.) — never via raw var(--…) in className strings.
+ * ───────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Breakpoints ── */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ── Font Families ──
+   * Switzer Variable for everything; Space Mono for code.
+   * Swap typeface in one place by editing --font-heading / --font-body.
+   */
+  --font-heading: var(--font-switzer), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-body: var(--font-switzer), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, "Cascadia Code",
+    "Source Code Pro", Menlo, Consolas, monospace;
+
+  /* ── Type Scale ── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+  --text-9xl: 8rem;
+
+  /* ── Font Weights ── */
+  --font-weight-hairline: 100;
+  --font-weight-thin: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ── Tracking ── */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ── Page layout ──
+   * `--spacing-page`     — gutter for text/content alignment (px-page, mx-page).
+   * `--spacing-overhang` — how far page-level divider lines extend past the
+   *                       content gutter on each side.
+   * `--spacing-divider`  — gutter for those divider edges (mx-divider).
+   *                       Pair `mx-divider` on the bordered outer with
+   *                       `px-overhang` on its inner content row to keep text
+   *                       aligned at `--spacing-page` from the viewport edge.
+   */
+  --spacing-page: clamp(24px, 5vw, 80px);
+  --spacing-overhang: 16px;
+  --spacing-divider: calc(var(--spacing-page) - var(--spacing-overhang));
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Primary Palette (cool blue) ── */
+  --color-primary-100: oklch(97% 0.0148 238.24);
+  --color-primary-200: oklch(90% 0.0148 238.24);
+  --color-primary-300: oklch(85% 0.0148 238.24);
+  --color-primary-400: oklch(74% 0.15 234.83);
+  --color-primary-500: oklch(70% 0.1875 238.24);
+  --color-primary-600: oklch(65% 0.1875 238.24);
+  --color-primary-700: oklch(35% 0.06 237.89);
+  --color-primary-800: oklch(26% 0.04 237.6);
+  --color-primary-900: oklch(20% 0.04 237.96);
+
+  /* ── Yellow Palette (warm neutral) ── */
+  --color-yellow-100: oklch(98% 0.0147 83.7);
+  --color-yellow-200: oklch(96% 0.0147 83.7);
+  --color-yellow-300: oklch(90% 0.0147 83.7);
+  --color-yellow-400: oklch(86% 0.0147 83.7);
+  --color-yellow-500: oklch(70% 0.0147 83.7);
+  --color-yellow-600: oklch(72% 0.0147 83.7);
+  --color-yellow-700: oklch(55% 0.0147 83.7);
+  --color-yellow-800: oklch(68% 0.0147 83.7);
+  --color-yellow-900: oklch(66% 0.0147 83.7);
+
+  /* ── Semantic Tokens — Light Mode (warm yellow) ── */
+  --color-background: var(--color-yellow-100);
+  --color-foreground: oklch(14.5% 0 0);
+  --color-surface: oklch(100% 0 0);
+  --color-lift: var(--color-yellow-200);
+
+  --color-text-primary: var(--color-yellow-900);
+  --color-text-secondary: var(--color-yellow-700);
+  --color-text-tertiary: var(--color-primary-800);
+  --color-text-muted: oklch(55.6% 0 0);
+  --color-muted-foreground: oklch(55.6% 0 0);
+
+  --color-accent: var(--color-primary-500);
+  --color-accent-hover: var(--color-primary-600);
+  --color-accent-subtle: var(--color-primary-100);
+  --color-accent-foreground: var(--color-yellow-100);
+
+  --color-border: var(--color-yellow-300);
+  --color-border-strong: var(--color-yellow-400);
+  --color-outline: #e2e8f0;
+  --color-ring: var(--color-primary-500);
+
+  --color-destructive: oklch(57.7% 0.245 27.325);
+
+  /* ── Legacy aliases (soft migration — remove once consumers update) ── */
+  --color-primarytext: var(--color-text-primary);
+  --color-secondarytext: var(--color-text-secondary);
+  --color-tertiarytext: var(--color-text-tertiary);
+}
+
+/* ── Dark Mode — Editorial Black ── */
+.dark {
+  --color-background: #000;
+  --color-foreground: #fff;
+  --color-surface: #000;
+  --color-lift: rgb(22, 22, 22);
+
+  --color-text-primary: #fff;
+  --color-text-secondary: rgb(111, 111, 111);
+  --color-text-tertiary: rgb(111, 111, 111);
+  --color-text-muted: rgb(111, 111, 111);
+  --color-muted-foreground: rgb(111, 111, 111);
+
+  --color-accent: var(--color-primary-400);
+  --color-accent-hover: var(--color-primary-500);
+  --color-accent-subtle: var(--color-primary-800);
+  --color-accent-foreground: #fff;
+
+  --color-border: rgb(73, 73, 73);
+  --color-border-strong: rgb(73, 73, 73);
+  --color-outline: rgb(73, 73, 73);
+  --color-ring: var(--color-primary-400);
+
+  --color-primarytext: var(--color-text-primary);
+  --color-secondarytext: var(--color-text-secondary);
+  --color-tertiarytext: var(--color-text-tertiary);
+}
 
 @layer base {
   * {
