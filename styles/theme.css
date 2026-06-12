@@ -44,6 +44,10 @@
   --color-border: var(--color-yellow-300);
   --color-outline: #e2e8f0;
 
+  /* Spatial tokens for editorial layout */
+  --spacing-page: 1.25rem;      /* 20px: horizontal page padding (matches AppLayout px-5) */
+  --spacing-overhang: 1rem;     /* 16px: divider overhang beyond content edge on each side */
+
   /* Font Weights */
   --font-weight-hairline: 100;
   --font-weight-thin: 200;
