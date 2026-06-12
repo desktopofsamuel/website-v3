@@ -1,72 +1,126 @@
-import AppLink from "@/components/AppLink";
+import { Link } from "@/components/AppLink";
+import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
-import AppLayout from "@/components/AppLayout";
-import { filteredPosts } from "@/lib/content";
+import SidebarSection from "@/components/SidebarSection";
+import { allTags, filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
-import { Button } from "@/components/ui/button"
+import config from "@/../config";
 
-// This would be the equivalent of getStaticProps in App Router
-async function getData() {
-  return {
-    posts: filteredPosts,
-  };
-}
+const LONGFORM_TAG = "longform";
 
-export default async function BlogPage() {
-  const { posts } = await getData();
+export default function BlogPage() {
+  const featured = filteredPosts
+    .filter((p) => p.feature === true)
+    .sort(sortByDate);
+
+  const latest = filteredPosts
+    .filter((p) => p.feature !== true)
+    .sort(sortByDate)
+    .slice(0, config.POSTS_PER_PAGE);
+
+  const longformCount = filteredPosts.reduce(
+    (acc, p) => acc + (p.tags.includes(LONGFORM_TAG) ? 1 : 0),
+    0
+  );
+
+  const topicPills = [
+    {
+      name: "Long form",
+      path: `/tags/${LONGFORM_TAG}`,
+      count: longformCount,
+      curated: true,
+    },
+    ...allTags
+      .filter((t) => t.name !== LONGFORM_TAG)
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10)
+      .map((t) => ({ ...t, curated: false })),
+  ];
 
   return (
     <AppLayout>
-      <div className="py-8">
-        {/* Header Section */}
-        <div className="mb-8 flex flex-col">
-          <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
-            Blog
-          </h1>
-          <p className="text-lg text-secondarytext leading-normal">
-            A collection of posts I wrote about design process, technology and productivity.
-          </p>
-        </div>
-
-        {/* Featured Posts Section */}
-        <section className="mb-12">
-        <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">Featured</h2>
-  
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {posts
-              .filter((post) => post.feature === true)
-              .sort(sortByDate)
-              .map((post) => (
-                <AppListBlog key={post.slug} data={post} />
-              ))}
-          </div>
-        </section>
-
-        {/* All Posts Section */}
-        <section className="mb-12">
-        <h2 className="text-sm uppercase tracking-wide font-heading font-semibold text-secondarytext">All posts</h2>
-          <div className="grid grid-cols-1 gap-2">
-            {posts
-              .filter((post) => post.feature !== true)
-              .sort(sortByDate)
-              .slice(0, 6)
-              .map((post) => (
-                <AppListBlogDetail key={post.slug} data={post} />
-              ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Button asChild>
-            <AppLink 
-              href="/blog/page/2" 
-              >
-              View More
-            </AppLink></Button>
-          </div>
-        </section>
+      {/* Hero */}
+      <div className="mx-divider px-overhang pt-16 pb-12 border-b border-border">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
+          02 — Writing
+        </p>
+        <h1 className="font-body font-normal text-6xl md:text-8xl tracking-tighter leading-none text-foreground">
+          Notes on
+          <br />
+          Design &amp;
+          <br />
+          Technology
+        </h1>
+        <p className="mt-8 max-w-[55ch] font-body text-base leading-relaxed text-muted-foreground">
+          A collection of posts on design process, technology, and productivity.
+        </p>
       </div>
+
+      {/* Featured */}
+      <SidebarSection label="Featured">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featured.map((post) => (
+            <AppListBlog key={post.slug} data={post} hideDate />
+          ))}
+        </div>
+      </SidebarSection>
+
+      {/* Latest */}
+      <SidebarSection label="Latest">
+        <div className="divide-y divide-border/50">
+          {latest.map((post) => (
+            <AppListBlogDetail key={post.slug} data={post} />
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href="/blog/page/2"
+            className="inline-flex items-center font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors no-underline"
+          >
+            View more →
+          </Link>
+        </div>
+      </SidebarSection>
+
+      {/* Topics */}
+      <SidebarSection
+        label="Topics"
+        leftAside={
+          <Link
+            href="/tags"
+            className="inline-block font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors no-underline w-fit"
+          >
+            See all topics →
+          </Link>
+        }
+      >
+        <div className="flex flex-wrap gap-3 items-center">
+          {topicPills.map((pill) => (
+            <Link
+              key={pill.path}
+              href={pill.path}
+              className={`inline-flex items-baseline gap-2 no-underline rounded-full border px-6 py-3 font-body text-2xl md:text-3xl tracking-tight transition-colors ${
+                pill.curated
+                  ? "border-foreground text-foreground hover:bg-foreground hover:text-background"
+                  : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+              }`}
+            >
+              {pill.curated && <span aria-hidden="true">✦</span>}
+              <span>{pill.name}</span>
+              <span
+                className={
+                  pill.curated
+                    ? "text-sm opacity-70"
+                    : "text-sm text-muted-foreground"
+                }
+              >
+                {pill.count}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </SidebarSection>
     </AppLayout>
   );
-} 
+}
