@@ -1,21 +1,33 @@
+import React from "react";
+
 type SidebarSectionProps = {
   label: string;
   children: React.ReactNode;
   leftAside?: React.ReactNode;
 };
 
-export default function SidebarSection({ label, children, leftAside }: SidebarSectionProps) {
+export default function SidebarSection({
+  label,
+  children,
+  leftAside,
+}: SidebarSectionProps) {
   return (
-    <div className="-mx-overhang px-overhang border-t border-border py-16 grid grid-cols-12 gap-x-8 gap-y-6">
-      <div className="col-span-12 md:col-span-3">
-        <div className="md:sticky md:top-[120px] flex flex-col gap-4">
-          {leftAside}
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+    <section className="mx-divider border-b border-border">
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_9fr] gap-10 px-overhang py-10">
+        <div
+          className={
+            leftAside
+              ? "flex flex-col gap-6"
+              : "md:sticky md:top-[120px] md:self-start"
+          }
+        >
+          <h2 className="font-body text-4xl font-normal leading-none text-foreground pt-1.5">
             {label}
-          </span>
+          </h2>
+          {leftAside}
         </div>
+        <div>{children}</div>
       </div>
-      <div className="col-span-12 md:col-span-9">{children}</div>
-    </div>
+    </section>
   );
 }

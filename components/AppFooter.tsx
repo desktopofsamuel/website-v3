@@ -7,83 +7,78 @@ import {
   TbBrandMedium,
   TbBrandGithubFilled,
 } from "react-icons/tb";
-import { Button } from "@/components/ui/button";
+
+const socials = [
+  {
+    Icon: TbBrandLinkedinFilled,
+    href: "https://www.linkedin.com/in/desktopofsamuel/",
+    label: "LinkedIn",
+  },
+  {
+    Icon: TbBrandX,
+    href: "https://www.x.com/desktopofsamuel",
+    label: "X",
+  },
+  {
+    Icon: TbBrandInstagram,
+    href: "https://www.instagram.com/desktopofsamuel",
+    label: "Instagram",
+  },
+  {
+    Icon: TbBrandMedium,
+    href: "https://medium.com/desktop-of-samuel",
+    label: "Medium",
+  },
+  {
+    Icon: TbBrandGithubFilled,
+    href: "https://www.github.com/desktopofsamuel",
+    label: "GitHub",
+  },
+];
 
 export default function AppFooter() {
   return (
-    <footer className="max-w-[1080px] mx-auto px-5 py-8">
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Let's Chat Section */}
-        <div>
-          <h3 className="font-heading text-lg font-bold mb-3">
-            Let&apos;s Chat
-          </h3>
-          <p className="text-sm text-secondarytext m-0 leading-relaxed">
-            I am excited for new opportunities, let&apos;s talk about working
-            together.
-          </p>
+    <footer className="bg-accent text-accent-foreground">
+      <div className="px-page pt-16 pb-10">
+        <h2 className="font-body font-normal text-5xl md:text-7xl tracking-tighter leading-none text-accent-foreground mb-6">
+          Let&apos;s chat.
+        </h2>
+        <p className="font-body text-base leading-relaxed max-w-[44ch] mb-8 text-accent-foreground/75">
+          I am excited for new opportunities. Let&apos;s talk about working
+          together.
+        </p>
+        <div className="flex flex-wrap gap-3 mb-12">
+          <AppLink
+            href="mailto:desktopofsamuel@gmail.com"
+            className="inline-flex items-center font-body font-semibold text-base px-6 py-3 bg-background text-accent rounded-md no-underline hover:opacity-90 transition-opacity"
+          >
+            Get in Touch
+          </AppLink>
+          <AppLink
+            href="https://desktopofsamuel.medium.com/subscribe"
+            target="_blank"
+            className="inline-flex items-center font-body font-semibold text-base px-6 py-3 border-2 border-accent-foreground/40 text-accent-foreground rounded-md no-underline hover:bg-accent-foreground/10 transition-colors"
+          >
+            Subscribe
+          </AppLink>
         </div>
-
-        {/* Keep In Touch Section */}
-        <div>
-          <h3 className="font-heading text-lg font-bold mb-3">Keep In Touch</h3>
-          <p className="text-sm text-secondarytext mb-4 leading-relaxed">
-            Follow my social media and see what I&apos;m up to.
-          </p>
-          <div className="flex gap-2">
-            <AppLink
-              href="https://www.linkedin.com/in/desktopofsamuel/"
-              target="_blank"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md no-underline transition-colors bg-gray-100 text-gray-600 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400"
-            >
-              <TbBrandLinkedinFilled size={24} />
-            </AppLink>
-            <AppLink
-              href="https://www.x.com/desktopofsamuel"
-              target="_blank"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md no-underline transition-colors bg-gray-100 text-gray-600 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400"
-            >
-              <TbBrandX size={24} />
-            </AppLink>
-            <AppLink
-              href="https://www.instagram.com/desktopofsamuel"
-              target="_blank"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md no-underline transition-colors bg-gray-100 text-gray-600 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400"
-            >
-              <TbBrandInstagram size={24} />
-            </AppLink>
-            <AppLink
-              href="https://medium.com/desktop-of-samuel"
-              target="_blank"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md no-underline transition-colors bg-gray-100 text-gray-600 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400"
-            >
-              <TbBrandMedium size={24} />
-            </AppLink>
-            <AppLink
-              href="https://www.github.com/desktopofsamuel"
-              target="_blank"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md no-underline transition-colors bg-gray-100 text-gray-600 hover:bg-primary-500 hover:text-white dark:bg-primary-800 dark:text-primary-500 dark:hover:bg-primary-700 dark:hover:text-primary-400"
-            >
-              <TbBrandGithubFilled size={24} />
-            </AppLink>
+        <div className="border-t border-accent-foreground/20 pt-6 flex items-center justify-between flex-wrap gap-4">
+          <span className="font-mono text-xs text-accent-foreground/60">
+            © 2026 Desktop of Samuel · Hong Kong
+          </span>
+          <div className="flex gap-2.5">
+            {socials.map(({ Icon, href, label }) => (
+              <AppLink
+                key={href}
+                href={href}
+                target="_blank"
+                aria-label={label}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-accent-foreground/15 text-accent-foreground no-underline hover:bg-accent-foreground/30 transition-colors"
+              >
+                <Icon size={16} />
+              </AppLink>
+            ))}
           </div>
-        </div>
-
-        {/* Subscribe Section */}
-        <div>
-          <h3 className="font-heading  text-lg font-bold mb-3">Subscribe</h3>
-          <p className="text-sm text-secondarytext mb-4 leading-relaxed">
-            I write regularly on the subject of design and technology. Feel free
-            to subscribe my latest writings.
-          </p>
-          <Button asChild>
-            <AppLink
-              href="https://desktopofsamuel.medium.com/subscribe"
-              target="_blank"
-            >
-              Subscribe
-            </AppLink>
-          </Button>
         </div>
       </div>
     </footer>

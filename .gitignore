@@ -44,3 +44,8 @@ yarn-error.log*
 # sitemap
 sitemap-0.xml
 sitemap.xml
+
+# agent / editor state
+.agents/
+.claude/
+skills-lock.json
