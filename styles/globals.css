@@ -170,6 +170,12 @@
     border-color: var(--color-border);
   }
 
+  html {
+    /* Reserve scrollbar gutter so modal/Lightbox opening (which sets
+     * overflow: hidden) doesn't cause the layout to shift right. */
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-background text-foreground font-body;
   }

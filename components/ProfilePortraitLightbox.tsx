@@ -12,12 +12,16 @@ const portraitItem: LightboxItem = {
 
 export default function ProfilePortraitLightbox() {
   const [selected, setSelected] = useState<LightboxItem | null>(null);
+  const [originRect, setOriginRect] = useState<DOMRect | null>(null);
 
   return (
     <>
       <button
         className="w-full cursor-zoom-in rounded-md overflow-hidden"
-        onClick={() => setSelected(portraitItem)}
+        onClick={(e) => {
+          setOriginRect(e.currentTarget.getBoundingClientRect());
+          setSelected(portraitItem);
+        }}
         aria-label="View portrait photo"
       >
         <Image
@@ -28,7 +32,11 @@ export default function ProfilePortraitLightbox() {
           className="w-full h-auto"
         />
       </button>
-      <Lightbox item={selected} onClose={() => setSelected(null)} />
+      <Lightbox
+        item={selected}
+        originRect={originRect}
+        onClose={() => setSelected(null)}
+      />
     </>
   );
 }

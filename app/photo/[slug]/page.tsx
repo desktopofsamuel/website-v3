@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import dayjs from "dayjs";
 import AppLayout from "@/components/AppLayout";
-import MDXContent from "@/components/mdx-components";
+import PhotoPostGallery from "@/components/PhotoPostGallery";
+import type { LightboxItem } from "@/components/Lightbox";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -37,11 +38,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Generate static params for all photos
 export async function generateStaticParams() {
-  return allPhotos.filter((post) => !post.draft).map((post) => ({
-    slug: post.slug,
-  }));
+  return allPhotos
+    .filter((post) => !post.draft)
+    .map((post) => ({ slug: post.slug }));
 }
 
+/** Extract every markdown image (![alt](src)) from the raw body, in document order. */
+function extractImages(raw: string): LightboxItem[] {
+  const matches = [...raw.matchAll(/!\[([^\]]*)\]\(([^)\s]+)/g)];
+  return matches.map((m) => ({ src: m[2].trim(), alt: m[1].trim() }));
+}
 
 export default async function SinglePhotoPage({ params }: Props) {
   const { slug } = await params;
@@ -51,20 +57,22 @@ export default async function SinglePhotoPage({ params }: Props) {
     notFound();
   }
 
+  const items = extractImages(post.body.raw);
+
   return (
     <AppLayout>
-      <article className="max-w-4xl mx-auto px-4 py-8">
-        {/* Header */}
-        <header className="mb-8 text-center">
-          <h1 className="font-heading text-4xl font-bold mb-4">{post.title}</h1>
-          <p className="text-sm text-secondarytext">
-            {dayjs(post.date).format("MMM DD, YYYY")}
+      <article className="max-w-4xl mx-auto px-page py-12">
+        <header className="mb-10 text-center">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
+            {dayjs(post.date).format("MMM D, YYYY")}
           </p>
+          <h1 className="font-body font-normal text-4xl md:text-6xl tracking-tighter leading-none text-foreground">
+            {post.title}
+          </h1>
         </header>
 
-        {/* Photo Content */}
-        <section className="mb-8">
-          <MDXContent code={post.body.code} />
+        <section>
+          <PhotoPostGallery items={items} code={post.body.code} />
         </section>
       </article>
     </AppLayout>
