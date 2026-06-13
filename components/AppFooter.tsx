@@ -20,11 +20,6 @@ const socials = [
     label: "X",
   },
   {
-    Icon: TbBrandInstagram,
-    href: "https://www.instagram.com/desktopofsamuel",
-    label: "Instagram",
-  },
-  {
     Icon: TbBrandMedium,
     href: "https://medium.com/desktop-of-samuel",
     label: "Medium",
@@ -64,7 +59,7 @@ export default function AppFooter() {
         </div>
         <div className="border-t border-accent-foreground/20 pt-6 flex items-center justify-between flex-wrap gap-4">
           <span className="font-mono text-xs text-accent-foreground/60">
-            © 2026 Desktop of Samuel · Hong Kong
+            © 2026 Desktop of Samuel · Not created by Framer · All rights reserved
           </span>
           <div className="flex gap-2.5">
             {socials.map(({ Icon, href, label }) => (

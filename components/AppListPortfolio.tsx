@@ -12,7 +12,7 @@ export default function AppListPortfolio({ data }: any) {
     >
       <div className="order-2 flex flex-col items-start gap-4 lg:order-1 lg:gap-2">
         <p className="text-sm text-secondarytext font-heading mb-0">{post.subtitle}</p>
-        <h2 className="text-3xl font-bold font-heading mb-2">{post.title}</h2>
+        <h2 className="text-4xl font-heading mb-2">{post.title}</h2>
         <p className="text-base text-secondarytext mb-6">{post.description}</p>
         <Button asChild>
           <Link href={`/work/${post.slug}/`}>View Process</Link>
