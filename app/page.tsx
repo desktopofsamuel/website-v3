@@ -18,9 +18,14 @@ export const metadata = {
 };
 
 const services = [
-  { index: "01", label: "UI/UX Design" },
-  { index: "02", label: "Design System" },
-  { index: "03", label: "AI Design Workflow" },
+  "Product Design",
+  "Design System",
+  "AI Design Workflow",
+  "Web Development",
+  "Search Engine Optimisation",
+  "Design Thinking",
+  "UX Strategy",
+  "Prototyping",
 ];
 
 const EXPERIENCE_YEARS = 2026 - 2015;
@@ -114,17 +119,17 @@ export default function IndexPage() {
       {/* Services — editorial pill rows */}
       <SidebarSection label="04 — Services">
         <div className="flex flex-col -mt-6">
-          {services.map((svc) => (
+          {services.map((label, index) => (
             <div
-              key={svc.label}
+              key={label}
               className="group flex items-center justify-between py-8 border-b border-border/50 cursor-default"
             >
               <div className="flex items-baseline gap-6">
                 <span className="font-mono text-xs text-muted-foreground tabular-nums w-6 shrink-0">
-                  {svc.index}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="font-body text-3xl md:text-5xl font-normal tracking-tight text-foreground group-hover:translate-x-1 transition-transform duration-200 ease-out">
-                  {svc.label}
+                  {label}
                 </span>
               </div>
               <TbArrowUpRight

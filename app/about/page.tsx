@@ -18,6 +18,7 @@ import Ama from "../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../public/about/architecting-design-for-scale.png";
 import IntoDesignSystem from "../../public/about/into-design-system.png";
+import Config from "../../public/static/2024-config.jpg"
 
 type CareerEntry = {
   company: string;
@@ -133,7 +134,7 @@ const engagements: Engagement[] = [
   {
     title: "Config Watch Party Hong Kong ",
     subtitle: "Leader of Friends of Figma Hong Kong ·(2022 - 2026)",
-    image: WorldTour,
+    image: Config,
   },
   {
     title: "Campus Recruitment: HKUST Firm Visit",
@@ -300,7 +301,7 @@ export default function AboutPage() {
         </div>
       </SidebarSection>
 
-      <SidebarSection label="Engagement">
+      <SidebarSection label="Community">
         <EngagementGallery engagements={engagements} />
       </SidebarSection>
 
