@@ -1,11 +1,11 @@
 import { Link } from "@/components/AppLink";
-import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
 import SidebarSection from "@/components/SidebarSection";
+import PageHero from "@/components/PageHero";
 import { allTags, filteredPosts } from "@/lib/content";
 import { sortByDate } from "@/utils";
-import config from "@/../config";
+import config from "@/config";
 
 const LONGFORM_TAG = "longform";
 
@@ -39,23 +39,20 @@ export default function BlogPage() {
   ];
 
   return (
-    <AppLayout>
-      {/* Hero */}
-      <div className="mx-divider px-overhang pt-16 pb-12 border-b border-border">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-          02 — Writing
-        </p>
-        <h1 className="font-body font-normal text-6xl md:text-8xl tracking-tighter leading-none text-foreground">
-          Notes on
-          <br />
-          Design &amp;
-          <br />
-          Technology
-        </h1>
-        <p className="mt-8 max-w-[55ch] font-body text-base leading-relaxed text-muted-foreground">
-          A collection of posts on design process, technology, and productivity.
-        </p>
-      </div>
+    <>
+      <PageHero
+        eyebrow="02 — Writing"
+        title={
+          <>
+            Notes on
+            <br />
+            Design &amp;
+            <br />
+            Technology
+          </>
+        }
+        description="A collection of posts on design process, technology, and productivity."
+      />
 
       {/* Featured */}
       <SidebarSection label="Featured">
@@ -121,6 +118,6 @@ export default function BlogPage() {
           ))}
         </div>
       </SidebarSection>
-    </AppLayout>
+    </>
   );
 }

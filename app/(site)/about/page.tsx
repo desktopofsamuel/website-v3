@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 import Image, { StaticImageData } from "next/image";
-import AppLayout from "@/components/AppLayout";
 import { Link } from "@/components/AppLink";
 import SidebarSection from "@/components/SidebarSection";
 import EngagementGallery from "@/components/EngagementGallery";
 import ProfilePortraitLightbox from "@/components/ProfilePortraitLightbox";
-import config from "@/../config";
+import config from "@/config";
 
-import Hsbclogo from "../../public/about/hsbc-logo.svg";
-import Hyperairlogo from "../../public/about/hyperair-logo.svg";
-import Playalogo from "../../public/about/playa-logo.svg";
-import Applelogo from "../../public/about/apple-logo.svg";
-import Okxlogo from "../../public/about/okx-logo.svg";
-import Pepperstonelogo from "../../public/about/pepperstone-logo.svg";
-import Figma from "../../public/about/figma.svg";
-import Ama from "../../public/about/Design System AMA2.jpg";
-import FirmVisit from "../../public/about/Firm Visit.jpeg";
-import WorldTour from "../../public/about/architecting-design-for-scale.png";
-import IntoDesignSystem from "../../public/about/into-design-system.png";
-import Config from "../../public/static/2024-config.jpg"
+import Hsbclogo from "../../../public/about/hsbc-logo.svg";
+import Hyperairlogo from "../../../public/about/hyperair-logo.svg";
+import Playalogo from "../../../public/about/playa-logo.svg";
+import Applelogo from "../../../public/about/apple-logo.svg";
+import Okxlogo from "../../../public/about/okx-logo.svg";
+import Pepperstonelogo from "../../../public/about/pepperstone-logo.svg";
+import Figma from "../../../public/about/figma.svg";
+import Ama from "../../../public/about/Design System AMA2.jpg";
+import FirmVisit from "../../../public/about/Firm Visit.jpeg";
+import WorldTour from "../../../public/about/architecting-design-for-scale.png";
+import IntoDesignSystem from "../../../public/about/into-design-system.png";
+import Config from "../../../public/static/2024-config.jpg"
 
 type CareerEntry = {
   company: string;
@@ -196,7 +195,7 @@ export default function AboutPage() {
   const experienceYears = CURRENT_YEAR - START_YEAR;
 
   return (
-    <AppLayout>
+    <>
       <SidebarSection
         label="About me"
         leftAside={<ProfilePortraitLightbox />}
@@ -382,6 +381,6 @@ export default function AboutPage() {
           Get in Touch
         </Link>
       </section>
-    </AppLayout>
+    </>
   );
 }

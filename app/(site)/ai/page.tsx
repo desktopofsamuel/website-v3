@@ -1,6 +1,7 @@
-import AppLayout from "@/components/AppLayout";
 import AppCardBase from "@/components/AppCardBase";
 import { Link } from "@/components/AppLink";
+import PageHero from "@/components/PageHero";
+import SidebarSection from "@/components/SidebarSection";
 import React from "react";
 
 function MobbinIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -87,30 +88,39 @@ const uses = [
 
 export default function UsesPage() {
   return (
-    <AppLayout>
-       <div className="py-8">
-        <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
-          Use of AI
-        </h1>
-        <p className="text-lg text-secondarytext leading-normal">
-        AI tools and workflow
-        </p></div>
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10 md:pb-40">
-        {uses.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Link href={item.url} key={item.title} target="_blank" className="no-underline">
-              <AppCardBase title="">
-                <div className="py-4 flex items-center justify-start">
-                  <Icon />
-                </div>
-                <div className="text-lg font-bold font-heading mb-1 text-left">{item.title}</div>
-                <div className="text-secondarytext leading-relaxed text-left">{item.description}</div>
-              </AppCardBase>
-            </Link>
-          );
-        })}
-      </div>
-    </AppLayout>
+    <>
+      <PageHero
+        eyebrow="Tools · AI"
+        title="Use of AI"
+        description="AI tools and workflow that shape how I design and build."
+      />
+      <SidebarSection label="Stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {uses.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                href={item.url}
+                key={item.title}
+                target="_blank"
+                className="no-underline"
+              >
+                <AppCardBase title="">
+                  <div className="py-4 flex items-center justify-start">
+                    <Icon />
+                  </div>
+                  <div className="font-body text-lg font-bold text-foreground mb-1 text-left">
+                    {item.title}
+                  </div>
+                  <div className="font-body text-muted-foreground leading-relaxed text-left">
+                    {item.description}
+                  </div>
+                </AppCardBase>
+              </Link>
+            );
+          })}
+        </div>
+      </SidebarSection>
+    </>
   );
 }

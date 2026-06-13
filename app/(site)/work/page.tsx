@@ -3,10 +3,9 @@ import { allWorks } from "contentlayer/generated";
 import { sortByDate } from "@/utils";
 import AppListPortfolio from "@/components/AppListPortfolio";
 import AppListPortfolioSmall from "@/components/AppListPortfolioSmall";
-import AppLayout from "@/components/AppLayout";
 import SidebarSection from "@/components/SidebarSection";
 import WorkHero from "@/components/WorkHero";
-import config from "@/../config";
+import config from "@/config";
 
 export const metadata: Metadata = {
   title: "Portfolio | Desktop of Samuel",
@@ -24,7 +23,7 @@ export default function WorkListPage() {
   const sideProjects = works.filter((post) => post.feature !== true && post.draft !== true).sort(sortByDate);
 
   return (
-    <AppLayout>
+    <>
       <WorkHero />
 
       <SidebarSection label="Featured">
@@ -42,6 +41,6 @@ export default function WorkListPage() {
           ))}
         </div>
       </SidebarSection>
-    </AppLayout>
+    </>
   );
 }

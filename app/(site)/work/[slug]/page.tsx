@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { allWorks } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import AppLayout from "@/components/AppLayout";
 import MDXContent from "@/components/mdx-components";
 import NextPrev from "@/components/NextPrev";
 import Image from "next/image";
 import dayjs from "dayjs";
-import CONFIG from "@/../config";
+import CONFIG from "@/config";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -44,7 +43,7 @@ export default async function WorkDetailPage({ params }: Props) {
   const prevPost = currentIndex > 0 ? filteredWorks[currentIndex - 1] : null;
 
   return (
-    <AppLayout>
+    <>
       <article className="max-w-2xl mx-auto">
         <header className="mb-8 flex flex-col gap-4 items-center">
           <h1 className="font-heading text-4xl font-bold text-center">{post.title}</h1>
@@ -92,6 +91,6 @@ export default async function WorkDetailPage({ params }: Props) {
         </div>
         <NextPrev nextPost={nextPost!} prevPost={prevPost!} />
       </article>
-    </AppLayout>
+    </>
   );
 }

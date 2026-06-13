@@ -1,4 +1,3 @@
-import AppLayout from "@/components/AppLayout";
 import AppListBlog from "@/components/AppListBlog";
 import AppListPortfolio from "@/components/AppListPortfolio";
 import AppCardBook from "@/components/AppCardBook";
@@ -36,7 +35,7 @@ export default function IndexPage() {
   const photos = filteredPhotos.slice(0, 8);
 
   return (
-    <AppLayout>
+    <>
       {/* Hero — full viewport, content pinned to bottom, aligned to clamp gutter */}
       <section className="mx-divider px-overhang min-h-[90dvh] flex flex-col justify-end pt-16 pb-20 gap-10 border-b border-border">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -151,6 +150,6 @@ export default function IndexPage() {
           </AppLink>
         </div>
       </SidebarSection>
-    </AppLayout>
+    </>
   );
 }

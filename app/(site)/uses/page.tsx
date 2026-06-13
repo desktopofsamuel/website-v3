@@ -1,4 +1,3 @@
-import AppLayout from "@/components/AppLayout";
 import AppCardBase from "@/components/AppCardBase";
 import { Link } from "@/components/AppLink";
 import React from "react";
@@ -87,7 +86,7 @@ const uses = [
 
 export default function UsesPage() {
   return (
-    <AppLayout>
+    <>
        <div className="py-8">
         <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
           Uses
@@ -111,6 +110,6 @@ export default function UsesPage() {
           );
         })}
       </div>
-    </AppLayout>
+    </>
   );
 }

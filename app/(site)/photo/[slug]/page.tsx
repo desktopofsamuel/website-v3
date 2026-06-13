@@ -2,8 +2,8 @@ import { allPhotos } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import dayjs from "dayjs";
-import AppLayout from "@/components/AppLayout";
 import PhotoPostGallery from "@/components/PhotoPostGallery";
+import PageHero from "@/components/PageHero";
 import type { LightboxItem } from "@/components/Lightbox";
 
 type Props = {
@@ -60,21 +60,15 @@ export default async function SinglePhotoPage({ params }: Props) {
   const items = extractImages(post.body.raw);
 
   return (
-    <AppLayout>
-      <article className="max-w-4xl mx-auto px-page py-12">
-        <header className="mb-10 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            {dayjs(post.date).format("MMM D, YYYY")}
-          </p>
-          <h1 className="font-body font-normal text-4xl md:text-6xl tracking-tighter leading-none text-foreground">
-            {post.title}
-          </h1>
-        </header>
-
-        <section>
-          <PhotoPostGallery items={items} code={post.body.code} />
-        </section>
+    <>
+      <PageHero
+        variant="centered"
+        eyebrow={dayjs(post.date).format("MMM D, YYYY")}
+        title={post.title}
+      />
+      <article className="max-w-4xl mx-auto px-page pb-12">
+        <PhotoPostGallery items={items} code={post.body.code} />
       </article>
-    </AppLayout>
+    </>
   );
 }

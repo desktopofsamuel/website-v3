@@ -1,5 +1,5 @@
-import AppLayout from "@/components/AppLayout";
 import SidebarSection from "@/components/SidebarSection";
+import PageHero from "@/components/PageHero";
 import { Link } from "@/components/AppLink";
 import { allTags, filteredPosts } from "@/lib/content";
 import type { Metadata } from "next";
@@ -33,20 +33,12 @@ export default function TagListPage() {
   ];
 
   return (
-    <AppLayout>
-      {/* Hero */}
-      <div className="mx-divider px-overhang pt-16 pb-12 border-b border-border">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-          02 — Writing · Topics
-        </p>
-        <h1 className="font-body font-normal text-6xl md:text-8xl tracking-tighter leading-none text-foreground">
-          Topics
-        </h1>
-        <p className="mt-8 max-w-[55ch] font-body text-base leading-relaxed text-muted-foreground">
-          Every topic I&apos;ve written about. Click any pill to see the posts
-          tagged under it.
-        </p>
-      </div>
+    <>
+      <PageHero
+        eyebrow="02 — Writing · Topics"
+        title="Topics"
+        description="Every topic I've written about. Click any pill to see the posts tagged under it."
+      />
 
       {/* Topics */}
       <SidebarSection
@@ -86,6 +78,6 @@ export default function TagListPage() {
           ))}
         </div>
       </SidebarSection>
-    </AppLayout>
+    </>
   );
 }
