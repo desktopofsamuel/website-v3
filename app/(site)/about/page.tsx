@@ -4,6 +4,8 @@ import { Link } from "@/components/AppLink";
 import SidebarSection from "@/components/SidebarSection";
 import EngagementGallery from "@/components/EngagementGallery";
 import ProfilePortraitLightbox from "@/components/ProfilePortraitLightbox";
+import CareerVideoMockup from "@/components/CareerVideoMockup";
+import CareerMobileVideoMockup from "@/components/CareerMobileVideoMockup";
 import config from "@/config";
 
 import Hsbclogo from "../../../public/about/hsbc-logo.svg";
@@ -18,6 +20,27 @@ import FirmVisit from "../../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../../public/about/architecting-design-for-scale.png";
 import IntoDesignSystem from "../../../public/about/into-design-system.png";
 import Config from "../../../public/static/2024-config.jpg";
+import GridPlaya01 from "../../../public/about/Grid Playa 01.png";
+import GridPlaya02 from "../../../public/about/Grid Playa 02.png";
+import GridPlaya03 from "../../../public/about/Grid Playa 03.png";
+import GridPlaya04 from "../../../public/about/Grid Playa 04.png";
+import GridHyperair01 from "../../../public/about/Grid Hyperair 01.png";
+import GridHyperair02 from "../../../public/about/Grid Hyperair 02.png";
+import GridHSBC01 from "../../../public/about/Grid HSBC 01.png";
+import GridHSBC02 from "../../../public/about/Grid HSBC 02.png";
+import GridOKX01 from  "../../../public/about/Grid OKX 01.png";
+import GridOKX02 from  "../../../public/about/Grid OKX 02.png";
+import GridOKX03 from  "../../../public/about/Grid OKX 03.png";
+import GridOKX04 from "../../../public/about/Grid OKX 04.png";
+
+
+type CareerPhoto = {
+  src?: StaticImageData;
+  videoSrc?: string;
+  videoMockup?: "laptop" | "mobile";
+  caption: string;
+  alt: string;
+};
 
 type CareerEntry = {
   company: string;
@@ -27,6 +50,8 @@ type CareerEntry = {
   logo: StaticImageData;
   color: string;
   href?: string;
+  feature?: boolean;
+  photos?: CareerPhoto[];
 };
 
 const career: CareerEntry[] = [
@@ -34,19 +59,53 @@ const career: CareerEntry[] = [
     company: "Pepperstone",
     role: "Product Design Lead",
     period: "2025 – Now",
+    feature: true,
     description:
       "Build a crypto exchange from ground-up, lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Senior Product Designer in 2025.",
     logo: Pepperstonelogo,
     color: "#FF5000",
+    photos: [
+      {
+        videoSrc:
+          "https://cdn.desktopofsamuel.com/pcrypto-web-landing-2-full.webm",
+        caption: "Crypto platform",
+        alt: "Pepperstone crypto exchange web UI",
+      },
+      {
+        videoSrc:
+          "https://cdn.desktopofsamuel.com/pcrypto-home-app-full.webm",
+        videoMockup: "mobile",
+        caption: "Mobile app",
+        alt: "Pepperstone crypto exchange mobile app",
+      },
+    ],
   },
   {
     company: "OKX",
-    role: "Senior Product Designer",
+    role: "Product Design Lead",
     period: "2022 – 2024",
     description:
       "Lead a design team to build seamless, accessible crypto investment products within a constantly evolving crypto landscape. Promoted from Product Designer (II) in 2023.",
     logo: Okxlogo,
     color: "#000000",
+    feature: true,
+    photos: [
+      {
+        src: GridOKX01,
+        caption: "Grow Tab",
+        alt: "Stock Screener for HSBC Easy Invest",
+      },
+      {
+        src: GridOKX03,
+        caption: "Staking",
+        alt: "Color System Upgrade",
+      },
+      {
+        src: GridOKX04,
+        caption: "Structured Products",
+        alt: "BETH Shark Fin",
+      },
+    ]
   },
   {
     company: "HSBC via Protiviti",
@@ -57,6 +116,18 @@ const career: CareerEntry[] = [
     logo: Hsbclogo,
     color: "#DB0011",
     href: "/work/hsbc",
+    photos: [
+      {
+        src: GridHSBC01,
+        caption: "Stock Screener",
+        alt: "Stock Screener for HSBC Easy Invest",
+      },
+      {
+        src: GridHSBC02,
+        caption: "Global Buy Sell Color",
+        alt: "Color System Upgrade",
+      },
+    ]
   },
   {
     company: "HyperAir",
@@ -67,6 +138,18 @@ const career: CareerEntry[] = [
     logo: Hyperairlogo,
     color: "#0176ee",
     href: "/work/hyperair-fx",
+    photos: [
+      {
+        src: GridHyperair01,
+        caption: "Travel Platform",
+        alt: "Hong Kong Travel Platform",
+      },
+      {
+        src: GridHyperair02,
+        caption: "FX Exchange Prototype",
+        alt: "FX Exchange Prototype",
+      },
+    ]
   },
   {
     company: "Playa",
@@ -77,6 +160,28 @@ const career: CareerEntry[] = [
     logo: Playalogo,
     color: "#49CC74",
     href: "https://playa.hk/portfolio.html",
+    photos: [
+      {
+        src: GridPlaya01,
+        caption: "Storage Unit System",
+        alt: "Playa agency project — e-commerce interface",
+      },
+      {
+        src: GridPlaya02,
+        caption: "District Cultural Event Exhibition App & Web",
+        alt: "Hulu Culture - iTour & H.A.D Walk Website",
+      },
+      {
+        src: GridPlaya03,
+        caption: "Online Novel Reading Platform",
+        alt: "Creation Cabin Novel Reading Platform",
+      },
+      {
+        src: GridPlaya04,
+        caption: "CRM for SENs & Parents",
+        alt: "The Children Development Center CRM",
+      },
+    ],
   },
   {
     company: "Apple",
@@ -132,7 +237,7 @@ const engagements: Engagement[] = [
   },
   {
     title: "Config Watch Party Hong Kong ",
-    subtitle: "Leader of Friends of Figma Hong Kong ·(2022 - 2026)",
+    subtitle: "Leader of Friends of Figma Hong Kong ·2022 - 2026",
     image: Config,
   },
   {
@@ -153,6 +258,22 @@ const community = [
     subtitle: "Community Leader",
     href: "https://friends.figma.com/hong-kong",
     logo: Figma,
+  },
+];
+
+type SideProject = {
+  title: string;
+  subtitle: string;
+  href: string;
+  logo?: StaticImageData;
+};
+
+const sideProjects: SideProject[] = [
+  {
+    title: "Web3 Design Pal",
+    subtitle:
+      "Open source side project · Figma plugin for mock crypto wallet addresses in UI work",
+    href: "https://github.com/desktopofsamuel/web3-design-pal",
   },
 ];
 
@@ -178,6 +299,25 @@ const awards = [
 
 const CURRENT_YEAR = 2026;
 const START_YEAR = 2015;
+
+function getCareerPhotoGridClass(job: CareerEntry): string {
+  if (!job.photos?.length) return "grid grid-cols-3 gap-3 max-w-xs";
+  if (!job.feature) return "grid w-full grid-cols-4 gap-3";
+
+  const count = job.photos.length;
+  if (count === 1) return "grid w-full grid-cols-1 gap-3";
+  if (count === 2) return "grid w-full grid-cols-2 gap-3";
+  if (count === 4) return "grid w-full grid-cols-2 gap-3";
+  return "grid w-full grid-cols-3 gap-3";
+}
+
+function getCareerPhotoSizes(job: CareerEntry): string {
+  if (!job.feature) return "(max-width: 768px) 25vw, 25vw";
+  const count = job.photos?.length ?? 1;
+  if (count === 1) return "(max-width: 768px) 100vw, 100vw";
+  if (count === 2) return "(max-width: 768px) 50vw, 50vw";
+  return "(max-width: 768px) 33vw, 33vw";
+}
 
 export const metadata: Metadata = {
   title: "About | Desktop of Samuel",
@@ -230,7 +370,7 @@ export default function AboutPage() {
         </div>
       </SidebarSection>
 
-      <SidebarSection label="Work Experience">
+      <SidebarSection label="Work">
         <div>
           {career.map((job, i) => (
             <div
@@ -253,32 +393,74 @@ export default function AboutPage() {
               <p className="font-body text-sm leading-7 text-muted-foreground mb-4">
                 {job.description}
               </p>
-              <div className="grid grid-cols-3 gap-3">
-                {[0, 1, 2].map((slot) => (
-                  <div
-                    key={slot}
-                    className="aspect-[16/10] bg-lift border border-border rounded-sm flex items-center justify-center p-5 transition-colors duration-500 ease-in-out hover:[background-color:var(--hover-color)]"
-                    style={
-                      {
-                        "--hover-color": job.color,
-                      } as React.CSSProperties
-                    }
-                  >
-                    <Image
-                      src={job.logo}
-                      alt={`${job.company} logo`}
-                      className="max-h-8 w-auto object-contain"
-                    />
-                  </div>
-                ))}
+              <div className={getCareerPhotoGridClass(job)}>
+                {job.photos?.length
+                  ? job.photos.map((photo) => {
+                      if (photo.videoSrc) {
+                        const VideoMockup =
+                          photo.videoMockup === "mobile"
+                            ? CareerMobileVideoMockup
+                            : CareerVideoMockup;
+
+                        return (
+                          <VideoMockup
+                            key={photo.alt}
+                            src={photo.videoSrc}
+                            alt={photo.alt}
+                            caption={photo.caption}
+                          />
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={photo.alt}
+                          className="group relative aspect-square min-w-0 overflow-hidden rounded-sm border border-border bg-lift"
+                        >
+                          <Image
+                            src={photo.src!}
+                            alt={photo.alt}
+                            fill
+                            sizes={getCareerPhotoSizes(job)}
+                            className="object-cover"
+                          />
+                          <span className="absolute top-2 right-2 z-10 px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-foreground bg-background/25 backdrop-blur-md rounded-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                            {photo.caption}
+                          </span>
+                        </div>
+                      );
+                    })
+                  : (
+                      <div
+                        className="relative aspect-square col-span-1 bg-lift border border-border rounded-sm flex items-center justify-center p-5 transition-colors duration-500 ease-in-out hover:[background-color:var(--hover-color)]"
+                        style={
+                          {
+                            "--hover-color": job.color,
+                          } as React.CSSProperties
+                        }
+                      >
+                        <Image
+                          src={job.logo}
+                          alt={`${job.company} logo`}
+                          className="max-h-10 w-auto object-contain"
+                        />
+                      </div>
+                    )}
               </div>
-              {job.href && (
+              {job.href ? (
                 <Link
                   href={job.href}
                   className="inline-block font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors mt-4"
                 >
-                  View work →
+                  View case study →
                 </Link>
+              ) : (
+                <span
+                  aria-disabled="true"
+                  className="inline-block font-body text-sm text-muted-foreground border-b border-border/50 mt-4 cursor-not-allowed"
+                >
+                  Coming soon →
+                </span>
               )}
             </div>
           ))}
@@ -308,47 +490,71 @@ export default function AboutPage() {
       </SidebarSection>
 
       <SidebarSection label="Community">
-        <EngagementGallery engagements={engagements} />
-      </SidebarSection>
-
-      <SidebarSection label="Community">
-        <div>
-          {community.map((entry, i) => (
-            <div
-              key={entry.title}
-              className={`py-4 ${
-                i < community.length - 1 ? "border-b border-border/50" : ""
-              } ${i === 0 ? "pt-0" : ""} ${
-                i === community.length - 1 ? "pb-0" : ""
-              }`}
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-md bg-lift border border-border flex items-center justify-center flex-shrink-0 p-2">
-                  <Image
-                    src={entry.logo}
-                    alt={`${entry.title} logo`}
-                    className="max-h-full w-auto object-contain"
-                  />
-                </div>
-                <div>
-                  <div className="font-body text-xl tracking-tight text-foreground mb-1">
-                    {entry.title}
-                  </div>
-                  <div className="font-body text-sm leading-6 text-muted-foreground">
-                    {entry.subtitle}
-                  </div>
-                </div>
-                <Link
-                  href={entry.href}
-                  target="_blank"
-                  className="ml-auto font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
-                >
-                  Join upcoming events →
-                </Link>
+        {community.map((entry) => (
+          <div
+            key={entry.title}
+            className="flex items-center gap-4 pb-6 mb-6 border-b border-border/50"
+          >
+            <div className="w-12 h-12 rounded-md bg-lift border border-border flex items-center justify-center flex-shrink-0 p-2">
+              <Image
+                src={entry.logo}
+                alt={`${entry.title} logo`}
+                className="max-h-full w-auto object-contain"
+              />
+            </div>
+            <div>
+              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+                {entry.title}
+              </div>
+              <div className="font-body text-sm leading-6 text-muted-foreground">
+                {entry.subtitle}
               </div>
             </div>
-          ))}
-        </div>
+            <Link
+              href={entry.href}
+              target="_blank"
+              className="ml-auto font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
+            >
+              Join upcoming events →
+            </Link>
+          </div>
+        ))}
+        <EngagementGallery engagements={engagements} />
+        {sideProjects.map((project) => (
+          <div
+            key={project.title}
+            className="flex items-center gap-4 pt-6 mt-6 border-t border-border/50"
+          >
+            <div className="w-12 h-12 rounded-md bg-lift border border-border flex items-center justify-center flex-shrink-0 p-2">
+              {project.logo ? (
+                <Image
+                  src={project.logo}
+                  alt={`${project.title} logo`}
+                  className="max-h-full w-auto object-contain"
+                />
+              ) : (
+                <span className="font-mono text-xs font-medium text-muted-foreground">
+                  W3
+                </span>
+              )}
+            </div>
+            <div>
+              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+                {project.title}
+              </div>
+              <div className="font-body text-sm leading-6 text-muted-foreground">
+                {project.subtitle}
+              </div>
+            </div>
+            <Link
+              href={project.href}
+              target="_blank"
+              className="ml-auto font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
+            >
+              View on GitHub →
+            </Link>
+          </div>
+        ))}
       </SidebarSection>
 
       <SidebarSection label="Awards">
