@@ -205,12 +205,13 @@ export default function AboutPage() {
           business problems and delivering delightful interfaces &amp;
           experiences across domains like web3, finance, and travel industries.
           <br />
-          Over the past few years, I've had the pleasure of working with some
-          genuinely ambitious teams — helping HSBC redesign wealth management
-          journeys for Asia, building HyperAir's product from prototype to scale
-          as their first design hire, and most recently leading product design
-          at Pepperstone. The work spans domains, but it's always fundamentally
-          about people and how they make sense of complexity.
+          Over the past few years, I&apos;ve had the pleasure of working with
+          some genuinely ambitious teams — helping HSBC redesign wealth
+          management journeys for Asia, building HyperAir&apos;s product from
+          prototype to scale as their first design hire, and most recently
+          leading product design at Pepperstone. The work spans domains, but
+          it&apos;s always fundamentally about people and how they make sense
+          of complexity.
         </p>
       </SidebarSection>
 
