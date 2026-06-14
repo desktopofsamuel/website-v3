@@ -29,8 +29,8 @@ export type LightboxConfig = {
 export const DEFAULT_CONFIG: LightboxConfig = {
   direction: "zoom",
   speed: 1,
-  spring: 1.7,
-  delay: 0.1,
+  spring: 2,
+  delay: 0.16,
 };
 
 /** Horizontal slide distance used between items on prev/next navigation. */
