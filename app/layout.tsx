@@ -92,7 +92,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${switzer.variable} ${spaceMono.variable}`}>
+    <html
+      lang="en"
+      className={`dark ${switzer.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className={switzer.className}>
         {children}
         <AnalyticsProvider gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
