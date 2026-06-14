@@ -34,7 +34,6 @@ export default async function TagPage({ params }: TagPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="02 — Writing · Tagged"
         title={
           <>
             {tag}

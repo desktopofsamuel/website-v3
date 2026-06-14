@@ -4,8 +4,9 @@ import { sortByDate } from "@/utils";
 import AppListPortfolio from "@/components/AppListPortfolio";
 import AppListPortfolioSmall from "@/components/AppListPortfolioSmall";
 import SidebarSection from "@/components/SidebarSection";
-import WorkHero from "@/components/WorkHero";
+// import WorkHero from "@/components/WorkHero"; // hidden until hero assets are ready
 import config from "@/config";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Portfolio | Desktop of Samuel",
@@ -24,8 +25,12 @@ export default function WorkListPage() {
 
   return (
     <>
-      <WorkHero />
-
+      {/* <WorkHero />  // hidden until hero assets are ready */}
+      <PageHero
+        eyebrow="02 — Projects"
+        title="Portfolio"
+        description="Selected websites and apps showcase since 2015."
+      />
       <SidebarSection label="Featured">
         <div className="divide-y divide-border/50">
           {featured.map((post) => (

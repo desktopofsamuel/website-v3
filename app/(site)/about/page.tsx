@@ -17,7 +17,7 @@ import Ama from "../../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../../public/about/architecting-design-for-scale.png";
 import IntoDesignSystem from "../../../public/about/into-design-system.png";
-import Config from "../../../public/static/2024-config.jpg"
+import Config from "../../../public/static/2024-config.jpg";
 
 type CareerEntry = {
   company: string;
@@ -196,10 +196,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <SidebarSection
-        label="About me"
-        leftAside={<ProfilePortraitLightbox />}
-      >
+      <SidebarSection label="About me" leftAside={<ProfilePortraitLightbox />}>
         <p className="font-body text-2xl leading-9 tracking-tight text-foreground mb-2 max-w-[56ch] text-pretty">
           Hello, my name is Samuel.
           <br />I got into product design because I&apos;m deeply passionate
@@ -207,6 +204,13 @@ export default function AboutPage() {
           the past {experienceYears} years, I have been solving users and
           business problems and delivering delightful interfaces &amp;
           experiences across domains like web3, finance, and travel industries.
+          <br />
+          Over the past few years, I've had the pleasure of working with some
+          genuinely ambitious teams — helping HSBC redesign wealth management
+          journeys for Asia, building HyperAir's product from prototype to scale
+          as their first design hire, and most recently leading product design
+          at Pepperstone. The work spans domains, but it's always fundamentally
+          about people and how they make sense of complexity.
         </p>
       </SidebarSection>
 
@@ -241,7 +245,9 @@ export default function AboutPage() {
               </div>
               <div className="font-body text-base leading-6 tracking-tight text-foreground mb-3">
                 {job.role}{" "}
-                <span className="font-mono text-muted-foreground">{job.period}</span>
+                <span className="font-mono text-muted-foreground">
+                  {job.period}
+                </span>
               </div>
               <p className="font-body text-sm leading-7 text-muted-foreground mb-4">
                 {job.description}
