@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import sharp from "sharp";
 import type { FileRotationDegrees } from "./photo-rotation";
 
 const STATIC_DIR = path.join(process.cwd(), "public", "static");
@@ -35,6 +34,7 @@ export async function rotateStaticImage(
   }
 
   const input = fs.readFileSync(filePath);
+  const { default: sharp } = await import("sharp");
   const output = await sharp(input)
     .rotate() // normalize EXIF orientation into pixels first
     .rotate(degrees)

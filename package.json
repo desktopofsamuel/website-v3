@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.6.2",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/strip-dev-routes.mjs && next build",
     "start": "next start",
     "lint": "next lint",
     "build:content": "contentlayer2 build",
