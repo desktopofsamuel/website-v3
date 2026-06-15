@@ -108,13 +108,13 @@ export default function BlogMDXContent({ code }: BlogMDXContentProps) {
         "prose-h2:text-xl prose-h3:text-lg",
         "prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3",
         // Body text — [&_p]/[&_li] have explicit specificity, overriding prose's inherited 1.75
-        "prose-p:text-secondarytext [&_p]:leading-[2] prose-a:text-primary-500",
+        "prose-p:text-secondarytext dark:prose-p:text-foreground/90 [&_p]:leading-[2] prose-a:text-primary-500",
         // Links
         "prose-a:no-underline prose-a:border-b prose-a:border-primary-500 hover:prose-a:text-primary-600",
         // Lists
-        "prose-li:text-secondarytext [&_li]:leading-[2]",
+        "prose-li:text-secondarytext dark:prose-li:text-foreground/90 [&_li]:leading-[2]",
         // Blockquote
-        "prose-blockquote:border-l-2 prose-blockquote:border-border prose-blockquote:text-secondarytext prose-blockquote:not-italic",
+        "prose-blockquote:border-l-2 prose-blockquote:border-border prose-blockquote:text-secondarytext dark:prose-blockquote:text-foreground/80 prose-blockquote:not-italic",
         // Code
         "prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none",
         "prose-pre:bg-card prose-pre:border prose-pre:border-border",
