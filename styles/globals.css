@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "react-loading-skeleton/dist/skeleton.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -131,6 +132,10 @@
 
   --color-destructive: oklch(57.7% 0.245 27.325);
 
+  /* ── Skeleton (achromatic — not warm yellow lift/border) ── */
+  --color-skeleton-base: oklch(86% 0 0);
+  --color-skeleton-highlight: oklch(92% 0 0);
+
   /* ── Legacy aliases (soft migration — remove once consumers update) ── */
   --color-primarytext: var(--color-text-primary);
   --color-secondarytext: var(--color-text-secondary);
@@ -159,6 +164,9 @@
   --color-border-strong: rgb(73, 73, 73);
   --color-outline: rgb(73, 73, 73);
   --color-ring: var(--color-primary-400);
+
+  --color-skeleton-base: rgb(38, 38, 38);
+  --color-skeleton-highlight: rgb(73, 73, 73);
 
   --color-primarytext: var(--color-text-primary);
   --color-secondarytext: var(--color-text-secondary);
@@ -247,6 +255,12 @@
     .message-rotate {
       animation: none;
     }
+  }
+
+  /* react-loading-skeleton — neutral gray, theme-aware */
+  .react-loading-skeleton {
+    --base-color: var(--color-skeleton-base);
+    --highlight-color: var(--color-skeleton-highlight);
   }
 
   /* Bento Grid Styles - CSS Grid for Swapy */

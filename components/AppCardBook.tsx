@@ -4,7 +4,6 @@ import useSWR from "swr";
 import AppLink from "@/components/AppLink"
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import AppCardBase from "@/components/AppCardBase";
 
 const AppCardBook = () => {

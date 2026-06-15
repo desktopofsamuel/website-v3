@@ -6,6 +6,8 @@ import PhotoPostGallery from "@/components/PhotoPostGallery";
 import PageHero from "@/components/PageHero";
 import type { LightboxItem } from "@/components/Lightbox";
 
+import { parseGridItemsFromMdx } from "@/lib/photo-mdx-parser";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -43,8 +45,16 @@ export async function generateStaticParams() {
     .map((post) => ({ slug: post.slug }));
 }
 
-/** Extract every markdown image (![alt](src)) from the raw body, in document order. */
+/** Extract gallery images from photo MDX in document order. */
 function extractImages(raw: string): LightboxItem[] {
+  const gridItems = parseGridItemsFromMdx(raw);
+  if (gridItems.length > 0) {
+    return gridItems.map((item) => ({
+      src: item.src,
+      alt: "",
+    }));
+  }
+
   const matches = [...raw.matchAll(/!\[([^\]]*)\]\(([^)\s]+)/g)];
   return matches.map((m) => ({ src: m[2].trim(), alt: m[1].trim() }));
 }

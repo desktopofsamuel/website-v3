@@ -4,7 +4,6 @@ import useSWR from "swr";
 import NextLink from "@/components/NextLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import AppCardBase from "@/components/AppCardBase";
 
 const AppCardTopTracks = () => {

@@ -133,7 +133,7 @@ const mdxComponents = {
     
     return (
       <div 
-        className={cn(`col-span-${spanNum}`, "flex items-center justify-center")} 
+        className={cn(`col-span-${spanNum}`, "flex items-center justify-center overflow-hidden")} 
         {...props}
       >
         {children}
