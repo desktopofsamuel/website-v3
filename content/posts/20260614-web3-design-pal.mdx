@@ -7,7 +7,7 @@ tags:
   - "Web3"
   - "Personal"
 cover: "/static/web3-design-pal-1.png"
-draft: true
+feature: true
 ---
 
 If you design Web3 interfaces in Figma — portfolio dashboards, token list and table, transaction histories — this plugin was built for frustration that came along building it.
@@ -46,10 +46,6 @@ Few months later, I revisited the project as I got another idea. The second vers
 
 It is more challenging, wallet address format don't really change, but prices do. Matching the ticker and supporting fiat current adds another layer of complexity
 
-Few key decisions I made while I was working:
-- BYOK (Bring your own keys): since it is a passion project, I would rather allow each user to bring their own keys from Coingecko instead of using my own. Plugin would only fetch once instead of fetching price everytime, most users only need a rather realistic price instead of accurate price anyway. 
-
-
 A new **Price tab** connects to CoinGecko's API and scans your selected layers for placeholder tokens:
 
 - `{crypto}` — coin ticker
@@ -60,17 +56,19 @@ A new **Price tab** connects to CoinGecko's API and scans your selected layers f
 
 Add these tokens to your layer names or text content, hit **Scan**, then **Refresh** — the plugin fetches live data and replaces every matched layer automatically. It even auto-detects literal ticker text like `BTC` and updates sibling data layers without overwriting the ticker itself.
 
-### Lessons
+### Lessons learned and What's next
 
-The biggest one: shipping a small tool that solves your own problem is worth it, even if you're learning the platform as you go. I published V1 not knowing if anyone else would find it useful. V2 came from using it regularly and noticing the next friction point.
+The biggest one: shipping a small tool that solves your own problem is worth it, even if you're learning the platform as you go. V2 came from using it regularly and noticing the next friction point.
 
-It's free, no paywall. If it saves you time in a project, consider [sponsoring a coffee](https://github.com/desktopofsamuel/web3-design-pal). If you hit a bug or have an idea, the repo is open.
+It's free, no paywall. If it saves you time in a project, consider [sponsoring a coffee](https://github.com/desktopofsamuel/web3-design-pal).
 
-Install from [Web3 Design Pal on Figma Community](https://www.figma.com/community/plugin/1616853662451806659/web3-design-pal) and let me know what you think.
+Next up, crypto icons! Also, there are left over issues from showing 24h change, as it would usually connected to different color or even different component state. I f you hit a bug or have an idea, ping me on [X](x.com/desktopofsamuel) or [Github](https://github.com/desktopofsamuel/web3-design-pal)!
+
+Install from [Web3 Design Pal on Figma Community](https://www.figma.com/community/plugin/1616853662451806659/web3-design-pal) and let me know what you think! 
 
 ## Quick Start
 
 1. Install from [Web3 Design Pal](https://www.figma.com/community/plugin/1616853662451806659/web3-design-pal) on Figma Community
 2. Open via **Plugins → Web3 Design Pal**
-3. **Address tab**: pick a chain → Preview → Create or Apply
+3. **Address tab**: pick a chain → Preview → Create or Apply to existing layer
 4. **Price tab**: add a CoinGecko API key in Settings → select layers with `{price}` tokens → Scan → Refresh → Update text

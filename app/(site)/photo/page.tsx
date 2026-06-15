@@ -27,7 +27,7 @@ export default function PhotoListPage() {
       {/* Hero */}
       <div className="mx-divider px-overhang pt-16 pb-12 border-b border-border">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-          03 — Photography
+          04 — Photography
         </p>
         <h1 className="font-body font-normal text-6xl md:text-8xl tracking-tighter leading-none text-foreground">
           Photography

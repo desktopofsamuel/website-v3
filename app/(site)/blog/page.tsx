@@ -41,7 +41,7 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="02 — Writing"
+        eyebrow="03 — Writing"
         title={
           <>
             Notes on
