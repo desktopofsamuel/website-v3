@@ -3,6 +3,7 @@ import { Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import '../styles/globals.css'
 import AnalyticsProvider from '@/components/AnalyticsProvider'
+import { Agentation } from "agentation";
 
 const spaceMono = Space_Mono({
   subsets: ['latin'],
@@ -99,7 +100,11 @@ export default function RootLayout({
     >
       <body className={switzer.className}>
         {children}
-        <AnalyticsProvider gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
+        <AnalyticsProvider
+          gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
+          clarityId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}
+        />
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   )

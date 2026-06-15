@@ -8,12 +8,12 @@ export default function AppListPortfolio({ data }: any) {
   return (
     <div
       role="group"
-      className="grid grid-cols-1 gap-8 my-10 border border-border p-6 rounded-2xl lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:p-8"
+      className="grid grid-cols-1 gap-4 my-10 border border-border p-6 rounded-2xl lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:p-8"
     >
       <div className="order-2 flex flex-col items-start gap-4 lg:order-1 lg:gap-2">
-        <p className="text-sm text-secondarytext font-heading mb-0">{post.subtitle}</p>
-        <h2 className="text-4xl font-heading mb-2">{post.title}</h2>
-        <p className="text-base text-secondarytext mb-6">{post.description}</p>
+        <p className="text-sm text-secondarytext font-heading">{post.subtitle}</p>
+        <h2 className="text-4xl font-heading">{post.title}</h2>
+        <p className="text-base text-secondarytext">{post.description}</p>
         <Button asChild>
           <Link href={`/work/${post.slug}/`}>View Process</Link>
         </Button>

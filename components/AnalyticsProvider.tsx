@@ -1,29 +1,26 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const Analytics = dynamic(
-  () => import("@vercel/analytics/next").then((m) => ({ default: m.Analytics })),
-  { ssr: false }
-);
-
-const GoogleAnalytics = dynamic(
-  () =>
-    import("@next/third-parties/google").then((m) => ({
-      default: m.GoogleAnalytics,
-    })),
-  { ssr: false }
-);
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 type AnalyticsProviderProps = {
-  gaId: string;
+  gaId?: string;
+  clarityId?: string;
 };
 
-export default function AnalyticsProvider({ gaId }: AnalyticsProviderProps) {
+export default function AnalyticsProvider({ gaId, clarityId }: AnalyticsProviderProps) {
   return (
     <>
       <Analytics />
-      <GoogleAnalytics gaId={gaId} />
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+      {clarityId ? (
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${clarityId}");`}
+        </Script>
+      ) : null}
     </>
   );
 }

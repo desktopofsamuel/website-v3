@@ -45,7 +45,7 @@ export default function AppFooter() {
         <div className="flex flex-wrap gap-3 mb-12">
           <AppLink
             href="mailto:desktopofsamuel@gmail.com"
-            className="inline-flex items-center font-body font-semibold text-base px-6 py-3 bg-background text-accent rounded-md no-underline hover:opacity-90 transition-opacity"
+            className="inline-flex items-center font-body font-semibold text-base px-6 py-3 border-2 border-accent-foreground text-accent-foreground rounded-md no-underline hover:bg-accent-foreground/10 transition-colors"
           >
             Get in Touch
           </AppLink>

@@ -58,7 +58,7 @@ export default function BlogPage() {
       <SidebarSection label="Featured">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featured.map((post) => (
-            <AppListBlog key={post.slug} data={post} hideDate />
+            <AppListBlog key={post.slug} data={post} />
           ))}
         </div>
       </SidebarSection>

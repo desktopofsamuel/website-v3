@@ -149,17 +149,17 @@ export default function NavTicker({ temperature }: NavTickerProps) {
 
   return (
     <div
-      className="hidden md:flex items-center gap-2 text-foreground"
+      className="hidden min-w-0 flex-1 items-baseline justify-end gap-2 text-foreground md:flex md:flex-none md:justify-start"
       aria-live="polite"
     >
-      <div className="wave-line h-3 w-32 lg:w-48" aria-hidden="true" />
+      <div className="wave-line hidden h-3 w-32 md:block lg:w-48" aria-hidden="true" />
       <svg
         width="14"
         height="10"
         viewBox="0 0 14 10"
         fill="none"
         aria-hidden="true"
-        className="-ml-1 shrink-0"
+        className="-ml-1 hidden shrink-0 md:block"
       >
         <path
           d="M0 5 L12 5 M8.5 1.5 L12 5 L8.5 8.5"
@@ -171,7 +171,7 @@ export default function NavTicker({ temperature }: NavTickerProps) {
       </svg>
       <span
         key={safeIndex}
-        className="message-rotate font-body text-base leading-none text-muted-foreground whitespace-nowrap"
+        className="message-rotate truncate font-body text-sm leading-snug text-muted-foreground md:text-base md:whitespace-nowrap"
       >
         {messages[safeIndex]}
       </span>

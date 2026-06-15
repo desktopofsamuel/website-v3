@@ -5,6 +5,7 @@ import AppCardCurrentlyPlaying from "@/components/AppCardCurrentlyPlaying";
 import AppCardMusic from "@/components/AppCardMusic";
 import AppCardFilms from "@/components/AppCardFilms";
 import AppLink from "@/components/AppLink";
+import HeroTitle from "@/components/HeroTitle";
 import PhotoScrollGallery from "@/components/PhotoScrollGallery";
 import SidebarSection from "@/components/SidebarSection";
 import { filteredPosts, filteredFeaturedWorks, filteredPhotos } from "@/lib/content";
@@ -41,13 +42,7 @@ export default function IndexPage() {
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           00 — Samuel Wong, Hong Kong
         </p>
-        <h1 className="font-body font-normal text-5xl sm:text-7xl md:text-8xl tracking-tighter leading-none text-foreground">
-          UI/UX designer
-          <br className="hidden sm:block" />
-          crafting digital
-          <br className="hidden sm:block" />
-          experiences
-        </h1>
+        <HeroTitle />
         <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-xl">
           Full-stack product designer with {EXPERIENCE_YEARS}+ years delivering
           bespoke interfaces for web3, finance, and travel — currently leading

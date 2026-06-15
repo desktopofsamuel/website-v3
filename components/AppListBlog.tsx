@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "@/components/AppLink";
 import Image from "next/image";
-import dayjs from "dayjs";
 import { cn } from "@/components/lib/utils";
 
 type AppListBlogProps = {
@@ -9,26 +8,20 @@ type AppListBlogProps = {
     slug: string;
     title: string;
     excerpt: string;
+    category?: string;
     cover?: string;
     date?: string;
     timetoread?: number;
   };
   small?: boolean;
-  hideDate?: boolean;
 };
 
 export default function AppListBlog({
   data,
   small = false,
-  hideDate = false,
 }: AppListBlogProps) {
   const post = data;
-  const meta = [
-    !hideDate && post.date ? dayjs(post.date).format("MMM D, YYYY") : null,
-    post.timetoread ? `${post.timetoread} min read` : null,
-  ]
-    .filter(Boolean)
-    .join(" · ");
+  const meta = post.category ?? null;
 
   return (
     <Link href={`/${post.slug}/`} className="no-underline text-inherit block">
@@ -47,7 +40,7 @@ export default function AppListBlog({
         )}
         <h3
           className={cn(
-            "font-body font-bold mb-3 leading-tight tracking-tight text-foreground",
+            "font-body font-normal mb-3 leading-tight tracking-tight text-foreground",
             {
               "text-xl": small,
               "text-2xl": !small,

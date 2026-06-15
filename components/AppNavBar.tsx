@@ -32,28 +32,20 @@ export default function AppNavBar({ temperature }: AppNavBarProps) {
       `}</style>
       <header className="sticky top-0 z-50 bg-background">
         {/* Ticker row */}
-        <div className="border-b border-border px-page flex items-center justify-between gap-4 py-5">
+        <div className="border-b border-border px-page flex items-center justify-between gap-3 py-5">
           <Link
             href="/"
-            className="no-underline text-foreground font-body text-base leading-none"
+            className="no-underline text-foreground font-body text-base leading-none shrink-0"
             aria-label="Desktop of Samuel — Home"
           >
             Desktop of Samuel
           </Link>
 
-          <NavTicker temperature={temperature} />
-        </div>
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-2 md:flex-none">
+            <NavTicker temperature={temperature} />
 
-        {/* Subnav row */}
-        <nav className="border-b border-border px-page">
-          <div className="flex items-center justify-between">
-            {/* Desktop subnav */}
-            <div className="hidden md:flex items-center gap-6 py-3.5 font-body">
-              <NavLinks variant="desktop" />
-            </div>
-
-            {/* Mobile hamburger */}
-            <div className="md:hidden flex items-center py-3.5">
+            {/* Mobile menu — top bar, right side */}
+            <div className="flex shrink-0 items-center md:hidden">
               <input
                 type="checkbox"
                 id="mobile-menu-toggle"
@@ -69,7 +61,6 @@ export default function AppNavBar({ temperature }: AppNavBarProps) {
                 <TbMenu2 />
               </label>
 
-              {/* Mobile menu overlay */}
               <div className="fixed inset-0 z-[1000] bg-background hidden peer-checked:flex flex-col items-start p-8 transition-all">
                 <label
                   htmlFor="mobile-menu-toggle"
@@ -84,11 +75,16 @@ export default function AppNavBar({ temperature }: AppNavBarProps) {
                 </nav>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Theme toggle (desktop) */}
-            <div className="hidden md:block">
-              <ThemeToggle />
+        {/* Subnav row — desktop only */}
+        <nav className="hidden md:block border-b border-border px-page">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6 py-3.5 font-body">
+              <NavLinks variant="desktop" />
             </div>
+            <ThemeToggle />
           </div>
         </nav>
       </header>

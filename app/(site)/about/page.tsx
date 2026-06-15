@@ -51,6 +51,7 @@ type CareerEntry = {
   color: string;
   href?: string;
   feature?: boolean;
+  hideComingSoon?: boolean;
   photos?: CareerPhoto[];
 };
 
@@ -68,14 +69,14 @@ const career: CareerEntry[] = [
       {
         videoSrc:
           "https://cdn.desktopofsamuel.com/pcrypto-web-landing-2-full.webm",
-        caption: "Crypto platform",
+        caption: "AU Site Landing Page",
         alt: "Pepperstone crypto exchange web UI",
       },
       {
         videoSrc:
           "https://cdn.desktopofsamuel.com/pcrypto-home-app-full.webm",
         videoMockup: "mobile",
-        caption: "Mobile app",
+        caption: "Native App",
         alt: "Pepperstone crypto exchange mobile app",
       },
     ],
@@ -191,6 +192,7 @@ const career: CareerEntry[] = [
       "Deferred from university for 1-year full-time internship at iTunes & App Store team to curate APAC editorial content for apps, films, music and books.",
     logo: Applelogo,
     color: "#86868B",
+    hideComingSoon: true,
   },
 ];
 
@@ -302,21 +304,21 @@ const START_YEAR = 2015;
 
 function getCareerPhotoGridClass(job: CareerEntry): string {
   if (!job.photos?.length) return "grid grid-cols-3 gap-3 max-w-xs";
-  if (!job.feature) return "grid w-full grid-cols-4 gap-3";
+  if (!job.feature) return "grid w-full grid-cols-2 md:grid-cols-4 gap-3";
 
   const count = job.photos.length;
   if (count === 1) return "grid w-full grid-cols-1 gap-3";
-  if (count === 2) return "grid w-full grid-cols-2 gap-3";
-  if (count === 4) return "grid w-full grid-cols-2 gap-3";
-  return "grid w-full grid-cols-3 gap-3";
+  if (count === 2) return "grid w-full grid-cols-1 md:grid-cols-2 gap-3";
+  if (count === 4) return "grid w-full grid-cols-1 md:grid-cols-2 gap-3";
+  return "grid w-full grid-cols-1 md:grid-cols-3 gap-3";
 }
 
 function getCareerPhotoSizes(job: CareerEntry): string {
-  if (!job.feature) return "(max-width: 768px) 25vw, 25vw";
+  if (!job.feature) return "(max-width: 768px) 50vw, 25vw";
   const count = job.photos?.length ?? 1;
   if (count === 1) return "(max-width: 768px) 100vw, 100vw";
-  if (count === 2) return "(max-width: 768px) 50vw, 50vw";
-  return "(max-width: 768px) 33vw, 33vw";
+  if (count === 2) return "(max-width: 768px) 100vw, 50vw";
+  return "(max-width: 768px) 100vw, 33vw";
 }
 
 export const metadata: Metadata = {
@@ -454,7 +456,7 @@ export default function AboutPage() {
                 >
                   View case study →
                 </Link>
-              ) : (
+              ) : job.hideComingSoon ? null : (
                 <span
                   aria-disabled="true"
                   className="inline-block font-body text-sm text-muted-foreground border-b border-border/50 mt-4 cursor-not-allowed"
@@ -495,7 +497,7 @@ export default function AboutPage() {
             key={entry.title}
             className="flex items-center gap-4 pb-6 mb-6 border-b border-border/50"
           >
-            <div className="w-12 h-12 rounded-md bg-lift border border-border flex items-center justify-center flex-shrink-0 p-2">
+            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
               <Image
                 src={entry.logo}
                 alt={`${entry.title} logo`}
@@ -525,19 +527,15 @@ export default function AboutPage() {
             key={project.title}
             className="flex items-center gap-4 pt-6 mt-6 border-t border-border/50"
           >
-            <div className="w-12 h-12 rounded-md bg-lift border border-border flex items-center justify-center flex-shrink-0 p-2">
-              {project.logo ? (
+            {project.logo ? (
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                 <Image
                   src={project.logo}
                   alt={`${project.title} logo`}
                   className="max-h-full w-auto object-contain"
                 />
-              ) : (
-                <span className="font-mono text-xs font-medium text-muted-foreground">
-                  W3
-                </span>
-              )}
-            </div>
+              </div>
+            ) : null}
             <div>
               <div className="font-body text-xl tracking-tight text-foreground mb-1">
                 {project.title}
@@ -580,7 +578,7 @@ export default function AboutPage() {
       </SidebarSection>
 
       <section className="mx-divider py-20 text-center border-t border-border">
-        <h2 className="font-body font-extrabold text-5xl md:text-7xl tracking-tighter leading-none text-foreground mb-5">
+        <h2 className="font-body font-normal text-5xl md:text-7xl tracking-tighter leading-none text-foreground mb-5">
           Let&apos;s connect
         </h2>
         <p className="font-body text-sm leading-7 text-muted-foreground mb-7 max-w-[60ch] mx-auto">

@@ -35,7 +35,7 @@ export default function ThemeToggle({ variant = "icon" }: ThemeToggleProps) {
         ) : (
           <TbMoon className="w-5 h-5" />
         )}
-        <span>Toggle theme</span>
+        <span className="sr-only">Toggle theme</span>
       </button>
     );
   }
