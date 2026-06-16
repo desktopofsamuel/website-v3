@@ -7,7 +7,7 @@ type AppLinkProps = {
   style?: React.CSSProperties;
   target?: "_blank" | "_self";
   title?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 function AppLink({

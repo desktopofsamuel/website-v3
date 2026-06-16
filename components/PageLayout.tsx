@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import AppLayout from "@/components/AppLayout";
 import MDXContent from "@/components/mdx-components";
-import { getHeadings } from "../utils/getHeadings";
 import ScrollspyNav from "../app/[slug]/ScrollspyNav";
 
 interface PageLayoutProps {
@@ -11,8 +10,6 @@ interface PageLayoutProps {
 }
 
 export default function PageLayout({ post }: PageLayoutProps) {
-  const headings = getHeadings(post.body.raw);
-
   return (
     <AppLayout>
       <div className="min-h-screen">
@@ -31,12 +28,11 @@ export default function PageLayout({ post }: PageLayoutProps) {
           </header>
 
           {/* Page Content */}
-          <div className="prose prose-lg">
+          <article className="prose prose-lg" data-scroll-content>
             <MDXContent code={post.body.code} />
-          </div>
+          </article>
 
-          {/* Table of Contents */}
-          {headings.length > 0 && <ScrollspyNav headings={headings} />}
+          <ScrollspyNav />
 
           {/* Optional footer info for pages */}
           {post.date && (

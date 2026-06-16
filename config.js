@@ -16,20 +16,20 @@ module.exports = {
   LOCALE: "en",
   MENU_ITEMS: [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
       label: "About",
       href: "/about",
+    },
+    {
+      label: "Work",
+      href: "/work",
     },
     {
       label: "Blog",
       href: "/blog",
     },
     {
-      label: "Work",
-      href: "/work",
+      label: "Photo",
+      href: "/photo",
     },
   ],
 };

@@ -1,0 +1,3 @@
+# Dev-only photo authoring shell — not for production (avoids bundling sharp, etc.)
+app/dev
+app/api/dev

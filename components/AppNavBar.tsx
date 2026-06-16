@@ -1,27 +1,26 @@
-"use client";
-import React, { useState, useEffect } from "react";
-
 import Link from "@/components/AppLink";
-import { TbMenu2, TbSun, TbMoon } from "react-icons/tb";
-import { MENU_ITEMS } from "@/config";
+import { TbMenu2 } from "react-icons/tb";
+import NavTicker from "@/components/NavTicker";
+import NavLinks from "@/components/NavLinks";
+import ThemeToggle from "@/components/ThemeToggle";
 
-// Mobile menu restored using a hidden checkbox hack (no state)
-// Scrolling is disabled when the mobile menu overlay is open using a <style> tag and the :has() CSS selector
-export default function AppNavBar() {
-  const [theme, setTheme] = useState<string>('light');
+type AppNavBarProps = {
+  /** Hong Kong current temperature in °C — server-fetched in AppLayout, daily cache. */
+  temperature?: number | null;
+};
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
+/**
+ * Server-rendered shell of the global nav. Three small client islands handle
+ * the interactive bits:
+ *   - <NavTicker />     — polls /api/currently-playing every 30s, rotates messages
+ *   - <NavLinks />      — usePathname() for active-link state (desktop + mobile)
+ *   - <ThemeToggle />   — localStorage-backed dark/light state
+ *
+ * The mobile menu overlay is a pure CSS toggle (checkbox + peer-checked) so its
+ * structure stays server-rendered; interactivity inside it reuses the same
+ * client islands as the desktop nav.
+ */
+export default function AppNavBar({ temperature }: AppNavBarProps) {
   return (
     <>
       {/* Disable scrolling on body when mobile menu is open */}
@@ -31,85 +30,61 @@ export default function AppNavBar() {
           touch-action: none;
         }
       `}</style>
-      <header className="w-full px-5">
-        <nav className="flex items-center justify-between py-4">
+      <header className="sticky top-0 z-50 bg-background">
+        {/* Ticker row */}
+        <div className="border-b border-border px-page flex items-center justify-between gap-3 py-5">
           <Link
             href="/"
-            className="text-md font-heading font-bold no-underline text-inherit"
+            className="no-underline text-foreground font-body text-base leading-none shrink-0"
+            aria-label="Desktop of Samuel — Home"
           >
             Desktop of Samuel
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex gap-4 justify-center items-center ">
-            <div className="flex gap-x-4 font-heading">
-              {MENU_ITEMS.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="no-underline text-inherit transition-colors inline-block border-b-2 border-b-transparent hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400 "
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-primary-800 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <TbMoon className="w-5 h-5" /> : <TbSun className="w-5 h-5" />}
-            </button>
-          </div>
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-2 md:flex-none">
+            <NavTicker temperature={temperature} />
 
-          {/* Hamburger for mobile */}
-          <div className="md:hidden flex items-center">
-            {/* Hidden checkbox controls menu open/close */}
-            <input
-              type="checkbox"
-              id="mobile-menu-toggle"
-              className="peer hidden"
-              tabIndex={-1}
-              aria-hidden="true"
-            />
-            <label
-              htmlFor="mobile-menu-toggle"
-              className="bg-none border-none text-2xl cursor-pointer select-none"
-              aria-label="Open menu"
-            >
-              <TbMenu2 />
-            </label>
-            {/* Mobile menu overlay */}
-            <div className="fixed inset-0 z-[1000] bg-black bg-opacity-80 hidden peer-checked:flex flex-col items-start p-8 transition-all">
-              {/* Close button */}
+            {/* Mobile menu — top bar, right side */}
+            <div className="flex shrink-0 items-center md:hidden">
+              <input
+                type="checkbox"
+                id="mobile-menu-toggle"
+                className="peer hidden"
+                tabIndex={-1}
+                aria-hidden="true"
+              />
               <label
                 htmlFor="mobile-menu-toggle"
-                className="mb-8 bg-none border-none text-2xl cursor-pointer select-none self-end text-white dark:text-white"
-                aria-label="Close menu"
+                className="text-2xl cursor-pointer select-none text-foreground"
+                aria-label="Open menu"
               >
-                ✕
+                <TbMenu2 />
               </label>
-              <nav className="flex flex-col gap-y-8 font-heading text-white w-full">
-                {MENU_ITEMS.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="no-underline text-inherit w-full transition-colors group"
-                  >
-                    <span className="group-hover:text-primary-500 group-hover:border-b-2 group-hover:border-primary-500">
-                    {item.label}</span>
-                  </Link>
-                ))}
-                <button
-                  onClick={toggleTheme}
-                  className="flex items-center gap-2 p-2 rounded-md hover:bg-white/10 transition-colors text-white self-start"
-                  aria-label="Toggle theme"
+
+              <div className="fixed inset-0 z-[1000] bg-background hidden peer-checked:flex flex-col items-start p-8 transition-all">
+                <label
+                  htmlFor="mobile-menu-toggle"
+                  className="mb-8 text-2xl cursor-pointer select-none self-end text-foreground"
+                  aria-label="Close menu"
                 >
-                  {theme === 'light' ? <TbMoon className="w-5 h-5" /> : <TbSun className="w-5 h-5" />}
-                  <span>Toggle Theme</span>
-                </button>
-              </nav>
-            </div>  
+                  ✕
+                </label>
+                <nav className="flex flex-col gap-y-8 font-body w-full">
+                  <NavLinks variant="mobile" />
+                  <ThemeToggle variant="labeled" />
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Subnav row — desktop only */}
+        <nav className="hidden md:block border-b border-border px-page">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6 py-3.5 font-body">
+              <NavLinks variant="desktop" />
+            </div>
+            <ThemeToggle />
           </div>
         </nav>
       </header>

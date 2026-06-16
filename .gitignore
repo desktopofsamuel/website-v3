@@ -7,6 +7,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -40,3 +44,8 @@ yarn-error.log*
 # sitemap
 sitemap-0.xml
 sitemap.xml
+
+# agent / editor state
+.agents/
+.claude/
+skills-lock.json

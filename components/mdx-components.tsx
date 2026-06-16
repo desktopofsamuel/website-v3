@@ -133,7 +133,7 @@ const mdxComponents = {
     
     return (
       <div 
-        className={cn(`col-span-${spanNum}`, "flex items-center justify-center")} 
+        className={cn(`col-span-${spanNum}`, "flex items-center justify-center overflow-hidden")} 
         {...props}
       >
         {children}
@@ -144,14 +144,19 @@ const mdxComponents = {
 
 type MDXContentProps = {
   code: string;
+  /** Per-call overrides merged on top of the default site components map. */
+  components?: Record<string, React.ComponentType<any>>;
 };
 
-export default function MDXContent({ code }: MDXContentProps) {
+export default function MDXContent({ code, components }: MDXContentProps) {
   const MDXComponent = useMDXComponent(code);
+  const merged = components
+    ? { ...mdxComponents, ...components }
+    : mdxComponents;
 
   return (
     <div className="prose prose-lg max-w-none">
-      <MDXComponent components={mdxComponents} />
+      <MDXComponent components={merged} />
     </div>
   );
-} 
+}

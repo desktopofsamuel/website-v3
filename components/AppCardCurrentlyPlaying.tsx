@@ -3,7 +3,6 @@
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 import AppCardBase from "@/components/AppCardBase"
-import "react-loading-skeleton/dist/skeleton.css";
 
 const AppCardCurrentlyPlaying = () => {
   const { data: staticData } = useSWR("/api/recently-played", fetcher, {

@@ -1,25 +1,21 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Manrope } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import '../styles/globals.css'
 import AnalyticsProvider from '@/components/AnalyticsProvider'
+import { Agentation } from "agentation";
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceMono = Space_Mono({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
 })
 
-// const publicSans = Manrope({ 
-//   subsets: ['latin'],
-//   display: 'swap',
-//   weight: [ "500", "800"],
-//   variable: '--font-public-sans',
-// })
-
-const publicSans = localFont({
+const switzer = localFont({
   src: '../public/fonts/Switzer-Variable.woff2',
-  variable: '--font-public-sans',
+  variable: '--font-switzer',
+  display: 'swap',
 })
 
 
@@ -97,10 +93,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
-      <body className={`${spaceGrotesk.className} ${publicSans.className}`}>
+    <html
+      lang="en"
+      className={`dark ${switzer.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className={switzer.className}>
         {children}
-        <AnalyticsProvider gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? ''} />
+        <AnalyticsProvider
+          gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
+          clarityId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}
+        />
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   )

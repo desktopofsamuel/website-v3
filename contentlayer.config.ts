@@ -70,11 +70,11 @@ export const Post = defineDocumentType(() => ({
     excerpt: {
       type: "string",
       resolve: (post) =>
-        post.tldr ? post.tldr : parseMarkdown(post.body.raw, 155),
+        post.tldr ? post.tldr : parseMarkdown(post.body.raw, 200),
     },
     description: {
       type: "string",
-      resolve: (post) => parseMarkdown(post.body.raw, 300),
+      resolve: (post) => parseMarkdown(post.body.raw, 500),
     },
     timetoread: {
       type: "number",
