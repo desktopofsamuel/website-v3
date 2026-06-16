@@ -63,7 +63,7 @@ export default function IndexPage() {
           Extensive experience delivering products in corporations and start-ups
           across finance, web3, and travel industries.
         </p>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col">
           {works.map((post) => (
             <AppListPortfolio key={post.slug} data={post} />
           ))}
