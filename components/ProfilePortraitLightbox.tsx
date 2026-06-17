@@ -17,20 +17,23 @@ export default function ProfilePortraitLightbox() {
   return (
     <>
       <button
-        className="w-full cursor-zoom-in rounded-md overflow-hidden"
+        type="button"
+        className="block w-full cursor-zoom-in border-0 bg-transparent p-0 shadow-none appearance-none transition-transform duration-300 ease-out hover:rotate-1 motion-reduce:hover:rotate-0"
         onClick={(e) => {
           setOriginRect(e.currentTarget.getBoundingClientRect());
           setSelected(portraitItem);
         }}
         aria-label="View portrait photo"
       >
-        <Image
-          src={ProfilePortrait}
-          alt="Portrait of Samuel Wong"
-          placeholder="blur"
-          sizes="(min-width: 768px) 25vw, 100vw"
-          className="w-full h-auto"
-        />
+        <div className="isolate overflow-hidden rounded-md">
+          <Image
+            src={ProfilePortrait}
+            alt="Portrait of Samuel Wong"
+            placeholder="blur"
+            sizes="(min-width: 768px) 25vw, 100vw"
+            className="block h-auto w-full rounded-md"
+          />
+        </div>
       </button>
       <Lightbox
         item={selected}

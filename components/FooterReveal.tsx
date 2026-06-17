@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import AppFooter from "@/components/AppFooter";
 
 type FooterRevealProps = {
@@ -9,15 +9,25 @@ type FooterRevealProps = {
 export default function FooterReveal({ children }: FooterRevealProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const lastHeightRef = useRef(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const wrapper = wrapperRef.current;
     const footer = footerRef.current;
     if (!wrapper || !footer) return;
 
     const measure = () => {
-      wrapper.style.marginBottom = `${footer.offsetHeight}px`;
+      const height = footer.offsetHeight;
+      if (height === lastHeightRef.current) return;
+
+      lastHeightRef.current = height;
+      wrapper.style.marginBottom = `${height}px`;
+
+      if (height > 0) {
+        footer.style.visibility = "visible";
+      }
     };
+
     measure();
 
     const ro = new ResizeObserver(measure);
@@ -34,14 +44,14 @@ export default function FooterReveal({ children }: FooterRevealProps) {
     <>
       <div
         ref={wrapperRef}
-        className="relative z-10 bg-background rounded-b-2xl min-h-screen"
+        className="relative z-10 min-h-screen bg-background"
         style={{ overflow: "clip" }}
       >
         {children}
       </div>
       <div
         ref={footerRef}
-        className="fixed bottom-0 left-0 w-full z-0"
+        className="invisible fixed bottom-0 left-0 z-0 w-full overflow-hidden rounded-t-2xl"
         aria-hidden="false"
       >
         <AppFooter />
