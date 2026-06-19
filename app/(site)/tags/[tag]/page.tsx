@@ -2,7 +2,7 @@ import { Post } from "contentlayer/generated";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
 import PageHero from "@/components/PageHero";
 import SidebarSection from "@/components/SidebarSection";
-import { Link } from "@/components/AppLink";
+import BackLink from "@/components/BackLink";
 import { allTags, postsWithTag } from "@/lib/content";
 
 // Generate static params for all tag pages
@@ -46,12 +46,12 @@ export default async function TagPage({ params }: TagPageProps) {
       <SidebarSection
         label="Posts"
         leftAside={
-          <Link
-            href="/tags"
-            className="inline-block font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors no-underline w-fit"
+          <BackLink
+            fallbackHref="/tags"
+            className="inline-block font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors no-underline w-fit cursor-pointer"
           >
-            ← Back to topics
-          </Link>
+            ← Back
+          </BackLink>
         }
       >
         <div className="divide-y divide-border/50">

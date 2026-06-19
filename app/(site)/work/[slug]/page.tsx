@@ -44,10 +44,10 @@ export default async function WorkDetailPage({ params }: Props) {
 
   return (
     <>
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-2xl mx-auto px-6 py-12">
         <header className="mb-8 flex flex-col gap-4 items-center">
-          <h1 className="font-heading text-4xl font-bold text-center">{post.title}</h1>
-          <p className="text-lg text-secondarytexttext text-center">{post.description}</p>
+          <h1 className="font-heading text-4xl font-bold text-center text-foreground">{post.title}</h1>
+          <p className="text-lg text-secondarytext text-center">{post.description}</p>
           {post.cover && (
             <div className="w-full my-6 rounded-lg overflow-hidden">
               <Image
