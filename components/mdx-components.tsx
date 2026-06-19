@@ -155,7 +155,7 @@ export default function MDXContent({ code, components }: MDXContentProps) {
     : mdxComponents;
 
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="prose prose-lg max-w-none prose-headings:text-foreground dark:prose-invert">
       <MDXComponent components={merged} />
     </div>
   );
