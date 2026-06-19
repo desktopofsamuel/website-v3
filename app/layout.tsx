@@ -99,6 +99,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={switzer.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=location.pathname;var saved=localStorage.getItem('theme')||'dark';var dark=p.indexOf('/work')===0?false:saved==='dark';document.documentElement.classList.toggle('dark',dark);}catch(e){}})();`,
+          }}
+        />
         {children}
         <AnalyticsProvider
           gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
