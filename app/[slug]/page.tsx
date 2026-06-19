@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.title + "| Desktop of Samuel - Samuel Wong — Hong Kong UI/UX Designer ",
+    title: post.title + " | Desktop of Samuel - Samuel Wong — Hong Kong UI/UX Designer",
     description: post.excerpt,
     keywords: post.tags ? post.tags : "",
     alternates: {
