@@ -40,7 +40,7 @@ const AppCardCurrentlyPlaying = () => {
    <AppCardBase title="🎧 Last played">
       {(staticData as any[])?.map((song: any, i: number) => (
         <div key={i}>
-          <h2 className="font-heading font-bold leading-tight my-0 text-5xl mb-4">{song.title}</h2>
+          <h2 className="font-heading leading-tight my-0 text-5xl mb-4">{song.title}</h2>
           <p className="text-muted-foreground font-heading">{song.artist}</p>
         </div>
       ))}
