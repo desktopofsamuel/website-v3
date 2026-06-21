@@ -1,4 +1,3 @@
-import { Post } from "contentlayer/generated";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
 import PageHero from "@/components/PageHero";
 import SidebarSection from "@/components/SidebarSection";
@@ -14,7 +13,7 @@ export async function generateStaticParams() {
 
 // Get data for specific tag page
 async function getData(tag: string) {
-  const posts: Post[] = postsWithTag(tag);
+  const posts = postsWithTag(tag);
   return {
     posts,
     tag,
@@ -55,7 +54,7 @@ export default async function TagPage({ params }: TagPageProps) {
         }
       >
         <div className="divide-y divide-border/50">
-          {posts.map((post: Post) => (
+          {posts.map((post) => (
             <AppListBlogDetail key={post.title} data={post} />
           ))}
         </div>
