@@ -14,7 +14,13 @@ if (!shouldStrip) {
 }
 
 const root = process.cwd();
-const devPaths = ["app/dev", "app/api/dev"];
+const devPaths = [
+  "app/dev",
+  "app/api/dev",
+  // In-development features: kept for local dev, stripped from public production builds.
+  "app/api/feed",
+  "app/api/resources-career",
+];
 
 for (const rel of devPaths) {
   const target = path.join(root, rel);
