@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import NextLink from "@/components/NextLink";
+import { Link } from "@/components/AppLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import AppCardBase from "@/components/AppCardBase";
@@ -27,7 +27,7 @@ const AppCardResources = () => {
           ) : (
             (data as any[])?.slice(0, 3).map((resource: any, i: number) => (
               <div key={i} className="p-3 rounded-md border border-gray-200 hover:bg-gray-50">
-                <NextLink
+                <Link
                   href={resource.fields?.Link}
                   title={`View ${resource.fields?.Name}`}
                   target="_blank"
@@ -57,7 +57,7 @@ const AppCardResources = () => {
                       by {resource.fields.Handle}
                     </p>
                   )}
-                </NextLink>
+                </Link>
               </div>
             ))
           )}

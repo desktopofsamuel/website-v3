@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import NextLink from "@/components/NextLink";
+import { Link } from "@/components/AppLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import AppCardBase from "@/components/AppCardBase";
@@ -29,7 +29,7 @@ const AppCardTopTracks = () => {
           ) : (
             (data as any)?.tracks?.map((track: any, i: number) => (
               <div key={i} className="p-2 rounded-md hover:bg-gray-50">
-                <NextLink
+                <Link
                   href={track.songUrl}
                   title={`Listen to ${track.title} on Spotify`}
                   target="_blank"
@@ -45,7 +45,7 @@ const AppCardTopTracks = () => {
                   <p className="text-sm text-gray-500 mt-1">
                     by {track.artist}
                   </p>
-                </NextLink>
+                </Link>
               </div>
             ))
           )}

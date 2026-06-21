@@ -16,11 +16,7 @@
     "test:e2e:ci": "playwright test --grep @ci"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.1.1",
-    "@chakra-ui/react": "^2.8.2",
     "@chenglou/pretext": "^0.0.7",
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
     "@fontsource/chivo": "^5.0.8",
     "@fontsource/space-grotesk": "^5.0.8",
     "@fsegurai/scrollspy": "^2.0.0",
