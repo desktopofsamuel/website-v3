@@ -1,5 +1,4 @@
-import { allPosts, allWorks, allPhotos, Post, Work, Photo } from "contentlayer/generated";
-import { unique } from "typescript-array-utils";
+import { allPosts, allWorks, allPhotos } from "contentlayer/generated";
 import kebabCase from "lodash.kebabcase";
 import { sortByDate } from "@/utils";
 
@@ -13,20 +12,44 @@ const filteredFeaturedWorks = allWorks.filter((work) => work.feature === true &&
 // Filter and sort photos
 const filteredPhotos = allPhotos.filter((photo) => !photo.draft).sort(sortByDate);
 
-// All tags used by blog posts
-const listOfTags = unique(filteredPosts.flatMap((post) => post.tags));
+// Tags in frontmatter are entered inconsistently (e.g. "Design", "design",
+// "Design Journal"). Normalize to a kebab-case slug so equivalent tags collapse
+// into a single canonical tag for grouping, counting, and routing.
+const normalizeTag = (tag: string): string => kebabCase(tag);
 
-type answerProps = {
+type TagInfo = {
   name: string;
   path: string;
+  slug: string;
+  count: number;
 };
 
-// allTags with name and
-const allTags = listOfTags.map((tag) => ({
-  name: tag,
-  path: `/tags/${kebabCase(tag)}`,
-  count: filteredPosts.reduce((count, post) => count + (post.tags.includes(tag) ? 1 : 0), 0)
-}));
+// Build the tag list grouped by normalized slug. Within a single post, tags are
+// de-duped by slug so a post is never counted twice for the same tag. The first
+// raw label seen for a slug is kept as the display name.
+const tagBySlug = new Map<string, TagInfo>();
+for (const post of filteredPosts) {
+  const seenInPost = new Set<string>();
+  for (const rawTag of post.tags) {
+    const slug = normalizeTag(rawTag);
+    if (!slug || seenInPost.has(slug)) continue;
+    seenInPost.add(slug);
+
+    const existing = tagBySlug.get(slug);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      tagBySlug.set(slug, {
+        name: rawTag,
+        path: `/tags/${slug}`,
+        slug,
+        count: 1,
+      });
+    }
+  }
+}
+
+const allTags = Array.from(tagBySlug.values());
 
 const allPostsList = filteredPosts.map((post) => ({
   slug: post.slug,
@@ -38,23 +61,27 @@ const allPostsList = filteredPosts.map((post) => ({
   date: post.date,
 }));
 
-// All posts marked with a specific tag, convert from params to tag name
-const postsWithTag = (tag: string): any => {
-  // Search for Tag Name by Static Path
-  const object: answerProps = allTags.find(
-    (o) => o.path === `/tags/${tag}`
-  ) as any;
-  const results = allPostsList.filter((post) => post.tags.includes(object.name));
-  // const filteredResults = results.map((post) => ({
-  //   slug: post.slug,
-  //   title: post.title,
-  //   description: post.description,
-  //   cover: post.cover,
-  //   category: post.category,
-  //   date: post.date,
-  // }));
-  // console.log(filteredResults);
-  return results;
+// All posts carrying a given tag, matched by normalized slug so the incoming
+// route param (already kebab-case) lines up with however the tag was written.
+const postsWithTag = (tag: string) => {
+  const slug = normalizeTag(tag);
+  return allPostsList.filter((post) =>
+    post.tags.some((t) => normalizeTag(t) === slug)
+  );
 };
 
-export { allTags, postsWithTag, allPostsList, filteredPosts, filteredWorks, filteredFeaturedWorks, filteredPhotos };
+// Number of posts carrying a given tag (normalized). Use this everywhere a tag
+// count is shown so counts stay consistent with the tag pages.
+const countPostsWithTag = (tag: string): number => postsWithTag(tag).length;
+
+export {
+  allTags,
+  postsWithTag,
+  countPostsWithTag,
+  normalizeTag,
+  allPostsList,
+  filteredPosts,
+  filteredWorks,
+  filteredFeaturedWorks,
+  filteredPhotos,
+};

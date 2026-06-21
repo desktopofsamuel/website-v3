@@ -72,7 +72,7 @@ const AppCardMusic = () => {
                     </div>
                   </div>
                 </AppLink>
-                <h3 className="my-2 text-sm leading-tight font-semibold">
+                <h3 className="my-2 text-sm leading-tight">
                   {artist.name}
                 </h3>
               </div>

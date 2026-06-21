@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import BlogLayout from "@/components/BlogLayout";
 import PageLayout from "@/components/PageLayout";
 import { sortByDate } from "@/utils";
+import { normalizeTag } from "@/lib/content";
 import config from "@/config";
 
 type Props = {
@@ -65,7 +66,8 @@ async function getData(slug: string) {
     // Get up to 2 posts that share the same tag as the current post
     relatedPosts = allPosts
       .filter((p) => {
-        const hasSharedTag = p.tags.some((tag) => post.tags.includes(tag));
+        const postTagSlugs = new Set(post.tags.map(normalizeTag));
+        const hasSharedTag = p.tags.some((tag) => postTagSlugs.has(normalizeTag(tag)));
         return hasSharedTag && p.slug !== post.slug && !p.page && !p.draft; // Exclude pages and drafts from related posts
       })
       .sort(sortByDate)

@@ -126,17 +126,10 @@ export default function IndexPage() {
                   {label}
                 </span>
               </div>
-              <TbArrowUpRight
-                className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                size={24}
-              />
             </div>
           ))}
         </div>
         <div className="pt-16">
-          <p className="font-body text-muted-foreground mb-6 max-w-prose">
-            Available for freelance engagements and design consulting.
-          </p>
           <AppLink
             href="mailto:desktopofsamuel@gmail.com"
             className="inline-flex items-center gap-2 font-body text-sm font-semibold uppercase tracking-widest text-foreground hover:opacity-60 transition-opacity no-underline"

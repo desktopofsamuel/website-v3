@@ -1,7 +1,7 @@
 import SidebarSection from "@/components/SidebarSection";
 import PageHero from "@/components/PageHero";
 import { Link } from "@/components/AppLink";
-import { allTags, filteredPosts } from "@/lib/content";
+import { allTags, countPostsWithTag } from "@/lib/content";
 import type { Metadata } from "next";
 
 const LONGFORM_TAG = "longform";
@@ -13,10 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function TagListPage() {
-  const longformCount = filteredPosts.reduce(
-    (acc, p) => acc + (p.tags.includes(LONGFORM_TAG) ? 1 : 0),
-    0
-  );
+  const longformCount = countPostsWithTag(LONGFORM_TAG);
 
   const topicPills = [
     {
@@ -26,7 +23,7 @@ export default function TagListPage() {
       curated: true,
     },
     ...allTags
-      .filter((t) => t.name !== LONGFORM_TAG)
+      .filter((t) => t.path !== `/tags/${LONGFORM_TAG}`)
       .filter((t) => t.count > 1)
       .sort((a, b) => b.count - a.count)
       .map((t) => ({ ...t, curated: false })),

@@ -3,7 +3,7 @@ import AppListBlog from "@/components/AppListBlog";
 import AppListBlogDetail from "@/components/AppListBlogDetail";
 import SidebarSection from "@/components/SidebarSection";
 import PageHero from "@/components/PageHero";
-import { allTags, filteredPosts } from "@/lib/content";
+import { allTags, filteredPosts, countPostsWithTag } from "@/lib/content";
 import { sortByDate } from "@/utils";
 import config from "@/config";
 
@@ -19,10 +19,7 @@ export default function BlogPage() {
     .sort(sortByDate)
     .slice(0, config.POSTS_PER_PAGE);
 
-  const longformCount = filteredPosts.reduce(
-    (acc, p) => acc + (p.tags.includes(LONGFORM_TAG) ? 1 : 0),
-    0
-  );
+  const longformCount = countPostsWithTag(LONGFORM_TAG);
 
   const topicPills = [
     {
@@ -32,7 +29,7 @@ export default function BlogPage() {
       curated: true,
     },
     ...allTags
-      .filter((t) => t.name !== LONGFORM_TAG)
+      .filter((t) => t.path !== `/tags/${LONGFORM_TAG}`)
       .sort((a, b) => b.count - a.count)
       .slice(0, 10)
       .map((t) => ({ ...t, curated: false })),
