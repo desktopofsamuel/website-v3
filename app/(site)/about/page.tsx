@@ -139,20 +139,19 @@ export default function AboutPage() {
     <>
       <SidebarSection label="About me" leftAside={<ProfilePortraitLightbox />}>
         <p className="font-body text-2xl leading-9 tracking-tight text-foreground mb-2 max-w-[56ch] text-pretty">
-          Hello, my name is Samuel.
-          <br />
-          <br />I got into product design because I&apos;m deeply passionate
-          about technology and how it profoundly changes our way of living. For
-          the past {experienceYears} years, I have been solving users and
-          business problems and delivering delightful interfaces &amp;
-          experiences across domains like web3 and finance industries.
-          <br />
-          <br />
-          Over the past few years, I&apos;ve had the pleasure of working with
-          some genuinely ambitious teams in Hong Kong — helping HSBC shipped stock screener for APAC regions, building OKX&apos;s Grow tab and leading Financial Products design team, and most recently
-          leading product design at Pepperstone Crypto, building a brand new crypto exchange. The work spans domains, but
-          it&apos;s always fundamentally about people and how they make sense
-          of complexity.
+        Hello, my name is Samuel.
+<br />
+<br />
+I&apos;m deeply passionate about technology and how it profoundly changes the way we live. That pursuit sparked during my internship at Apple&apos;s iTunes & App Store team at university.
+<br />
+<br />
+For the past 11 years, I&apos;ve worked at both ends of the growth curve. As a startup&apos;s first design hire at HyperAir, and later building Pepperstone Crypto&apos;s exchange from the ground up, I&apos;ve been the person turning a blank page into a working product. As part of larger teams — leading the Financial Products design team and Grow tab at OKX, aligning the trading experience across global markets at HSBC — I&apos;ve taken products that already worked and made them work at scale.
+<br />
+<br />
+What stays constant across both is the same instinct: find the framework the moment needs, whether that&apos;s the first design decision or the hundredth.
+<br />
+<br />
+At leisure, I run a UI/UX design community called <a href="https://friends.figma.com/hong-kong" target="_blank" rel="noopener noreferrer">Friends of Figma Hong Kong</a> — one recurring discourse is what AI means for design work, and we run mentorship cohorts for local designers.
         </p>
       </SidebarSection>
 
