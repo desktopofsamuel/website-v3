@@ -1,24 +1,23 @@
 import { getTopArtists } from "@/lib/spotify";
-import { NextResponse } from "next/server";
+import { createSpotifyResponse } from "@/lib/spotify-route";
+
+const CACHE_CONTROL = "public, s-maxage=30, stale-while-revalidate=120";
 
 export async function GET() {
-  try {
-    const response = await getTopArtists();
-    const { items } = await response.json();
+  return createSpotifyResponse({
+    label: "Top artists",
+    request: getTopArtists,
+    fallback: [],
+    cacheControl: CACHE_CONTROL,
+    parse: (data) => {
+      const items = (data as { items?: any[] }).items;
+      if (!items?.length) return null;
 
-    const artists = items.slice(0, 4).map((artist: any) => ({
-      name: artist.name,
-      image: artist.images[0].url,
-      link: artist.external_urls.spotify,
-    }));
-
-    return NextResponse.json(artists, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120'
-      }
-    });
-  } catch (error) {
-    console.error('Top artists API error:', error);
-    return NextResponse.json([], { status: 500 });
-  }
+      return items.slice(0, 4).map((artist) => ({
+        name: artist.name,
+        image: artist.images[0]?.url,
+        link: artist.external_urls.spotify,
+      }));
+    },
+  });
 }

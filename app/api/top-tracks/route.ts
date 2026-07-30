@@ -1,24 +1,25 @@
 import { getTopTracks } from "@/lib/spotify";
-import { NextResponse } from "next/server";
+import { createSpotifyResponse } from "@/lib/spotify-route";
+
+const CACHE_CONTROL = "public, s-maxage=30, stale-while-revalidate=120";
 
 export async function GET() {
-  try {
-    const response = await getTopTracks();
-    const { items } = await response.json();
+  return createSpotifyResponse({
+    label: "Top tracks",
+    request: getTopTracks,
+    fallback: { tracks: [] },
+    cacheControl: CACHE_CONTROL,
+    parse: (data) => {
+      const items = (data as { items?: any[] }).items;
+      if (!items?.length) return null;
 
-    const tracks = items.slice(0, 5).map((track: any) => ({
-      artist: track.artists.map((_artist: any) => _artist.name).join(", "),
-      songUrl: track.external_urls.spotify,
-      title: track.name,
-    }));
-
-    return NextResponse.json({ tracks }, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120'
-      }
-    });
-  } catch (error) {
-    console.error('Top tracks API error:', error);
-    return NextResponse.json({ tracks: [] }, { status: 500 });
-  }
+      return {
+        tracks: items.slice(0, 5).map((track) => ({
+          artist: track.artists.map((artist: { name: string }) => artist.name).join(", "),
+          songUrl: track.external_urls.spotify,
+          title: track.name,
+        })),
+      };
+    },
+  });
 }

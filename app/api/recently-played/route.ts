@@ -1,24 +1,23 @@
 import { getRecentlyPlayed } from "@/lib/spotify";
-import { NextResponse } from "next/server";
+import { createSpotifyResponse } from "@/lib/spotify-route";
+
+const CACHE_CONTROL = "public, s-maxage=30, stale-while-revalidate=120";
 
 export async function GET() {
-  try {
-    const response = await getRecentlyPlayed();
-    const { items } = await response.json();
+  return createSpotifyResponse({
+    label: "Recently played",
+    request: getRecentlyPlayed,
+    fallback: [],
+    cacheControl: CACHE_CONTROL,
+    parse: (data) => {
+      const items = (data as { items?: any[] }).items;
+      if (!items?.length) return null;
 
-    const songs = items.slice(0, 1).map((song: any) => ({
-      title: song.track.name,
-      link: song.track.external_urls.spotify,
-      artist: song.track.artists.map((_artist: any) => _artist.name).join(", "),
-    }));
-
-    return NextResponse.json(songs, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120'
-      }
-    });
-  } catch (error) {
-    console.error('Recently played API error:', error);
-    return NextResponse.json([], { status: 500 });
-  }
+      return items.slice(0, 1).map((song) => ({
+        title: song.track.name,
+        link: song.track.external_urls.spotify,
+        artist: song.track.artists.map((artist: { name: string }) => artist.name).join(", "),
+      }));
+    },
+  });
 }
