@@ -4,13 +4,12 @@ import { usePathname } from "next/navigation";
 import Link from "@/components/AppLink";
 import { MENU_ITEMS } from "@/config";
 
-const MOBILE_MENU_TOGGLE_ID = "mobile-menu-toggle";
-
 type NavLinksProps = {
   variant?: "desktop" | "mobile";
+  onItemClick?: () => void;
 };
 
-export default function NavLinks({ variant = "desktop" }: NavLinksProps) {
+export default function NavLinks({ variant = "desktop", onItemClick }: NavLinksProps) {
   const pathname = usePathname();
   const isMobile = variant === "mobile";
 
@@ -20,23 +19,27 @@ export default function NavLinks({ variant = "desktop" }: NavLinksProps) {
   };
 
   const base = isMobile
-    ? "no-underline w-full transition-colors text-2xl"
+    ? "no-underline w-full transition-colors text-6xl font-regular"
     : "no-underline text-base transition-colors hover:text-foreground";
 
   return (
     <>
-      {MENU_ITEMS.map((item) =>
+      {MENU_ITEMS.map((item, index) =>
         isMobile ? (
-          <label key={item.label} htmlFor={MOBILE_MENU_TOGGLE_ID} className="w-full cursor-pointer">
+          <div key={item.label} data-menu-item className="w-full">
             <Link
               href={item.href}
-              className={`${base} ${
+              onClick={onItemClick}
+              className={`${base} flex items-baseline gap-6 ${
                 isActive(item.href) ? "text-foreground" : "text-muted-foreground"
               }`}
             >
+              <span className="font-mono text-xs text-muted-foreground tabular-nums w-6 shrink-0">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               {item.label}
             </Link>
-          </label>
+          </div>
         ) : (
           <Link
             key={item.label}

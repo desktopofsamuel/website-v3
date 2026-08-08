@@ -1,35 +1,6 @@
 import React from "react";
 import AppLink from "@/components/AppLink";
-import {
-  TbBrandLinkedinFilled,
-  TbBrandX,
-  TbBrandInstagram,
-  TbBrandMedium,
-  TbBrandGithubFilled,
-} from "react-icons/tb";
-
-const socials = [
-  {
-    Icon: TbBrandLinkedinFilled,
-    href: "https://www.linkedin.com/in/desktopofsamuel/",
-    label: "LinkedIn",
-  },
-  {
-    Icon: TbBrandX,
-    href: "https://www.x.com/desktopofsamuel",
-    label: "X",
-  },
-  {
-    Icon: TbBrandMedium,
-    href: "https://medium.com/desktop-of-samuel",
-    label: "Medium",
-  },
-  {
-    Icon: TbBrandGithubFilled,
-    href: "https://www.github.com/desktopofsamuel",
-    label: "GitHub",
-  },
-];
+import SocialLinks from "@/components/SocialLinks";
 
 export default function AppFooter() {
   return (
@@ -61,19 +32,7 @@ export default function AppFooter() {
           <span className="font-mono text-xs text-accent-foreground/60">
             © 2026 Desktop of Samuel · Not created by Framer · All rights reserved
           </span>
-          <div className="flex gap-2.5">
-            {socials.map(({ Icon, href, label }) => (
-              <AppLink
-                key={href}
-                href={href}
-                target="_blank"
-                aria-label={label}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-accent-foreground/15 text-accent-foreground no-underline hover:bg-accent-foreground/30 transition-colors"
-              >
-                <Icon size={16} />
-              </AppLink>
-            ))}
-          </div>
+          <SocialLinks />
         </div>
       </div>
     </footer>
