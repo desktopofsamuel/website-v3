@@ -1,0 +1,46 @@
+{
+  "title": "Singapore",
+  "description": "A short loop through Kampong Glam — mosque courtyards, painted shophouses, and the lane that still feels like a village street.",
+  "cover": "/static/walks/singapore/cover.svg",
+  "footnote": "Walked on foot from Sultan Mosque to Arab Street. Pins are places to pause, not a timed itinerary.",
+  "stops": [
+    {
+      "id": "sultan-mosque",
+      "title": "Sultan Mosque",
+      "description": "Start under the gold dome. The courtyard is the quietest moment before the street fills in.",
+      "illustration": "/static/walks/singapore/sultan-mosque.svg",
+      "lat": 1.3023,
+      "lng": 103.859
+    },
+    {
+      "id": "haji-lane",
+      "title": "Haji Lane",
+      "description": "One block of murals, small shops, and the slow shuffle of people taking the same photo you just took.",
+      "illustration": "/static/walks/singapore/haji-lane.svg",
+      "lat": 1.3008,
+      "lng": 103.8594
+    },
+    {
+      "id": "arab-street",
+      "title": "Arab Street",
+      "description": "Textiles in the windows and coffee on the five-foot way. A good place to end without rushing the next stop.",
+      "illustration": "/static/walks/singapore/arab-street.svg",
+      "lat": 1.3014,
+      "lng": 103.8582
+    }
+  ],
+  "route": {
+    "type": "LineString",
+    "coordinates": [
+      [103.859, 1.3023],
+      [103.85915, 1.30195],
+      [103.85935, 1.3015],
+      [103.8595, 1.3011],
+      [103.8594, 1.3008],
+      [103.8591, 1.30075],
+      [103.8587, 1.3009],
+      [103.8584, 1.30115],
+      [103.8582, 1.3014]
+    ]
+  }
+}

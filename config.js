@@ -31,5 +31,9 @@ module.exports = {
       label: "Photo",
       href: "/photo",
     },
+    {
+      label: "Walks",
+      href: "/walks",
+    },
   ],
 };

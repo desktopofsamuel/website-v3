@@ -1,0 +1,25 @@
+{
+  "title": "Reykjavík",
+  "description": "A harbour-to-church walk for when the illustrations and line are ready.",
+  "cover": "/static/walks/reykjavik/cover.svg",
+  "draft": true,
+  "footnote": "Draft — not listed until the route is drawn.",
+  "stops": [
+    {
+      "id": "harpa",
+      "title": "Harpa",
+      "description": "Glass honeycomb on the harbour. Placeholder stop.",
+      "illustration": "/static/walks/reykjavik/harpa.svg",
+      "lat": 64.1505,
+      "lng": -21.9326
+    },
+    {
+      "id": "hallgrimskirkja",
+      "title": "Hallgrímskirkja",
+      "description": "Up the hill to the concrete steeple. Placeholder stop.",
+      "illustration": "/static/walks/reykjavik/hallgrimskirkja.svg",
+      "lat": 64.1417,
+      "lng": -21.9266
+    }
+  ]
+}

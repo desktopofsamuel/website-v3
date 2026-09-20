@@ -1,0 +1,46 @@
+{
+  "title": "Hong Kong",
+  "description": "Hollywood Road on foot: a former prison, a stair street of studios, and incense at Man Mo.",
+  "cover": "/static/walks/hong-kong/cover.svg",
+  "footnote": "A Saturday morning walk from Tai Kwun to Hollywood Road. Expect stairs.",
+  "stops": [
+    {
+      "id": "tai-kwun",
+      "title": "Tai Kwun",
+      "description": "The old Central Police Station compound. Start in the yard, then slip out toward Hollywood Road.",
+      "illustration": "/static/walks/hong-kong/tai-kwun.svg",
+      "lat": 22.2813,
+      "lng": 114.1543
+    },
+    {
+      "id": "pmq",
+      "title": "PMQ",
+      "description": "Studios stacked in the old married-police quarters. Good for a slow look, not a shopping list.",
+      "illustration": "/static/walks/hong-kong/pmq.svg",
+      "lat": 22.2836,
+      "lng": 114.1516
+    },
+    {
+      "id": "man-mo-temple",
+      "title": "Man Mo Temple",
+      "description": "Coils of incense over a street that still feels older than the towers behind it.",
+      "illustration": "/static/walks/hong-kong/man-mo-temple.svg",
+      "lat": 22.2839,
+      "lng": 114.1502
+    }
+  ],
+  "route": {
+    "type": "LineString",
+    "coordinates": [
+      [114.1543, 22.2813],
+      [114.1538, 22.2816],
+      [114.1532, 22.2821],
+      [114.1526, 22.2826],
+      [114.152, 22.2831],
+      [114.1516, 22.2836],
+      [114.1512, 22.2837],
+      [114.1507, 22.2838],
+      [114.1502, 22.2839]
+    ]
+  }
+}
