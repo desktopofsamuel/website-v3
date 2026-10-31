@@ -47,6 +47,11 @@ type Engagement = {
 
 const engagements: Engagement[] = [
   {
+    title: "Figma Config 2026",
+    subtitle: "Friends of Figma Hong Kong Leader · Attendee · 2026",
+    image: Config2026,
+  },
+  {
     title: "Into Design System",
     subtitle: "Host and Organiser · 2025 July",
     image: IntoDesignSystem,
@@ -88,13 +93,6 @@ const community: CommunityEntry[] = [
     subtitle: "Community Leader",
     href: "https://friends.figma.com/hong-kong",
     logo: Figma,
-  },
-  {
-    title: "Figma Config 2026",
-    subtitle: "Friends of Figma Hong Kong Leader · Attendee · 2026",
-    href: "https://config.figma.com/san-francisco/",
-    image: Config2026,
-    linkLabel: "View event →",
   },
 ];
 
