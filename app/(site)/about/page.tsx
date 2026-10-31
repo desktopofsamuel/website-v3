@@ -72,12 +72,27 @@ const engagements: Engagement[] = [
   },
 ];
 
-const community = [
+type CommunityEntry = {
+  title: string;
+  subtitle: string;
+  href: string;
+  logo: typeof Figma;
+  linkLabel?: string;
+};
+
+const community: CommunityEntry[] = [
   {
     title: "Friends of Figma, Hong Kong",
     subtitle: "Community Leader",
     href: "https://friends.figma.com/hong-kong",
     logo: Figma,
+  },
+  {
+    title: "Figma Config 2026",
+    subtitle: "Friends of Figma Hong Kong Leader · Attendee · 2026",
+    href: "https://config.figma.com/san-francisco/",
+    logo: Figma,
+    linkLabel: "View event →",
   },
 ];
 
@@ -220,7 +235,7 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
               target="_blank"
               className="ml-auto font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
             >
-              Join upcoming events →
+              {entry.linkLabel ?? "Join upcoming events →"}
             </Link>
           </div>
         ))}
