@@ -8,7 +8,7 @@ import CareerSection from "@/components/CareerSection";
 import config from "@/config";
 
 import Figma from "../../../public/about/figma.svg";
-import Config2026 from "../../../public/about/config-2026.jpg";
+import Config2026 from "../../../public/about/config-2026.png";
 import Ama from "../../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../../public/about/architecting-design-for-scale.png";
@@ -222,7 +222,7 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
             }`}
           >
             {entry.image ? (
-              <div className="w-full sm:w-72 aspect-video rounded-md overflow-hidden bg-lift flex-shrink-0">
+              <div className="w-full sm:w-72 aspect-[3/2] rounded-md overflow-hidden bg-lift flex-shrink-0">
                 <Image
                   src={entry.image}
                   alt={entry.title}
