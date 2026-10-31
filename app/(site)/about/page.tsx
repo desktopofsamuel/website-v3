@@ -8,6 +8,7 @@ import CareerSection from "@/components/CareerSection";
 import config from "@/config";
 
 import Figma from "../../../public/about/figma.svg";
+import Config2026 from "../../../public/about/config-2026.jpg";
 import Ama from "../../../public/about/Design System AMA2.jpg";
 import FirmVisit from "../../../public/about/Firm Visit.jpeg";
 import WorldTour from "../../../public/about/architecting-design-for-scale.png";
@@ -76,7 +77,8 @@ type CommunityEntry = {
   title: string;
   subtitle: string;
   href: string;
-  logo: typeof Figma;
+  logo?: typeof Figma;
+  image?: StaticImageData;
   linkLabel?: string;
 };
 
@@ -91,7 +93,7 @@ const community: CommunityEntry[] = [
     title: "Figma Config 2026",
     subtitle: "Friends of Figma Hong Kong Leader · Attendee · 2026",
     href: "https://config.figma.com/san-francisco/",
-    logo: Figma,
+    image: Config2026,
     linkLabel: "View event →",
   },
 ];
@@ -213,16 +215,31 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
         {community.map((entry) => (
           <div
             key={entry.title}
-            className="flex items-center gap-4 pb-6 mb-6 border-b border-border/50"
+            className={`flex gap-4 pb-6 mb-6 border-b border-border/50 ${
+              entry.image
+                ? "flex-col sm:flex-row sm:items-center"
+                : "items-center"
+            }`}
           >
-            <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-              <Image
-                src={entry.logo}
-                alt={`${entry.title} logo`}
-                className="max-h-full w-auto object-contain"
-              />
-            </div>
-            <div>
+            {entry.image ? (
+              <div className="w-full sm:w-72 aspect-video rounded-md overflow-hidden bg-lift flex-shrink-0">
+                <Image
+                  src={entry.image}
+                  alt={entry.title}
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-700 ease-in-out"
+                  placeholder="blur"
+                />
+              </div>
+            ) : entry.logo ? (
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={entry.logo}
+                  alt={`${entry.title} logo`}
+                  className="max-h-full w-auto object-contain"
+                />
+              </div>
+            ) : null}
+            <div className="min-w-0 flex-1">
               <div className="font-body text-xl tracking-tight text-foreground mb-1">
                 {entry.title}
               </div>
@@ -233,7 +250,7 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
             <Link
               href={entry.href}
               target="_blank"
-              className="ml-auto font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
+              className="ml-auto shrink-0 self-center font-body text-sm text-foreground border-b border-border hover:border-foreground transition-colors"
             >
               {entry.linkLabel ?? "Join upcoming events →"}
             </Link>
