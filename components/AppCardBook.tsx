@@ -7,17 +7,19 @@ import Skeleton from "react-loading-skeleton";
 import AppCardBase from "@/components/AppCardBase";
 
 const AppCardBook = () => {
-  const { data } = useSWR("/api/books", fetcher, {
+  const { data, isLoading } = useSWR("/api/books", fetcher, {
     refreshInterval: 60000, // 60 seconds for testing
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
     dedupingInterval: 15000,
   });
 
+  const books = Array.isArray(data) ? data : [];
+
   return (
     <>
       <AppCardBase title="📚 Recently reading">
-        {!data ? (
+        {isLoading && books.length === 0 ? (
           <>
             <Skeleton width="50%" /> <Skeleton />
             <Skeleton width="50%" /> <Skeleton />
@@ -25,7 +27,7 @@ const AppCardBook = () => {
             <Skeleton width="50%" /> <Skeleton />
           </>
         ) : (
-          (data as any[])?.map((item: any, i: number) => (
+          books.map((item: any, i: number) => (
             <div key={i} className="mb-2 rounded-2xl gap-2 grid">
               <div>
                 <AppLink
