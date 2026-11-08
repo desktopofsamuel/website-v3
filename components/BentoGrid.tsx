@@ -123,10 +123,15 @@ const BookCard = () => {
     const fetchBooks = async () => {
       try {
         const response = await fetch('/api/books');
+        if (!response.ok) {
+          setBooks([]);
+          return;
+        }
         const data = await response.json();
-        setBooks(data.slice(0, 4)); // Get just the first book
+        setBooks(Array.isArray(data) ? data.slice(0, 4) : []);
       } catch (error) {
         console.error('Failed to fetch books:', error);
+        setBooks([]);
       } finally {
         setLoading(false);
       }
