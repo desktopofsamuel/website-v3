@@ -1,16 +1,8 @@
 import Parser from "rss-parser";
 import { NextResponse } from "next/server";
 
-const RSS_URL = "https://oku.club/rss/collection/UfVaj";
+const RSS_URL = "https://rss-proxy.onrender.com/oku";
 const CACHE_CONTROL = "public, s-maxage=60, stale-while-revalidate=300";
-
-const UPSTREAM_HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-  Accept: "application/rss+xml, application/xml, text/xml, */*",
-  "Accept-Language": "en-US,en;q=0.9",
-  Referer: "https://oku.club/",
-};
 
 function emptyBooks() {
   return NextResponse.json([], {
@@ -21,7 +13,9 @@ function emptyBooks() {
 export async function GET() {
   try {
     const upstream = await fetch(RSS_URL, {
-      headers: UPSTREAM_HEADERS,
+      headers: {
+        Accept: "application/rss+xml, application/xml, text/xml, */*",
+      },
       cache: "no-store",
       signal: AbortSignal.timeout(8000),
     });
