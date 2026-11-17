@@ -1,6 +1,5 @@
+import Parser from "rss-parser";
 import { NextResponse } from "next/server";
-
-export const runtime = "edge";
 
 const RSS_URL = "https://oku.club/rss/collection/UfVaj";
 const CACHE_CONTROL = "public, s-maxage=60, stale-while-revalidate=300";
@@ -19,25 +18,6 @@ function emptyBooks() {
   });
 }
 
-function decodeXml(value: string) {
-  return value
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, "&")
-    .trim();
-}
-
-function tag(block: string, name: string) {
-  const escaped = name.replace(":", "\\:");
-  const match = block.match(
-    new RegExp(`<${escaped}[^>]*>([\\s\\S]*?)</${escaped}>`)
-  );
-  return match ? decodeXml(match[1]) : "";
-}
-
 export async function GET() {
   try {
     const upstream = await fetch(RSS_URL, {
@@ -47,21 +27,25 @@ export async function GET() {
     });
 
     if (!upstream.ok) {
-      console.error(`Books RSS upstream error (${upstream.status})`);
+      const body = await upstream.text();
+      console.error(
+        `Books RSS upstream error (${upstream.status}):`,
+        body.slice(0, 300)
+      );
       return emptyBooks();
     }
 
     const xml = await upstream.text();
-    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)];
-    const books = items.slice(0, 4).map((item) => {
-      const block = item[1] ?? "";
-      return {
-        name: tag(block, "title"),
-        author: tag(block, "dc:creator"),
-        link: tag(block, "link"),
-        content: tag(block, "description"),
-      };
-    });
+    const parser = new Parser();
+    const result = await parser.parseString(xml);
+    const items = Array.isArray(result.items) ? result.items : [];
+
+    const books = items.slice(0, 4).map((book) => ({
+      name: book.title,
+      author: book.creator,
+      link: book.link,
+      content: book.content,
+    }));
 
     return NextResponse.json(books, {
       headers: { "Cache-Control": CACHE_CONTROL },
