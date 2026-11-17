@@ -1,0 +1,42 @@
+.walk-pin {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #111;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+}
+
+.dark .walk-pin {
+  background: #111;
+  color: #fff;
+  border-color: #fff;
+}
+
+.walk-pin-active {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgb(255 255 255 / 0.9), 0 2px 8px rgb(0 0 0 / 0.25);
+}
+
+.dark .walk-pin-active {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 0.85), 0 2px 8px rgb(0 0 0 / 0.4);
+}
+
+.walk-map .leaflet-container {
+  font-family: inherit;
+  background: var(--color-lift);
+}

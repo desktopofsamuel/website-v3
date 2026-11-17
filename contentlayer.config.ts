@@ -229,6 +229,7 @@ export const Photo = defineDocumentType(() => ({
 export default makeSource({
   // Location of source files for all defined documentTypes
   contentDirPath: "content",
+  contentDirExclude: ["walks"],
   documentTypes: [Post, Work, Photo],
   mdx: {
     remarkPlugins: [

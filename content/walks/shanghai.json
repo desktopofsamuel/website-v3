@@ -1,0 +1,69 @@
+{
+  "title": "Shanghai",
+  "description": "A French Concession hour: plane trees, a corner mansion, and a lane that still sells coffee like it invented it.",
+  "cover": "/static/walks/shanghai/cover.svg",
+  "footnote": "Walked late afternoon along Wukang and Anfu. Shade helps.",
+  "stops": [
+    {
+      "id": "wukang-building",
+      "title": "Wukang Building",
+      "description": "The ship-shaped corner that everyone photographs. Stand across the street first.",
+      "illustration": "/static/walks/shanghai/wukang-building.svg",
+      "lat": 31.2047,
+      "lng": 121.437
+    },
+    {
+      "id": "postal-museum",
+      "title": "Postal Museum",
+      "description": "The old general post office on the creek. A pause for the building, not the stamps.",
+      "illustration": "/static/walks/shanghai/postal-museum.jpg",
+      "lat": 31.246173,
+      "lng": 121.481204
+    },
+    {
+      "id": "nanjing-road",
+      "title": "Nanjing Road Pedestrian Street",
+      "description": "Where the pedestrian street meets Middle Fujian Road. Stand at the crossing and let the crowd set the pace.",
+      "illustration": "/static/walks/shanghai/nanjing-road.jpg",
+      "lat": 31.237742,
+      "lng": 121.475901
+    },
+    {
+      "id": "anfu-road",
+      "title": "Anfu Road",
+      "description": "Plane trees and shopfronts that reward walking the whole block instead of one café.",
+      "illustration": "/static/walks/shanghai/anfu-road.svg",
+      "lat": 31.2085,
+      "lng": 121.4385
+    },
+    {
+      "id": "ferguson-lane",
+      "title": "Ferguson Lane",
+      "description": "A small courtyard off Wukang Road. Easy to miss if you only follow the mansion crowd.",
+      "illustration": "/static/walks/shanghai/ferguson-lane.svg",
+      "lat": 31.2058,
+      "lng": 121.434
+    }
+  ],
+  "route": {
+    "type": "LineString",
+    "coordinates": [
+      [121.437, 31.2047],
+      [121.448, 31.214],
+      [121.46, 31.224],
+      [121.47, 31.234],
+      [121.478, 31.242],
+      [121.481204, 31.246173],
+      [121.478, 31.242],
+      [121.475901, 31.237742],
+      [121.47, 31.236],
+      [121.454, 31.222],
+      [121.444, 31.214],
+      [121.4385, 31.2085],
+      [121.4376, 31.208],
+      [121.4364, 31.2072],
+      [121.4352, 31.2064],
+      [121.434, 31.2058]
+    ]
+  }
+}
