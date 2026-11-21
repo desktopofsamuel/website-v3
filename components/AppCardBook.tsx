@@ -18,7 +18,7 @@ const AppCardBook = () => {
 
   return (
     <>
-      <AppCardBase title="📚 Recently reading">
+      <AppCardBase title="Recently reading" tone="blue">
         {isLoading && books.length === 0 ? (
           <>
             <Skeleton width="50%" /> <Skeleton />
@@ -36,7 +36,7 @@ const AppCardBook = () => {
                   target="_blank"
                 >
                   <div>
-                    <h3 className="my-0 text-base font-bold leading-snug inline mr-2">
+                    <h3 className="my-0 text-base font-heading leading-snug inline mr-2">
                       {item.name || <Skeleton />}
                     </h3>
                     <svg className="inline w-3 h-3 mb-1" fill="currentColor" viewBox="0 0 20 20">

@@ -23,7 +23,7 @@ export default function AppAuthorBox({ className = "" }: AppAuthorBoxProps) {
         <div className="relative rounded-sm bg-muted px-8 pb-10 pt-14 text-center">
           <div className="absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 -translate-y-full border-l-[12px] border-r-[12px] border-b-[18px] border-l-transparent border-r-transparent border-b-muted" />
 
-          <p className="mt-8 mb-4 font-heading text-xl text-secondarytext">Greetings ✌️</p>
+          <p className="mt-8 mb-4 font-heading text-xl text-muted-foreground">Greetings ✌️</p>
           <p className="mx-auto mb-6 max-w-2xl text-xl leading-relaxed text-foreground">
             My name is Samuel. I wrote all these articles because I love design and tech.
           </p>
@@ -35,7 +35,7 @@ export default function AppAuthorBox({ className = "" }: AppAuthorBoxProps) {
             >
               Twitter
             </Link>
-            <span className="px-3 text-secondarytext">|</span>
+            <span className="px-3 text-muted-foreground">|</span>
             <Link
               href="https://medium.com/desktop-of-samuel"
               target="_blank"

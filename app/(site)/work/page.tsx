@@ -27,12 +27,12 @@ export default function WorkListPage() {
     <>
       {/* <WorkHero />  // hidden until hero assets are ready */}
       <PageHero
-        eyebrow="02 — Projects"
+        eyebrow="Projects"
         title="Portfolio"
         description="Selected websites and apps showcase since 2015."
       />
       <SidebarSection label="Featured">
-        <div className="divide-y divide-border/50">
+        <div className="flex flex-col gap-6">
           {featured.map((post) => (
             <AppListPortfolio key={post.slug} data={post} />
           ))}

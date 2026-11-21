@@ -19,7 +19,7 @@ const NextPrev = ({
       {nextPost && (
         <div className="border border-border px-8 py-6 rounded-md">
           <AppLink href={`/work/${nextPost.slug}`} className="no-underline">
-            <div className="text-secondarytext text-sm mb-1">Read next →</div>
+            <div className="text-muted-foreground text-sm mb-1">Read next →</div>
             <div className="text-lg font-bold">{nextPost.title}</div>
           </AppLink>
         </div>

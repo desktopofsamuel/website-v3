@@ -19,14 +19,14 @@ export default function SectionTitle({
   return (
     <section className={cn("my-10", className)}>
       {eyebrow ? (
-        <p className="font-heading text-xs uppercase tracking-wider text-secondarytext mb-3">
+        <p className="font-heading text-xs uppercase tracking-wider text-muted-foreground mb-3">
           {eyebrow}
         </p>
       ) : null}
       <Heading className="font-heading text-3xl md:text-4xl font-bold leading-tight mb-3">
         {children}
       </Heading>
-      {subtitle ? <p className="text-secondarytext max-w-2xl">{subtitle}</p> : null}
+      {subtitle ? <p className="text-muted-foreground max-w-2xl">{subtitle}</p> : null}
     </section>
   );
 }

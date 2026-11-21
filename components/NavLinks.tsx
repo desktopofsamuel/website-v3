@@ -34,7 +34,7 @@ export default function NavLinks({ variant = "desktop", onItemClick }: NavLinksP
                 isActive(item.href) ? "text-foreground" : "text-muted-foreground"
               }`}
             >
-              <span className="font-mono text-xs text-muted-foreground tabular-nums w-6 shrink-0">
+              <span className="font-eyebrow text-muted-foreground tabular-nums w-6 shrink-0">
                 {String(index + 1).padStart(2, "0")}
               </span>
               {item.label}

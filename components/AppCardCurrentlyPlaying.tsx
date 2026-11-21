@@ -20,7 +20,7 @@ const AppCardCurrentlyPlaying = () => {
   });
 
   return (dynamicData as any)?.isPlaying ? (
-   <AppCardBase title="🎧 Currently playing">
+   <AppCardBase title="Currently playing" tone="green">
     <div className="flex items-center gap-2">
       <h2 className="font-heading font-bold leading-tight my-0 text-4xl items-center">
         {(dynamicData as any).title}
@@ -34,14 +34,14 @@ const AppCardCurrentlyPlaying = () => {
         </span>
       </h2>
     </div>
-      <p className="font-heading text-muted-foreground">{(dynamicData as any).artist}</p>
+      <p className="font-body text-muted-foreground">{(dynamicData as any).artist}</p>
    </AppCardBase>
   ) : (
-   <AppCardBase title="🎧 Last played">
+   <AppCardBase title="Last played" tone="green">
       {(staticData as any[])?.map((song: any, i: number) => (
         <div key={i}>
           <h2 className="font-heading leading-tight my-0 text-5xl mb-4">{song.title}</h2>
-          <p className="text-muted-foreground font-heading">{song.artist}</p>
+          <p className="text-muted-foreground font-body">{song.artist}</p>
         </div>
       ))}
     </AppCardBase>

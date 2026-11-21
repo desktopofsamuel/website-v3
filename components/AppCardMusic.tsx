@@ -26,7 +26,7 @@ const AppCardMusic = () => {
 
   return (
     <>
-      <AppCardBase title="🎧 Recently listening">
+      <AppCardBase title="Recently listening" tone="orange">
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 items-center justify-center">
           {!data ? (
             <>
@@ -72,7 +72,7 @@ const AppCardMusic = () => {
                     </div>
                   </div>
                 </AppLink>
-                <h3 className="my-2 text-sm leading-tight">
+                <h3 className="my-2 text-sm leading-tight font-heading">
                   {artist.name}
                 </h3>
               </div>

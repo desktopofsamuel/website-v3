@@ -46,7 +46,7 @@ const mdxComponents = {
     <h3 {...props} className="font-heading text-xl font-bold mt-4 mb-2" />
   ),
   p: (props: any) => (
-    <p {...props} className="text-lg mb-8 leading-loose tracking-normal text-secondarytext" />
+    <p {...props} className="text-lg mb-8 leading-loose tracking-normal text-muted-foreground" />
   ),
   ul: (props: any) => (
     <ul {...props} className="list-disc list-inside mb-8 space-y-1" />
@@ -55,7 +55,7 @@ const mdxComponents = {
     <ol {...props} className="list-decimal list-inside mb-8 space-y-1" />
   ),
   li: (props: any) => (
-    <li {...props} className="text-lg mb-2 leading-loose tracking-normal text-secondarytext" />
+    <li {...props} className="text-lg mb-2 leading-loose tracking-normal text-muted-foreground" />
   ),
   blockquote: (props: any) => (
     <blockquote {...props} className="border-l-4 border-gray-300 pl-4 italic my-4" />
@@ -66,9 +66,7 @@ const mdxComponents = {
   pre: (props: any) => (
     <pre {...props} className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto my-4" />
   ),
-  a: (props: any) => (
-    <a {...props} className="text-primary-500 hover:text-primary-600 no-underline border-b-1 pb-0.5 border-primary-500" />
-  ),
+  a: (props: any) => <a {...props} />,
   strong: (props: any) => (
     <strong {...props} className="font-bold" />
   ),

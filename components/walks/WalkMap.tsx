@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import "leaflet/dist/leaflet.css";
 import type { Walk } from "@/lib/walk-data";
 import { routeLatLngs } from "@/lib/walk-data";
 

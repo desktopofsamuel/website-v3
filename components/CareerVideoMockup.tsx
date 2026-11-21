@@ -146,7 +146,7 @@ export default function CareerVideoMockup({
             priority
           />
         </div>
-        <span className="absolute top-2 right-2 z-20 px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-foreground bg-background/25 backdrop-blur-md rounded-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        <span className="absolute top-2 right-2 z-20 px-2 py-1 font-eyebrow text-foreground bg-background/25 backdrop-blur-md rounded-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           {caption}
         </span>
       </div>

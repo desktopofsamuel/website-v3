@@ -5,6 +5,7 @@ import SidebarSection from "@/components/SidebarSection";
 import EngagementGallery from "@/components/EngagementGallery";
 import ProfilePortraitLightbox from "@/components/ProfilePortraitLightbox";
 import CareerSection from "@/components/CareerSection";
+import AnnotatedText from "@/components/AnnotatedText";
 import config from "@/config";
 
 import Figma from "../../../public/about/figma.svg";
@@ -153,31 +154,53 @@ export default function AboutPage() {
   return (
     <>
       <SidebarSection label="About me" leftAside={<ProfilePortraitLightbox />}>
-        <p className="font-body text-2xl leading-9 tracking-tight text-foreground mb-2 max-w-[56ch] text-pretty">
-        Hello, my name is Samuel.
-<br />
-<br />
-I&apos;m deeply passionate about technology and how it profoundly changes the way we live. That pursuit sparked during my internship at Apple&apos;s iTunes & App Store team at university.
-<br />
-<br />
-For the past 11 years, I&apos;ve worked at both ends of the growth curve. As a startup&apos;s first design hire at HyperAir, and later building Pepperstone Crypto&apos;s exchange from the ground up, I&apos;ve been the person turning a blank page into a working product. As part of larger teams — leading the Financial Products design team and Grow tab at OKX, aligning the trading experience across global markets at HSBC — I&apos;ve taken products that already worked and made them work at scale.
-<br />
-<br />
-What stays constant across both is the same instinct: find the framework the moment needs, whether that&apos;s the first design decision or the hundredth.
-<br />
-<br />
-At leisure, I run a UI/UX design community called <a href="https://friends.figma.com/hong-kong" target="_blank" rel="noopener noreferrer">Friends of Figma Hong Kong</a> — one recurring discourse is what AI means for design work, and we run mentorship cohorts for local designers.
-        </p>
+        <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-8 max-w-[18ch] text-pretty">
+          Hello, my name is Samuel.
+        </h1>
+        <div className="font-body text-lg text-foreground max-w-[56ch] text-pretty space-y-6">
+          <p>
+            I&apos;m deeply passionate about technology and how it profoundly
+            changes the way we live. That pursuit sparked during my internship
+            at Apple&apos;s iTunes &amp; App Store team at university.
+          </p>
+          <p>
+            For the past 11 years, I&apos;ve worked at both ends of the growth
+            curve. As a startup&apos;s first design hire at HyperAir, and later
+            building Pepperstone Crypto&apos;s exchange from the ground up,
+            I&apos;ve been the person turning a blank page into a working
+            product. As part of larger teams — leading the Financial Products
+            design team and Grow tab at OKX, aligning the trading experience
+            across global markets at HSBC — I&apos;ve taken products that
+            already worked and made them work at scale.
+          </p>
+          <p>
+            What stays constant across both is the same instinct: find the
+            framework the moment needs, whether that&apos;s the first design
+            decision or the hundredth.
+          </p>
+          <p>
+            At leisure, I run a UI/UX design community called{" "}
+            <a
+              href="https://friends.figma.com/hong-kong"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Friends of Figma Hong Kong
+            </a>{" "}
+            — one recurring discourse is what AI means for design work, and we
+            run mentorship cohorts for local designers.
+          </p>
+        </div>
       </SidebarSection>
 
       <SidebarSection label="My journey">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {journey.map((item) => (
             <div key={item.title}>
-              <h3 className="font-body text-2xl tracking-tight text-foreground mb-2.5 leading-snug">
+              <h3 className="font-heading text-2xl text-foreground mb-2.5">
                 {item.title}
               </h3>
-              <p className="font-body text-sm leading-7 text-muted-foreground">
+              <p className="font-body text-sm text-muted-foreground">
                 {item.description}
               </p>
             </div>
@@ -198,10 +221,10 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
                 i === education.length - 1 ? "pb-0" : ""
               }`}
             >
-              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+              <div className="font-heading text-xl text-foreground mb-1">
                 {edu.title}
               </div>
-              <div className="font-body text-sm leading-6 text-muted-foreground">
+              <div className="font-body text-sm text-muted-foreground">
                 {edu.subtitle}
               </div>
             </div>
@@ -238,10 +261,10 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
               </div>
             ) : null}
             <div className="min-w-0 flex-1">
-              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+              <div className="font-heading text-xl text-foreground mb-1">
                 {entry.title}
               </div>
-              <div className="font-body text-sm leading-6 text-muted-foreground">
+              <div className="font-body text-sm text-muted-foreground">
                 {entry.subtitle}
               </div>
             </div>
@@ -270,10 +293,10 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
               </div>
             ) : null}
             <div>
-              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+              <div className="font-heading text-xl text-foreground mb-1">
                 {project.title}
               </div>
-              <div className="font-body text-sm leading-6 text-muted-foreground">
+              <div className="font-body text-sm text-muted-foreground">
                 {project.subtitle}
               </div>
             </div>
@@ -299,10 +322,10 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
                 i === awards.length - 1 ? "pb-0" : ""
               }`}
             >
-              <div className="font-body text-xl tracking-tight text-foreground mb-1">
+              <div className="font-heading text-xl text-foreground mb-1">
                 {award.title}
               </div>
-              <div className="font-body text-sm leading-6 text-muted-foreground">
+              <div className="font-body text-sm text-muted-foreground">
                 {award.subtitle}
               </div>
             </div>
@@ -311,16 +334,23 @@ At leisure, I run a UI/UX design community called <a href="https://friends.figma
       </SidebarSection>
 
       <section className="mx-divider py-20 text-center border-t border-border">
-        <h2 className="font-body font-normal text-5xl md:text-7xl tracking-tighter leading-none text-foreground mb-5">
-          Let&apos;s connect
+        <h2 className="font-heading font-normal text-5xl md:text-7xl tracking-tighter leading-none text-foreground mb-5">
+          Let&apos;s{" "}
+          <AnnotatedText
+            type="highlight"
+            color="var(--color-accent)"
+            className="whitespace-nowrap"
+          >
+            connect
+          </AnnotatedText>
         </h2>
-        <p className="font-body text-sm leading-7 text-muted-foreground mb-7 max-w-[60ch] mx-auto">
+        <p className="font-body text-sm text-muted-foreground mb-7 max-w-[60ch] mx-auto">
           Drop me a line if you want to say hi, or share your thoughts on my
           writings.
         </p>
         <Link
           href="mailto:desktopofsamuel@gmail.com"
-          className="inline-flex items-center font-body text-base font-medium px-7 py-2.5 bg-foreground text-background rounded-sm no-underline hover:opacity-85 transition-opacity"
+          className="inline-flex items-center font-body text-base px-7 py-2.5 bg-accent text-accent-foreground rounded-[10px] no-underline hover:bg-accent-hover transition-colors"
         >
           Get in Touch
         </Link>

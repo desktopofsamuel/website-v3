@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { TbSun, TbMoon } from "react-icons/tb";
+import { applyColorScheme, schemeFromStoredTheme } from "@/lib/colorScheme";
 
 type ThemeToggleProps = {
   variant?: "icon" | "labeled";
@@ -18,10 +19,19 @@ export default function ThemeToggle({ variant = "icon" }: ThemeToggleProps) {
   const forcedLight = isForcedLight(pathname);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme") || "dark";
-    const effective = isForcedLight(pathname) ? "light" : saved;
-    setTheme(effective);
-    document.documentElement.classList.toggle("dark", effective === "dark");
+    const applyFromStorage = () => {
+      const saved = schemeFromStoredTheme(localStorage.getItem("theme"));
+      const effective = isForcedLight(pathname) ? "light" : saved;
+      setTheme(effective);
+      applyColorScheme(effective);
+    };
+
+    applyFromStorage();
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === "theme") applyFromStorage();
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, [pathname]);
 
   const toggle = () => {
@@ -29,7 +39,7 @@ export default function ThemeToggle({ variant = "icon" }: ThemeToggleProps) {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
     localStorage.setItem("theme", next);
-    document.documentElement.classList.toggle("dark", next === "dark");
+    applyColorScheme(next);
   };
 
   // Hide the control on forced-light routes; the effect above still enforces light.

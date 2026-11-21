@@ -50,11 +50,12 @@
     "**/*.ts",
     "**/*.tsx",
     ".contentlayer/generated",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules",
-    "archive"
+    "archive",
+    ".next-agent"
   ]
 }

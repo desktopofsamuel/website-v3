@@ -111,7 +111,7 @@ export default function WorkHero() {
         <h1 className="font-heading text-4xl font-bold leading-tight md:text-6xl">
           Portfolio
         </h1>
-        <p className="mx-auto mt-4 max-w-md text-lg text-secondarytext">
+        <p className="mx-auto mt-4 max-w-md text-lg text-muted-foreground">
           Selected websites and apps showcase since 2015.
         </p>
       </div>

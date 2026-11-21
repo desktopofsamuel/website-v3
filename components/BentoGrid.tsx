@@ -224,7 +224,7 @@ const RecentPostsCard = () => {
             <div key={post.slug} className="post-item">
               <Link href={`/blog/${post.slug}`} className="block hover:opacity-80">
                 <p className="text-lg font-bold font-heading mb-1 truncate">{post.title}</p>
-                <p className="text-sm text-secondarytext">{post.excerpt}</p>
+                <p className="text-sm text-muted-foreground">{post.excerpt}</p>
                 {/* <p className="text-xs text-muted-foreground">
                   {post.category} • {new Date(post.date).toLocaleDateString()}
                 </p> */}
@@ -300,18 +300,18 @@ const QuickLinksCard = () => (
   <div className="bento-card links-card" data-swapy-item="links">
     <h3 className="font-semibold mb-3">Quick Links</h3>
     <div className="space-y-2">
-      <Link href="/about" className="block text-sm text-secondarytext hover:text-primary">
+      <Link href="/about" className="block text-sm text-muted-foreground hover:text-primary">
         About
       </Link>
-      <Link href="/uses" className="block text-sm text-secondarytext hover:text-primary">
+      <Link href="/uses" className="block text-sm text-muted-foreground hover:text-primary">
         Uses
       </Link>
-      <Link href="/resources" className="block text-sm text-secondarytext hover:text-primary">
+      <Link href="/resources" className="block text-sm text-muted-foreground hover:text-primary">
         Resources
       </Link>
     </div>
     <div className="mt-4 pt-4 border-t border-gray-200">
-      <p className="text-xs text-secondarytext mb-2">Get in touch</p>
+      <p className="text-xs text-muted-foreground mb-2">Get in touch</p>
       <div className="flex gap-2">
         <a href="mailto:hello@desktopofsamuel.com" className="text-sm text-blue-600 hover:text-blue-800">
           Email

@@ -16,7 +16,7 @@ const AppCardResources = () => {
 
   return (
     <>
-      <AppCardBase title="💼 Career resources">
+      <AppCardBase title="Career resources" tone="green">
         <div className="flex flex-col space-y-3">
           {!data ? (
             <>
@@ -34,7 +34,7 @@ const AppCardResources = () => {
                 >
                   <div>
                     <div className="flex items-center space-x-2 mb-2">
-                      <h3 className="text-base font-semibold leading-tight inline">
+                      <h3 className="text-base font-heading leading-tight inline">
                         {resource.fields?.Name}
                       </h3>
                       <svg className="inline w-3 h-3" fill="currentColor" viewBox="0 0 20 20">

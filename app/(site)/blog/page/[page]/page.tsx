@@ -58,7 +58,7 @@ export default async function BlogPaginatedPage({ params }: Props) {
   return (
     <>
       <PageHero
-        eyebrow={`02 — Writing · Page ${currentPage} of ${numPages}`}
+        eyebrow={`Writing · Page ${currentPage} of ${numPages}`}
         title="All posts"
         description="Browse every post on design, technology, and productivity."
       />

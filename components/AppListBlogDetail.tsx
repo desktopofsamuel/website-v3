@@ -34,10 +34,10 @@ export default function AppListBlogDetail({ data }: AppListBlogDetailProps) {
           </div>
         )}
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+          <p className="font-eyebrow text-muted-foreground mb-3">
             {meta}
           </p>
-          <h3 className="text-2xl md:text-3xl font-body font-normal tracking-tight text-foreground mb-3 leading-tight">
+          <h3 className="text-2xl md:text-3xl font-heading text-foreground mb-3">
             {post.title}
           </h3>
           <p className="text-base text-muted-foreground m-0 leading-relaxed line-clamp-3">

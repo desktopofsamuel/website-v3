@@ -26,11 +26,11 @@ function ImageCard({ item }: { item: ImageItem }) {
         />
       </div>
       {item.label ? (
-        <figcaption className="font-heading text-sm uppercase tracking-wide text-secondarytext">
+        <figcaption className="font-heading text-sm uppercase tracking-wide text-muted-foreground">
           {item.label}
         </figcaption>
       ) : null}
-      {item.caption ? <p className="text-sm text-secondarytext my-0">{item.caption}</p> : null}
+      {item.caption ? <p className="text-sm text-muted-foreground my-0">{item.caption}</p> : null}
     </figure>
   );
 }

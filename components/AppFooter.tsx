@@ -1,15 +1,25 @@
 import React from "react";
 import AppLink from "@/components/AppLink";
 import SocialLinks from "@/components/SocialLinks";
+import AnnotatedText from "@/components/AnnotatedText";
 
 export default function AppFooter() {
   return (
     <footer className="bg-accent text-accent-foreground">
       <div className="px-page pt-16 pb-10">
-        <h2 className="font-body font-normal text-5xl md:text-7xl tracking-tighter leading-none text-accent-foreground mb-6">
-          Let&apos;s chat.
+        <h2 className="font-heading text-4xl md:text-5xl text-accent-foreground mb-6">
+          Let&apos;s{" "}
+          <AnnotatedText
+            type="underline"
+            color="#000"
+            trigger="page-end"
+            className="whitespace-nowrap"
+          >
+            chat
+          </AnnotatedText>
+          .
         </h2>
-        <p className="font-body text-base leading-relaxed max-w-[44ch] mb-8 text-accent-foreground/75">
+        <p className="font-body text-base max-w-[44ch] mb-8 text-accent-foreground/75">
           I am excited for new opportunities. Let&apos;s talk about working
           together.
         </p>
@@ -29,7 +39,7 @@ export default function AppFooter() {
           </AppLink>
         </div>
         <div className="border-t border-accent-foreground/20 pt-6 flex items-center justify-between flex-wrap gap-4">
-          <span className="font-mono text-xs text-accent-foreground/60">
+          <span className="font-eyebrow text-accent-foreground/60">
             © 2026 Desktop of Samuel · Not created by Framer · All rights reserved
           </span>
           <SocialLinks />

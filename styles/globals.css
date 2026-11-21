@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "react-loading-skeleton/dist/skeleton.css";
-@import "leaflet/dist/leaflet.css";
 @import "./walks.css";
 @plugin "@tailwindcss/typography";
 
@@ -22,14 +21,19 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
-  /* ── Font Families ──
-   * Switzer Variable for everything; Space Mono for code.
-   * Swap typeface in one place by editing --font-heading / --font-body.
+  /* ── Typefaces (faces only — do not use in components) ── */
+  /* --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif; */
+  --font-serif: "Mackinac", Georgia, "Times New Roman", serif;
+  --font-switzer: var(--font-switzer-face), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  /* ── Semantic roles (use these in components) ──
+   * Swap a role's face here; calibration lives on .font-heading / .font-body /
+   * .font-eyebrow below. Components should not name a typeface.
    */
-  --font-heading: var(--font-switzer), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-body: var(--font-switzer), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-heading: var(--font-serif);
+  --font-body: var(--font-serif);
+  --font-eyebrow: var(--font-switzer);
   --font-mono: var(--font-space-mono), ui-monospace, "Cascadia Code",
     "Source Code Pro", Menlo, Consolas, monospace;
 
@@ -48,8 +52,11 @@
   --text-8xl: 6rem;
   --text-9xl: 8rem;
 
-  /* ── Font Weights ── */
-  --font-weight-hairline: 100;
+  /* ── Font Weights ──
+   * Original scale kept commented. This branch uses 300 everywhere except
+   * heading/body (Mackinac book is 400).
+   */
+  /* --font-weight-hairline: 100;
   --font-weight-thin: 200;
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -57,7 +64,16 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  --font-weight-black: 900;
+  --font-weight-black: 900; */
+  --font-weight-hairline: 300;
+  --font-weight-thin: 300;
+  --font-weight-light: 300;
+  --font-weight-normal: 300;
+  --font-weight-medium: 300;
+  --font-weight-semibold: 300;
+  --font-weight-bold: 300;
+  --font-weight-extrabold: 300;
+  --font-weight-black: 300;
 
   /* ── Tracking ── */
   --tracking-tighter: -0.05em;
@@ -116,11 +132,13 @@
   --color-surface: oklch(100% 0 0);
   --color-lift: var(--color-yellow-200);
 
-  --color-text-primary: var(--color-yellow-900);
-  --color-text-secondary: var(--color-yellow-700);
-  --color-text-tertiary: var(--color-primary-800);
-  --color-text-muted: oklch(55.6% 0 0);
   --color-muted-foreground: oklch(55.6% 0 0);
+
+  /* ── Card label dots (washed cream hues) ── */
+  --color-dot-blue: oklch(72% 0.07 230);
+  --color-dot-orange: oklch(72% 0.12 55);
+  --color-dot-green: oklch(68% 0.09 150);
+  --color-dot-red: oklch(68% 0.12 25);
 
   --color-accent: var(--color-primary-500);
   --color-accent-hover: var(--color-primary-600);
@@ -137,11 +155,6 @@
   /* ── Skeleton (achromatic — not warm yellow lift/border) ── */
   --color-skeleton-base: oklch(86% 0 0);
   --color-skeleton-highlight: oklch(92% 0 0);
-
-  /* ── Legacy aliases (soft migration — remove once consumers update) ── */
-  --color-primarytext: var(--color-text-primary);
-  --color-secondarytext: var(--color-text-secondary);
-  --color-tertiarytext: var(--color-text-tertiary);
 }
 
 /* ── Dark Mode — Editorial Black ── */
@@ -151,10 +164,6 @@
   --color-surface: #000;
   --color-lift: rgb(22, 22, 22);
 
-  --color-text-primary: #fff;
-  --color-text-secondary: rgb(111, 111, 111);
-  --color-text-tertiary: rgb(111, 111, 111);
-  --color-text-muted: rgb(111, 111, 111);
   --color-muted-foreground: rgb(111, 111, 111);
 
   --color-accent: var(--color-primary-400);
@@ -169,10 +178,6 @@
 
   --color-skeleton-base: rgb(38, 38, 38);
   --color-skeleton-highlight: rgb(73, 73, 73);
-
-  --color-primarytext: var(--color-text-primary);
-  --color-secondarytext: var(--color-text-secondary);
-  --color-tertiarytext: var(--color-text-tertiary);
 }
 
 @layer base {
@@ -186,17 +191,39 @@
     scrollbar-gutter: stable;
   }
 
+  :root {
+    color-scheme: light dark;
+
+    &:has(> head > meta[name="color-scheme"][content="dark"]) {
+      color-scheme: dark;
+    }
+
+    &:has(> head > meta[name="color-scheme"][content="light"]) {
+      color-scheme: light;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-body;
   }
 
-  .dark {
-    color-scheme: dark;
+  #scrollspy-nav {
+    scroll-target-group: auto;
   }
 
-  .font-heading {
-    @apply tracking-tight;
+  #scrollspy-nav a:is(:target-current, .target-current) {
+    color: var(--color-primary-500);
+    font-weight: 700;
   }
+
+  #scrollspy-nav li:has(a:is(:target-current, .target-current)) {
+    border-color: var(--color-primary-500);
+  }
+
+  [data-scroll-content] :is(h2, h3)[id] {
+    scroll-margin-top: 40vh;
+  }
+
 
   .diagonal {
     width: 100%;
@@ -210,28 +237,19 @@
     );
   }
 
-  /* Long curvy line that loops, masked from currentColor so it adapts to theme */
-  .wave-line {
-    background-color: currentColor;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 12'%3E%3Cpath d='M0,6 C8,1 8,11 16,6 C24,1 24,11 32,6' stroke='black' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    -webkit-mask-repeat: repeat-x;
-    -webkit-mask-size: 32px 12px;
-    -webkit-mask-position: 0 center;
-    mask-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 12'%3E%3Cpath d='M0,6 C8,1 8,11 16,6 C24,1 24,11 32,6' stroke='black' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    mask-repeat: repeat-x;
-    mask-size: 32px 12px;
-    mask-position: 0 center;
-    animation: waveSlide 1.6s linear infinite;
+  /* Nav ticker: looping sine wave, arrow stays put at the tip */
+  .ticker-wave-slide {
+    transform-box: fill-box;
+    transform-origin: 0 0;
+    animation: tickerWaveSlide 1.6s linear infinite;
   }
 
-  @keyframes waveSlide {
+  @keyframes tickerWaveSlide {
     from {
-      -webkit-mask-position: 0 center;
-      mask-position: 0 center;
+      transform: translateX(0);
     }
     to {
-      -webkit-mask-position: -32px center;
-      mask-position: -32px center;
+      transform: translateX(-12.5%);
     }
   }
 
@@ -251,7 +269,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .wave-line {
+    .ticker-wave-slide {
       animation: none;
     }
     .message-rotate {
@@ -346,5 +364,72 @@
 
   .prose > video {
     @apply w-full h-auto rounded-lg my-4;
+  }
+}
+
+/* ── Type roles: face + calibration. Components only pick a role. ── */
+html,
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+* {
+  font-weight: inherit;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.75;
+}
+
+.font-eyebrow {
+  font-family: var(--font-eyebrow);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+header nav a,
+[data-menu-item] a {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p a:not(.no-underline),
+li a:not(.no-underline),
+blockquote a:not(.no-underline),
+.prose a:not(.no-underline) {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+  transition: color 150ms ease;
+}
+
+p a:not(.no-underline):hover,
+li a:not(.no-underline):hover,
+blockquote a:not(.no-underline):hover,
+.prose a:not(.no-underline):hover {
+  color: var(--color-muted-foreground);
+}
+
+html:has([data-scroll-pad-chapters]) {
+  scroll-padding-top: 11rem;
+}
+
+@keyframes annotated-text-dash {
+  to {
+    stroke-dashoffset: 0;
   }
 }

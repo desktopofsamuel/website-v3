@@ -21,7 +21,7 @@ export default function PageLayout({ post }: PageLayoutProps) {
             </h1>
 
             {post.tldr && (
-              <p className="text-lg text-secondarytext leading-normal">
+              <p className="text-lg text-muted-foreground leading-normal">
                 {post.tldr}
               </p>
             )}
@@ -36,7 +36,7 @@ export default function PageLayout({ post }: PageLayoutProps) {
 
           {/* Optional footer info for pages */}
           {post.date && (
-            <div className="mt-12 pt-8 border-t border-gray-200 text-sm font-heading text-secondarytext">
+            <div className="mt-12 pt-8 border-t border-gray-200 text-sm font-heading text-muted-foreground">
               Last updated on {dayjs(post.date).format("MMMM DD, YYYY")}
             </div>
           )}

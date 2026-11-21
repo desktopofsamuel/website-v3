@@ -21,7 +21,7 @@ export default function SidebarSection({
               : "md:sticky md:top-[120px] md:self-start"
           }
         >
-          <h2 className="font-body text-4xl font-normal leading-none text-foreground pt-1.5">
+          <h2 className="font-heading text-4xl text-foreground pt-1.5">
             {label}
           </h2>
           {leftAside}

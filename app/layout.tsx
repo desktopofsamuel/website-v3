@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
-import { Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
+import { Space_Mono } from 'next/font/google'
 import '../styles/globals.css'
 import AnalyticsProvider from '@/components/AnalyticsProvider'
 import { Agentation } from "agentation";
+import { THEME_BOOTSTRAP_SCRIPT } from '@/lib/theme-bootstrap'
+
+const TYPOGRAPHER_CSS =
+  'https://typographer.io/1/users/9007cc8e614ebce0747a903974153498c926d163cebeed8c66be1914012aebf4/f9899ed5856b1909e5770c493a1038355e947a5e86a1a5cacfa8775838c7bd03/css?token=49a699a68a'
+const TYPOGRAPHER_BEACON =
+  'https://use.typographer.io/1/users/9007cc8e614ebce0747a903974153498c926d163cebeed8c66be1914012aebf4/f9899ed5856b1909e5770c493a1038355e947a5e86a1a5cacfa8775838c7bd03/css?token=49a699a68a'
 
 const spaceMono = Space_Mono({
   subsets: ['latin'],
@@ -14,7 +20,8 @@ const spaceMono = Space_Mono({
 
 const switzer = localFont({
   src: '../public/fonts/Switzer-Variable.woff2',
-  variable: '--font-switzer',
+  variable: '--font-switzer-face',
+  weight: '100 900',
   display: 'swap',
 })
 
@@ -98,12 +105,19 @@ export default function RootLayout({
       className={`dark ${switzer.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
-      <body className={switzer.className}>
+      <head>
+        <meta name="color-scheme" content="light dark" />
+        <link rel="preconnect" href="https://typographer.io/" />
+        <link rel="stylesheet" href={TYPOGRAPHER_CSS} />
         <script
+          type="module"
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var p=location.pathname;var saved=localStorage.getItem('theme')||'dark';var dark=p.indexOf('/work')===0?false:saved==='dark';document.documentElement.classList.toggle('dark',dark);}catch(e){}})();`,
+            __html: `try{navigator.sendBeacon(${JSON.stringify(TYPOGRAPHER_BEACON)})}catch{}`,
           }}
         />
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }} />
+      </head>
+      <body className="font-body">
         {children}
         <AnalyticsProvider
           gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID}

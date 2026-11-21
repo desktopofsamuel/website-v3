@@ -40,15 +40,15 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
           {/* Article header */}
           <header className="mb-10">
             {post.category && (
-              <span className="text-xs font-heading font-medium text-muted-foreground uppercase tracking-widest">
+              <span className="font-eyebrow text-muted-foreground">
                 {post.category}
               </span>
             )}
-            <h1 className="text-2xl md:text-3xl font-bold font-heading leading-snug text-foreground mt-2 mb-3">
+            <h1 className="text-2xl md:text-3xl font-heading text-foreground mt-2 mb-3">
               {post.title}
             </h1>
             {post.tldr && (
-              <p className="text-sm leading-relaxed text-secondarytext mb-4">
+              <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                 {post.tldr}
               </p>
             )}
@@ -67,7 +67,7 @@ export default function BlogLayout({ post, relatedPosts }: BlogLayoutProps) {
                 <Link
                   key={tag}
                   href={`/tags/${kebabCase(tag)}`}
-                  className="inline-block px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-mono hover:bg-accent transition-colors"
+                  className="inline-block px-3 py-1 bg-secondary text-secondary-foreground rounded-full font-eyebrow hover:bg-accent transition-colors"
                 >
                   {tag}
                 </Link>

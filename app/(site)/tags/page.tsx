@@ -32,7 +32,7 @@ export default function TagListPage() {
   return (
     <>
       <PageHero
-        eyebrow="02 — Writing · Topics"
+        eyebrow="Writing · Topics"
         title="Topics"
         description="Every topic I've written about. Click any pill to see the posts tagged under it."
       />

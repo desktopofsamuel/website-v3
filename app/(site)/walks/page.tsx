@@ -1,59 +1,53 @@
 import type { Metadata } from "next";
-import Link from "@/components/AppLink";
-import PageHero from "@/components/PageHero";
-import WalkMedia from "@/components/walks/WalkMedia";
+import WalkChapter from "@/components/walks/WalkChapter";
+import type { WalkPhotoLayout } from "@/lib/walk-data";
 import { getPublishedWalks } from "@/lib/walks";
 import config from "@/config";
 
 export const metadata: Metadata = {
-  title: "City Walk",
+  title: "Walks",
   description:
-    "A collection of walks through cities I’ve spent time in.",
+    "On foot, a little picky. Cities I’ve spent time in — the streets I’d send you down first.",
   openGraph: {
-    title: "City Walk",
-    description: "A collection of walks through cities I’ve spent time in.",
+    title: "Walks",
+    description:
+      "On foot, a little picky. Cities I’ve spent time in — the streets I’d send you down first.",
     url: `${config.URL}/walks`,
   },
 };
+
+const CHAPTER_LAYOUT: WalkPhotoLayout[] = ["bleed", "spread", "split"];
 
 export default function WalksPage() {
   const walks = getPublishedWalks();
 
   return (
-    <>
-      <PageHero
-        eyebrow="05 — Walks"
-        title="City Walk"
-        description="A collection of walks through cities I’ve spent time in."
-      />
+    <div className="overflow-x-hidden">
+      <header className="px-6 md:px-10 pt-20 md:pt-40 pb-20 md:pb-40">
+        <p className="font-eyebrow text-muted-foreground mb-6">
+          On foot
+        </p>
+        <h1 className="font-heading text-4xl md:text-5xl text-foreground max-w-[18ch] text-pretty">
+          Cities I&apos;d walk you through.
+        </h1>
+        <p className="mt-8 max-w-[56ch] font-body text-lg text-muted-foreground text-pretty">
+          Not a map, and not every street. A few walks I keep sending people to.
+        </p>
+      </header>
 
-      <div className="mx-divider px-overhang py-16 border-b border-border">
-        {walks.length === 0 ? (
-          <p className="font-body text-muted-foreground">Walks are on the way.</p>
-        ) : (
-          <div className="-mx-overhang px-overhang flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2">
-            {walks.map((walk) => (
-              <Link
-                key={walk.slug}
-                href={`/walks/${walk.slug}`}
-                className="group snap-start shrink-0 w-[min(72vw,18rem)] no-underline text-inherit"
-              >
-                <p className="font-body text-sm mb-3 text-foreground">{walk.title}</p>
-                <div className="aspect-square w-full bg-lift border border-border overflow-hidden">
-                  <WalkMedia
-                    src={walk.cover}
-                    alt=""
-                    className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
-                  />
-                </div>
-                <p className="mt-4 font-body text-sm text-foreground">
-                  → Let’s walk
-                </p>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </>
+      {walks.length === 0 ? (
+        <p className="px-6 md:px-10 py-10 font-body text-muted-foreground">
+          Walks are on the way.
+        </p>
+      ) : (
+        walks.map((walk, index) => (
+          <WalkChapter
+            key={walk.slug}
+            walk={walk}
+            layout={CHAPTER_LAYOUT[index] ?? "bleed"}
+          />
+        ))
+      )}
+    </div>
   );
 }

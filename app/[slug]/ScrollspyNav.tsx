@@ -21,10 +21,27 @@ function activateNavItem(headingId: string) {
   document
     .querySelectorAll("#scrollspy-nav li.active")
     .forEach((li) => li.classList.remove("active"));
-  document
-    .querySelector(`#scrollspy-nav a[href="#${headingId}"]`)
-    ?.closest("li")
-    ?.classList.add("active");
+  document.querySelectorAll("#scrollspy-nav a").forEach((link) => {
+    link.classList.remove("target-current");
+    link.removeAttribute("aria-current");
+  });
+  const link = document.querySelector(
+    `#scrollspy-nav a[href="#${CSS.escape(headingId)}"]`
+  );
+  link?.closest("li")?.classList.add("active");
+  if (link instanceof HTMLElement) {
+    link.classList.add("target-current");
+    link.setAttribute("aria-current", "true");
+  }
+}
+
+function markHeadingTargets(headings: DomHeading[]) {
+  headings.forEach((heading) => {
+    const element = document.getElementById(heading.id);
+    if (element && !element.hasAttribute("tabindex")) {
+      element.tabIndex = -1;
+    }
+  });
 }
 
 function sameHeadingIds(a: DomHeading[], b: DomHeading[]): boolean {
@@ -45,6 +62,7 @@ export default function ScrollspyNav() {
 
     const refreshHeadings = () => {
       const next = collectHeadingsFromDom(root);
+      markHeadingTargets(next);
       setHeadings((prev) => (sameHeadingIds(next, prev) ? prev : next));
     };
 
@@ -80,6 +98,12 @@ export default function ScrollspyNav() {
       events: true,
     });
 
+    const onActivate = (event: CustomEvent<{ target?: Element }>) => {
+      const headingId = event.detail.target?.id;
+      if (headingId) activateNavItem(headingId);
+    };
+    document.addEventListener("gumshoeactivate", onActivate);
+
     requestAnimationFrame(() => {
       spyRef.current?.detect();
       if (
@@ -92,6 +116,7 @@ export default function ScrollspyNav() {
     });
 
     return () => {
+      document.removeEventListener("gumshoeactivate", onActivate);
       spyRef.current?.destroy();
       spyRef.current = null;
     };

@@ -14,11 +14,13 @@ type AppListBlogProps = {
     timetoread?: number;
   };
   small?: boolean;
+  showCategory?: boolean;
 };
 
 export default function AppListBlog({
   data,
   small = false,
+  showCategory = true,
 }: AppListBlogProps) {
   const post = data;
   const meta = post.category ?? null;
@@ -38,9 +40,12 @@ export default function AppListBlog({
             />
           </div>
         )}
+        {showCategory && meta ? (
+          <p className="font-eyebrow text-muted-foreground mb-2">{meta}</p>
+        ) : null}
         <h3
           className={cn(
-            "font-body font-normal mb-3 leading-tight tracking-tight text-foreground",
+            "font-heading mb-3 text-foreground",
             {
               "text-xl": small,
               "text-2xl": !small,
@@ -50,18 +55,13 @@ export default function AppListBlog({
           {post.title}
         </h3>
         <p
-          className={cn("font-body leading-relaxed text-muted-foreground", {
+          className={cn("font-body text-muted-foreground", {
             "text-sm line-clamp-2": small,
             "text-base line-clamp-3": !small,
           })}
         >
           {post.excerpt}
         </p>
-        {meta && (
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mt-3">
-            {meta}
-          </p>
-        )}
       </div>
     </Link>
   );

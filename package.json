@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.6.2",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1 -p 3001",
     "build": "node scripts/strip-dev-routes.mjs && next build",
     "start": "next start",
     "lint": "next lint",
@@ -52,6 +52,7 @@
     "rehype-prism-plus": "^1.6.3",
     "remark-gfm": "^4.0.0",
     "remark-unwrap-images": "^3.0.1",
+    "rough-notation": "^0.5.1",
     "rss": "^1.2.2",
     "rss-parser": "^3.13.0",
     "swapy": "^1.0.5",

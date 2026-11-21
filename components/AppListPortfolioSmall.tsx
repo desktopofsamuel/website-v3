@@ -14,16 +14,16 @@ export default function AppListPortfolioSmall({ data }: any) {
         >
           <div className="flex items-center">
             <h2 className="text-2xl font-heading">{post.subtitle}</h2>
-            <TbExternalLink className="text-secondarytext ml-2" />
+            <TbExternalLink className="text-muted-foreground ml-2" />
           </div>
         </Link>
-        <p className="my-0 text-secondarytext">{post.description}</p>
-        <p className="my-0 font-mono text-secondarytext">{post.year}</p>
+        <p className="my-0 text-muted-foreground">{post.description}</p>
+        <p className="my-0 font-eyebrow text-muted-foreground">{post.year}</p>
         <div className="flex">
           {post.tags.map((tag: string, index: React.Key | null | undefined) => (
             <p
               key={index}
-              className="font-mono text-xs uppercase not-last:pr-2 text-secondarytext mr-2"
+              className="font-mono not-last:pr-2 text-muted-foreground mr-2"
             >
               {tag}
             </p>

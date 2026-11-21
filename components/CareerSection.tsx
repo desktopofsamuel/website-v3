@@ -220,16 +220,16 @@ export default function CareerSection({ label = "Work" }: CareerSectionProps) {
               i === career.length - 1 ? "pb-0" : ""
             }`}
           >
-            <div className="font-body text-2xl leading-9 tracking-tight text-foreground mb-1">
+            <div className="font-heading text-2xl text-foreground mb-1">
               {job.company}
             </div>
-            <div className="flex items-center justify-between gap-4 font-body text-base leading-6 tracking-tight text-foreground mb-3">
-              <div>{job.role}</div>
-              <span className="shrink-0 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
+            <div className="flex items-center justify-between gap-4 font-body text-base text-foreground mb-3">
+              <div className="font-body">{job.role}</div>
+              <span className="shrink-0 rounded-full border border-border px-3 py-1 font-eyebrow text-muted-foreground">
                 {job.period}
               </span>
             </div>
-            <p className="font-body text-sm leading-7 text-muted-foreground mb-4">
+            <p className="font-body text-sm text-muted-foreground mb-4">
               {job.description}
             </p>
             <div className={getCareerPhotoGridClass(job)}>
@@ -263,7 +263,7 @@ export default function CareerSection({ label = "Work" }: CareerSectionProps) {
                           sizes={getCareerPhotoSizes(job)}
                           className="object-cover"
                         />
-                        <span className="absolute top-2 right-2 z-10 px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-foreground bg-background/25 backdrop-blur-md rounded-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        <span className="absolute top-2 right-2 z-10 px-2 py-1 font-eyebrow text-foreground bg-background/25 backdrop-blur-md rounded-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                           {photo.caption}
                         </span>
                       </div>

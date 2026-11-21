@@ -2,6 +2,11 @@
 
 import { useState, useEffect, useMemo } from "react";
 
+const TICKER_WAVE_PATH = Array.from({ length: 8 }, (_, i) => {
+  const x = i * 32;
+  return `C${x + 8},1 ${x + 8},11 ${x + 16},6 C${x + 24},1 ${x + 24},11 ${x + 32},6`;
+}).join(" ");
+
 const BASE_HELLO_MESSAGES = [
   "Hello! My name is Samuel",
   "Welcome to my corner of the internet",
@@ -152,21 +157,35 @@ export default function NavTicker({ temperature }: NavTickerProps) {
       className="hidden min-w-0 flex-1 items-baseline justify-end gap-2 text-foreground md:flex md:flex-none md:justify-start"
       aria-live="polite"
     >
-      <div className="wave-line hidden h-3 w-32 md:block lg:w-48" aria-hidden="true" />
       <svg
-        width="14"
-        height="10"
-        viewBox="0 0 14 10"
+        viewBox="0 0 206 12"
+        preserveAspectRatio="none"
         fill="none"
         aria-hidden="true"
-        className="-ml-1 hidden shrink-0 md:block"
+        className="hidden h-3 w-[9.5rem] shrink-0 overflow-visible text-foreground md:block lg:w-[13.5rem]"
       >
+        <defs>
+          <clipPath id="ticker-wave-clip">
+            <rect x="0" y="0" width="176" height="12" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#ticker-wave-clip)">
+          <path
+            className="ticker-wave-slide"
+            d={`M0,6 ${TICKER_WAVE_PATH}`}
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </g>
         <path
-          d="M0 5 L12 5 M8.5 1.5 L12 5 L8.5 8.5"
+          d="M168,6 C176,1 176,11 184,6 C192,1 192,11 200,6 M196.3,11.4 L200,6 L193.5,7"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
+          fill="none"
         />
       </svg>
       <span

@@ -39,11 +39,11 @@ export default function IndexPage() {
     <>
       {/* Hero — full viewport, content pinned to bottom, aligned to clamp gutter */}
       <section className="mx-divider px-overhang min-h-[90dvh] flex flex-col justify-end pt-16 pb-20 gap-10 border-b border-border">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          00 — Samuel Wong, Hong Kong
+        <p className="font-eyebrow text-muted-foreground">
+          Hong Kong
         </p>
         <HeroTitle />
-        <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-xl">
+        <p className="font-body text-lg text-muted-foreground max-w-xl">
           Full-stack product designer with {EXPERIENCE_YEARS}+ years delivering
           bespoke interfaces for web3, finance, and travel — currently leading
           product design at Pepperstone.
@@ -58,12 +58,12 @@ export default function IndexPage() {
       </section>
 
       {/* Work */}
-      <SidebarSection label="01 — Work">
-        <p className="font-body text-muted-foreground leading-relaxed mb-10 max-w-prose">
+      <SidebarSection label="Work">
+        <p className="font-body text-muted-foreground mb-10 max-w-prose">
           Extensive experience delivering products in corporations and start-ups
           across finance, web3, and travel industries.
         </p>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-6">
           {works.map((post) => (
             <AppListPortfolio key={post.slug} data={post} />
           ))}
@@ -77,8 +77,8 @@ export default function IndexPage() {
       </SidebarSection>
 
       {/* Writing */}
-      <SidebarSection label="02 — Writing">
-        <p className="font-body text-muted-foreground leading-relaxed mb-10 max-w-prose">
+      <SidebarSection label="Writing">
+        <p className="font-body text-muted-foreground mb-10 max-w-prose">
           Notes on design process, technology, and productivity.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -95,8 +95,8 @@ export default function IndexPage() {
       </SidebarSection>
 
       {/* Photo */}
-      <SidebarSection label="03 — Photo">
-        <p className="font-body text-muted-foreground leading-relaxed mb-8 max-w-prose">
+      <SidebarSection label="Photo">
+        <p className="font-body text-muted-foreground mb-8 max-w-prose">
           Sets of photos from cities I have visited.
         </p>
         <div className="overflow-hidden rounded-xl">
@@ -111,7 +111,7 @@ export default function IndexPage() {
       </SidebarSection>
 
       {/* Services — editorial pill rows */}
-      <SidebarSection label="04 — Services">
+      <SidebarSection label="Services">
         <div className="flex flex-col -mt-6">
           {services.map((label, index) => (
             <div
@@ -119,10 +119,10 @@ export default function IndexPage() {
               className="group flex items-center justify-between py-8 border-b border-border/50 cursor-default"
             >
               <div className="flex items-baseline gap-6">
-                <span className="font-mono text-xs text-muted-foreground tabular-nums w-6 shrink-0">
+                <span className="font-eyebrow text-muted-foreground tabular-nums w-6 shrink-0">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="font-body text-3xl md:text-5xl font-normal tracking-tight text-foreground group-hover:translate-x-1 transition-transform duration-200 ease-out">
+                <span className="font-heading text-3xl md:text-5xl text-foreground group-hover:translate-x-1 transition-transform duration-200 ease-out">
                   {label}
                 </span>
               </div>

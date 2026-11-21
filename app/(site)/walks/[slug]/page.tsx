@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import WalkExperience from "@/components/walks/WalkExperience";
+import { notFound, redirect } from "next/navigation";
 import { getPublishedWalk, getPublishedWalks } from "@/lib/walks";
 
 type Props = {
@@ -19,13 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${walk.title} · City Walk`,
+    title: `${walk.title} · Walks`,
     description: walk.description,
-    openGraph: {
-      title: `${walk.title} · City Walk`,
-      description: walk.description,
-      images: walk.cover ? [walk.cover] : [],
-    },
   };
 }
 
@@ -34,5 +28,5 @@ export default async function WalkDetailPage({ params }: Props) {
   const walk = getPublishedWalk(slug);
   if (!walk) return notFound();
 
-  return <WalkExperience walk={walk} />;
+  redirect(`/walks#${slug}`);
 }

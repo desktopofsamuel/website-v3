@@ -91,7 +91,7 @@ export default function UsesPage() {
         <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
           Uses
         </h1>
-        <p className="text-lg text-secondarytext leading-normal">
+        <p className="text-lg text-muted-foreground leading-normal">
         Tools that I love to use everyday
         </p></div>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10 md:pb-40">
@@ -104,7 +104,7 @@ export default function UsesPage() {
                   <Icon />
                 </div>
                 <div className="text-lg font-bold font-heading mb-1 text-left">{item.title}</div>
-                <div className="text-secondarytext leading-relaxed text-left">{item.description}</div>
+                <div className="text-muted-foreground leading-relaxed text-left">{item.description}</div>
               </AppCardBase>
             </Link>
           );

@@ -34,7 +34,7 @@ const AppCardFilms = () => {
   
   return (
     <>
-      <AppCardBase title="🎬 Recently watching">
+      <AppCardBase title="Recently watching" tone="red">
         <div className="flex flex-row z-[1] relative">
           {!data ? (
             <>

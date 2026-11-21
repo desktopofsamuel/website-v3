@@ -29,7 +29,7 @@ export default function FeedLayout({ children }: FeedLayoutProps) {
         <h1 className="mb-4 text-4xl md:text-6xl font-bold leading-tight font-heading">
           Feed
         </h1>
-        <p className="text-lg text-secondarytext leading-normal">
+        <p className="text-lg text-muted-foreground leading-normal">
           A collection of interesting links, thoughts, and discoveries.
         </p>
       </div>

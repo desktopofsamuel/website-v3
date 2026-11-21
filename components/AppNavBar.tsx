@@ -15,7 +15,7 @@ type AppNavBarProps = {
  *   - <NavTicker />     — polls /api/currently-playing every 30s, rotates messages
  *   - <NavLinks />      — usePathname() for active-link state (desktop)
  *   - <MobileMenu />    — GSAP overlay + mobile nav links, theme toggle, socials
- *   - <ThemeToggle />   — localStorage-backed dark/light state
+ *   - <ThemeToggle />   — localStorage-backed dark/light + color-scheme meta
  *
  * The mobile menu overlay is a client island with GSAP enter/exit animation;
  * desktop nav links stay server-rendered via <NavLinks />.

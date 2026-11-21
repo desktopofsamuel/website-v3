@@ -2,3 +2,5 @@
 alwaysApply: true
 ---
 Always Use AppLink but alias as Link when imported
+
+This worktree previews at http://127.0.0.1:3001. `pnpm dev` is pinned to that port. Agent-managed `next dev` shells are aborted by T3 after ~30s–2min and take 3001 down with them. If 3001 is down, start it with `node scripts/ensure-dev-3001.mjs` (detached session, `all` permissions) and leave it. Do not kill a healthy 3001 listener, do not start a second Next on 3001, and do not move it to 3000.

@@ -143,15 +143,15 @@ export default function WalkExperience({ walk }: WalkExperienceProps) {
           id={stop.id}
           className="scroll-mt-8 py-10 border-t border-border first:border-t-0"
         >
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
+          <p className="font-eyebrow text-muted-foreground mb-4">
             Stop {index + 1}
           </p>
           <div className="flex flex-col sm:flex-row sm:items-start gap-6">
             <div className="space-y-3 flex-1 min-w-0">
-              <h2 className="font-body text-2xl tracking-tight text-foreground">
+              <h2 className="font-heading text-2xl text-foreground">
                 {stop.title}
               </h2>
-              <p className="font-body text-base leading-relaxed text-muted-foreground">
+              <p className="font-body text-base text-muted-foreground">
                 {stop.description}
               </p>
               <Link
@@ -181,18 +181,18 @@ export default function WalkExperience({ walk }: WalkExperienceProps) {
         ref={listRef}
         className="relative z-10 hidden md:block overflow-y-auto px-page py-12 bg-background"
       >
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-          05 — Walks
+        <p className="font-eyebrow text-muted-foreground mb-6">
+          Walks
         </p>
         <h1 className="font-body font-normal text-5xl lg:text-7xl tracking-tighter leading-none text-foreground">
           {walk.title}
         </h1>
-        <p className="mt-6 max-w-[42ch] font-body text-base leading-relaxed text-muted-foreground">
+        <p className="mt-6 max-w-[42ch] font-body text-base text-muted-foreground">
           {walk.description}
         </p>
         <div className="mt-12">{stopList}</div>
         {walk.footnote && (
-          <p className="mt-12 font-body text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-12 font-body text-sm text-muted-foreground">
             {walk.footnote}
           </p>
         )}
@@ -213,8 +213,8 @@ export default function WalkExperience({ walk }: WalkExperienceProps) {
 
       <div className="md:hidden relative z-10 min-h-[60vh] pointer-events-none">
         <div className="px-page pt-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3 pointer-events-auto">
-            05 — Walks
+          <p className="font-eyebrow text-muted-foreground mb-3 pointer-events-auto">
+            Walks
           </p>
           <h1 className="font-body font-normal text-5xl tracking-tighter leading-none text-foreground pointer-events-auto drop-shadow-sm">
             {walk.title}
@@ -232,7 +232,7 @@ export default function WalkExperience({ walk }: WalkExperienceProps) {
               data-stop={stop.id}
               className="snap-center shrink-0 w-[min(85vw,22rem)] bg-background/95 backdrop-blur-sm border border-border p-5"
             >
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+              <p className="font-eyebrow text-muted-foreground mb-3">
                 Stop {index + 1}
               </p>
               <div className="aspect-square w-full bg-lift mb-4">
@@ -242,10 +242,10 @@ export default function WalkExperience({ walk }: WalkExperienceProps) {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <h2 className="font-body text-xl tracking-tight text-foreground">
+              <h2 className="font-heading text-xl text-foreground">
                 {stop.title}
               </h2>
-              <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 font-body text-sm text-muted-foreground">
                 {stop.description}
               </p>
               <Link

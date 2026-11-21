@@ -38,16 +38,8 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="03 — Writing"
-        title={
-          <>
-            Notes on
-            <br />
-            Design &amp;
-            <br />
-            Technology
-          </>
-        }
+        eyebrow="Writing"
+        title="Notes on Design & Technology"
         description="A collection of posts on design process, technology, and productivity."
       />
 
@@ -55,7 +47,7 @@ export default function BlogPage() {
       <SidebarSection label="Featured">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featured.map((post) => (
-            <AppListBlog key={post.slug} data={post} />
+            <AppListBlog key={post.slug} data={post} showCategory={false} />
           ))}
         </div>
       </SidebarSection>
