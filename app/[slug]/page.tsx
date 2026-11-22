@@ -5,6 +5,7 @@ import BlogLayout from "@/components/BlogLayout";
 import PageLayout from "@/components/PageLayout";
 import { sortByDate } from "@/utils";
 import { normalizeTag } from "@/lib/content";
+import { formatTitle } from "@/lib/format-title";
 import config from "@/config";
 
 type Props = {
@@ -24,7 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.title + " | Desktop of Samuel - Samuel Wong — Hong Kong UI/UX Designer",
+    title: formatTitle(
+      post.title,
+      "Desktop of Samuel - Samuel Wong — Hong Kong UI/UX Designer"
+    ),
     description: post.excerpt,
     keywords: post.tags ? post.tags : "",
     alternates: {

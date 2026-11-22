@@ -6,6 +6,7 @@ import NextPrev from "@/components/NextPrev";
 import Image from "next/image";
 import dayjs from "dayjs";
 import CONFIG from "@/config";
+import { formatTitle } from "@/lib/format-title";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,10 +15,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = allWorks.find((p) => p.slug === slug);
   if (!post || post.draft) return { title: "Work Not Found" };
   return {
-    title: `${post.title} | Desktop of Samuel`,
+    title: formatTitle(post.title, "Desktop of Samuel"),
     description: post.description,
     openGraph: {
-      title: `${post.title} | Desktop of Samuel`,
+      title: formatTitle(post.title, "Desktop of Samuel"),
       description: post.description,
       url: `${CONFIG.URL}/work/${slug}`,
       images: post.cover ? [post.cover] : [],
