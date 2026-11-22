@@ -37,7 +37,11 @@ export async function GET() {
       }
     });
   } catch (error) {
-    console.error('Films API error:', error);
-    return NextResponse.json({ error: 'Failed to fetch films' }, { status: 500 });
+    console.error("Films API error:", error);
+    return NextResponse.json([], {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
+    });
   }
 }

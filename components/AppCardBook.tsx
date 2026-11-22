@@ -1,20 +1,26 @@
 "use client";
 
 import useSWR from "swr";
-import AppLink from "@/components/AppLink"
+import AppLink from "@/components/AppLink";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import AppCardBase from "@/components/AppCardBase";
+import { asList } from "@/lib/as-list";
+
+type BookItem = {
+  name?: string;
+  author?: string;
+  link: string;
+};
 
 const AppCardBook = () => {
   const { data, isLoading } = useSWR("/api/books", fetcher, {
-    refreshInterval: 60000, // 60 seconds for testing
+    refreshInterval: 60000,
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
     dedupingInterval: 15000,
   });
-
-  const books = Array.isArray(data) ? data : [];
+  const books = asList<BookItem>(data);
 
   return (
     <>
@@ -27,7 +33,7 @@ const AppCardBook = () => {
             <Skeleton width="50%" /> <Skeleton />
           </>
         ) : (
-          books.map((item: any, i: number) => (
+          books.map((item, i) => (
             <div key={i} className="mb-2 rounded-2xl gap-2 grid">
               <div>
                 <AppLink
