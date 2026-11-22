@@ -27,7 +27,11 @@ export async function GET() {
       }
     });
   } catch (error) {
-    console.error('Books API error:', error);
-    return NextResponse.json({ error: 'Failed to fetch books' }, { status: 500 });
+    console.error("Books API error:", error);
+    return NextResponse.json([], {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
+    });
   }
 }

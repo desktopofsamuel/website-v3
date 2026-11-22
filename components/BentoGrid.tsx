@@ -6,6 +6,7 @@ import { filteredPosts, filteredWorks, filteredPhotos } from "@/lib/content";
 import Profile from "../public/static/samuel-profile-2022.jpeg";
 import Image from "next/image";
 import { createSwapy } from "swapy";
+import { asList } from "@/lib/as-list";
 
 // Individual Bento Cards
 const IntroCard = () => (
@@ -122,9 +123,9 @@ const BookCard = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('/api/books');
+        const response = await fetch("/api/books");
         const data = await response.json();
-        setBooks(data.slice(0, 4)); // Get just the first book
+        setBooks(asList(data).slice(0, 4));
       } catch (error) {
         console.error('Failed to fetch books:', error);
       } finally {

@@ -8,6 +8,7 @@
     "build": "node scripts/strip-dev-routes.mjs && next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --experimental-strip-types --test lib/as-list.test.ts",
     "build:content": "contentlayer2 build",
     "postbuild": "next-sitemap",
     "test:e2e": "playwright test",
