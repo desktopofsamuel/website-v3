@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "@/components/AppLink";
-import { allPhotos } from "contentlayer/generated";
-import { sortByDate } from "@/utils";
+import { filteredPhotos } from "@/lib/content";
 import Image from "next/image";
 import config from "@/config";
 
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function PhotoListPage() {
-  const photos = allPhotos.filter((p) => !p.draft).sort(sortByDate);
+  const photos = filteredPhotos;
 
   return (
     <>

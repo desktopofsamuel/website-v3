@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { allWorks } from "contentlayer/generated";
+import { filteredFeaturedWorks, publishedWorks } from "@/lib/content";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/mdx-components";
 import NextPrev from "@/components/NextPrev";
@@ -11,8 +11,8 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = allWorks.find((p) => p.slug === slug);
-  if (!post || post.draft) return { title: "Work Not Found" };
+  const post = publishedWorks.find((p) => p.slug === slug);
+  if (!post) return { title: "Work Not Found" };
   return {
     title: `${post.title} | Desktop of Samuel`,
     description: post.description,
@@ -26,21 +26,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return allWorks.filter((post) => !post.draft).map((post) => ({ slug: post.slug }));
+  return publishedWorks.map((post) => ({ slug: post.slug }));
 }
 
 export default async function WorkDetailPage({ params }: Props) {
   const { slug } = await params;
-  const post = allWorks.find((post) => post.slug === slug);
-  if (!post || post.draft) return notFound();
+  const post = publishedWorks.find((post) => post.slug === slug);
+  if (!post) return notFound();
 
-  // Only featured, non-draft works for prev/next
-  const filteredWorks = allWorks
-    .filter((work) => work.feature === true && work.draft !== true)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const currentIndex = filteredWorks.findIndex((p) => p.slug === slug);
-  const nextPost = currentIndex < filteredWorks.length - 1 ? filteredWorks[currentIndex + 1] : null;
-  const prevPost = currentIndex > 0 ? filteredWorks[currentIndex - 1] : null;
+  const currentIndex = filteredFeaturedWorks.findIndex((p) => p.slug === slug);
+  const nextPost = currentIndex < filteredFeaturedWorks.length - 1 ? filteredFeaturedWorks[currentIndex + 1] : null;
+  const prevPost = currentIndex > 0 ? filteredFeaturedWorks[currentIndex - 1] : null;
 
   return (
     <>

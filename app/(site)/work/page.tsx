@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { allWorks } from "contentlayer/generated";
-import { sortByDate } from "@/utils";
+import { filteredFeaturedWorks, filteredWorks } from "@/lib/content";
 import AppListPortfolio from "@/components/AppListPortfolio";
 import AppListPortfolioSmall from "@/components/AppListPortfolioSmall";
 import SidebarSection from "@/components/SidebarSection";
@@ -19,9 +18,8 @@ export const metadata: Metadata = {
 };
 
 export default function WorkListPage() {
-  const works = allWorks;
-  const featured = works.filter((post) => post.feature === true && post.draft !== true).sort(sortByDate);
-  const sideProjects = works.filter((post) => post.feature !== true && post.draft !== true).sort(sortByDate);
+  const featured = filteredFeaturedWorks;
+  const sideProjects = filteredWorks.filter((post) => post.feature !== true);
 
   return (
     <>

@@ -1,16 +1,16 @@
 import { allPosts, allWorks, allPhotos } from "contentlayer/generated";
 import kebabCase from "lodash.kebabcase";
 import { sortByDate } from "@/utils";
+import { published } from "@/lib/published";
 
-// Filter out posts where page === true (these are page content, not blog posts) and draft posts
-const filteredPosts = allPosts.filter((post) => post.page !== true && !post.draft).sort(sortByDate);
+const publishedPosts = published(allPosts);
+const publishedWorks = published(allWorks).sort(sortByDate);
+const publishedPhotos = published(allPhotos).sort(sortByDate);
 
-// Filter and sort work projects
-const filteredWorks = allWorks.filter((work) => !work.draft).sort(sortByDate);
-const filteredFeaturedWorks = allWorks.filter((work) => work.feature === true && work.draft !== true).sort(sortByDate);
-
-// Filter and sort photos
-const filteredPhotos = allPhotos.filter((photo) => !photo.draft).sort(sortByDate);
+const filteredPosts = publishedPosts.filter((post) => post.page !== true).sort(sortByDate);
+const filteredWorks = publishedWorks;
+const filteredFeaturedWorks = publishedWorks.filter((work) => work.feature === true);
+const filteredPhotos = publishedPhotos;
 
 // Tags in frontmatter are entered inconsistently (e.g. "Design", "design",
 // "Design Journal"). Normalize to a kebab-case slug so equivalent tags collapse
@@ -84,4 +84,7 @@ export {
   filteredWorks,
   filteredFeaturedWorks,
   filteredPhotos,
+  publishedPosts,
+  publishedWorks,
+  publishedPhotos,
 };
