@@ -1,0 +1,13 @@
+#!/bin/sh
+root=$(git rev-parse --show-toplevel) || exit 1
+cd "$root" || exit 1
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$' || true)
+[ -z "$files" ] && exit 0
+
+file_args=""
+for f in $files; do
+  file_args="$file_args --file $f"
+done
+
+exec pnpm exec next lint $file_args

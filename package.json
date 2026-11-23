@@ -8,6 +8,7 @@
     "build": "node scripts/strip-dev-routes.mjs && next build",
     "start": "next start",
     "lint": "next lint",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "build:content": "contentlayer2 build",
     "postbuild": "next-sitemap",
     "test:e2e": "playwright test",
