@@ -1,9 +1,15 @@
 #!/bin/sh
-# Auto-fix staged PNGs under public/static/ with lossless oxipng, then re-stage.
-# Fails if one of those PNGs is staged and oxipng is not installed.
-# Install: brew install oxipng | cargo install oxipng
-# Ubuntu/Debian apt does not ship oxipng; use https://github.com/oxipng/oxipng/releases
-
 root=$(git rev-parse --show-toplevel) || exit 1
 cd "$root" || exit 1
-exec node scripts/optimize-staged-pngs.mjs
+
+node scripts/optimize-staged-pngs.mjs || exit $?
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$' || true)
+[ -z "$files" ] && exit 0
+
+file_args=""
+for f in $files; do
+  file_args="$file_args --file $f"
+done
+
+exec pnpm exec next lint $file_args
