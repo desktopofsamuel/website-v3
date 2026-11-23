@@ -19,13 +19,13 @@ export default function AppListPortfolio({ data }: any) {
           <Link href={`/work/${post.slug}/`}>View Process</Link>
         </Button>
       </div>
-      <div className="order-1 w-full overflow-hidden rounded-xl lg:order-2 lg:h-full">
+      <div className="order-1 flex w-full items-center justify-center overflow-hidden rounded-xl lg:order-2 lg:h-full">
         <Image
           src={post.cover}
           alt={post.title}
           width={1200}
           height={800}
-          className="h-full w-full object-cover transition-all duration-500 ease-in-out group-hover:opacity-80 group-hover:scale-[1.02]"
+          className="h-full w-full object-contain transition-all duration-500 ease-in-out group-hover:opacity-80 group-hover:scale-[1.02]"
         />
       </div>
     </div>

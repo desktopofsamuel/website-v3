@@ -100,7 +100,7 @@ function BleedChapter({
   return (
     <article id={walk.slug} className="scroll-mt-[11rem] pt-20 md:pt-40">
       {photo ? <BleedPhoto src={photo} sizes="100vw" /> : null}
-      <div className="px-6 md:px-10 pt-10 pb-20 md:pb-40">
+      <div className="px-page pt-10 pb-20 md:pb-40">
         <DummyNote walk={walk} hasCityPhotos={Boolean(cityPhotos?.length)} />
         <h2 className="mt-10 font-heading text-4xl md:text-5xl text-foreground">
           {walk.title}
@@ -148,7 +148,7 @@ function SpreadChapter({
             </div>
           ))}
         </div>
-        <div className="px-6 md:px-10 py-8 md:py-10 bg-background">
+        <div className="px-page py-8 md:py-10 bg-background">
           <h2 className="font-heading text-4xl md:text-5xl text-foreground">
             {walk.title}
           </h2>
@@ -157,7 +157,7 @@ function SpreadChapter({
           </p>
         </div>
       </div>
-      <div className="px-6 md:px-10 pt-10 pb-20 md:pb-40">
+      <div className="px-page pt-10 pb-20 md:pb-40">
         <Stops walk={walk} />
         {walk.footnote ? (
           <p className="mt-10 max-w-[42ch] font-body text-sm text-muted-foreground">
@@ -181,7 +181,7 @@ function SplitChapter({
   return (
     <article
       id={walk.slug}
-      className="scroll-mt-[11rem] px-6 md:px-10 pt-20 md:pt-40 pb-20 md:pb-40"
+      className="scroll-mt-[11rem] px-page pt-20 md:pt-40 pb-20 md:pb-40"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
         <div>
