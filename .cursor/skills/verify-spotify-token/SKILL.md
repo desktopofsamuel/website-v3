@@ -29,7 +29,7 @@ bash scripts/verify-spotify-token.sh
 node --experimental-strip-types --test lib/single-flight.test.ts
 ```
 
-The shell script downloads pinned TLC `tla2tools.jar` v1.7.4 into `verify/spotify-token/` (gitignored) and needs Java 11+.
+The shell script downloads pinned TLC `tla2tools.jar` v1.7.4 into `verify/spotify-token/` (gitignored) and needs Java 11+. `lib/single-flight.test.ts` runs from `pnpm test` and the pre-commit hook. Do not add a GitHub Actions job for TLC.
 
 Read every TLC result with `/statechart`. Do not copy statechart commands into this skill.
 
