@@ -8,6 +8,7 @@ root=$(git rev-parse --show-toplevel) || exit 1
 cd "$root" || exit 1
 
 node scripts/optimize-staged-pngs.mjs || exit $?
+bash scripts/run-lib-tests.sh || exit $?
 
 files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$' || true)
 [ -z "$files" ] && exit 0
