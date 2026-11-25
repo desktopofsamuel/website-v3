@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "node scripts/install-git-hooks.mjs",
+    "test": "node --experimental-strip-types --test lib/as-list.test.ts",
     "build:content": "contentlayer2 build",
     "postbuild": "next-sitemap",
     "test:e2e": "playwright test",

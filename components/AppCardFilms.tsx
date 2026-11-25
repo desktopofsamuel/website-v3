@@ -7,14 +7,22 @@ import Image from "next/image";
 import fetcher from "@/lib/fetcher";
 import Skeleton from "react-loading-skeleton";
 import AppCardBase from "@/components/AppCardBase";
+import { asList } from "@/lib/as-list";
+
+type FilmItem = {
+  name?: string;
+  link: string;
+  image?: string;
+};
 
 const AppCardFilms = () => {
   const { data } = useSWR("/api/films", fetcher, {
-    refreshInterval: 60000, // 60 seconds for testing
+    refreshInterval: 60000,
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
     dedupingInterval: 15000,
   });
+  const films = asList<FilmItem>(data);
 
   function Loader() {
     return (
@@ -41,7 +49,7 @@ const AppCardFilms = () => {
               <Loader /> <Loader /> <Loader /> <Loader /> <Loader />
             </>
           ) : (
-            (data as any[])?.map((item: any, i: number) => (
+            films.map((item, i) => (
               <div
                 key={i}
                 title={item.name}
