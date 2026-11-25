@@ -1,4 +1,5 @@
 import querystring from 'querystring';
+import { singleFlight } from '@/lib/single-flight';
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -14,7 +15,7 @@ export class SpotifyAuthError extends Error {
   }
 }
 
-const getAccessToken = async () => {
+const refreshAccessToken = async () => {
   if (!client_id || !client_secret || !refresh_token) {
     throw new SpotifyAuthError(
       'Missing Spotify credentials. Set SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, and SPOTIFY_REFRESH_TOKEN.'
@@ -42,6 +43,8 @@ const getAccessToken = async () => {
 
   return data.access_token as string;
 };
+
+const getAccessToken = singleFlight(refreshAccessToken);
 
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5`;
 const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5`;

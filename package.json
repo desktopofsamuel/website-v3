@@ -15,7 +15,8 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:smoke": "playwright test --grep @smoke",
     "test:e2e:ci": "playwright test --grep @ci",
-    "spotify:auth": "node scripts/spotify-auth.mjs"
+    "spotify:auth": "node scripts/spotify-auth.mjs",
+    "verify:spotify-token": "bash scripts/verify-spotify-token.sh && node --experimental-strip-types --test lib/single-flight.test.ts"
   },
   "dependencies": {
     "@chenglou/pretext": "^0.0.7",
