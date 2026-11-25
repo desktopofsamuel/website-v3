@@ -1,0 +1,10 @@
+---
+description: Keep gates local. Do not add GitHub Actions workflows.
+alwaysApply: true
+---
+
+CI on this repo is scarce. Keep `.github/workflows/e2e.yml`. Do not add another workflow for lint, unit tests, or model checks.
+
+Encode a repeating mistake as architecture, then types, then an ESLint rule whose error names the fix, then a `lib/*.test.ts` file. Those tests run from `.githooks/pre-commit` and `pnpm test`. `pnpm lint` and `pnpm build` are the other local gates.
+
+TLA+ and other formal checks stay behind a local `pnpm` script. Never give them a GitHub Actions job.
