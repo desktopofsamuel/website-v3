@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["app/**/*.{ts,tsx,js,jsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "paths": [
+              {
+                "name": "contentlayer/generated",
+                "importNames": ["allPosts", "allWorks", "allPhotos"],
+                "message": "Import publishedPosts, publishedWorks, or publishedPhotos from @/lib/content so draft documents cannot enter routes."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

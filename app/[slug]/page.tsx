@@ -1,10 +1,14 @@
-import { allPosts, Post } from "contentlayer/generated";
+import type { Post } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import BlogLayout from "@/components/BlogLayout";
 import PageLayout from "@/components/PageLayout";
 import { sortByDate } from "@/utils";
-import { normalizeTag } from "@/lib/content";
+import {
+  filteredPosts,
+  normalizeTag,
+  publishedPosts,
+} from "@/lib/content";
 import config from "@/config";
 
 type Props = {
@@ -14,9 +18,9 @@ type Props = {
 // Generate metadata for each post
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = allPosts.find((post) => post.slug === slug);
+  const post = publishedPosts.find((post) => post.slug === slug);
 
-  if (!post || post.draft) {
+  if (!post) {
     return {
       title: "Post Not Found",
       description: "The requested post could not be found.",
@@ -44,44 +48,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Generate static params for all posts (excluding drafts)
 export async function generateStaticParams() {
-  return allPosts
-    .filter((post) => !post.draft)
-    .map((post) => ({
-      slug: post.slug,
-    }));
+  return publishedPosts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 // Get data for the specific post
 async function getData(slug: string) {
-  const post = allPosts.find((post) => post.slug === slug);
+  const post = publishedPosts.find((post) => post.slug === slug);
 
-  if (!post || post.draft) {
+  if (!post) {
     notFound();
   }
 
-  // Only get related posts for blog posts (not pages)
   let relatedPosts: Post[] = [];
 
   if (!post.page) {
-    // Get up to 2 posts that share the same tag as the current post
-    relatedPosts = allPosts
+    relatedPosts = filteredPosts
       .filter((p) => {
         const postTagSlugs = new Set(post.tags.map(normalizeTag));
-        const hasSharedTag = p.tags.some((tag) => postTagSlugs.has(normalizeTag(tag)));
-        return hasSharedTag && p.slug !== post.slug && !p.page && !p.draft; // Exclude pages and drafts from related posts
+        const hasSharedTag = p.tags.some((tag) =>
+          postTagSlugs.has(normalizeTag(tag))
+        );
+        return hasSharedTag && p.slug !== post.slug;
       })
       .sort(sortByDate)
       .slice(0, 2);
 
-    // If no related posts found, then find posts in the same category
     if (relatedPosts.length === 0) {
-      relatedPosts = allPosts
+      relatedPosts = filteredPosts
         .filter(
-          (p) =>
-            p.category === post.category &&
-            p.slug !== post.slug &&
-            !p.page &&
-            !p.draft
+          (p) => p.category === post.category && p.slug !== post.slug
         )
         .sort(sortByDate)
         .slice(0, 2);

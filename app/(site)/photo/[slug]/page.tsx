@@ -1,4 +1,4 @@
-import { allPhotos } from "contentlayer/generated";
+import { publishedPhotos } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import dayjs from "dayjs";
@@ -15,9 +15,9 @@ type Props = {
 // Generate metadata for each photo
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = allPhotos.find((post) => post.slug === slug);
+  const post = publishedPhotos.find((post) => post.slug === slug);
 
-  if (!post || post.draft) {
+  if (!post) {
     return {
       title: "Photo Not Found",
       description: "The requested photo could not be found.",
@@ -40,9 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Generate static params for all photos
 export async function generateStaticParams() {
-  return allPhotos
-    .filter((post) => !post.draft)
-    .map((post) => ({ slug: post.slug }));
+  return publishedPhotos.map((post) => ({ slug: post.slug }));
 }
 
 /** Extract gallery images from photo MDX in document order. */
@@ -61,9 +59,9 @@ function extractImages(raw: string): LightboxItem[] {
 
 export default async function SinglePhotoPage({ params }: Props) {
   const { slug } = await params;
-  const post = allPhotos.find((post) => post.slug === slug);
+  const post = publishedPhotos.find((post) => post.slug === slug);
 
-  if (!post || post.draft) {
+  if (!post) {
     notFound();
   }
 
