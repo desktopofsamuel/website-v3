@@ -40,7 +40,7 @@ function Cover({
 
 function SpineCards({ photos }: { photos: PhotoIndexItem[] }) {
   return (
-    <div className="px-6 md:px-10 pb-20 md:pb-40">
+    <div className="px-page pb-20 md:pb-40">
       <div className="mx-auto w-full max-w-[32rem] flex flex-col gap-20 md:gap-40">
         {photos.map((post, index) => (
           <Link
@@ -85,7 +85,7 @@ function BleedCards({ photos }: { photos: PhotoIndexItem[] }) {
               />
             </div>
           </div>
-          <div className="px-6 md:px-10 pt-8 pb-20 md:pb-40">
+          <div className="px-page pt-8 pb-20 md:pb-40">
             <h2 className="font-heading text-[30px] md:text-[50px] text-foreground">
               {post.title}
             </h2>
@@ -98,7 +98,7 @@ function BleedCards({ photos }: { photos: PhotoIndexItem[] }) {
 
 function SplitCards({ photos }: { photos: PhotoIndexItem[] }) {
   return (
-    <div className="px-6 md:px-10 pb-20 md:pb-40 flex flex-col gap-20 md:gap-40">
+    <div className="px-page pb-20 md:pb-40 flex flex-col gap-20 md:gap-40">
       {photos.map((post, index) => (
         <Link
           href={`/photo/${post.slug}/`}
@@ -124,7 +124,7 @@ function SplitCards({ photos }: { photos: PhotoIndexItem[] }) {
 
 function FolioCards({ photos }: { photos: PhotoIndexItem[] }) {
   return (
-    <div className="px-6 md:px-10 pb-20 md:pb-40">
+    <div className="px-page pb-20 md:pb-40">
       <div className="mx-auto w-full max-w-[56rem] flex flex-col gap-20 md:gap-40">
         {photos.map((post, index) => (
           <Link

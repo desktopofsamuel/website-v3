@@ -9,6 +9,7 @@ type PageHeroProps = {
   description?: React.ReactNode;
   /** Visual treatment of the hero. Defaults to "editorial". */
   variant?: "editorial" | "centered";
+  children?: React.ReactNode;
 };
 
 export default function PageHero({
@@ -16,6 +17,7 @@ export default function PageHero({
   title,
   description,
   variant = "editorial",
+  children,
 }: PageHeroProps) {
   if (variant === "centered") {
     return (
@@ -33,6 +35,7 @@ export default function PageHero({
             {description}
           </p>
         )}
+        {children}
       </header>
     );
   }
@@ -53,6 +56,7 @@ export default function PageHero({
           {description}
         </p>
       )}
+      {children}
     </div>
   );
 }
