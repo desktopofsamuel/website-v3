@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "react-loading-skeleton/dist/skeleton.css";
 @import "./walks.css";
+@import "./work-cd.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -180,6 +181,13 @@
   --color-skeleton-highlight: rgb(73, 73, 73);
 }
 
+/* Unlayered: library CSS sets --base-color: #ebebeb on .react-loading-skeleton,
+ * which always beats @layer base. Keep this after the import so theme tokens win. */
+.react-loading-skeleton {
+  --base-color: var(--color-skeleton-base);
+  --highlight-color: var(--color-skeleton-highlight);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -275,12 +283,6 @@
     .message-rotate {
       animation: none;
     }
-  }
-
-  /* react-loading-skeleton — neutral gray, theme-aware */
-  .react-loading-skeleton {
-    --base-color: var(--color-skeleton-base);
-    --highlight-color: var(--color-skeleton-highlight);
   }
 
   /* Bento Grid Styles - CSS Grid for Swapy */

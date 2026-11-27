@@ -16,7 +16,9 @@ if (!shouldStrip) {
 const root = process.cwd();
 const devPaths = [
   "app/dev",
+  "app/work-3d-preview",
   "app/api/dev",
+  "public/dev",
   // In-development features: kept for local dev, stripped from public production builds.
   "app/api/feed",
   "app/api/resources-career",

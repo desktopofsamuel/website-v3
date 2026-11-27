@@ -7,7 +7,7 @@
     "dev": "next dev -H 127.0.0.1 -p 3001",
     "build": "node scripts/strip-dev-routes.mjs && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "node scripts/check-work-cd-play.mjs && next lint",
     "prepare": "node scripts/install-git-hooks.mjs",
     "build:content": "contentlayer2 build",
     "postbuild": "next-sitemap",
@@ -59,6 +59,7 @@
     "swr": "^2.2.5",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
+    "three": "0.170.0",
     "typescript-array-utils": "^0.1.4"
   },
   "devDependencies": {
@@ -70,6 +71,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/rss": "^0.0.29",
+    "@types/three": "0.170.0",
     "agentation": "^3.0.2",
     "dayjs": "^1.11.10",
     "eslint": "^9.31.0",

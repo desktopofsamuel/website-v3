@@ -1,0 +1,16 @@
+muji-cd-player.glb
+From the attached SketchUp study `Muji+Cd+Player.skp` (SketchUp 26.2), converted with OpenSKP.
+Wall-mounted MUJI CD player. Throwaway visual study only.
+
+jewel-case-2k.glb
+From https://github.com/nicolasBasement/cd-monkey (public/models/cd-2k.glb)
+
+Throwaway visual study only. The mesh is a photoreal jewel case with a transmission glass lid.
+The baked booklet/disc art is Monkey Island branding and is not cleared for a production /work page.
+
+joysip.png
+Dummy cover for the 3D study (JoySip). Native 2000×2000, upsampled to 4096 on the insert. Not a production /work asset.
+
+CC0 alternatives that this machine could not download:
+- https://grab3d.com/models/electronics/cd/ (stylized, hinged lid, CC0)
+- https://www.innerscene.com/tools/library/3d-parts/optical-disc-cd-dvd-in-an-open-jewel-case-33d17de4 (realistic, CC0)

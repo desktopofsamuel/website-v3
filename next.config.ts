@@ -3,7 +3,7 @@ import { withContentlayer } from "next-contentlayer2";
 
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
-  transpilePackages: ["leaflet", "react-leaflet"],
+  transpilePackages: ["leaflet", "react-leaflet", "three"],
   images: {
     remotePatterns: [
       {

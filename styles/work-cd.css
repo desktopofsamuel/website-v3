@@ -1,0 +1,133 @@
+.work-cd-shell {
+  container-type: inline-size;
+  container-name: work-cd;
+  --work-cd-peek-hit: 8.5rem;
+}
+
+.work-cd-shell[data-player-peek="true"] {
+  --work-cd-peek-hit: 10rem;
+}
+
+.work-cd-stage {
+  view-transition-name: work-cd-stage;
+}
+
+.work-cd-copy {
+  view-transition-name: work-cd-copy;
+}
+
+.work-cd-veil {
+  opacity: 0;
+  transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(
+    180deg,
+    #efece6 0%,
+    #efece6 78%,
+    rgb(239 236 230 / 0.92) 88%,
+    rgb(239 236 230 / 0) 100%
+  );
+}
+
+.work-cd-veil-out {
+  opacity: 0;
+  transition-duration: 0.24s;
+  transition-timing-function: ease-in;
+}
+
+.work-cd-index-copy {
+  opacity: 0;
+}
+
+.work-cd-detail-copy [data-typeset] {
+  opacity: 0;
+}
+
+.work-cd-detail-copy {
+  left: 0;
+  bottom: calc(18dvh - 3dvh * var(--work-cd-read, 0));
+  background: #efece6;
+}
+
+.work-cd-player-peek {
+  pointer-events: auto;
+  position: absolute;
+  z-index: 25;
+  left: 50%;
+  bottom: 0;
+  width: min(12rem, 42vw);
+  height: 16dvh;
+  transform: translateX(-50%);
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+@container work-cd (min-width: 1200px) {
+  .work-cd-detail-copy {
+    left: 7.5rem;
+    bottom: 0;
+    background: #efece6;
+  }
+
+  .work-cd-player-peek {
+    left: 0;
+    top: 22%;
+    bottom: auto;
+    width: var(--work-cd-peek-hit);
+    height: 56%;
+    transform: none;
+  }
+
+  .work-cd-veil {
+    background: #efece6;
+  }
+}
+
+.work-cd-veil-on {
+  opacity: 1;
+}
+
+.work-cd-eject {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: work-cd-eject-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+}
+
+@keyframes work-cd-eject-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::view-transition-group(work-cd-stage) {
+  animation: none;
+}
+
+::view-transition-old(work-cd-stage),
+::view-transition-new(work-cd-stage) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+}
+
+::view-transition-old(work-cd-copy),
+::view-transition-new(work-cd-copy) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-cd-veil {
+    transition-duration: 0.2s;
+  }
+
+  .work-cd-eject {
+    animation-duration: 0.2s;
+    animation-delay: 0.22s;
+  }
+
+  [data-detail-panel] {
+    transition: none !important;
+  }
+}

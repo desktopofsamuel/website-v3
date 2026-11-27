@@ -8,6 +8,8 @@ type AppLinkProps = {
   target?: "_blank" | "_self";
   title?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  "aria-current"?: "page" | "step" | "location" | "date" | "time" | "true" | "false";
+  "aria-label"?: string;
 };
 
 function AppLink({
